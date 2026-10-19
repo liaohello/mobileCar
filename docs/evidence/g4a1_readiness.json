@@ -1,0 +1,182 @@
+{
+  "report_version": "g4a1-readiness-1",
+  "interface_profile": "g4a1-1.0",
+  "execution_location": "server_only",
+  "formal_report_success": true,
+  "summary": {
+    "case_count": 6,
+    "format_valid": true,
+    "data_complete": true,
+    "task_evidence_complete": true,
+    "observability": true,
+    "action_causality": true,
+    "source_provenance": true,
+    "parent_split": "NOT_EVALUATED",
+    "training_qualified": false,
+    "export_valid": "NOT_EVALUATED"
+  },
+  "cases": [
+    {
+      "interface_profile": "g4a1-1.0",
+      "case_id": "M01_center",
+      "run_id": "run_a837ef7d07294fd98bd02dfcbc559c89",
+      "episode_id": "episode_642ece307b6d40aaba0956d7c5cbd960",
+      "operator_source": [
+        "agent_ui"
+      ],
+      "view_source": "link4_rgbd_proprio",
+      "gates": {
+        "format_valid": true,
+        "data_complete": true,
+        "task_result": true,
+        "observability": true,
+        "action_causality": true,
+        "source_provenance": true,
+        "parent_split": "NOT_EVALUATED",
+        "training_qualified": false,
+        "export_valid": "NOT_EVALUATED"
+      },
+      "reasons": [
+        "dev-only G4A-1 data is not training-qualified"
+      ],
+      "source_operator_kind": "scripted",
+      "training_qualified": false,
+      "export_valid": "NOT_EVALUATED"
+    },
+    {
+      "interface_profile": "g4a1-1.0",
+      "case_id": "M02_lateral_offset",
+      "run_id": "run_1db84adf2a8c4799943ac5462e52d6f2",
+      "episode_id": "episode_01104921e91240eeab5babd895d1ef09",
+      "operator_source": [
+        "agent_ui"
+      ],
+      "view_source": "link4_rgbd_proprio",
+      "gates": {
+        "format_valid": true,
+        "data_complete": true,
+        "task_result": true,
+        "observability": true,
+        "action_causality": true,
+        "source_provenance": true,
+        "parent_split": "NOT_EVALUATED",
+        "training_qualified": false,
+        "export_valid": "NOT_EVALUATED"
+      },
+      "reasons": [
+        "dev-only G4A-1 data is not training-qualified"
+      ],
+      "source_operator_kind": "scripted",
+      "training_qualified": false,
+      "export_valid": "NOT_EVALUATED"
+    },
+    {
+      "interface_profile": "g4a1-1.0",
+      "case_id": "M03_longitudinal_offset",
+      "run_id": "run_fa9a27889a814be7af94189f67e8cda0",
+      "episode_id": "episode_30454a9246c944eaad43ee1747637f0f",
+      "operator_source": [
+        "agent_ui"
+      ],
+      "view_source": "link4_rgbd_proprio",
+      "gates": {
+        "format_valid": true,
+        "data_complete": true,
+        "task_result": true,
+        "observability": true,
+        "action_causality": true,
+        "source_provenance": true,
+        "parent_split": "NOT_EVALUATED",
+        "training_qualified": false,
+        "export_valid": "NOT_EVALUATED"
+      },
+      "reasons": [
+        "dev-only G4A-1 data is not training-qualified"
+      ],
+      "source_operator_kind": "scripted",
+      "training_qualified": false,
+      "export_valid": "NOT_EVALUATED"
+    },
+    {
+      "interface_profile": "g4a1-1.0",
+      "case_id": "M04_depth_failure",
+      "run_id": "run_6f6a2b9311c642388df4e7ad2fa4a735",
+      "episode_id": "episode_c3274278171746268be1cb054e773575",
+      "operator_source": [
+        "agent_ui"
+      ],
+      "view_source": "link4_rgbd_proprio",
+      "gates": {
+        "format_valid": true,
+        "data_complete": true,
+        "task_result": true,
+        "observability": true,
+        "action_causality": true,
+        "source_provenance": true,
+        "parent_split": "NOT_EVALUATED",
+        "training_qualified": false,
+        "export_valid": "NOT_EVALUATED"
+      },
+      "reasons": [
+        "dev-only G4A-1 data is not training-qualified"
+      ],
+      "source_operator_kind": "test_injection",
+      "training_qualified": false,
+      "export_valid": "NOT_EVALUATED"
+    },
+    {
+      "interface_profile": "g4a1-1.0",
+      "case_id": "M05_stop_takeover",
+      "run_id": "run_aa045feec8034429847c6e169fd2410c",
+      "episode_id": "episode_3afbc7f8e2d144a4924b46965ce9a5bc",
+      "operator_source": [
+        "agent_ui"
+      ],
+      "view_source": "link4_rgbd_proprio",
+      "gates": {
+        "format_valid": true,
+        "data_complete": true,
+        "task_result": true,
+        "observability": true,
+        "action_causality": true,
+        "source_provenance": true,
+        "parent_split": "NOT_EVALUATED",
+        "training_qualified": false,
+        "export_valid": "NOT_EVALUATED"
+      },
+      "reasons": [
+        "dev-only G4A-1 data is not training-qualified"
+      ],
+      "source_operator_kind": "test_injection",
+      "training_qualified": false,
+      "export_valid": "NOT_EVALUATED"
+    },
+    {
+      "interface_profile": "g4a1-1.0",
+      "case_id": "M06_reset_epoch",
+      "run_id": "run_574635097c484567b3e96e74d6f2a5d6",
+      "episode_id": "episode_856be580b0844613814741517e44e99b",
+      "operator_source": [
+        "agent_ui"
+      ],
+      "view_source": "link4_rgbd_proprio",
+      "gates": {
+        "format_valid": true,
+        "data_complete": true,
+        "task_result": true,
+        "observability": true,
+        "action_causality": true,
+        "source_provenance": true,
+        "parent_split": "NOT_EVALUATED",
+        "training_qualified": false,
+        "export_valid": "NOT_EVALUATED"
+      },
+      "reasons": [
+        "dev-only G4A-1 data is not training-qualified"
+      ],
+      "source_operator_kind": "test_injection",
+      "training_qualified": false,
+      "export_valid": "NOT_EVALUATED"
+    }
+  ]
+}

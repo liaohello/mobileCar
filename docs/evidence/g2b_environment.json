@@ -1,0 +1,28 @@
+{
+  "environment_id": "g2b-lerobot-0.4.4",
+  "python": "3.12.14",
+  "install_job_id": "g2b-lerobot-install-3",
+  "pip_check_job_id": "g2b-env-baseline-1",
+  "pip_check": "No broken requirements found.",
+  "requirements_lock": "requirements-g2b-lerobot.lock",
+  "requirements_lock_sha256": "945d0c3fffa6535f357420db326e46cf5d8f6af8bde598cf3fed854d8a5c813d",
+  "packages": {
+    "lerobot": "0.4.4",
+    "lerobot_tag_commit": "8fff0fde7c79f23a93d845d1a50e985de01f8b8a",
+    "lerobot_wheel_sha256": "e53800ead8216861540ad3aebaf12e3cf87a399b3c1f234eeead33716c9c24fd",
+    "torch": "2.7.1+cpu",
+    "torchvision": "0.22.1+cpu",
+    "torchcodec": "0.10.0",
+    "av": "15.1.0",
+    "datasets": "4.8.5",
+    "pyarrow": "26.0.0",
+    "pandas": "3.0.6",
+    "numpy": "2.2.6",
+    "pillow": "11.3.0"
+  },
+  "dataset_codebase_version": "v3.0",
+  "video_codec": "h264",
+  "video_backend": "pyav",
+  "gpu_training_used": false,
+  "hub_upload": false
+}

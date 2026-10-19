@@ -1,0 +1,37 @@
+{
+  "action_profile_id": "g2a-teleop-action-1.0",
+  "action_profile_sha256": "4b037ff671fb766452630b234d5680383381a2e6597b5855a5d92131a5c9f7dc",
+  "action_profile_version": "1.0",
+  "audit_status": "COMPLETE",
+  "contract_version": "mobilecar-1.0",
+  "d0_navigation": false,
+  "d1_language_navigation": false,
+  "d2_near_field_manipulation": false,
+  "d3_combined_task": false,
+  "episode_id": "episode_32975d5ce7eb4b10a58588858de103d7",
+  "gates": {
+    "analyzed_window_complete": true,
+    "asset_integrity": true,
+    "audit_complete": true,
+    "average_wall_rate": true,
+    "capture_binding": true,
+    "p99_interval": true,
+    "persisted_unique": true,
+    "profile_match": true,
+    "rgb_depth_pairs": true,
+    "timing_causality": true,
+    "transform_version": true
+  },
+  "profile_id": "g2a-rgbd-5hz-original",
+  "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+  "profile_version": "1.0",
+  "reasons": [
+    "D0 profile/audit/base-action gate failed",
+    "D2 profile/audit/action/proprioception gate failed",
+    "agent_ui is development evidence; not a human_teleop source"
+  ],
+  "source_operator_kind": "agent_ui",
+  "task_result": "failure",
+  "view_source": "third_person_3d",
+  "wrist_rgb_only_eligible": false
+}

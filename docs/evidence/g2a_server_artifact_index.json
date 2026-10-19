@@ -1,0 +1,234 @@
+{
+  "schema_version": 1,
+  "goal": "G2A",
+  "status": "PASS",
+  "generated_wall_utc": "2026-10-17T16:43:00Z",
+  "execution_location": "server",
+  "server_project_root": "~/Desktop/mobileCar",
+  "release": {
+    "snapshot_id": "g2a-20261017T163244Z-5cbe582fa6b2",
+    "aggregate_sha256": "5cbe582fa6b266d074d22bd4c120ad381797a440e37834ab8e9a6c7e03558514",
+    "file_count": 163,
+    "local_manifest": "provenance/releases/g2a-20261017T163244Z-5cbe582fa6b2.json",
+    "local_manifest_sha256": "c38b56e5a07c42eaef842edf975c301fa47ddd985aff0a0471d1e9c5f5e04a04",
+    "remote_path": "releases/g2a-20261017T163244Z-5cbe582fa6b2"
+  },
+  "environment": {
+    "os": "Ubuntu 22.04.5 LTS",
+    "kernel": "6.8.0-138-generic",
+    "python": "3.10.12",
+    "node": "20.20.2",
+    "mujoco": "3.1.6",
+    "fastapi": "0.136.3",
+    "pydantic": "2.13.5",
+    "playwright": "1.63.0",
+    "chromium": "153.0.8010.12",
+    "cpu_count": 128,
+    "memory_gib": 503.51,
+    "gpu": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "gpu_model": "NVIDIA GeForce RTX 4090",
+    "mujoco_renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2",
+    "chromium_webgl_renderer": "ANGLE (NVIDIA, Vulkan 1.4.303, NVIDIA GeForce RTX 4090)"
+  },
+  "identity": {
+    "contract_version": "mobilecar-1.0",
+    "interface_profile": "g2a-1.0",
+    "observation_profile_id": "g2a-rgbd-5hz-original",
+    "observation_profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+    "action_profile_id": "g2a-teleop-action-1.0",
+    "action_profile_sha256": "4b037ff671fb766452630b234d5680383381a2e6597b5855a5d92131a5c9f7dc",
+    "model_sha256": "3ca3d6d0a92a48bbfbce5ac7a04e37a0f7cf7a73297045ae327bf461ad50e280"
+  },
+  "jobs": [
+    {
+      "job_id": "g2a-final4-build-1",
+      "result": "exit 0",
+      "remote_console": "var/jobs/g2a-final4-build-1/console.log"
+    },
+    {
+      "job_id": "g2a-final4-acceptance-1",
+      "result": "PASS",
+      "remote_report": "var/reports/g2a-final4-acceptance-1/g2a_server_acceptance.json",
+      "remote_console": "var/jobs/g2a-final4-acceptance-1/console.log"
+    },
+    {
+      "job_id": "g2a-final4-regression-1",
+      "result": "55 passed, 1 third-party deprecation warning",
+      "remote_junit": "var/reports/g2a-final4-regression-1/junit.xml",
+      "remote_console": "var/jobs/g2a-final4-regression-1/console.log"
+    },
+    {
+      "job_id": "g2a-final4-renderer-1",
+      "result": "hardware EGL and Chromium renderer verified",
+      "remote_report": "var/reports/g2a-final4-renderer-1/probe.json"
+    }
+  ],
+  "episodes": {
+    "stationary_60s": {
+      "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+      "episode_id": "episode_32975d5ce7eb4b10a58588858de103d7",
+      "remote_path": "var/runs/run_81ccba839bec4e1991278b913fa2f1b3/episodes/episode_32975d5ce7eb4b10a58588858de103d7",
+      "result": "quality PASS; D0/D2/D3 false",
+      "assets": {
+        "file_count": 912,
+        "bytes": 383872260
+      },
+      "key_files": {
+        "episode_complete.json": {
+          "sha256": "c7050993b38c131953b2a2a0c6187f39d2aeda6b02e94e4e0fb4103a6a346195",
+          "bytes": 125266
+        },
+        "quality_report.json": {
+          "sha256": "d034587b3668fa6e5399c78781f37efc8b9e228d70a8168494726afcc120301f",
+          "bytes": 1047
+        },
+        "observations/persist.jsonl": {
+          "sha256": "547fac9e7cd67b1ae1c4a582c52c144b7f0a7b96d0fd94e76bcd0c0b633e0922",
+          "bytes": 298043
+        }
+      },
+      "quality_report": "var/reports/g2a/run_81ccba839bec4e1991278b913fa2f1b3/episode_32975d5ce7eb4b10a58588858de103d7.g2a_quality.json",
+      "eligibility_report": "var/reports/g2a/run_81ccba839bec4e1991278b913fa2f1b3/episode_32975d5ce7eb4b10a58588858de103d7.g2a_eligibility.json"
+    },
+    "motion_arm_60s": {
+      "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+      "episode_id": "episode_c20c70aa2ada4e4fbd4c1a9ec5672090",
+      "remote_path": "var/runs/run_81ccba839bec4e1991278b913fa2f1b3/episodes/episode_c20c70aa2ada4e4fbd4c1a9ec5672090",
+      "result": "quality PASS; D0/D2 true within declared profiles; D3 false",
+      "assets": {
+        "file_count": 912,
+        "bytes": 384801934
+      },
+      "key_files": {
+        "episode_complete.json": {
+          "sha256": "834df2eab5ca72b595a4f39a23447de0dc60934003d61f182aa6d8037e730107",
+          "bytes": 125266
+        },
+        "quality_report.json": {
+          "sha256": "0ec2e4db76b6101f4274f5531a5fe33835d793ba65919615c59b2db5f8cb9fd9",
+          "bytes": 1052
+        },
+        "observations/persist.jsonl": {
+          "sha256": "43ddac18c63c39dc5cb2ff39e58c6e501a35b61ad7a28bfe96fd32e65008b069",
+          "bytes": 298075
+        }
+      },
+      "quality_report": "var/reports/g2a/run_81ccba839bec4e1991278b913fa2f1b3/episode_c20c70aa2ada4e4fbd4c1a9ec5672090.g2a_quality.json",
+      "eligibility_report": "var/reports/g2a/run_81ccba839bec4e1991278b913fa2f1b3/episode_c20c70aa2ada4e4fbd4c1a9ec5672090.g2a_eligibility.json"
+    },
+    "browser_30s": {
+      "run_id": "run_0c66bf17aeaa47249ffa3e66f4143a70",
+      "episode_id": "episode_7fa6ed48dbec44daa4421199e3087e2e",
+      "remote_path": "var/runs/run_0c66bf17aeaa47249ffa3e66f4143a70/episodes/episode_7fa6ed48dbec44daa4421199e3087e2e",
+      "result": "COMPLETE; full Chromium input reliability PASS",
+      "assets": {
+        "file_count": 459,
+        "bytes": 193261740
+      },
+      "key_files": {
+        "episode_complete.json": {
+          "sha256": "462d7910bdb3ce12498c5d9986e9074cce24ef4d6f4035e4d33111a9e0260bb0",
+          "bytes": 63953
+        },
+        "quality_report.json": {
+          "sha256": "33caa0aa52a1d43dade0fd30584d5ce91ffd0e9f8de21e18d288eb458f7fdb23",
+          "bytes": 1033
+        }
+      }
+    },
+    "write_fault": {
+      "run_id": "run_d669e1a5aa2149cfac566d9990c75703",
+      "episode_id": "episode_b08d13faa97341088a8c21c4136b4d2e",
+      "remote_path": "var/runs/run_d669e1a5aa2149cfac566d9990c75703/episodes/episode_b08d13faa97341088a8c21c4136b4d2e",
+      "result": "FAILED/INCOMPLETE; safety latched; base stopped",
+      "assets": {
+        "file_count": 15,
+        "bytes": 6312071
+      },
+      "key_files": {
+        "episode_complete.json": {
+          "sha256": "3f6e37c6a12280dfb4ae92e548afc6df8311c5f0970a3da35f689c16aa9d2acf",
+          "bytes": 3865
+        },
+        "quality_report.json": {
+          "sha256": "312e2939e37e336b0b28726e3012583522f11775374abe3879ff694048bdf9d6",
+          "bytes": 332
+        }
+      }
+    },
+    "post_fault_recovery": {
+      "run_id": "run_b13e8a2561d24b4a9899edd0f5f16dec",
+      "episode_id": "episode_4e6df755e49441b49a24baf4e80e1b8d",
+      "remote_path": "var/runs/run_b13e8a2561d24b4a9899edd0f5f16dec/episodes/episode_4e6df755e49441b49a24baf4e80e1b8d",
+      "result": "normal motion DISPATCHED; recording COMPLETE",
+      "assets": {
+        "file_count": 15,
+        "bytes": 6312887
+      },
+      "key_files": {
+        "episode_complete.json": {
+          "sha256": "fd31398d821caff27f2c2607bb0e7ee32b98c4345989f0e17bb7ecfebaa750ef",
+          "bytes": 3868
+        },
+        "quality_report.json": {
+          "sha256": "1f92ab31a77eef4e7bbc5e2ddb50e5a406eee51b6f1c263de9b665ea166ecca5",
+          "bytes": 1038
+        }
+      }
+    }
+  },
+  "local_evidence": [
+    {
+      "path": "docs/evidence/g2a_server_acceptance.json",
+      "sha256": "6dcece652b17dfed55dbd6bdae4840692d0c5e82d674e6be87c84e1858f02341",
+      "bytes": 85075
+    },
+    {
+      "path": "docs/evidence/pytest-g2a.xml",
+      "sha256": "ed5d85cd97a9bef8976509f712726b7b7216272ffba80e42f58cce6781846232",
+      "bytes": 7253
+    },
+    {
+      "path": "docs/evidence/g2a_renderer_probe.json",
+      "sha256": "d4f19cfe97f2a2f25b64d1b8f54f90be376126bd932531f319205e49a856f628",
+      "bytes": 596
+    },
+    {
+      "path": "docs/evidence/g2a_browser_full_chromium.png",
+      "sha256": "077930cc1c3916704a880cc95172fac6623db5e331df5790dd9ba0e20d7acc4c",
+      "bytes": 227941
+    },
+    {
+      "path": "docs/evidence/g2a_stationary_quality.json",
+      "sha256": "80317ed9fb1b053a0aac0b85a7b3c8e77a737507f21d353dcfb950518f9f3f00",
+      "bytes": 6199
+    },
+    {
+      "path": "docs/evidence/g2a_stationary_eligibility.json",
+      "sha256": "927a33e62546595a6523dc58c41016d13da85bfec060f2661f475650a832b16b",
+      "bytes": 1271
+    },
+    {
+      "path": "docs/evidence/g2a_motion_quality.json",
+      "sha256": "cb124370fb90474d825b4355cf076e7939664630c45369a541ae298ab61c02c3",
+      "bytes": 6159
+    },
+    {
+      "path": "docs/evidence/g2a_motion_eligibility.json",
+      "sha256": "728676c378e8452e5de4df4f39accf57a3de5499213190f799dfe6df047464a2",
+      "bytes": 1163
+    }
+  ],
+  "reproduction": {
+    "build_ui": ". \"$HOME/.nvm/nvm.sh\" && nvm use 20 && npm ci --no-audit --no-fund && npm run build:ui",
+    "regression": "MUJOCO_GL=egl PYTHONPATH=src ../../envs/g2a-py310-mujoco316/bin/python -m pytest tests -q --junitxml=../../var/reports/<job_id>/junit.xml",
+    "acceptance": "G2A_JOB_ID=<job_id> MUJOCO_GL=egl PYTHONPATH=src ../../envs/g2a-py310-mujoco316/bin/python scripts/g2a_server_acceptance.py --report-root ../../var/reports/<job_id> --config configs/g2a_server.yaml"
+  },
+  "raw_media_retained_on_server": true,
+  "local_media_total_bytes": 335657
+}

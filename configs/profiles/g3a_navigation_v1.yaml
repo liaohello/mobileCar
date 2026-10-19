@@ -1,0 +1,148 @@
+schema_version: 1
+interface_profile: g3a-1.0
+profile_id: g3a-nav-50hz-laser10-v1
+profile_version: "1.0"
+wire_contract_version: mobilecar-1.0
+model_sha256: 62bea46ce1468baf227a44e2ff71d509010e173337f1c875d2bd3c0399ab4241
+clock_id: backend_monotonic
+epochs:
+  backend_generation_source: backend_config_generation
+  navigation_epoch_initial: 0
+  navigation_epoch_increment: reset_or_time_regression
+frames:
+  world_debug_frame: world_sim
+  odom_frame: odom
+  base_frame: base_link
+  laser_frame: laser_frame
+  lidar_mount_body: lidar_link
+  imu_frame: imu_link
+  t_base_lidar:
+    translation_m: [0.07302117405202284, 0.0, 0.08]
+    rotation_xyzw: [0.0, 0.0, 0.0, 1.0]
+  t_base_imu:
+    translation_m: [0.0, 0.0, 0.035]
+    rotation_xyzw: [0.0, 0.0, 0.0, 1.0]
+  publication_ownership:
+    odom_to_base_link: odometry_estimator
+    base_to_lidar: rt_static_bridge
+    base_to_imu: rt_static_bridge
+    base_to_active_arm: rt_dynamic_bridge
+    map_to_odom: unpublished_in_g3a
+sensors:
+  wheel:
+    nominal_hz: 50.0
+    maximum_age_s: 0.20
+    frame_id: base_link
+    wheel_order: [front_left, rear_left, front_right, rear_right]
+    wheel_names:
+      - front_left_wheel
+      - rear_left_wheel
+      - front_right_wheel
+      - rear_right_wheel
+    radius_m: [0.0325, 0.0325, 0.0325, 0.0325]
+    rotation_sign: [1.0, 1.0, 1.0, 1.0]
+    source: mujoco_wheel_joint_feedback
+    forbidden_estimator_fields:
+      - base_twist_body_m_s
+      - base_position_world_sim_m
+      - base_quaternion_xyzw
+      - world_sim
+      - oracle
+  imu:
+    nominal_hz: 50.0
+    maximum_age_s: 0.20
+    frame_id: imu_link
+    base_frame_id: base_link
+    source: mujoco_navigation_imu_sensor
+    rotation_imu_to_base_wxyz: [1.0, 0.0, 0.0, 0.0]
+    orientation_available: false
+    missing_gyro_policy: invalidate_health_and_stop
+    acceleration_use: diagnostic_only
+  scan:
+    nominal_hz: 10.0
+    maximum_age_s: 0.30
+    frame_id: laser_frame
+    mounting_body: lidar_link
+    source: mujoco_mj_ray
+    beam_count: 360
+    angle_min_rad: -3.141592653589793
+    angle_max_rad: 3.12413936106985
+    angle_increment_rad: 0.017453292519943295
+    range_min_m: 0.10
+    range_max_m: 8.00
+    time_increment_s: 0.0
+    instantaneous_snapshot: true
+    self_occlusion: actual_robot_geoms_remaining_after_sensor_origin_offset
+    robot_geom_filtering: disabled
+    ros_mapping:
+      HIT: finite_range
+      NO_RETURN: plus_inf
+      INVALID: nan
+      SELF_OCCLUDED: nan_with_diagnostic_count
+  joints:
+    nominal_hz: 50.0
+    maximum_age_s: 0.20
+    frame_id: base_link
+    names: [joint1, joint2, joint3, joint4, joint5]
+    coordinate: model_rad
+estimate:
+  nominal_hz: 50.0
+  source: wheel_gyro_planar_fusion
+  algorithm: complementary_planar
+  max_measurement_age_s: 0.20
+  stale_policy: stop_output_keep_last_published_pose_without_new_stamp
+  invalid_policy: health_invalid_and_zero_controlled_base
+  origin: explicit_initial_zero_odom_once_per_continuous_trajectory
+  truth_pose_correction: forbidden
+  initial_alignment_for_scoring: once_per_continuous_trajectory
+  wheel_forward_kinematics:
+    half_wheelbase_plus_half_track_m: 0.141
+    wheel_order: [front_left, rear_left, front_right, rear_right]
+  gyro_projection:
+    input_frame: imu_link
+    output_frame: base_link
+    axis: z
+    rotation_wxyz: [1.0, 0.0, 0.0, 0.0]
+  complementary_gain: 0.08
+  covariance:
+    source: development_profile_uncalibrated
+    pose_diagonal: [0.0004, 0.0004, 0.0, 0.0, 0.0, 0.0025]
+    twist_diagonal: [0.0004, 0.0004, 0.0, 0.0, 0.0, 0.0025]
+    untouched_ros_dimensions: explicit_zero_with_profile_marker
+distribution:
+  queue_capacity_per_consumer: 16
+  drop_policy: drop_oldest_per_consumer
+  consumers:
+    - recorder
+    - navigation_backend
+    - ros_bridge
+  slow_consumer_accounting: counters_and_health_diagnostic
+  recorder_independent: true
+control:
+  source: ros_navigation_test
+  command_topic: /mobilecar/cmd_vel_nav_test
+  input_timeout_s: 0.25
+  lease_timeout_s: 0.50
+  maximum_translation_m_s: 0.05
+  maximum_yaw_rad_s: 0.30
+  release_semantics: zero_base_without_cancelling_independent_arm
+  manual_takeover: revoke_navigation_and_increment_cancel_epoch
+  stale_command: reject_and_zero_base
+  recording_gate_overrides: true
+acceptance:
+  wheel_min_average_hz: 45.0
+  imu_min_average_hz: 45.0
+  odom_min_average_hz: 45.0
+  scan_min_average_hz: 9.0
+  wheel_max_age_s: 0.20
+  imu_max_age_s: 0.20
+  scan_max_age_s: 0.30
+  stationary_duration_s: 30.0
+  stationary_planar_drift_m: 0.01
+  stationary_yaw_drift_deg: 2.0
+  short_trajectory_planar_error_m: 0.05
+  short_trajectory_yaw_error_deg: 5.0
+  max_formal_segment_s: 60.0
+  seed_policy: [ideal, 1]
+  truth_label: GT_DEBUG_ONLY
+  map_publication: forbidden

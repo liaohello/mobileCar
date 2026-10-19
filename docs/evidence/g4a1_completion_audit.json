@@ -1,0 +1,34 @@
+{
+  "report_version": "g4a1-completion-audit-1",
+  "execution_location": "server_only",
+  "release": "g4a1-20261018T125226Z-134032d390f8",
+  "aggregate": "134032d390f83a4875e8bd936b9dead4fec9fbcd55e6c251cfde3ff5c7da4747",
+  "success": true,
+  "formal_cases": 6,
+  "format_valid": true,
+  "data_complete": true,
+  "task_evidence_complete": true,
+  "observability": true,
+  "action_causality": true,
+  "source_provenance": true,
+  "parent_split": "NOT_EVALUATED",
+  "training_qualified": false,
+  "export_valid": "NOT_EVALUATED",
+  "regression": {
+    "tests": 130,
+    "failures": 0,
+    "errors": 0,
+    "junit_sha256": "af967841b80477397f86bd86945c58d9f4528519e7a823584c4e732ff4324025"
+  },
+  "process_audit": {
+    "release_integrity": true,
+    "leftover_release_physics_or_ros_process_count": 0,
+    "job_id": "g4a1-final-shell-audit-v1",
+    "console_sha256": "da7ce302de5f76084515e4459aac7bc9f27ecac47a35db9e2887cd500d76c717"
+  },
+  "artifact_sha256": {
+    "formal_report": "6a83cd73f81bc41196e34dbd90bcb110f3e5b2f0104377dd69abb7c188cd9533",
+    "readiness": "33bd02b76af6e7fe21d9a2f7d5d65ba3f53aa0d582313394ed22678a4ed04aa1",
+    "center_lift": "16878db4d165da182699a41d641a814391643c9b05f117f69083342f30c5091c"
+  }
+}

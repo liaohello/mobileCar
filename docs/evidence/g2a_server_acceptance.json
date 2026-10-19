@@ -1,0 +1,2768 @@
+{
+  "action_profile_sha256": "4b037ff671fb766452630b234d5680383381a2e6597b5855a5d92131a5c9f7dc",
+  "environment": {
+    "executable": "/home/liaozhengyan/Desktop/mobileCar/releases/g2a-20261017T163244Z-5cbe582fa6b2/../../envs/g2a-py310-mujoco316/bin/python",
+    "node": null,
+    "packages": {
+      "fastapi": "0.136.3",
+      "mobilecar": "0.1.0",
+      "mujoco": "3.1.6",
+      "numpy": "2.2.4",
+      "pillow": "11.3.0",
+      "playwright": "1.63.0",
+      "pydantic": "2.13.5"
+    },
+    "platform": "Linux-6.8.0-138-generic-x86_64-with-glibc2.35",
+    "python": "3.10.12 (main, Aug 31 2026, 10:18:17) [GCC 11.4.0]"
+  },
+  "finished_wall_utc": "2026-10-17T16:36:52.797090Z",
+  "gates": {
+    "browser_full_chromium_input": true,
+    "motion_arm_profile": true,
+    "post_fault_recovery": true,
+    "stationary_profile": true,
+    "write_fault_controlled_stop": true
+  },
+  "job_id": "g2a-final4-acceptance-1",
+  "known_limitations": [
+    "No navigation, policy training, export, or physical-robot claims are included.",
+    "RGB-D profile success applies only to the declared 640x480, nominal 5 Hz, 60 s profile.",
+    "The browser phase demonstrates input reliability, not long-duration profile throughput."
+  ],
+  "model_sha256": "3ca3d6d0a92a48bbfbce5ac7a04e37a0f7cf7a73297045ae327bf461ad50e280",
+  "passed": true,
+  "phases": {
+    "browser_30s": {
+      "blur_zero_latency_s": 0.00844545103609562,
+      "browser_version": "153.0.8010.12",
+      "channel": "chromium",
+      "command_count": 186,
+      "commands": [
+        {
+          "command_id": "cmd_2e6acd96-9739-48c5-8b45-4e76b8d6bb6d",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "开始新录制"
+          }
+        },
+        {
+          "command_id": "cmd_dc8a8e9d-0a5a-4df4-8f45-a4d43f788074",
+          "command_type": "cancel",
+          "http_status": 200,
+          "payload": {
+            "reason": "开始新录制"
+          }
+        },
+        {
+          "command_id": "cmd_420dd981-b434-4237-8d65-e7eacd88e5be",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": 0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_1aa9d623-8e64-4233-af09-a69f442b35c3",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_a2de7bb5-85b9-4c2f-8110-89259152414d",
+          "command_type": "set_gripper_width_goal",
+          "http_status": 200,
+          "payload": {
+            "width_m": 0.013500038
+          }
+        },
+        {
+          "command_id": "cmd_c02b40dd-05a5-44eb-9055-8212c957a85c",
+          "command_type": "preview_tcp_target",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "world_sim",
+            "position_m": [
+              0.179066,
+              0.002442,
+              0.300397
+            ]
+          }
+        },
+        {
+          "command_id": "cmd_a5b7fe0f-ef72-4f6f-81dd-8e38b56c3339",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": 0,
+            "vy_m_s": 0.05,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_e4835345-c8ff-4e6c-98de-16de8c15b674",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_574b0b49-7b68-4c5b-b2d9-d2fc351a21e9",
+          "command_type": "preview_tcp_target",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "world_sim",
+            "position_m": [
+              0.187051,
+              0.002438,
+              0.300034
+            ]
+          }
+        },
+        {
+          "command_id": "cmd_a0d1f7fd-6087-4fb0-901a-8b560f1da1b0",
+          "command_type": "execute_tcp_target",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "world_sim",
+            "plan_id": "plan_683e83df47544ce19896df1e63a53827",
+            "position_m": [
+              0.187051,
+              0.002438,
+              0.300034
+            ]
+          }
+        },
+        {
+          "command_id": "cmd_d253654e-2121-46ed-aae9-9b1e2fddf827",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": 0,
+            "vy_m_s": -0.05,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_b933513a-df49-4948-b95d-b62de83a20b6",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": 0,
+            "vy_m_s": -0.05,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_69658936-f446-4559-be27-7f75732a229e",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": 0,
+            "vy_m_s": -0.05,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_b5542eac-fecd-46dc-95ac-c84ad20ce1aa",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "窗口失焦"
+          }
+        },
+        {
+          "command_id": "cmd_9a3de4a1-4964-49cf-b980-6a10a07e0a89",
+          "command_type": "cancel",
+          "http_status": 200,
+          "payload": {
+            "reason": "窗口失焦"
+          }
+        },
+        {
+          "command_id": "cmd_01d38723-9cd6-44f8-811a-8bdc1fe3c3d5",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": 0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_f45bcd8d-bd95-4982-8a60-c7dcc39b9eab",
+          "command_type": "set_base_twist",
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": 0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_cd7bf4d3-d33b-43f7-a7e1-c30cda0f15b2",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_7ed5a798-2fcc-4d03-bdca-e9b446931ffc",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_f693bb35-5b76-447e-96d3-613f26c09df1",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_6f176c77-1944-43b0-847f-7bbfa0e584c1",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_fb237ca5-677c-4c1e-9d11-9f1935943cfe",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_2456d788-c448-4972-9eb0-7a958ed1ecd4",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_2e9626cd-0df3-44e3-b8ff-01f2f7fa5a11",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_3d1068e7-9f87-4c15-ad51-3f4a4ac5f37f",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_acf9038c-0499-41c7-a0df-51487774810b",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_2276ed55-bad7-41d5-8d99-c2e5e3ac6061",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_e2f353ec-95bf-4862-8baf-14cc7bd88644",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_9b07e378-16f8-4e7a-83f1-306323cbeaae",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_6a0159ba-af61-4638-a2b3-69a0e720172f",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_9237e215-d45e-4ede-93a1-90e191e44a33",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_0ac0132d-285c-4810-b035-1939ceb0ed03",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_9e66d926-4c3e-45c1-9386-e42dfc5e7b13",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_c80cca30-b499-42c1-a7b1-3e13ed43f263",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_db54fa30-ef5f-4f9a-90e9-88fa2e973232",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_44d53ba9-83b9-4d43-b327-96d4c4f59693",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_ff2ee250-fb08-4995-a3f1-28afebcc3237",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_7b7c2f9a-da94-4a2d-95bd-bfbe5e555f64",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_ac8d99b9-13b3-4480-b8d8-dd82bc8a4dfd",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_73bce2e9-239a-44e9-bb15-9a01e7c9164e",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_ba1ce7e9-a69d-403a-9087-3a1ad76524c6",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_921f940c-680c-491b-9507-736df22ce25c",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_5b5a74af-68b0-40f7-94f3-5078de65911f",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_0ddfdcd6-0411-40b7-8be0-ca8ddebcc02c",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_3b61d2b6-0ca1-424b-afc3-5f9d6b0a8147",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_717b10a3-4cba-4cb9-b586-c302b928cb7c",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_6f023538-d698-4b20-b060-d53c58bc8bb4",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_28544739-99e9-40dc-8c44-0047fa924d46",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_b56a3bec-ffda-436a-84e0-b8ef4208688e",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_9b3f81b9-a58a-4b0c-b30d-dbf1dd4c339b",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_78eabf5b-8b9c-4d3b-af37-3f3d7f3423ba",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_3196f9b6-fd24-4034-90a0-a386611acd8a",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_2373df0e-2d8f-4101-b3fb-98455674b8c0",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_47e7a24f-ab62-43e3-b6f4-cb35b45cf099",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_473d1575-c598-47d2-9c0e-eb9c756ff15f",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_6a6617f2-f237-4259-854e-2d45f1ea0846",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_986dde09-b885-462b-89cc-f01eb7a8babd",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_4b084a90-9531-4f18-b673-ebc89da9d24b",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_e7297d00-6386-4d5d-96a8-87983d0cd12f",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_81a22eda-9a81-4c3c-aefe-b0285323661c",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_86185a21-4959-4ac4-9046-39d9ff712bd8",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_621d3557-a69d-498c-9937-ef346d847974",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_5d54d623-101f-480a-bd58-3ae1a3d4f0c1",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_fa67a7b9-b08d-4f4c-8cb2-f423b97bcbfd",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_89f01e88-8a43-431d-9895-b31e30ca878a",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_ba9047c8-2163-4f80-9217-16b8516abf16",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_e36ab44a-0d58-44bf-a448-e087d44eee62",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_91f05694-864d-4cb7-b2f7-deb90e84838e",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_578a408c-7e93-4afb-8a05-a3f512ce088e",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_b7fffddb-c544-4e99-b904-2dffd7544f2c",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_73d9fcbd-81d4-4c64-b40e-86f2f3b37b46",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_7a7e6a30-2466-4ed8-bb55-d19a21de5600",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_0a9c96c1-77b1-4172-88b0-4901fd2f5379",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_6aba8da8-128a-4bac-ad4f-ed79d9ea3ad2",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_367e1144-b8ff-46dd-9e9f-4c0d3ddb705d",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_ba8379ea-3065-4f38-a7e4-99d90a248dd4",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_754bfe0d-beca-4f65-9afb-ebe18908256e",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_49cb3dd1-1473-45d0-8a28-e9a3586c4e9f",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_f195b32b-7789-480d-a699-6c6d11e03441",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_2638e1ad-9bc9-4d8a-acac-6f7da8bc2b4f",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_a675e255-eb72-4291-a2e6-c01dc97cc6f3",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_b2be3410-9d03-4995-9944-778fc0d165e7",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_d27c0226-27ff-426b-b635-56f64d1774fe",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_c7782ed0-2974-4b6e-a11d-c29c1f1d93eb",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_3944ff18-f06b-4f9c-8dc2-45fe1bb0e9d7",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_a2a6c452-85b4-45a1-bc1a-011d064e54ac",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_3f693716-b7ba-4f59-bf10-b2c3efeb9158",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_9a22b5d8-2915-4c80-9eec-874934af450d",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_35384b70-7c70-466f-8606-c7e42aa9e6c0",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_9170f87d-9de5-4c1e-ade3-7f787c8d9cf0",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_5f19b613-12d2-4a59-9099-534407f2fc8c",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_d0475b82-45da-4a57-a7cd-4c14c5563a6d",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_a5e648e6-d5d5-4ee6-abeb-77b3ecd63f6a",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_75518d57-ccf3-40ea-8fcf-ee043fac20ce",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_9be6f900-8ac4-4fa4-814e-dd28322ec6bf",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_d505a263-fbb8-41ea-911c-5ce46d2d7710",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_775a9612-21ef-4158-a161-ca053c8985f7",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_40d4b4ec-4a19-4561-b75c-5ea7a2557f99",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_e4924f1c-2870-4380-8486-6a5c843012c4",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_00c0f34a-dddf-40d8-a340-ea4c3c9b4329",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_66d77789-cbff-4665-a04f-faf9f2fcbffe",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_a0e72961-3cca-4753-a41e-1c421777fd6e",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_2f40ccaa-ad43-48a3-8a36-d86cf8473c81",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_2e3c649e-11f0-47b2-814d-ab7fb5d7beee",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_a686f272-3e05-40af-be7d-d1279ec71d5b",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_7a493563-9e2a-4833-95b9-494959a1558d",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_971b8d4a-1c09-4d56-b265-e264ff42741c",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_2ba22218-b913-4a84-9756-653ff9a46535",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_ac52f2ca-daa3-4882-bf3e-47d73febf77f",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_5f76651c-9775-46e4-a9f2-726afe2671b1",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_af0d6d35-2faf-4006-b99e-b96fd3c5dbec",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_a7c1eb42-b866-45f9-ba50-ea72aae19564",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_18057d53-b551-4719-9e9a-b92d2b4ece92",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_4ac6623b-710d-4e7f-b226-f01ec9e76251",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_4c76165a-18ae-4bec-9817-0b9e6b4d28ef",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_d3a75ca4-3446-49f8-902c-d02892f8b8da",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_d10d592a-1030-4a14-a33c-59bd292d17bd",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_d528193d-ef63-4c1b-8060-8c2812b59f29",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_cd8db404-f614-48d4-aeb7-4c68669a5cc7",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_8c12226d-46ff-4aca-bc98-1824fa87f8a3",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_11964f88-9763-487f-b853-5c940eb53ba4",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_921c7c24-5641-40b6-94b5-e60ad181db08",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_6726e239-4277-43d0-aeff-6440c0203873",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_758293e9-2652-464e-a768-76a302d50cc4",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_1bd9a44d-ee3d-4e04-8f94-2f8d8c512434",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_3a202fdb-1764-4b90-b1b9-adbcf0a7ccac",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_35b9432b-d07b-40f0-8c25-35d5645d40c2",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_6676c16a-b954-405d-b9e6-83d997d0acbd",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_ccf64c41-e2bf-4a6a-b29f-74049b97ec4b",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_5238281b-52db-4bf6-a9eb-548c014e8e8e",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_bef5b567-97d3-48fa-b9ca-89ebe2fd659d",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_d8cfb574-e58c-4400-bfdc-1c4f986c2950",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_156b32de-f42a-4fc2-b72c-5fd8c67a7297",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_32af6379-6ebe-4cff-8dc0-7603f3469fb1",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_c556b9de-7c68-42fd-a4ad-f33e45b0aa0b",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_8afc7314-3efc-4df3-8094-b755bf680e22",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_4534735f-77b3-4c9e-be6c-f42ef6ffef79",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_4fa6d7a7-d1c8-44e8-bb89-764d4763392f",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_b4112e9d-4023-4374-ade5-2394a5b67081",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_df74acb9-ac41-41f4-bb58-f720a76ed446",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_a4f4465c-5455-4b0b-afec-8fb2af6ba180",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_e7e51f03-c5a8-44e6-8587-ab4d7c62399c",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_e069ad73-1ed7-4ad4-ac25-81f0b2d64e71",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_fc138905-b35f-489c-99f7-6f71cf15dd66",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_9ee46053-20a1-430a-b70a-1766dd21a7cc",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_6695a2ee-56f2-4e9d-adf8-89f536d16a09",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_970a0ee2-2025-48d1-87c3-30c2f7b74a73",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_7db10e89-d0c9-4063-8e6e-80b71270be99",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_059e7f4b-9e8e-4352-8098-a832a3bf2206",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_d2715782-9734-409a-82d4-383b4490538e",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_c2628a91-d870-44c8-9106-9fd5786943af",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_c27f21b1-270e-47cd-888d-ffc7d26dbb21",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_8ec0709a-7573-4831-a914-c2ffa422d638",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_d70d8ac8-003f-4eff-9335-d9cebc88229d",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_60f7a02c-cf62-4903-ab0f-e3ebd407df39",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_b13d9fa0-dd64-4842-8616-b0ce4dde9380",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_6734aa8c-f808-4fb6-b4fe-d8dbd3bd8db0",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_1b8ad97d-52bd-4a0b-88a5-7c297a7d0efc",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_189d2280-6235-411e-81f9-b8bd10cd5a91",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_9d539c5c-dc93-48bc-8de8-aeca4086eab5",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_cb4342cf-cb44-4283-9b72-07cc2f632957",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_00a8c343-1dd9-4072-9cbc-8ec372304773",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_2a4fa94d-8c8c-4f80-b2e1-538429ca19b4",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_22357a53-dd9d-4dae-a7a6-be9e839b227f",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_65da7b0e-c042-49e1-9588-4b9f0ac5e8f2",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_d3ef6197-ea59-426e-b1db-062d47c7af79",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_f9736655-f821-4fed-b812-6cb130da783e",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_661a4fd5-5635-4f15-b371-8fa0a03d4639",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_5b79f428-7df7-4e53-85b7-1d13c5559478",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_21c6f0cf-3489-4e0c-94b8-95a97de83082",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_bfabd9ab-5992-44ef-9d3f-063cfd6a2982",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_78d085c8-c782-41c9-9e48-2bb38f122987",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_d75573a6-40df-4f22-b049-5ee437e60389",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_01ead36e-ffd2-4b5a-8313-45fa99301ce1",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_674700fc-db16-490a-89fa-50510d90dc23",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_2f291979-203b-4aa1-ad56-941a36149e4d",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_c529786b-3972-4bc3-8c63-41bc23428a9b",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_ee88a64d-bad1-44f3-973d-6a145d9d0218",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_32109fa0-2b5c-4afc-8d39-43432be6aed3",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_ee14c5fa-3004-438d-b026-67908f789f0b",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_71757d6b-ef55-4cbb-a229-dc825eab8330",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_87c988e8-2a02-490b-8e5d-417891e8636f",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_57d505f1-a27e-4d91-9f12-982ef4082e8f",
+          "command_type": "set_base_twist",
+          "http_status": 200,
+          "payload": {
+            "frame_id": "base_link",
+            "vx_m_s": -0.05,
+            "vy_m_s": 0,
+            "wz_rad_s": 0
+          }
+        },
+        {
+          "command_id": "cmd_946260f1-a9c7-4a20-a2d7-8c6e192eca76",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "松键"
+          }
+        },
+        {
+          "command_id": "cmd_e09822b8-ec67-40d1-a13c-354917537c88",
+          "command_type": "zero_base",
+          "http_status": 200,
+          "payload": {
+            "reason": "结束录制"
+          }
+        },
+        {
+          "command_id": "cmd_8daab3c3-14dc-453f-a339-c581f08b86ee",
+          "command_type": "cancel",
+          "http_status": 200,
+          "payload": {
+            "reason": "结束录制"
+          }
+        }
+      ],
+      "duration_s": 30.5,
+      "episode_id": "episode_7fa6ed48dbec44daa4421199e3087e2e",
+      "g2a_quality": {
+        "action_profile_id": "g2a-teleop-action-1.0",
+        "action_profile_sha256": "4b037ff671fb766452630b234d5680383381a2e6597b5855a5d92131a5c9f7dc",
+        "action_profile_version": "1.0",
+        "audit_status": "COMPLETE",
+        "episode_id": "episode_7fa6ed48dbec44daa4421199e3087e2e",
+        "gate_reasons": [
+          "analyzed_window_complete",
+          "persisted_unique",
+          "average_wall_rate"
+        ],
+        "gates": {
+          "analyzed_window_complete": false,
+          "asset_integrity": true,
+          "audit_complete": true,
+          "average_wall_rate": false,
+          "capture_binding": true,
+          "p99_interval": true,
+          "persisted_unique": false,
+          "profile_match": true,
+          "rgb_depth_pairs": true,
+          "timing_causality": true,
+          "transform_version": true
+        },
+        "generated_wall_utc": "2026-10-17T16:36:35.750711Z",
+        "input_hash_scope": [
+          "manifest.json",
+          "episode.json",
+          "episode_complete.json",
+          "events.jsonl",
+          "commands.jsonl",
+          "control.jsonl",
+          "observations/**/*.jsonl",
+          "transforms.jsonl",
+          "initial_snapshot.json",
+          "assets/**",
+          "assessments/**",
+          "quality_report.json"
+        ],
+        "input_sha256": "d7debcad4f4f283c1b9d7e2edd1cfeb5f50fdfaf977dd6c5d25a98b79a3b604f",
+        "interface_profile": "g2a-1.0",
+        "known_limitations": [
+          "This report is valid only for the declared 640x480, 5 Hz g2a-rgbd-5hz-original profile.",
+          "G1 historical D2 eligibility is not upgraded by this report.",
+          "Navigation-frame correction for world-aligned lidar remains a G3 item."
+        ],
+        "output_scope": "external_report_only",
+        "passed": false,
+        "profile_id": "g2a-rgbd-5hz-original",
+        "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+        "profile_version": "1.0",
+        "report_version": "g2a-quality-1.0",
+        "run_id": "run_0c66bf17aeaa47249ffa3e66f4143a70",
+        "timing": {
+          "declared_window_s": [
+            5.0,
+            55.0
+          ],
+          "delivered_samples": 128,
+          "gate_reasons": [
+            "analyzed_window_complete",
+            "persisted_unique",
+            "average_wall_rate"
+          ],
+          "gates": {
+            "analyzed_window_complete": false,
+            "asset_integrity": true,
+            "audit_complete": true,
+            "average_wall_rate": false,
+            "capture_binding": true,
+            "p99_interval": true,
+            "persisted_unique": false,
+            "profile_match": true,
+            "rgb_depth_pairs": true,
+            "timing_causality": true,
+            "transform_version": true
+          },
+          "generated_samples": 128,
+          "interface_profile": "g2a-1.0",
+          "interval_max_s": 0.3494956740178168,
+          "interval_p50_s": 0.20007017598254606,
+          "interval_p95_s": 0.28907060585916045,
+          "interval_p99_s": 0.3120464596629608,
+          "latency": {
+            "arrival_to_persist": {
+              "count": 128,
+              "max_ms": 276.72829799121246,
+              "p50_ms": 77.93276800657623,
+              "p95_ms": 116.35961646388746,
+              "p99_ms": 168.29463398375094
+            },
+            "capture_to_persist": {
+              "count": 128,
+              "max_ms": 381.0667289653793,
+              "p50_ms": 163.97510201204568,
+              "p95_ms": 213.25676555861716,
+              "p99_ms": 249.0029207873159
+            },
+            "capture_to_render_complete": {
+              "count": 128,
+              "max_ms": 44.79571303818375,
+              "p50_ms": 19.85344447894022,
+              "p95_ms": 30.86485840321984,
+              "p99_ms": 36.76286461937707
+            },
+            "encode": {
+              "count": 128,
+              "max_ms": 88.62255100393668,
+              "p50_ms": 63.21473102434538,
+              "p95_ms": 78.91481980332173,
+              "p99_ms": 84.46741146617569
+            },
+            "lock_wait": {
+              "count": 128,
+              "max_ms": 201.70403603697196,
+              "p50_ms": 14.235774491680786,
+              "p95_ms": 91.38460464309898,
+              "p99_ms": 129.96929788554561
+            },
+            "publish": {
+              "count": 128,
+              "max_ms": 143.86528701288626,
+              "p50_ms": 49.609822483034804,
+              "p95_ms": 77.86201220005748,
+              "p99_ms": 133.37032412644484
+            },
+            "render": {
+              "count": 128,
+              "max_ms": 43.210597010329366,
+              "p50_ms": 17.636964505072683,
+              "p95_ms": 27.2383745672414,
+              "p99_ms": 35.79530584218446
+            },
+            "render_complete_to_publish": {
+              "count": 128,
+              "max_ms": 94.46030401159078,
+              "p50_ms": 67.19634251203388,
+              "p95_ms": 83.03689560852945,
+              "p99_ms": 89.1556748142466
+            }
+          },
+          "persisted_samples": 128,
+          "planned_samples": 250,
+          "profile_id": "g2a-rgbd-5hz-original",
+          "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+          "profile_version": "1.0",
+          "real_time_factor": 0.9916542427811365,
+          "sim_rate_hz": 2.56,
+          "skip_reasons": {
+            "backend:deadline_overrun": 2,
+            "not_generated": 122
+          },
+          "skipped_samples": 122,
+          "stream_counts": {
+            "encoders": 310,
+            "imu": 310,
+            "joint_feedback": 310,
+            "lidar": 310
+          },
+          "stream_rates_hz": {
+            "encoders": 9.921479909498908,
+            "imu": 9.921479909498908,
+            "joint_feedback": 9.921479909498908,
+            "lidar": 9.921479909498908
+          },
+          "unique_frames": 128,
+          "wall_rate_hz": 2.56,
+          "window_metrics": {
+            "analysis": {
+              "generated_hint": 128,
+              "interval_max_s": 0.3494956740178168,
+              "interval_p50_s": 0.20007017598254606,
+              "interval_p95_s": 0.28907060585916045,
+              "interval_p99_s": 0.3120464596629608,
+              "persisted": 128,
+              "range_s": [
+                5.0,
+                55.0
+              ],
+              "unique": 128,
+              "wall_rate_hz": 2.56
+            },
+            "asset_diagnostics": {
+              "missing_or_invalid_assets": [],
+              "pixel_identical_groups": 1,
+              "pixel_identical_samples": 2,
+              "unique_asset_uris": 459
+            },
+            "final": {
+              "generated_hint": 0,
+              "interval_max_s": null,
+              "interval_p50_s": null,
+              "interval_p95_s": null,
+              "interval_p99_s": null,
+              "persisted": 0,
+              "range_s": [
+                55.0,
+                60.0
+              ],
+              "unique": 0,
+              "wall_rate_hz": 0.0
+            },
+            "init": {
+              "generated_hint": 25,
+              "interval_max_s": 0.3451132049667649,
+              "interval_p50_s": 0.19636195647763088,
+              "interval_p95_s": 0.3026818288024515,
+              "interval_p99_s": 0.33558732740522823,
+              "persisted": 25,
+              "range_s": [
+                0.0,
+                5.0
+              ],
+              "unique": 25,
+              "wall_rate_hz": 5.0
+            }
+          }
+        }
+      },
+      "keys_after_blur": 0,
+      "keys_after_offline": 0,
+      "phase": "browser_30s",
+      "preview_input_latency_s": 0.11907110299216583,
+      "reconnect_restored_input": false,
+      "screenshot": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g2a-final4-acceptance-1/g2a_browser_full_chromium.png",
+      "screenshot_sha256": "077930cc1c3916704a880cc95172fac6623db5e331df5790dd9ba0e20d7acc4c",
+      "validation": {
+        "actual_rates_hz": {
+          "encoders": 9.92148,
+          "imu": 9.92148,
+          "joint_feedback": 9.92148,
+          "lidar": 9.92148,
+          "rgbd": 4.917187
+        },
+        "audit_status": "COMPLETE",
+        "contract_version": "mobilecar-1.0",
+        "counts": {
+          "assets_referenced": 459,
+          "commands": 545,
+          "control": 6543,
+          "events": 6910,
+          "observations": 1546,
+          "segments": 1,
+          "transforms": 153
+        },
+        "coverage": {
+          "encoders": 1.0,
+          "imu": 1.0,
+          "joint_feedback": 1.0,
+          "lidar": 1.0,
+          "rgbd": 1.0
+        },
+        "episode_id": "episode_7fa6ed48dbec44daa4421199e3087e2e",
+        "errors": [],
+        "gate_reasons": [],
+        "gates": {},
+        "generated_wall_utc": "2026-10-17T16:36:33.787680Z",
+        "max_gap_s": {
+          "encoders": 0.14663,
+          "imu": 0.14663,
+          "joint_feedback": 0.14663,
+          "lidar": 0.14663,
+          "rgbd": 0.349496
+        },
+        "passed": true,
+        "profile_id": null,
+        "profile_sha256": null,
+        "profile_version": null,
+        "recording_status": "COMPLETE",
+        "termination_reason": "OPERATOR_FINISHED",
+        "timing": null,
+        "warnings": []
+      },
+      "webgl": {
+        "available": true,
+        "renderer": "ANGLE (NVIDIA, Vulkan 1.4.303 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+        "vendor": "Google Inc. (NVIDIA)",
+        "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+      }
+    },
+    "fault_recovery": {
+      "fault": {
+        "audit_status": "INCOMPLETE",
+        "base_stopped": true,
+        "episode_id": "episode_b08d13faa97341088a8c21c4136b4d2e",
+        "initial_command": {
+          "backend_monotonic_s": 428070.544032749,
+          "command_id": "g2a_command_f54ab9b2985946c39bd409d8f62e6bf6",
+          "command_seq": 1,
+          "contract_version": "mobilecar-1.0",
+          "control_tick_id": "tick_000000046",
+          "decision": {
+            "allowed_contacts": [
+              "wheel-ground",
+              "finger-target-during-grasp"
+            ],
+            "approved": true,
+            "clipped": {},
+            "effective_payload": {
+              "frame_id": "base_link",
+              "vx_m_s": 0.01,
+              "vy_m_s": 0.0,
+              "wz_rad_s": 0.0
+            },
+            "reason": "approved",
+            "safety_revision": "g1-safety-1"
+          },
+          "plan": null,
+          "reason": "",
+          "sim_time_s": 0.32000000000000023,
+          "status": "DISPATCHED"
+        },
+        "passed": true,
+        "recording_stop": {
+          "accepted": false,
+          "episode_id": "episode_b08d13faa97341088a8c21c4136b4d2e",
+          "reason": "injected recorder write failure",
+          "recording_segment_id": "seg_001_6a771ac61e",
+          "recording_status": "FAILED"
+        },
+        "safety_latched": true
+      },
+      "passed": true,
+      "phase": "write_fault_and_recovery",
+      "recovery": {
+        "episode_id": "episode_4e6df755e49441b49a24baf4e80e1b8d",
+        "motion_status": "DISPATCHED",
+        "passed": true,
+        "recording_stop": {
+          "accepted": true,
+          "episode_id": "episode_4e6df755e49441b49a24baf4e80e1b8d",
+          "reason": "",
+          "recording_segment_id": "seg_001_f53c31a71a",
+          "recording_status": "COMPLETE"
+        }
+      }
+    },
+    "motion_arm_60s": {
+      "commands": [
+        {
+          "response": {
+            "backend_monotonic_s": 427942.97961934,
+            "command_id": "g2a_command_72e69a7a5d5e4a1a951bbb5380361d52",
+            "command_seq": 1,
+            "contract_version": "mobilecar-1.0",
+            "control_tick_id": "tick_000006709",
+            "decision": {
+              "allowed_contacts": [
+                "wheel-ground",
+                "finger-target-during-grasp"
+              ],
+              "approved": true,
+              "clipped": {},
+              "effective_payload": {
+                "frame_id": "base_link",
+                "vx_m_s": 0.018,
+                "vy_m_s": 0.0,
+                "wz_rad_s": 0.04
+              },
+              "reason": "approved",
+              "safety_revision": "g1-safety-1"
+            },
+            "plan": null,
+            "reason": "",
+            "sim_time_s": 1.7799999999999148,
+            "status": "DISPATCHED"
+          },
+          "type": "set_base_twist"
+        },
+        {
+          "response": {
+            "backend_monotonic_s": 427946.129443835,
+            "command_id": "g2a_command_15e49053bc9a45719057abe0fff0a549",
+            "command_seq": 15,
+            "contract_version": "mobilecar-1.0",
+            "control_tick_id": "tick_000007024",
+            "decision": {
+              "allowed_contacts": [
+                "wheel-ground",
+                "finger-target-during-grasp"
+              ],
+              "approved": true,
+              "clipped": {},
+              "effective_payload": {
+                "vx_m_s": 0.0,
+                "vy_m_s": 0.0,
+                "wz_rad_s": 0.0
+              },
+              "reason": "approved",
+              "safety_revision": "g1-safety-1"
+            },
+            "plan": null,
+            "reason": "",
+            "sim_time_s": 4.929999999999981,
+            "status": "DISPATCHED"
+          },
+          "type": "zero_base"
+        },
+        {
+          "response": {
+            "backend_monotonic_s": 427946.742634766,
+            "command_id": "g2a_command_b6e1582534ed44f68b919911a4e039ad",
+            "command_seq": 16,
+            "contract_version": "mobilecar-1.0",
+            "control_tick_id": "tick_000007085",
+            "decision": {
+              "allowed_contacts": [
+                "wheel-ground",
+                "finger-target-during-grasp"
+              ],
+              "approved": true,
+              "clipped": {},
+              "effective_payload": {
+                "width_m": 0.033
+              },
+              "reason": "approved",
+              "safety_revision": "g1-safety-1"
+            },
+            "plan": null,
+            "reason": "",
+            "sim_time_s": 5.540000000000185,
+            "status": "DISPATCHED"
+          },
+          "type": "set_gripper_width_goal"
+        },
+        {
+          "response": {
+            "backend_monotonic_s": 427947.008304377,
+            "command_id": "g2a_command_71d7127e408541c1aba3e99581516bc9",
+            "command_seq": 17,
+            "contract_version": "mobilecar-1.0",
+            "control_tick_id": "tick_000007110",
+            "decision": {
+              "allowed_contacts": [
+                "wheel-ground",
+                "finger-target-during-grasp"
+              ],
+              "approved": true,
+              "clipped": {},
+              "effective_payload": {
+                "joint_names": [
+                  "joint1",
+                  "joint2",
+                  "joint3",
+                  "joint4",
+                  "joint5"
+                ],
+                "joint_positions_rad": [
+                  0.03560576954097553,
+                  0.0002830621129513738,
+                  0.0002076244817080313,
+                  0.00011766402829493927,
+                  0.034979801084520756
+                ]
+              },
+              "reason": "approved",
+              "safety_revision": "g1-safety-1"
+            },
+            "plan": null,
+            "reason": "",
+            "sim_time_s": 5.790000000000268,
+            "status": "DISPATCHED"
+          },
+          "type": "set_arm_joint_goal"
+        }
+      ],
+      "episode_id": "episode_c20c70aa2ada4e4fbd4c1a9ec5672090",
+      "final_snapshot": {
+        "backend_monotonic_s": 428002.049205608,
+        "base_stopped": true,
+        "control_tick_id": "tick_000012616",
+        "sim_time_s": 60.849999999948885
+      },
+      "initial_snapshot": {
+        "backend_monotonic_s": 427941.400427355,
+        "control_tick_id": "tick_000006551",
+        "sim_time_s": 0.20000000000000015
+      },
+      "phase": "motion_arm",
+      "quality": {
+        "action_profile_id": "g2a-teleop-action-1.0",
+        "action_profile_sha256": "4b037ff671fb766452630b234d5680383381a2e6597b5855a5d92131a5c9f7dc",
+        "action_profile_version": "1.0",
+        "audit_status": "COMPLETE",
+        "episode_id": "episode_c20c70aa2ada4e4fbd4c1a9ec5672090",
+        "gate_reasons": [],
+        "gates": {
+          "analyzed_window_complete": true,
+          "asset_integrity": true,
+          "audit_complete": true,
+          "average_wall_rate": true,
+          "capture_binding": true,
+          "p99_interval": true,
+          "persisted_unique": true,
+          "profile_match": true,
+          "rgb_depth_pairs": true,
+          "timing_causality": true,
+          "transform_version": true
+        },
+        "generated_wall_utc": "2026-10-17T16:35:45.534459Z",
+        "input_hash_scope": [
+          "manifest.json",
+          "episode.json",
+          "episode_complete.json",
+          "events.jsonl",
+          "commands.jsonl",
+          "control.jsonl",
+          "observations/**/*.jsonl",
+          "transforms.jsonl",
+          "initial_snapshot.json",
+          "assets/**",
+          "assessments/**",
+          "quality_report.json"
+        ],
+        "input_sha256": "2ff2762dc6db8d271e38cb2af2fe72121d976ce3cbea81f42ab6a7630008f2de",
+        "interface_profile": "g2a-1.0",
+        "known_limitations": [
+          "This report is valid only for the declared 640x480, 5 Hz g2a-rgbd-5hz-original profile.",
+          "G1 historical D2 eligibility is not upgraded by this report.",
+          "Navigation-frame correction for world-aligned lidar remains a G3 item."
+        ],
+        "output_scope": "external_report_only",
+        "passed": true,
+        "profile_id": "g2a-rgbd-5hz-original",
+        "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+        "profile_version": "1.0",
+        "report_version": "g2a-quality-1.0",
+        "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+        "timing": {
+          "declared_window_s": [
+            5.0,
+            55.0
+          ],
+          "delivered_samples": 250,
+          "gate_reasons": [],
+          "gates": {
+            "analyzed_window_complete": true,
+            "asset_integrity": true,
+            "audit_complete": true,
+            "average_wall_rate": true,
+            "capture_binding": true,
+            "p99_interval": true,
+            "persisted_unique": true,
+            "profile_match": true,
+            "rgb_depth_pairs": true,
+            "timing_causality": true,
+            "transform_version": true
+          },
+          "generated_samples": 250,
+          "interface_profile": "g2a-1.0",
+          "interval_max_s": 0.2929911140236072,
+          "interval_p50_s": 0.2003300620126538,
+          "interval_p95_s": 0.23022886420367283,
+          "interval_p99_s": 0.24902440443634988,
+          "latency": {
+            "arrival_to_persist": {
+              "count": 250,
+              "max_ms": 217.04050595872104,
+              "p50_ms": 68.94666000152938,
+              "p95_ms": 108.06464550551027,
+              "p99_ms": 176.86351103882762
+            },
+            "capture_to_persist": {
+              "count": 250,
+              "max_ms": 302.18376097036526,
+              "p50_ms": 156.92870001657866,
+              "p95_ms": 196.8785788019886,
+              "p99_ms": 263.02579811192106
+            },
+            "capture_to_render_complete": {
+              "count": 250,
+              "max_ms": 33.16962398821488,
+              "p50_ms": 14.922403497621417,
+              "p95_ms": 23.098154892795712,
+              "p99_ms": 30.372969341697157
+            },
+            "encode": {
+              "count": 250,
+              "max_ms": 95.64744296949357,
+              "p50_ms": 68.48170250304975,
+              "p95_ms": 78.30573992105201,
+              "p99_ms": 83.61995902669149
+            },
+            "lock_wait": {
+              "count": 250,
+              "max_ms": 124.18321199947968,
+              "p50_ms": 12.382648506900296,
+              "p95_ms": 32.24348352232481,
+              "p99_ms": 62.19997259438952
+            },
+            "publish": {
+              "count": 250,
+              "max_ms": 151.0396180092357,
+              "p50_ms": 46.017252025194466,
+              "p95_ms": 67.79786917613819,
+              "p99_ms": 128.65917688061
+            },
+            "render": {
+              "count": 250,
+              "max_ms": 32.45987696573138,
+              "p50_ms": 14.09783199778758,
+              "p95_ms": 22.080423022271134,
+              "p99_ms": 29.640460599912316
+            },
+            "render_complete_to_publish": {
+              "count": 250,
+              "max_ms": 97.54956001415849,
+              "p50_ms": 70.80406998284161,
+              "p95_ms": 82.1716206119163,
+              "p99_ms": 86.8642698926851
+            }
+          },
+          "persisted_samples": 250,
+          "planned_samples": 250,
+          "profile_id": "g2a-rgbd-5hz-original",
+          "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+          "profile_version": "1.0",
+          "real_time_factor": 1.0000342878487178,
+          "sim_rate_hz": 5.0,
+          "skip_reasons": {},
+          "skipped_samples": 0,
+          "stream_counts": {
+            "encoders": 609,
+            "imu": 609,
+            "joint_feedback": 609,
+            "lidar": 609
+          },
+          "stream_rates_hz": {
+            "encoders": 10.003415657227533,
+            "imu": 10.003415657227533,
+            "joint_feedback": 10.003415657227533,
+            "lidar": 10.003415657227533
+          },
+          "unique_frames": 250,
+          "wall_rate_hz": 5.0,
+          "window_metrics": {
+            "analysis": {
+              "generated_hint": 250,
+              "interval_max_s": 0.2929911140236072,
+              "interval_p50_s": 0.2003300620126538,
+              "interval_p95_s": 0.23022886420367283,
+              "interval_p99_s": 0.24902440443634988,
+              "persisted": 250,
+              "range_s": [
+                5.0,
+                55.0
+              ],
+              "unique": 250,
+              "wall_rate_hz": 5.0
+            },
+            "asset_diagnostics": {
+              "missing_or_invalid_assets": [],
+              "pixel_identical_groups": 2,
+              "pixel_identical_samples": 252,
+              "unique_asset_uris": 897
+            },
+            "final": {
+              "generated_hint": 25,
+              "interval_max_s": 0.23940813803346828,
+              "interval_p50_s": 0.20009589250548743,
+              "interval_p95_s": 0.2191212107980391,
+              "interval_p99_s": 0.23493649251468013,
+              "persisted": 25,
+              "range_s": [
+                55.0,
+                60.0
+              ],
+              "unique": 25,
+              "wall_rate_hz": 5.0
+            },
+            "init": {
+              "generated_hint": 24,
+              "interval_max_s": 0.2516716459649615,
+              "interval_p50_s": 0.19908667402341962,
+              "interval_p95_s": 0.24053933020331897,
+              "interval_p99_s": 0.24924798935302533,
+              "persisted": 24,
+              "range_s": [
+                0.0,
+                5.0
+              ],
+              "unique": 24,
+              "wall_rate_hz": 4.8
+            }
+          }
+        }
+      },
+      "recording_stop": {
+        "accepted": true,
+        "episode_id": "episode_c20c70aa2ada4e4fbd4c1a9ec5672090",
+        "reason": "",
+        "recording_segment_id": "seg_001_09ebd862c2",
+        "recording_status": "COMPLETE"
+      },
+      "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+      "sim_duration_s": 60.64999999994888,
+      "started_wall_utc": "2026-10-17T16:35:45.693162Z",
+      "wall_duration_s": 68.80080613796599
+    },
+    "stationary_60s": {
+      "commands": [],
+      "episode_id": "episode_32975d5ce7eb4b10a58588858de103d7",
+      "final_snapshot": {
+        "backend_monotonic_s": 427932.545062871,
+        "base_stopped": true,
+        "control_tick_id": "tick_000006072",
+        "sim_time_s": 60.609999999949444
+      },
+      "initial_snapshot": {
+        "backend_monotonic_s": 427871.973671662,
+        "control_tick_id": "tick_000000015",
+        "sim_time_s": 0.04000000000000003
+      },
+      "phase": "stationary",
+      "quality": {
+        "action_profile_id": "g2a-teleop-action-1.0",
+        "action_profile_sha256": "4b037ff671fb766452630b234d5680383381a2e6597b5855a5d92131a5c9f7dc",
+        "action_profile_version": "1.0",
+        "audit_status": "COMPLETE",
+        "episode_id": "episode_32975d5ce7eb4b10a58588858de103d7",
+        "gate_reasons": [],
+        "gates": {
+          "analyzed_window_complete": true,
+          "asset_integrity": true,
+          "audit_complete": true,
+          "average_wall_rate": true,
+          "capture_binding": true,
+          "p99_interval": true,
+          "persisted_unique": true,
+          "profile_match": true,
+          "rgb_depth_pairs": true,
+          "timing_causality": true,
+          "transform_version": true
+        },
+        "generated_wall_utc": "2026-10-17T16:34:36.418791Z",
+        "input_hash_scope": [
+          "manifest.json",
+          "episode.json",
+          "episode_complete.json",
+          "events.jsonl",
+          "commands.jsonl",
+          "control.jsonl",
+          "observations/**/*.jsonl",
+          "transforms.jsonl",
+          "initial_snapshot.json",
+          "assets/**",
+          "assessments/**",
+          "quality_report.json"
+        ],
+        "input_sha256": "a4ecc17deb657b35af622592b2adb8c7c66d8a1da95a0f18e3fb850d6700c071",
+        "interface_profile": "g2a-1.0",
+        "known_limitations": [
+          "This report is valid only for the declared 640x480, 5 Hz g2a-rgbd-5hz-original profile.",
+          "G1 historical D2 eligibility is not upgraded by this report.",
+          "Navigation-frame correction for world-aligned lidar remains a G3 item."
+        ],
+        "output_scope": "external_report_only",
+        "passed": true,
+        "profile_id": "g2a-rgbd-5hz-original",
+        "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+        "profile_version": "1.0",
+        "report_version": "g2a-quality-1.0",
+        "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+        "timing": {
+          "declared_window_s": [
+            5.0,
+            55.0
+          ],
+          "delivered_samples": 250,
+          "gate_reasons": [],
+          "gates": {
+            "analyzed_window_complete": true,
+            "asset_integrity": true,
+            "audit_complete": true,
+            "average_wall_rate": true,
+            "capture_binding": true,
+            "p99_interval": true,
+            "persisted_unique": true,
+            "profile_match": true,
+            "rgb_depth_pairs": true,
+            "timing_causality": true,
+            "transform_version": true
+          },
+          "generated_samples": 250,
+          "interface_profile": "g2a-1.0",
+          "interval_max_s": 0.3415568030322902,
+          "interval_p50_s": 0.19984466000460088,
+          "interval_p95_s": 0.22275284556671976,
+          "interval_p99_s": 0.24095150761539116,
+          "latency": {
+            "arrival_to_persist": {
+              "count": 250,
+              "max_ms": 219.83955200994387,
+              "p50_ms": 71.03021049988456,
+              "p95_ms": 111.39302381779999,
+              "p99_ms": 183.66743270191319
+            },
+            "capture_to_persist": {
+              "count": 250,
+              "max_ms": 300.7530309841968,
+              "p50_ms": 156.51393102598377,
+              "p95_ms": 199.47907640016635,
+              "p99_ms": 262.2806737449715
+            },
+            "capture_to_render_complete": {
+              "count": 250,
+              "max_ms": 34.654563991352916,
+              "p50_ms": 15.106329490663484,
+              "p95_ms": 25.165498614660457,
+              "p99_ms": 32.89678800443653
+            },
+            "encode": {
+              "count": 250,
+              "max_ms": 92.51000499352813,
+              "p50_ms": 64.84498048666865,
+              "p95_ms": 76.85144694405608,
+              "p99_ms": 81.94379233813378
+            },
+            "lock_wait": {
+              "count": 250,
+              "max_ms": 146.76100300857797,
+              "p50_ms": 16.649818018777296,
+              "p95_ms": 45.69608954770954,
+              "p99_ms": 61.338993670651625
+            },
+            "publish": {
+              "count": 250,
+              "max_ms": 173.58008003793657,
+              "p50_ms": 47.88425352307968,
+              "p95_ms": 66.61636514181737,
+              "p99_ms": 119.33204774220906
+            },
+            "render": {
+              "count": 250,
+              "max_ms": 33.96562597481534,
+              "p50_ms": 14.333858503960073,
+              "p95_ms": 24.3403863016283,
+              "p99_ms": 32.212367131141946
+            },
+            "render_complete_to_publish": {
+              "count": 250,
+              "max_ms": 94.69605900812894,
+              "p50_ms": 68.47447250038385,
+              "p95_ms": 80.71961949463002,
+              "p99_ms": 84.76654887141194
+            }
+          },
+          "persisted_samples": 250,
+          "planned_samples": 250,
+          "profile_id": "g2a-rgbd-5hz-original",
+          "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+          "profile_version": "1.0",
+          "real_time_factor": 0.9950557490743093,
+          "sim_rate_hz": 5.0,
+          "skip_reasons": {
+            "backend:deadline_overrun": 1
+          },
+          "skipped_samples": 0,
+          "stream_counts": {
+            "encoders": 606,
+            "imu": 606,
+            "joint_feedback": 606,
+            "lidar": 606
+          },
+          "stream_rates_hz": {
+            "encoders": 9.999564117846704,
+            "imu": 9.999564117846704,
+            "joint_feedback": 9.999564117846704,
+            "lidar": 9.999564117846704
+          },
+          "unique_frames": 250,
+          "wall_rate_hz": 5.0,
+          "window_metrics": {
+            "analysis": {
+              "generated_hint": 250,
+              "interval_max_s": 0.3415568030322902,
+              "interval_p50_s": 0.19984466000460088,
+              "interval_p95_s": 0.22275284556671976,
+              "interval_p99_s": 0.24095150761539116,
+              "persisted": 250,
+              "range_s": [
+                5.0,
+                55.0
+              ],
+              "unique": 250,
+              "wall_rate_hz": 5.0
+            },
+            "asset_diagnostics": {
+              "missing_or_invalid_assets": [],
+              "pixel_identical_groups": 2,
+              "pixel_identical_samples": 271,
+              "unique_asset_uris": 903
+            },
+            "final": {
+              "generated_hint": 25,
+              "interval_max_s": 0.2401263100327924,
+              "interval_p50_s": 0.2000643299834337,
+              "interval_p95_s": 0.22876556934206743,
+              "interval_p99_s": 0.23784779547422658,
+              "persisted": 25,
+              "range_s": [
+                55.0,
+                60.0
+              ],
+              "unique": 25,
+              "wall_rate_hz": 5.0
+            },
+            "init": {
+              "generated_hint": 26,
+              "interval_max_s": 0.5082589850062504,
+              "interval_p50_s": 0.2004328190232627,
+              "interval_p95_s": 0.2691384509904309,
+              "interval_p99_s": 0.45300442076288117,
+              "persisted": 26,
+              "range_s": [
+                0.0,
+                5.0
+              ],
+              "unique": 26,
+              "wall_rate_hz": 5.2
+            }
+          }
+        }
+      },
+      "recording_stop": {
+        "accepted": true,
+        "episode_id": "episode_32975d5ce7eb4b10a58588858de103d7",
+        "reason": "",
+        "recording_segment_id": "seg_001_ecbf3d8221",
+        "recording_status": "COMPLETE"
+      },
+      "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+      "sim_duration_s": 60.569999999949445,
+      "started_wall_utc": "2026-10-17T16:34:36.592986Z",
+      "wall_duration_s": 69.12738747504773
+    }
+  },
+  "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+  "report_version": "g2a-server-acceptance-1.0",
+  "schema_version": 1,
+  "source": {
+    "aggregate_sha256": "5cbe582fa6b266d074d22bd4c120ad381797a440e37834ab8e9a6c7e03558514",
+    "file_count": 163,
+    "release_root": "/home/liaozhengyan/Desktop/mobileCar/releases/g2a-20261017T163244Z-5cbe582fa6b2",
+    "snapshot_id": "g2a-20261017T163244Z-5cbe582fa6b2"
+  },
+  "started_wall_utc": "2026-10-17T16:33:25.236963Z",
+  "status": "PASS"
+}

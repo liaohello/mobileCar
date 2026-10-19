@@ -1,0 +1,11 @@
+extends: g3b_server_room_a.yaml
+profile: g3b_navigation_room_b_server
+backend:
+  scene_path: assets/landerpi/scenes/g3b_l_shape_wide_door.xml
+  model_path: assets/landerpi/model/robot_g3b_l_shape.xml
+  observation_profile_path: configs/profiles/g3a_rgbd_diagnostic_room_b_compat.yaml
+  navigation_profile_path: configs/profiles/g3a_navigation_room_b.yaml
+navigation:
+  profile_path: configs/profiles/g3a_navigation_room_b.yaml
+ui:
+  port: 8795

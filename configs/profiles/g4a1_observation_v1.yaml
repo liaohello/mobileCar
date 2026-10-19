@@ -1,0 +1,61 @@
+schema_version: 1
+interface_profile: g4a1-1.0
+profile_id: g4a1-link4-rgbd-proprio-v1
+profile_version: "1.0"
+contract_version: mobilecar-1.0
+scene_id: mobile_pick
+model_sha256: 3ca3d6d0a92a48bbfbce5ac7a04e37a0f7cf7a73297045ae327bf461ad50e280
+runtime:
+  physics_timestep_s: 0.001
+  control_period_s: 0.010
+camera:
+  parent_body: link4
+  width: 640
+  height: 480
+  vertical_fov_deg: 58.0
+  nominal_capture_hz: 5.0
+  color: RGB8
+  depth: metric_optical_axis_z_invalid_nan
+  optical_convention: X_right_Y_down_Z_forward
+image:
+  width: 640
+  height: 480
+  vertical_fov_deg: 58.0
+  nominal_capture_hz: 5.0
+  color: RGB8
+  depth: metric_optical_axis_z_invalid_nan
+timing:
+  max_image_age_s: 0.4
+  max_proprio_age_s: 0.2
+  max_capture_skew_s: 0.2
+policy_input_allowlist:
+  - run_id
+  - episode_id
+  - backend_generation
+  - nearfield_epoch
+  - permission_id
+  - sample_id
+  - stream_id
+  - capture_control_tick_id
+  - capture_sim_time_s
+  - capture_backend_monotonic_s
+  - arrival_backend_monotonic_s
+  - rgb_uri
+  - depth_uri
+  - valid_mask_uri
+  - arm_user_joint_positions_rad
+  - arm_user_joint_velocities_rad_s
+  - gripper_width_m
+  - camera_intrinsics
+  - T_base_camera
+  - T_base_link4
+  - T_base_tcp
+forbidden_policy_inputs:
+  - object_pose_world_sim
+  - base_pose_world_sim
+  - oracle_contact
+  - instance_segmentation_truth
+  - full_diagnostics
+requirement_status:
+  link4_rgbd_proprio: PASS
+  rgb_only_observation: NOT_EVALUATED

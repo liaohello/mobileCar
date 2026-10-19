@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>mobileCar · G4A-2 真人近场采集</title>
+    <link rel="stylesheet" href="/static/style.css" />
+    <style>
+      body { margin: 0; background: #101419; color: #e8eef6; font: 14px system-ui, sans-serif; }
+      .g4a2-shell { max-width: 1180px; margin: 0 auto; padding: 24px; }
+      .g4a2-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+      .g4a2-status-strip { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+      .g4a2-status-chip { padding: 7px 10px; border: 1px solid #304154; border-radius: 8px; background: #16202a; }
+      .g4a2-status-chip span { color: #91a3b6; margin-right: 7px; }
+      .g4a2-grid { display: grid; grid-template-columns: minmax(420px, 1.4fr) minmax(320px, 1fr); gap: 18px; margin-top: 18px; }
+      .g4a2-card { background: #1a222c; border: 1px solid #304154; border-radius: 12px; padding: 14px; }
+      .g4a2-card h2 { margin: 0 0 10px; font-size: 16px; }
+      .g4a2-video { width: 100%; aspect-ratio: 4 / 3; background: #050709; border-radius: 8px; overflow: hidden; }
+      #human-image { display: block; width: 100%; height: 100%; object-fit: contain; }
+      .g4a2-row { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; margin: 8px 0; }
+      .g4a2-row label { min-width: 200px; display: flex; gap: 8px; align-items: center; }
+      input[type="range"] { width: 100%; }
+      input[type="text"], select { background: #0e141b; color: #e8eef6; border: 1px solid #3a5068; border-radius: 5px; padding: 5px; }
+      button { border: 0; border-radius: 6px; padding: 7px 10px; cursor: pointer; background: #2a6fb3; color: white; }
+      button.secondary { background: #35485c; } button.danger { background: #a43b45; }
+      button:disabled { opacity: 0.5; cursor: not-allowed; }
+      .g4a2-mode { margin-top: 14px; padding: 12px 14px; background: #1a222c; border: 1px solid #304154; border-radius: 8px; line-height: 1.7; }
+      .g4a2-mode a { color: #8ed9ff; }
+      @media (max-width: 850px) { .g4a2-grid { grid-template-columns: minmax(0, 1fr); } }
+      #g4a2-log { white-space: pre-wrap; font-family: monospace; font-size: 12px; max-height: 180px; overflow: auto; }
+      .muted { color: #91a3b6; } .ok { color: #69d18b; } .warn { color: #e4b860; }
+    </style>
+  </head>
+  <body>
+    <main class="g4a2-shell">
+      <header class="g4a2-head">
+        <div><div class="muted">MOBILECAR · HUMAN COLLECTION</div><h1>G4A-2 真人近场采集页</h1></div>
+        <div class="g4a2-status-strip" role="status" aria-live="polite">
+          <div class="g4a2-status-chip"><span>录制</span><strong id="recording-lifecycle" data-testid="recording-lifecycle">IDLE</strong></div>
+          <div class="g4a2-status-chip"><span>画面</span><strong id="frame-lifecycle" data-testid="frame-lifecycle">等待</strong></div>
+          <div class="g4a2-status-chip"><span>后端</span><strong id="g4a2-status">初始化</strong></div>
+        </div>
+      </header>
+      <nav class="g4a2-mode" aria-label="操作模式">
+        <strong>当前：停车抓取采集。</strong> 本页控制机械臂和夹爪，底盘保持停车。<br />
+        需要小车前进、后退、左右平移及第三人称视角？先结束本条录制，再打开
+        <a id="human-teleop-link" href="/">整车遥操作页面</a>（W/S 前后、A/D 左右平移、Q/E 转向）。
+        整车页面的第三人称辅助记录与本页受限视图示教分别标记。
+      </nav>
+      <div class="g4a2-grid">
+        <section class="g4a2-card">
+          <h2>link4 RGB-D 受限视图</h2>
+          <div class="g4a2-video"><img id="human-image" width="640" height="480" alt="等待 link4 RGB 图像" /></div>
+          <p id="human-image-status" class="muted" role="status">等待 RGB 画面；显示成功后才允许关联操作。</p>
+          <p id="human-stop-result" class="muted" role="status" aria-live="polite"></p>
+          <p class="muted">sample <span id="human-sample">—</span> · valid <span id="human-valid">—</span> · center depth <span id="human-depth">—</span></p>
+          <div class="g4a2-row">
+            <label>操作者 <input id="human-operator" type="text" value="human_operator" /></label>
+            <button id="human-confirm" class="secondary">确认本人操作</button>
+            <button id="human-record" class="secondary">开始真人录制</button>
+            <button id="human-stop" class="danger">停止并结束</button>
+          </div>
+          <p class="muted">页面只显示 link4 RGB、Depth 有效率和局部本体状态；不显示 world_sim 物体、Oracle 接触或第三人称视图。</p>
+        </section>
+        <section class="g4a2-card">
+          <h2>普通六维目标</h2>
+          <p class="muted">关节单位 rad；夹爪宽度 m。所有动作必须由本人明确点击发送；自动化测试不得进入 human 集。</p>
+          <div id="human-joints"></div>
+          <div class="g4a2-row"><label>夹爪宽度 <input id="human-gripper" type="range" min="0.012" max="0.05" step="0.001" value="0.025" /></label><strong id="human-gripper-value">25.0 mm</strong></div>
+          <div class="g4a2-row"><button id="human-authorize" class="secondary">启用近场权限</button><button id="human-send">发送六维目标</button><button id="human-stream" class="secondary">开始 5Hz</button><button id="human-cancel" class="danger">取消/保持</button></div>
+          <p class="muted">assist mode: <span id="human-assist">manual</span> · human session: <span id="human-session">未确认</span></p>
+        </section>
+      </div>
+      <section class="g4a2-card" style="margin-top:18px"><h2>事件</h2><div id="g4a2-log"></div></section>
+    </main>
+    <script src="/static/g4a2.js"></script>
+  </body>
+</html>

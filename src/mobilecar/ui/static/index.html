@@ -1,0 +1,307 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>mobileCar · G1 Teleoperation</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"><span></span><span></span><span></span></div>
+          <div>
+            <div class="eyebrow">LANDERPI · MOBILECAR</div>
+            <h1>G1 移动操作遥操作台</h1>
+          </div>
+        </div>
+        <div class="status-strip" aria-label="运行状态">
+          <div class="status-chip"><span id="connection-dot" class="dot pending"></span><span id="connection-text">连接中</span></div>
+          <div class="status-chip"><span class="chip-label">后端</span><strong id="backend-name">—</strong></div>
+          <div class="status-chip"><span class="chip-label">录制</span><strong id="recording-state">IDLE</strong></div>
+          <div class="status-chip"><span class="chip-label">安全</span><strong id="safety-state">正常</strong></div>
+        </div>
+        <div class="top-actions">
+          <a id="g4a2-link" class="secondary" href="/g4a2">近场采集</a>
+          <button id="stop-button" class="danger" data-testid="stop-button">停止</button>
+          <button id="reset-button" class="secondary">Reset</button>
+          <button id="replay-open" class="secondary" data-testid="replay-open">只读回放</button>
+        </div>
+      </header>
+
+      <main class="workspace">
+        <aside class="panel controls-panel" aria-label="遥操作控制">
+          <div class="panel-heading">
+            <div>
+              <span class="section-index">01</span>
+              <h2>遥操作</h2>
+            </div>
+            <span id="operator-badge" class="badge">AGENT_UI</span>
+          </div>
+
+          <section class="control-section">
+            <div class="section-title-row">
+              <h3>底盘驾驶</h3>
+              <span class="hint">按住发送 · 松开停止</span>
+            </div>
+            <div class="key-layout" aria-label="键盘驾驶映射">
+              <span></span><kbd data-drive-key="w">W</kbd><span></span>
+              <kbd data-drive-key="a">A</kbd><kbd data-drive-key="s">S</kbd><kbd data-drive-key="d">D</kbd>
+              <kbd data-drive-key="q">Q</kbd><span class="key-caption">转向</span><kbd data-drive-key="e">E</kbd>
+            </div>
+            <div class="drive-readout">
+              <span>vx <strong id="base-vx">0.000</strong> m/s</span>
+              <span>vy <strong id="base-vy">0.000</strong> m/s</span>
+              <span>wz <strong id="base-wz">0.000</strong> rad/s</span>
+            </div>
+            <div class="row-actions">
+              <button id="unlock-stop" class="secondary small">解除软件停止</button>
+              <button id="cancel-arm" class="secondary small">取消自动轨迹</button>
+            </div>
+          </section>
+
+          <section class="control-section">
+            <div class="section-title-row">
+              <h3>五关节</h3>
+              <button id="execute-joints" class="primary small" data-testid="execute-joints">执行关节目标</button>
+            </div>
+            <div id="joint-sliders" class="joint-sliders"></div>
+            <p class="micro-copy">滑块先更新本地目标；执行后由后端限位、轨迹与碰撞检查共同裁定。</p>
+          </section>
+
+          <section class="control-section">
+            <div class="section-title-row">
+              <h3>夹爪开口</h3>
+              <button id="execute-gripper" class="primary small">执行夹爪</button>
+            </div>
+            <label class="range-row" for="gripper-slider">
+              <input id="gripper-slider" type="range" min="0" max="1" step="0.0005" data-testid="gripper-slider" />
+              <output id="gripper-value">— mm</output>
+            </label>
+            <p class="micro-copy">闭合/持物期间停止不会默认松爪；夹爪与臂属于同一控制组。</p>
+          </section>
+
+          <section class="control-section tcp-section">
+            <div class="section-title-row">
+              <h3>TCP 位置目标</h3>
+              <span id="target-frame-badge" class="badge dim">WORLD_SIM</span>
+            </div>
+            <div class="frame-row">
+              <label>参考系
+                <select id="tcp-frame" data-testid="tcp-frame">
+                  <option value="world_sim">world_sim · GT_DEBUG</option>
+                  <option value="base_link">base_link</option>
+                  <option value="arm_base">arm_base</option>
+                </select>
+              </label>
+              <span class="hint">拖动黄色手柄或输入坐标</span>
+            </div>
+            <div class="xyz-grid">
+              <label>X m<input id="tcp-x" type="number" step="0.001" value="0.20" data-testid="tcp-x" /></label>
+              <label>Y m<input id="tcp-y" type="number" step="0.001" value="0.00" data-testid="tcp-y" /></label>
+              <label>Z m<input id="tcp-z" type="number" step="0.001" value="0.20" data-testid="tcp-z" /></label>
+            </div>
+            <div class="row-actions">
+              <button id="preview-tcp" class="secondary" data-testid="preview-tcp">预览并检查</button>
+              <button id="execute-tcp" class="primary" data-testid="execute-tcp" disabled>执行计划</button>
+            </div>
+            <div id="plan-summary" class="plan-summary empty">尚未生成安全计划</div>
+          </section>
+
+          <section class="control-section" data-testid="g4a1-panel">
+            <div class="section-title-row">
+              <h3>G4A-1 受限近场</h3>
+              <span id="g4a1-status" class="badge dim">IDLE</span>
+            </div>
+            <img id="g4a1-rgb" data-testid="g4a1-rgb" alt="link4 RGB" style="width:100%;min-height:120px;background:#111;border-radius:8px" />
+            <p class="micro-copy">sample <span id="g4a1-sample" class="mono">—</span> · valid <strong id="g4a1-valid">—</strong> · center depth <strong id="g4a1-depth">—</strong></p>
+            <div class="row-actions">
+              <button id="g4a1-authorize" class="secondary small" data-testid="g4a1-authorize">启用近场权限</button>
+              <button id="g4a1-execute" class="primary small" data-testid="g4a1-execute">应用六维动作</button>
+              <button id="g4a1-revoke" class="secondary small">撤销近场</button>
+            </div>
+            <p class="micro-copy">使用左侧五轴与夹爪当前目标；六维目标同帧批准。受限视图不消费 world_sim/Oracle。</p>
+          </section>
+
+          <section class="control-section">
+            <div class="section-title-row">
+              <h3>Episode 与阶段</h3>
+              <span id="episode-short" class="hint mono">—</span>
+            </div>
+            <label class="field-label">任务语言
+              <textarea id="task-language" rows="2">驾驶接近方块，停稳后抓取，抬升至少 50 mm 并保持 2 s。</textarea>
+            </label>
+            <div class="two-col">
+              <label class="field-label">来源
+                <select id="operator-kind">
+                  <option value="agent_ui">agent_ui</option>
+                  <option value="human_teleop">human_teleop</option>
+                </select>
+              </label>
+              <label class="field-label">操作者
+                <input id="operator-id" value="agent_ui_operator" />
+              </label>
+            </div>
+            <label class="check-row"><input id="require-recording" type="checkbox" /> 未确认录制不允许运动</label>
+            <div class="row-actions">
+              <button id="start-recording" class="record" data-testid="start-recording">开始录制</button>
+              <button id="stop-recording" class="secondary" data-testid="stop-recording">停车并结束</button>
+            </div>
+            <label class="field-label phase-row">任务阶段
+              <select id="task-phase">
+                <option value="SEARCH">SEARCH</option>
+                <option value="NAVIGATE">NAVIGATE</option>
+                <option value="OBSERVE">OBSERVE</option>
+                <option value="APPROACH">APPROACH</option>
+                <option value="MANIPULATE">MANIPULATE</option>
+                <option value="VERIFY">VERIFY</option>
+              </select>
+              <button id="set-phase" class="secondary small">标记阶段</button>
+            </label>
+          </section>
+        </aside>
+
+        <section class="viewport-column">
+          <div class="viewport-toolbar">
+            <div class="view-title">
+              <span class="live-dot"></span>
+              <span>同源三维整车视图</span>
+              <span id="model-hash" class="mono">model —</span>
+            </div>
+            <div class="view-actions">
+              <button id="fit-view" class="icon-button" title="重新适配视野">FIT</button>
+              <button id="toggle-grid" class="icon-button active" title="网格">GRID</button>
+            </div>
+          </div>
+          <div id="three-container" class="three-container" data-testid="three-container"></div>
+          <div class="scene-overlay top-left">
+            <span class="overlay-label">拖动旋转</span>
+            <span class="overlay-label">滚轮缩放</span>
+            <span class="overlay-label">右键平移</span>
+          </div>
+          <div class="scene-overlay bottom-left legend">
+            <span><i class="legend-dot actual"></i>实际机器人</span>
+            <span><i class="legend-dot ghost"></i>计划末端构型</span>
+            <span><i class="legend-dot target"></i>TCP 目标</span>
+          </div>
+          <div id="connection-banner" class="connection-banner" hidden>连接中断，驾驶输入已全部释放；不会恢复旧命令。</div>
+          <div class="event-console">
+            <div class="console-heading">
+              <h3>事件与裁定</h3>
+              <button id="clear-events" class="text-button">清空显示</button>
+            </div>
+            <div id="event-list" class="event-list" data-testid="event-list"></div>
+          </div>
+        </section>
+
+        <aside class="panel telemetry-panel" aria-label="状态与反馈">
+          <div class="panel-heading">
+            <div>
+              <span class="section-index">02</span>
+              <h2>实测状态</h2>
+            </div>
+            <span id="snapshot-age" class="mono muted">—</span>
+          </div>
+
+          <section class="telemetry-section">
+            <h3>运动摘要</h3>
+            <div class="metric-grid">
+              <div><span>底盘停稳</span><strong id="base-stopped">—</strong></div>
+              <div><span>控制周期</span><strong id="control-tick" class="mono">—</strong></div>
+              <div><span>TCP 位置</span><strong id="tcp-actual" class="mono wide">—</strong></div>
+              <div><span>位置误差</span><strong id="tcp-error">—</strong></div>
+              <div><span>姿态残差</span><strong id="orientation-error">—</strong></div>
+              <div><span>最小关节余量</span><strong id="joint-margin">—</strong></div>
+            </div>
+          </section>
+
+          <section class="telemetry-section">
+            <h3>动作计划</h3>
+            <dl class="detail-list">
+              <div><dt>plan_id</dt><dd id="plan-id">—</dd></div>
+              <div><dt>状态</dt><dd id="plan-status">—</dd></div>
+              <div><dt>位置优先</dt><dd id="plan-position-priority">—</dd></div>
+              <div><dt>碰撞检查</dt><dd id="plan-collision">—</dd></div>
+              <div><dt>预测位置误差</dt><dd id="plan-predicted-error">—</dd></div>
+              <div><dt>预测姿态残差</dt><dd id="plan-predicted-orientation">—</dd></div>
+            </dl>
+            <p id="safety-reason" class="safety-reason">等待动作请求</p>
+          </section>
+
+          <section class="telemetry-section">
+            <div class="section-title-row">
+              <h3>所有权与租约</h3>
+              <span class="live-dot small"></span>
+            </div>
+            <dl class="detail-list compact">
+              <div><dt>session</dt><dd id="owner-session">—</dd></div>
+              <div><dt>base</dt><dd id="owner-base">未占用</dd></div>
+              <div><dt>arm</dt><dd id="owner-arm">未占用</dd></div>
+              <div><dt>operator</dt><dd id="owner-operator">—</dd></div>
+            </dl>
+          </section>
+
+          <section class="telemetry-section">
+            <h3>原始传感器</h3>
+            <div id="sensor-list" class="sensor-list"></div>
+          </section>
+
+          <section class="telemetry-section diagnostics-section">
+            <h3>诊断</h3>
+            <div class="diagnostic-row"><span>backend generation</span><strong id="generation">—</strong></div>
+            <div class="diagnostic-row"><span>sim time</span><strong id="sim-time">—</strong></div>
+            <div class="diagnostic-row"><span>wall utc</span><strong id="wall-time" class="mono">—</strong></div>
+            <div class="diagnostic-row"><span>contact</span><strong id="contact-summary">—</strong></div>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <dialog id="replay-dialog" class="replay-dialog">
+      <div class="dialog-heading">
+        <div>
+          <span class="eyebrow">READ-ONLY · NO PHYSICS</span>
+          <h2>Episode 回放与质量</h2>
+        </div>
+        <button id="replay-close" class="icon-button">CLOSE</button>
+      </div>
+      <div class="replay-body">
+        <aside class="replay-list-column">
+          <div class="section-title-row">
+            <h3>Episode 索引</h3>
+            <button id="refresh-episodes" class="text-button">刷新</button>
+          </div>
+          <div id="episode-list" class="episode-list"></div>
+        </aside>
+        <section class="replay-detail">
+          <div id="replay-empty" class="empty-state">选择一个 Episode 查看元数据、事件、完整性和任务结论。</div>
+          <div id="replay-content" hidden>
+            <div class="replay-summary-grid">
+              <div><span>audit</span><strong id="replay-audit">—</strong></div>
+              <div><span>task result</span><strong id="replay-result">—</strong></div>
+              <div><span>operator</span><strong id="replay-operator">—</strong></div>
+              <div><span>segments</span><strong id="replay-segments">—</strong></div>
+            </div>
+            <div class="replay-actions">
+              <button id="validate-episode" class="secondary">运行 validator</button>
+              <button id="load-assessment" class="secondary">隔离 Oracle</button>
+              <button id="load-eligibility" class="secondary">数据资格</button>
+            </div>
+            <div id="replay-report" class="report-box"></div>
+            <div class="replay-events-heading">
+              <h3>事件时间线</h3>
+              <span id="replay-event-count" class="hint">—</span>
+            </div>
+            <div id="replay-events" class="replay-events"></div>
+            <div id="replay-media" class="replay-media"></div>
+          </div>
+        </section>
+      </div>
+    </dialog>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="/static/app.js"></script>
+  </body>
+</html>

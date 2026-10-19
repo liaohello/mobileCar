@@ -1,0 +1,36 @@
+{
+  "contract_version": "mobilecar-1.0",
+  "model_id": "synthetic_fixture_model",
+  "model_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "scene_id": "synthetic_fixture_scene",
+  "links": [
+    {
+      "name": "base_link",
+      "parent_name": null,
+      "joint_name": "base_free",
+      "joint_type": "free",
+      "joint_axis": [0.0, 0.0, 1.0],
+      "local_transform": {
+        "position_m": [0.0, 0.0, 0.05],
+        "orientation_xyzw": [0.0, 0.0, 0.0, 1.0]
+      },
+      "geoms": [
+        {
+          "name": "fixture_chassis",
+          "geom_type": "box",
+          "size_m": [0.10, 0.05, 0.02],
+          "local_transform": {
+            "position_m": [0.0, 0.0, 0.0],
+            "orientation_xyzw": [0.0, 0.0, 0.0, 1.0]
+          },
+          "rgba": [0.65, 0.68, 0.72, 1.0]
+        }
+      ]
+    }
+  ],
+  "world_links": [],
+  "mesh_assets": [],
+  "camera_ids": ["rgbd"],
+  "tcp_site": "grasp_tcp"
+}
+

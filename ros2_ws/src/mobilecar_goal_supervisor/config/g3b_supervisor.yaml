@@ -1,0 +1,38 @@
+mobilecar_navigation_bridge:
+  ros__parameters:
+    use_sim_time: true
+    control_mode: g3b
+    socket_path: ../../var/ipc/g3b_navigation.sock
+    odom_frame: odom
+    base_frame: base_link
+    laser_frame: laser_frame
+    imu_frame: imu_link
+    command_topic: /mobilecar/nav2/cmd_vel_governed
+    health_topic: /mobilecar/navigation_health
+    command_timeout_s: 0.25
+    command_lease_ttl_s: 0.35
+    command_session_id: g3b_goal_supervisor
+    publish_tf: true
+    publish_static_tf: true
+    max_command_translation_m_s: 0.05
+    max_command_yaw_rad_s: 0.30
+    sensor_qos_depth: 5
+    tf_qos_depth: 30
+    t_base_laser: [0.07302117405202284, 0.0, 0.08]
+    q_base_laser_xyzw: [0.0, 0.0, 0.0, 1.0]
+    t_base_imu: [0.0, 0.0, 0.035]
+    q_base_imu_xyzw: [0.0, 0.0, 0.0, 1.0]
+    map_id: map_unconfigured
+    map_manifest: ""
+    runtime_config: ""
+    outer_action: /navigate_to_pose
+    inner_action: /nav2/navigate_to_pose
+    raw_cmd_topic: /mobilecar/nav2/cmd_vel_raw
+    governed_cmd_topic: /mobilecar/nav2/cmd_vel_governed
+    localization_health_topic: /mobilecar/localization_health
+    navigation_system_health_topic: /mobilecar/navigation_system_health
+    goal_supervisor_status_topic: /mobilecar/goal_supervisor_status
+    authorization_timeout_s: 1.0
+    receipt_timeout_s: 1.0
+    goal_barrier_s: 0.30
+    raw_command_timeout_s: 3.0

@@ -1,0 +1,15 @@
+{
+  "name": "mobilecar-ui",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build:ui": "esbuild src/mobilecar/ui/web/main.js --bundle --minify --sourcemap --format=iife --outfile=src/mobilecar/ui/static/app.js"
+  },
+  "dependencies": {
+    "three": "0.180.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.10"
+  }
+}
+

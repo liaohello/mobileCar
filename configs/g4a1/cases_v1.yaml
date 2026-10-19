@@ -1,0 +1,51 @@
+schema_version: 1
+interface_profile: g4a1-1.0
+case_manifest_id: g4a1-nearfield-formal-v1
+expected_case_count: 6
+prepared_base_qpos: [0.1473, 0.0, 0.0556, 1.0, 0.0, 0.0, 0.0]
+central_cube_position_m: [0.4, 0.0, 0.112]
+teacher_targets:
+  above_m: [0.4, 0.0, 0.2]
+  grasp_m: [0.4, 0.0, 0.127]
+  lift_delta_m: 0.1
+gripper_width_m:
+  open: 0.025
+  grasp: 0.018
+limits:
+  case_sim_timeout_s: 120.0
+  case_wall_timeout_s: 180.0
+  base_drift_m: 0.01
+  base_yaw_drift_deg: 2.0
+  lift_height_m: 0.05
+  bilateral_hold_s: 2.0
+cases:
+  - id: M01_center
+    layout: center
+    offset_m: [0.0, 0.0]
+    expected: success
+    source: scripted
+  - id: M02_lateral_offset
+    layout: lateral
+    offset_m: [0.0, -0.01]
+    expected: success
+    source: scripted
+  - id: M03_longitudinal_offset
+    layout: longitudinal
+    offset_m: [-0.01, 0.0]
+    expected: success
+    source: scripted
+  - id: M04_depth_failure
+    layout: center
+    offset_m: [0.0, 0.0]
+    expected: abort_hold
+    source: test_injection
+  - id: M05_stop_takeover
+    layout: center
+    offset_m: [0.0, 0.0]
+    expected: stale_reject_hold
+    source: test_injection
+  - id: M06_reset_epoch
+    layout: center
+    offset_m: [0.0, 0.0]
+    expected: stale_reject_reinit
+    source: test_injection

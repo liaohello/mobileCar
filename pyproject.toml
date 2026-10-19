@@ -1,0 +1,41 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mobilecar"
+version = "0.1.0"
+description = "LanderPi single-scene mobile manipulation teleoperation and raw Episode platform"
+readme = "README.md"
+requires-python = ">=3.10,<3.13"
+license = { file = "LICENSE" }
+dependencies = [
+  "fastapi==0.136.3",
+  "httpx==0.28.1",
+  "mujoco==3.1.6",
+  "numpy==2.2.4",
+  "pillow==11.3.0",
+  "pydantic==2.13.5",
+  "PyYAML==6.0.3",
+  "uvicorn==0.37.0",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest==8.4.2",
+  "playwright==1.63.0",
+]
+
+[project.scripts]
+mobilecar = "mobilecar.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mobilecar = ["ui/static/**/*"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+pythonpath = ["src"]

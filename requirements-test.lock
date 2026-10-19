@@ -1,0 +1,4 @@
+-r requirements.lock
+pytest==8.4.2
+playwright==1.63.0
+

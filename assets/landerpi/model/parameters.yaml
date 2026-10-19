@@ -1,0 +1,221 @@
+schema_version: 3
+profile: landerpi_mecanum_provisional
+hardware:
+  total_mass_kg: 1.9
+  wheel_radius_m: 0.0325
+  wheelbase_m: 0.1345
+  track_width_m: 0.1475
+  gripper_max_opening_m: 0.05
+  battery:
+    connection: direct
+    nominal_voltage_v: 7.4
+    full_voltage_v: 8.4
+    capacity_ah: 5.0
+  motor_label:
+    reference_voltage_v: 12.0
+    output_no_load_rpm: 450.0
+    reduction_ratio: 20.0
+  measured_output_continuous_torque_nm: null
+  measured_output_peak_torque_nm: null
+  measured_total_com_base_m: null
+  measured_total_inertia_at_com_kg_m2: null
+  measured_output_no_load_rpm: null
+  measured_no_load_voltage_v: null
+firmware_reference:
+  source_revision: RosRobotControllerLite_ros_250811
+  motor_type_id: 2
+  encoder_counts_per_output_rev: 1040
+  encoder_counts_status: source_only_verify_on_hardware
+  control_period_s: 0.01
+  encoder_filter_new_weight: 0.9
+  pwm_full_scale: 1000
+  pwm_zero_threshold: 250
+  declared_rps_limit: 6.0
+  serial_speed_limit_enforced: false
+  pid_gains:
+  - -36.0
+  - -1.0
+  - -1.0
+  wheel_order:
+  - front_left
+  - rear_left
+  - front_right
+  - rear_right
+  sdk_motor_ids:
+  - 1
+  - 2
+  - 3
+  - 4
+  sdk_sign_from_forward_wheel_rotation:
+  - -1
+  - -1
+  - 1
+  - 1
+  wheel_feedback_in_stock_protocol: false
+simulation:
+  status: provisional_not_identified
+  supply_voltage_v: 7.4
+  fixed_arm: false
+  base_fixed_for_debug: false
+  initial_arm_user_rad:
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  - 0.0
+  initial_gripper_width_m: 0.025
+  manual_drive:
+    speed_m_s: 0.05
+    yaw_rate_rad_s: 0.25
+  arm_servo:
+    kp_nm_per_rad:
+    - 8.0
+    - 20.0
+    - 16.0
+    - 12.0
+    - 2.0
+    kd_nm_s_per_rad:
+    - 0.12
+    - 0.15
+    - 0.12
+    - 0.08
+    - 0.04
+    torque_limits_nm:
+    - 0.35
+    - 0.6
+    - 0.45
+    - 0.3
+    - 0.15
+    velocity_limits_rad_s:
+    - 0.6
+    - 0.6
+    - 0.6
+    - 0.6
+    - 0.6
+    acceleration_limits_rad_s2:
+    - 2.0
+    - 2.0
+    - 2.0
+    - 2.0
+    - 2.0
+    joint_damping_nm_s: 0.002
+    armature_kg_m2: 2.0e-05
+    status: provisional_not_servo_datasheet
+  gripper_servo:
+    kp_nm_per_rad: 1.5
+    kd_nm_s_per_rad: 0.02
+    torque_limit_nm: 0.16
+    speed_m_s: 0.015
+    finger_pad_size_m:
+    - 0.012
+    - 0.003
+    - 0.02
+    sliding_friction: 1.0
+    status: provisional_g1_grasp_stability_adjustment_after_slip_probe
+  mass_distribution:
+    wheel_mass_kg: 0.055
+    fixed_arm_mass_kg: 0.35
+    chassis_com_base_m:
+    - 0.0
+    - 0.0
+    - 0.015
+    chassis_equivalent_box_size_m:
+    - 0.19
+    - 0.1
+    - 0.07
+    status: provisional_geometry_approximation
+  wheels:
+    rollers_per_wheel: 12
+    roller_radius_m: 0.0055
+    roller_half_length_m: 0.015
+    roller_mass_kg: 0.002
+    roller_bearing_damping_nm_s: 1.0e-05
+    roller_bearing_friction_nm: 1.0e-05
+    wheel_armature_kg_m2: 2.0e-05
+    status: simplified_passive_rollers_not_cad
+  camera:
+    width: 640
+    height: 480
+    fps: 15.0
+    vertical_fov_deg: 58.0
+    depth_min_m: 0.15
+    depth_max_m: 4.0
+    aperture_pos_depth_cam_m:
+    - 0.002
+    - 0.02
+    - 0.0
+    xyaxes_depth_cam:
+    - 0.0
+    - -1.0
+    - 0.0
+    - 0.0
+    - 0.0
+    - 1.0
+    status: provisional_intrinsics_need_aurora_camera_info
+  camera_outputs:
+  - rgb
+  - depth
+  wheel_servo:
+    kv_nm_per_rad_s: 0.01
+    ki_nm_per_rad: 0.02
+    integral_torque_limit_nm: 0.03
+    torque_limit_nm: 0.06
+    torque_limit_status: provisional_simulation_only
+    per_wheel_torque_scale:
+    - 1.0
+    - 1.0
+    - 1.0
+    - 1.0
+    command_delay_s: 0.0
+  contact:
+    sliding_friction: 0.7
+    status: provisional_surface_dependent
+  physics_timestep_s: 0.001
+  controller_period_s: 0.01
+command_limits:
+  translation_norm_m_s: 0.2
+  yaw_rate_rad_s: 0.5
+  translation_acceleration_m_s2: 0.3
+  yaw_acceleration_rad_s2: 1.0
+calibration:
+  session_id: uncalibrated
+  arm_zero_model_rad:
+  - 0.0
+  - 0.0
+  - 0.0
+  - -1.5707963267948966
+  - 0.0
+  arm_user_direction:
+  - 1
+  - 1
+  - 1
+  - 1
+  - 1
+  arm_zero_status: user_defined_photo_pose_not_hardware_500
+  gripper_zero_width_m: 0.025
+  effective_wheel_radius_scale:
+  - 1.0
+  - 1.0
+  - 1.0
+  - 1.0
+  imu_gyro_bias_rad_s:
+  - 0.0
+  - 0.0
+  - 0.0
+  imu_gyro_bias_status: unmeasured
+derived:
+  no_load_estimate_source: label_scaled_linearly_with_voltage_not_measured
+  output_no_load_rpm_estimate: 277.5
+  output_no_load_rad_s_estimate: 29.059732045705587
+  wheel_rim_speed_m_s_estimate: 0.9444412914854317
+  mecanum_half_wheelbase_plus_half_track_m: 0.14100000000000001
+  effective_wheel_radii_m:
+  - 0.0325
+  - 0.0325
+  - 0.0325
+  - 0.0325
+  wheel_torque_limits_nm:
+  - 0.06
+  - 0.06
+  - 0.06
+  - 0.06

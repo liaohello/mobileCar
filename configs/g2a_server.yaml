@@ -1,0 +1,16 @@
+extends: default.yaml
+profile: g2a_server_quality
+backend:
+  kind: mujoco
+  realtime: true
+  render_rgbd: true
+recording:
+  required_for_motion: true
+  root: ../../var/runs
+quality:
+  report_root: ../../var/reports
+ui:
+  host: 127.0.0.1
+  port: 8790
+  adaptive_rendering: true
+

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujocoinclude>
+  <asset>
+    <mesh name="base_link_mesh" file="../source_description/meshes/mecanum/base_link.STL" />
+    <mesh name="back_shell_middle_link_mesh" file="../source_description/meshes/mecanum/back_shell_middle_link.STL" />
+    <mesh name="back_shell_black_link_mesh" file="../source_description/meshes/mecanum/back_shell_black_link.STL" />
+    <mesh name="lidar_frame_mesh" file="../source_description/meshes/mecanum/lidar_link.STL" />
+    <mesh name="wheel_left_front_link_mesh" file="../source_description/meshes/mecanum/wheel_left_front_link.STL" />
+    <mesh name="wheel_left_back_link_mesh" file="../source_description/meshes/mecanum/wheel_left_back_link.STL" />
+    <mesh name="wheel_right_front_link_mesh" file="../source_description/meshes/mecanum/wheel_right_front_link.STL" />
+    <mesh name="wheel_right_back_link_mesh" file="../source_description/meshes/mecanum/wheel_right_back_link.STL" />
+    <mesh name="imu_link_mesh" file="../source_description/meshes/mecanum/imu_link.STL" />
+    <mesh name="link1_mesh" file="../source_description/meshes/arm/link1.STL" />
+    <mesh name="link2_mesh" file="../source_description/meshes/arm/link2.STL" />
+    <mesh name="link3_mesh" file="../source_description/meshes/arm/link3.STL" />
+    <mesh name="link4_mesh" file="../source_description/meshes/arm/link4.STL" />
+    <mesh name="link5_mesh" file="../source_description/meshes/arm/link5.STL" />
+    <mesh name="gripper_link_mesh" file="../source_description/meshes/arm/gripper_link.STL" />
+    <mesh name="camera_connect_link_mesh" file="../source_description/meshes/arm/camera_connect_link.STL" />
+    <mesh name="depth_cam_link_mesh" file="../source_description/meshes/arm/depth_cam_link.STL" />
+    <mesh name="gripper_base_link_mesh" file="../source_description/meshes/gripper/gripper_base_link.STL" />
+    <mesh name="gripper_left_link_mesh" file="../source_description/meshes/gripper/gripper_left_link.STL" />
+    <mesh name="gripper_right_link_mesh" file="../source_description/meshes/gripper/gripper_right_link.STL" />
+    <mesh name="guide_rod_link_mesh" file="../source_description/meshes/gripper/guide_rod_link.STL" />
+    <mesh name="left_jaw_link_mesh" file="../source_description/meshes/gripper/left_jaw_link.STL" />
+    <mesh name="right_jaw_link_mesh" file="../source_description/meshes/gripper/right_jaw_link.STL" />
+  </asset>
+</mujocoinclude>

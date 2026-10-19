@@ -1,0 +1,208 @@
+{
+  "action_profile_id": "g2a-teleop-action-1.0",
+  "action_profile_sha256": "4b037ff671fb766452630b234d5680383381a2e6597b5855a5d92131a5c9f7dc",
+  "action_profile_version": "1.0",
+  "audit_status": "COMPLETE",
+  "episode_id": "episode_c20c70aa2ada4e4fbd4c1a9ec5672090",
+  "gate_reasons": [],
+  "gates": {
+    "analyzed_window_complete": true,
+    "asset_integrity": true,
+    "audit_complete": true,
+    "average_wall_rate": true,
+    "capture_binding": true,
+    "p99_interval": true,
+    "persisted_unique": true,
+    "profile_match": true,
+    "rgb_depth_pairs": true,
+    "timing_causality": true,
+    "transform_version": true
+  },
+  "generated_wall_utc": "2026-10-17T16:35:52.459680Z",
+  "input_hash_scope": [
+    "manifest.json",
+    "episode.json",
+    "episode_complete.json",
+    "events.jsonl",
+    "commands.jsonl",
+    "control.jsonl",
+    "observations/**/*.jsonl",
+    "transforms.jsonl",
+    "initial_snapshot.json",
+    "assets/**",
+    "assessments/**",
+    "quality_report.json"
+  ],
+  "input_sha256": "a40d1a47426be9534cc8d2b9cdd5f2ba970ad16bf962d24683ec317de8eaf42a",
+  "interface_profile": "g2a-1.0",
+  "known_limitations": [
+    "This report is valid only for the declared 640x480, 5 Hz g2a-rgbd-5hz-original profile.",
+    "G1 historical D2 eligibility is not upgraded by this report.",
+    "Navigation-frame correction for world-aligned lidar remains a G3 item."
+  ],
+  "output_scope": "external_report_only",
+  "passed": true,
+  "profile_id": "g2a-rgbd-5hz-original",
+  "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+  "profile_version": "1.0",
+  "report_version": "g2a-quality-1.0",
+  "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+  "timing": {
+    "declared_window_s": [
+      5.0,
+      55.0
+    ],
+    "delivered_samples": 250,
+    "gate_reasons": [],
+    "gates": {
+      "analyzed_window_complete": true,
+      "asset_integrity": true,
+      "audit_complete": true,
+      "average_wall_rate": true,
+      "capture_binding": true,
+      "p99_interval": true,
+      "persisted_unique": true,
+      "profile_match": true,
+      "rgb_depth_pairs": true,
+      "timing_causality": true,
+      "transform_version": true
+    },
+    "generated_samples": 250,
+    "interface_profile": "g2a-1.0",
+    "interval_max_s": 0.2929911140236072,
+    "interval_p50_s": 0.2003300620126538,
+    "interval_p95_s": 0.23022886420367283,
+    "interval_p99_s": 0.24902440443634988,
+    "latency": {
+      "arrival_to_persist": {
+        "count": 250,
+        "max_ms": 217.04050595872104,
+        "p50_ms": 68.94666000152938,
+        "p95_ms": 108.06464550551027,
+        "p99_ms": 176.86351103882762
+      },
+      "capture_to_persist": {
+        "count": 250,
+        "max_ms": 302.18376097036526,
+        "p50_ms": 156.92870001657866,
+        "p95_ms": 196.8785788019886,
+        "p99_ms": 263.02579811192106
+      },
+      "capture_to_render_complete": {
+        "count": 250,
+        "max_ms": 33.16962398821488,
+        "p50_ms": 14.922403497621417,
+        "p95_ms": 23.098154892795712,
+        "p99_ms": 30.372969341697157
+      },
+      "encode": {
+        "count": 250,
+        "max_ms": 95.64744296949357,
+        "p50_ms": 68.48170250304975,
+        "p95_ms": 78.30573992105201,
+        "p99_ms": 83.61995902669149
+      },
+      "lock_wait": {
+        "count": 250,
+        "max_ms": 124.18321199947968,
+        "p50_ms": 12.382648506900296,
+        "p95_ms": 32.24348352232481,
+        "p99_ms": 62.19997259438952
+      },
+      "publish": {
+        "count": 250,
+        "max_ms": 151.0396180092357,
+        "p50_ms": 46.017252025194466,
+        "p95_ms": 67.79786917613819,
+        "p99_ms": 128.65917688061
+      },
+      "render": {
+        "count": 250,
+        "max_ms": 32.45987696573138,
+        "p50_ms": 14.09783199778758,
+        "p95_ms": 22.080423022271134,
+        "p99_ms": 29.640460599912316
+      },
+      "render_complete_to_publish": {
+        "count": 250,
+        "max_ms": 97.54956001415849,
+        "p50_ms": 70.80406998284161,
+        "p95_ms": 82.1716206119163,
+        "p99_ms": 86.8642698926851
+      }
+    },
+    "persisted_samples": 250,
+    "planned_samples": 250,
+    "profile_id": "g2a-rgbd-5hz-original",
+    "profile_sha256": "9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042",
+    "profile_version": "1.0",
+    "real_time_factor": 1.0000342878487178,
+    "sim_rate_hz": 5.0,
+    "skip_reasons": {},
+    "skipped_samples": 0,
+    "stream_counts": {
+      "encoders": 609,
+      "imu": 609,
+      "joint_feedback": 609,
+      "lidar": 609
+    },
+    "stream_rates_hz": {
+      "encoders": 10.003415657227533,
+      "imu": 10.003415657227533,
+      "joint_feedback": 10.003415657227533,
+      "lidar": 10.003415657227533
+    },
+    "unique_frames": 250,
+    "wall_rate_hz": 5.0,
+    "window_metrics": {
+      "analysis": {
+        "generated_hint": 250,
+        "interval_max_s": 0.2929911140236072,
+        "interval_p50_s": 0.2003300620126538,
+        "interval_p95_s": 0.23022886420367283,
+        "interval_p99_s": 0.24902440443634988,
+        "persisted": 250,
+        "range_s": [
+          5.0,
+          55.0
+        ],
+        "unique": 250,
+        "wall_rate_hz": 5.0
+      },
+      "asset_diagnostics": {
+        "missing_or_invalid_assets": [],
+        "pixel_identical_groups": 2,
+        "pixel_identical_samples": 252,
+        "unique_asset_uris": 897
+      },
+      "final": {
+        "generated_hint": 25,
+        "interval_max_s": 0.23940813803346828,
+        "interval_p50_s": 0.20009589250548743,
+        "interval_p95_s": 0.2191212107980391,
+        "interval_p99_s": 0.23493649251468013,
+        "persisted": 25,
+        "range_s": [
+          55.0,
+          60.0
+        ],
+        "unique": 25,
+        "wall_rate_hz": 5.0
+      },
+      "init": {
+        "generated_hint": 24,
+        "interval_max_s": 0.2516716459649615,
+        "interval_p50_s": 0.19908667402341962,
+        "interval_p95_s": 0.24053933020331897,
+        "interval_p99_s": 0.24924798935302533,
+        "persisted": 24,
+        "range_s": [
+          0.0,
+          5.0
+        ],
+        "unique": 24,
+        "wall_rate_hz": 4.8
+      }
+    }
+  }
+}

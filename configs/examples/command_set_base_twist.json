@@ -1,0 +1,21 @@
+{
+  "contract_version": "mobilecar-1.0",
+  "run_id": "fixture_run",
+  "backend_generation": 1,
+  "episode_id": "fixture_episode",
+  "session_id": "fixture_session",
+  "operator_id": "fixture_operator",
+  "operator_kind": "agent_ui",
+  "view_source": "third_person_3d",
+  "command_id": "fixture_command_1",
+  "command_seq": 1,
+  "command_type": "set_base_twist",
+  "requested_ttl_s": 0.5,
+  "payload": {
+    "frame_id": "base_link",
+    "vx_m_s": 0.03,
+    "vy_m_s": 0.0,
+    "wz_rad_s": 0.0
+  }
+}
+

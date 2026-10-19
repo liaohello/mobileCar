@@ -1,0 +1,38 @@
+extends: g3a_server.yaml
+profile: g3b_navigation_room_a_server
+backend:
+  kind: mujoco
+  scene_path: assets/landerpi/scenes/navigation_diagnostic.xml
+  model_path: assets/landerpi/model/robot_navigation_diagnostic.xml
+  observation_profile_path: configs/profiles/g3a_rgbd_diagnostic_compat_v1.yaml
+  navigation_profile_path: configs/profiles/g3a_navigation_v1.yaml
+  render_rgbd: false
+  realtime: true
+safety:
+  require_recording: false
+  preserve_arm_on_manual_base: true
+recording:
+  root: ../../var/runs
+quality:
+  report_root: ../../var/reports
+  g2a_quality_enabled: false
+navigation:
+  enabled: true
+  profile_path: configs/profiles/g3a_navigation_v1.yaml
+  socket_path: ../../var/ipc/g3b_navigation.sock
+  queue_capacity: 32
+  test_control_enabled: true
+  ros_domain_id: 74
+g3b:
+  enabled: true
+  interface_profile: g3b-1.0
+  profile_path: configs/profiles/g3b_navigation_v1.yaml
+  map_root: ../../var/maps
+  goal_action: /navigate_to_pose
+  internal_nav2_action: /nav2/navigate_to_pose
+  raw_cmd_topic: /mobilecar/nav2/cmd_vel_raw
+  governed_cmd_topic: /mobilecar/nav2/cmd_vel_governed
+  localization_health_topic: /mobilecar/localization_health
+  navigation_system_health_topic: /mobilecar/navigation_system_health
+ui:
+  port: 8794

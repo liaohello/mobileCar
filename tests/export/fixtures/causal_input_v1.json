@@ -1,0 +1,371 @@
+{
+  "schema_version": 1,
+  "fixture_kind": "causal_input_v1",
+  "profile": {
+    "profile_id": "g2b-causal-aligner-fixture-1.0",
+    "grid_rate_hz": 5,
+    "grid_origin_s": 10.0,
+    "image_max_age_s": 0.4,
+    "feedback_max_age_s": 0.2,
+    "max_image_feedback_skew_s": 0.2,
+    "max_gap_slots": 1,
+    "gap_policy": "reject_slot_and_split_when_gap_is_longer",
+    "action_profiles": {
+      "D0": {
+        "layer": "actuator_reference",
+        "keys": ["base_twist"],
+        "units": ["m/s", "m/s", "rad/s"],
+        "frame_id": "base_link"
+      },
+      "D2": {
+        "layer": "actuator_reference",
+        "keys": ["arm_model_reference_rad", "gripper_width_target_m"],
+        "units": ["rad", "rad", "rad", "rad", "rad", "m"],
+        "frame_id": "arm_base",
+        "joint_order": ["joint1", "joint2", "joint3", "joint4", "joint5"],
+        "user_zero_model_rad": [0.0, 0.0, 0.0, -1.5707963267948966, 0.0],
+        "user_direction": [1.0, 1.0, 1.0, 1.0, 1.0]
+      }
+    }
+  },
+  "source": {
+    "run_id": "run_fixture_g2b",
+    "episode_id": "episode_fixture_parent",
+    "clock_id": "backend_monotonic",
+    "source": "synthetic_fixture",
+    "view_source": "third_person_3d",
+    "operator_kind": "synthetic_fixture",
+    "task_result": "failure",
+    "segments": [
+      {
+        "episode_id": "episode_fixture_parent",
+        "recording_segment_id": "seg_001_fixture",
+        "previous_recording_segment_id": null,
+        "start_sim_time_s": 10.0,
+        "end_sim_time_s": 10.6
+      },
+      {
+        "episode_id": "episode_fixture_parent",
+        "recording_segment_id": "seg_002_fixture",
+        "previous_recording_segment_id": "seg_001_fixture",
+        "start_sim_time_s": 11.0,
+        "end_sim_time_s": 11.4
+      }
+    ]
+  },
+  "image_samples": [
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "stream_id": "rgbd",
+      "sample_id": "rgbd_0000",
+      "sensor_kind": "rgb",
+      "clock_id": "backend_monotonic",
+      "capture_sim_time_s": 10.0,
+      "capture_backend_monotonic_s": 100.0,
+      "publish_backend_monotonic_s": 100.05,
+      "arrival_backend_monotonic_s": 100.06,
+      "persist_backend_monotonic_s": 100.10,
+      "control_tick_id": "tick_0001000",
+      "feedback_sample_id": "joint_feedback_0001000",
+      "rgb_uri": "assets/rgb/rgbd_0000_rgb.png",
+      "depth_uri": "assets/depth/rgbd_0000_depth_m.npy",
+      "valid_mask_uri": "assets/masks/rgbd_0000_valid.png",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "stream_id": "rgbd",
+      "sample_id": "rgbd_0001",
+      "sensor_kind": "rgb",
+      "clock_id": "backend_monotonic",
+      "capture_sim_time_s": 10.2,
+      "capture_backend_monotonic_s": 100.2,
+      "publish_backend_monotonic_s": 100.25,
+      "arrival_backend_monotonic_s": 100.26,
+      "persist_backend_monotonic_s": 100.30,
+      "control_tick_id": "tick_0001200",
+      "feedback_sample_id": "joint_feedback_0001200",
+      "rgb_uri": "assets/rgb/rgbd_0001_rgb.png",
+      "depth_uri": "assets/depth/rgbd_0001_depth_m.npy",
+      "valid_mask_uri": "assets/masks/rgbd_0001_valid.png",
+      "width": 640,
+      "height": 480
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_002_fixture",
+      "stream_id": "rgbd",
+      "sample_id": "rgbd_0002",
+      "sensor_kind": "rgb",
+      "clock_id": "backend_monotonic",
+      "capture_sim_time_s": 11.0,
+      "capture_backend_monotonic_s": 101.0,
+      "publish_backend_monotonic_s": 101.05,
+      "arrival_backend_monotonic_s": 101.06,
+      "persist_backend_monotonic_s": 101.10,
+      "control_tick_id": "tick_0002000",
+      "feedback_sample_id": "joint_feedback_0002000",
+      "rgb_uri": "assets/rgb/rgbd_0002_rgb.png",
+      "depth_uri": "assets/depth/rgbd_0002_depth_m.npy",
+      "valid_mask_uri": "assets/masks/rgbd_0002_valid.png",
+      "width": 640,
+      "height": 480
+    }
+  ],
+  "feedback_samples": [
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "stream_id": "joint_feedback",
+      "sample_id": "joint_feedback_0001000",
+      "sensor_kind": "joint_feedback",
+      "clock_id": "backend_monotonic",
+      "control_tick_id": "tick_0001000",
+      "capture_sim_time_s": 10.0,
+      "capture_backend_monotonic_s": 99.998,
+      "arrival_backend_monotonic_s": 99.999,
+      "value": {
+        "user_joint_positions_rad": [0.01, 0.0, 0.0, 0.0, 0.02],
+        "gripper_width_m": 0.025
+      }
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "stream_id": "joint_feedback",
+      "sample_id": "joint_feedback_0001200",
+      "sensor_kind": "joint_feedback",
+      "clock_id": "backend_monotonic",
+      "control_tick_id": "tick_0001200",
+      "capture_sim_time_s": 10.2,
+      "capture_backend_monotonic_s": 100.198,
+      "arrival_backend_monotonic_s": 100.199,
+      "value": {
+        "user_joint_positions_rad": [0.02, 0.0, 0.0, 0.0, 0.03],
+        "gripper_width_m": 0.026
+      }
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_002_fixture",
+      "stream_id": "joint_feedback",
+      "sample_id": "joint_feedback_0002000",
+      "sensor_kind": "joint_feedback",
+      "clock_id": "backend_monotonic",
+      "control_tick_id": "tick_0002000",
+      "capture_sim_time_s": 11.0,
+      "capture_backend_monotonic_s": 100.998,
+      "arrival_backend_monotonic_s": 100.999,
+      "value": {
+        "user_joint_positions_rad": [0.03, 0.0, 0.0, 0.0, 0.04],
+        "gripper_width_m": 0.027
+      }
+    }
+  ],
+  "fast_samples": [
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "stream_id": "encoders",
+      "sample_id": "encoders_0001000",
+      "sensor_kind": "encoders",
+      "clock_id": "backend_monotonic",
+      "control_tick_id": "tick_0001000",
+      "capture_backend_monotonic_s": 99.997,
+      "arrival_backend_monotonic_s": 99.998,
+      "value": {
+        "wheel_velocity_rad_s": [0.1, 0.2, 0.3, 0.4]
+      }
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "stream_id": "imu",
+      "sample_id": "imu_0001000",
+      "sensor_kind": "imu",
+      "clock_id": "backend_monotonic",
+      "control_tick_id": "tick_0001000",
+      "capture_backend_monotonic_s": 99.997,
+      "arrival_backend_monotonic_s": 99.998,
+      "value": {
+        "acceleration_m_s2": [0.0, 0.0, 9.81],
+        "gyro_rad_s": [0.0, 0.0, 0.01]
+      }
+    }
+  ],
+  "action_events": [
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "event_type": "requested",
+      "command_id": "cmd_base_fixture",
+      "command_type": "set_base_twist",
+      "clock_id": "backend_monotonic",
+      "backend_monotonic_s": 99.9,
+      "control_tick_id": "tick_0000990"
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "event_type": "dispatch",
+      "command_id": "cmd_base_fixture",
+      "command_type": "set_base_twist",
+      "clock_id": "backend_monotonic",
+      "backend_monotonic_s": 99.92,
+      "control_tick_id": "tick_0000992",
+      "effective_from_sim_time_s": 10.0,
+      "effective_until_sim_time_s": 10.6,
+      "payload": {
+        "base_twist": [0.02, 0.0, 0.03]
+      }
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "event_type": "dispatch",
+      "command_id": "cmd_arm_fixture",
+      "command_type": "set_arm_joint_goal",
+      "clock_id": "backend_monotonic",
+      "backend_monotonic_s": 99.93,
+      "control_tick_id": "tick_0000993",
+      "effective_from_sim_time_s": 10.0,
+      "effective_until_sim_time_s": 10.6,
+      "payload": {
+        "arm_user_reference_rad": [0.01, 0.0, 0.0, 0.0, 0.02]
+      }
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "event_type": "dispatch",
+      "command_id": "cmd_gripper_fixture",
+      "command_type": "set_gripper_width_goal",
+      "clock_id": "backend_monotonic",
+      "backend_monotonic_s": 99.94,
+      "control_tick_id": "tick_0000994",
+      "effective_from_sim_time_s": 10.0,
+      "effective_until_sim_time_s": 10.6,
+      "payload": {
+        "gripper_width_target_m": 0.03
+      }
+    },
+    {
+      "run_id": "run_fixture_g2b",
+      "episode_id": "episode_fixture_parent",
+      "recording_segment_id": "seg_001_fixture",
+      "event_type": "actuator_reference",
+      "command_id": null,
+      "command_type": "actuator_reference",
+      "clock_id": "backend_monotonic",
+      "backend_monotonic_s": 100.0,
+      "control_tick_id": "tick_0001000",
+      "payload": {
+        "base_twist": [0.02, 0.0, 0.03],
+        "arm_model_reference_rad": [
+          0.01,
+          0.0,
+          0.0,
+          -1.5707963267948966,
+          0.02,
+          -0.8615884751553182
+        ],
+        "gripper_width_target_m": 0.03
+      }
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "normal_causal",
+      "decision_sim_time_s": 10.2,
+      "decision_backend_monotonic_s": 100.2,
+      "expected": "accept",
+      "expected_reason": null
+    },
+    {
+      "case_id": "future_arrival",
+      "decision_sim_time_s": 10.0,
+      "decision_backend_monotonic_s": 99.99,
+      "expected": "reject",
+      "expected_reason": "image_not_arrived_by_decision"
+    },
+    {
+      "case_id": "clock_mismatch",
+      "decision_sim_time_s": 10.2,
+      "decision_backend_monotonic_s": 100.2,
+      "source_clock_id": "sim",
+      "expected": "reject",
+      "expected_reason": "clock_mismatch"
+    },
+    {
+      "case_id": "cross_episode",
+      "decision_sim_time_s": 10.2,
+      "decision_backend_monotonic_s": 100.2,
+      "candidate_episode_id": "episode_other",
+      "expected": "reject",
+      "expected_reason": "cross_episode"
+    },
+    {
+      "case_id": "missing_media",
+      "decision_sim_time_s": 10.2,
+      "decision_backend_monotonic_s": 100.2,
+      "missing_sample_id": "rgbd_0001",
+      "expected": "reject",
+      "expected_reason": "missing_media"
+    },
+    {
+      "case_id": "long_gap",
+      "decision_sim_time_s": 10.6,
+      "decision_backend_monotonic_s": 100.6,
+      "next_available_sim_time_s": 11.0,
+      "expected": "reject",
+      "expected_reason": "long_gap"
+    },
+    {
+      "case_id": "unknown_action",
+      "decision_sim_time_s": 10.2,
+      "decision_backend_monotonic_s": 100.2,
+      "action_layer": "unknown",
+      "expected": "reject",
+      "expected_reason": "unknown_action"
+    },
+    {
+      "case_id": "preview_rejected",
+      "decision_sim_time_s": 10.2,
+      "decision_backend_monotonic_s": 100.2,
+      "candidate_command_ids": ["cmd_preview_fixture", "cmd_rejected_fixture"],
+      "expected": "reject",
+      "expected_reason": "preview_or_rejected_is_not_effective_action"
+    },
+    {
+      "case_id": "world_sim_leak",
+      "decision_sim_time_s": 10.2,
+      "decision_backend_monotonic_s": 100.2,
+      "feature_keys": ["observation.state", "world_sim.object_pose"],
+      "expected": "reject",
+      "expected_reason": "forbidden_policy_feature"
+    },
+    {
+      "case_id": "parent_split_leak",
+      "source_episode_id": "episode_fixture_parent",
+      "segment_ids": ["seg_001_fixture", "seg_002_fixture"],
+      "splits": ["train", "validation"],
+      "expected": "reject",
+      "expected_reason": "parent_episode_split_leak"
+    }
+  ]
+}

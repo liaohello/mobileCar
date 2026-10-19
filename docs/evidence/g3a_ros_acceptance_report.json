@@ -1,0 +1,680 @@
+{
+  "application_exit_code": 0,
+  "bridge_exit_code": 0,
+  "domain_id": 73,
+  "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+  "execution_location": "server_only",
+  "gates": {
+    "bridge_alive": true,
+    "clock": true,
+    "health": true,
+    "imu": true,
+    "joint_states": true,
+    "nan_and_inf_present": true,
+    "no_map_to_odom": true,
+    "odom": true,
+    "physical_motion_from_ros_cmd": true,
+    "probe_exit_zero": true,
+    "probe_report_present": true,
+    "scan": true,
+    "tf": true
+  },
+  "generated_wall_utc": "2026-10-17T19:42:39.005491Z",
+  "job_id": "g3a-frozen-ros-1",
+  "navigation": {
+    "backend": {
+      "active_faults": [],
+      "backend_generation": 1,
+      "enabled": true,
+      "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+      "health_stop_latched_until_new_session": false,
+      "interface_profile": "g3a-1.0",
+      "last_health": {
+        "clock": {
+          "backend_generation": 1,
+          "capture_backend_monotonic_s": 439233.660164374,
+          "capture_sim_time_s": 8.060000000000972,
+          "clock_id": "backend_monotonic",
+          "control_tick_id": "tick_000000814",
+          "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+          "navigation_epoch": 1,
+          "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+        },
+        "imu_acceleration_available": true,
+        "imu_age_s": 0.0007826900109648705,
+        "imu_gyro_available": true,
+        "interface_profile": "g3a-1.0",
+        "odom_publish_rate_hz": null,
+        "profile_id": "g3a-nav-50hz-laser10-v1",
+        "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+        "profile_version": "1.0",
+        "rejection_reasons": [],
+        "scan_age_s": 0.061645034002140164,
+        "scan_available": true,
+        "scan_publish_rate_hz": null,
+        "sequence": 403,
+        "status": "HEALTHY",
+        "stop_required": false,
+        "wheel_age_s": 0.0007826900109648705,
+        "wheels_available": true
+      },
+      "navigation_cancel_epoch": 4,
+      "navigation_epoch": 1,
+      "navigation_session_id": null,
+      "profile_id": "g3a-nav-50hz-laser10-v1",
+      "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+      "reference_ring_size": 403,
+      "revoked_session_count": 1
+    },
+    "enabled": true,
+    "estimator": {
+      "algorithm": "complementary_planar",
+      "average_estimate_rate_hz": 48.818631320470935,
+      "backend_generation": 1,
+      "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+      "estimate_count": 403,
+      "last_capture_backend_monotonic_s": 439233.660164374,
+      "last_reasons": [],
+      "last_scan_backend_monotonic_s": 439233.59930203,
+      "last_scan_control_tick_id": "tick_000000808",
+      "last_scan_valid": true,
+      "last_sim_time_s": 8.060000000000972,
+      "latest_estimate": {
+        "base_frame_id": "base_link",
+        "clock": {
+          "backend_generation": 1,
+          "capture_backend_monotonic_s": 439233.660164374,
+          "capture_sim_time_s": 8.060000000000972,
+          "clock_id": "backend_monotonic",
+          "control_tick_id": "tick_000000814",
+          "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+          "navigation_epoch": 1,
+          "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+        },
+        "health": "HEALTHY",
+        "imu_age_s": 0.0007826900109648705,
+        "imu_sample_id": "imu_000000814",
+        "interface_profile": "g3a-1.0",
+        "odom_frame_id": "odom",
+        "pose_covariance": [
+          0.0004,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0004,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0025
+        ],
+        "profile_id": "g3a-nav-50hz-laser10-v1",
+        "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+        "profile_version": "1.0",
+        "sequence": 403,
+        "source": "wheel_gyro_planar_fusion",
+        "twist_covariance": [
+          0.0004,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0004,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0025
+        ],
+        "vx_body_m_s": 1.900187780900139e-09,
+        "vy_body_m_s": -1.1538741825663625e-10,
+        "wheel_age_s": 0.0007826900109648705,
+        "wheel_sample_id": "wheel_000000814",
+        "wz_body_rad_s": 1.1808602859710541e-08,
+        "x_m": 0.008298387999847164,
+        "y_m": 0.0009678311686963187,
+        "yaw_rad": 0.12063479570754768
+      },
+      "latest_health": {
+        "clock": {
+          "backend_generation": 1,
+          "capture_backend_monotonic_s": 439233.660164374,
+          "capture_sim_time_s": 8.060000000000972,
+          "clock_id": "backend_monotonic",
+          "control_tick_id": "tick_000000814",
+          "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+          "navigation_epoch": 1,
+          "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+        },
+        "imu_acceleration_available": true,
+        "imu_age_s": 0.0007826900109648705,
+        "imu_gyro_available": true,
+        "interface_profile": "g3a-1.0",
+        "odom_publish_rate_hz": null,
+        "profile_id": "g3a-nav-50hz-laser10-v1",
+        "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+        "profile_version": "1.0",
+        "rejection_reasons": [],
+        "scan_age_s": 0.061645034002140164,
+        "scan_available": true,
+        "scan_publish_rate_hz": null,
+        "sequence": 403,
+        "status": "HEALTHY",
+        "stop_required": false,
+        "wheel_age_s": 0.0007826900109648705,
+        "wheels_available": true
+      },
+      "navigation_epoch": 1,
+      "observation_count": 403,
+      "pose": {
+        "vx_body_m_s": 1.900187780900139e-09,
+        "vy_body_m_s": -1.1538741825663625e-10,
+        "wz_body_rad_s": 1.1808602859710541e-08,
+        "x_m": 0.008298387999847164,
+        "y_m": 0.0009678311686963187,
+        "yaw_rad": 0.12063479570754768
+      },
+      "profile_id": "g3a-nav-50hz-laser10-v1",
+      "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+      "profile_version": "1.0",
+      "rejected_count": 0,
+      "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863",
+      "runtime_last_error": null,
+      "runtime_last_received_monotonic_s": 439233.660947064,
+      "sequence": 403,
+      "source": "wheel_gyro_planar_fusion",
+      "uses_world_truth": false
+    },
+    "fanout": {
+      "closed": false,
+      "consumers": [
+        {
+          "delivered": 2663,
+          "dropped": 0,
+          "errors": 0,
+          "last_error": null,
+          "name": "recorder",
+          "queued": 1
+        },
+        {
+          "delivered": 407,
+          "dropped": 0,
+          "errors": 0,
+          "last_error": null,
+          "name": "estimator",
+          "queued": 0
+        },
+        {
+          "delivered": 1221,
+          "dropped": 0,
+          "errors": 0,
+          "last_error": null,
+          "name": "telemetry",
+          "queued": 0
+        },
+        {
+          "delivered": 1218,
+          "dropped": 0,
+          "errors": 0,
+          "last_error": null,
+          "name": "ros_bridge",
+          "queued": 3
+        }
+      ]
+    },
+    "interface_profile": "g3a-1.0",
+    "ipc": {
+      "command_handler_errors": 0,
+      "connected": true,
+      "dropped_outbound": 129,
+      "invalid_controls": 0,
+      "last_error": null,
+      "queued_outbound": 0,
+      "received_controls": 40,
+      "running": true,
+      "sent_messages": 1089,
+      "write_errors": 0
+    },
+    "profile_path": "configs/profiles/g3a_navigation_v1.yaml",
+    "socket": "/home/liaozhengyan/Desktop/mobileCar/var/ipc/g3a_navigation.sock",
+    "telemetry": {
+      "estimate_count": 407,
+      "estimate_rate_hz": 47.99416904041593,
+      "health_count": 407,
+      "last_delivery_lag_s": 0.00045166199561208487,
+      "last_received_backend_monotonic_s": 439233.660616036,
+      "latest_clock": {
+        "backend_generation": 1,
+        "capture_backend_monotonic_s": 439233.660164374,
+        "capture_sim_time_s": 8.060000000000972,
+        "clock_id": "backend_monotonic",
+        "control_tick_id": "tick_000000814",
+        "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+        "navigation_epoch": 1,
+        "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+      },
+      "latest_estimate": {
+        "base_frame_id": "base_link",
+        "clock": {
+          "backend_generation": 1,
+          "capture_backend_monotonic_s": 439233.660164374,
+          "capture_sim_time_s": 8.060000000000972,
+          "clock_id": "backend_monotonic",
+          "control_tick_id": "tick_000000814",
+          "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+          "navigation_epoch": 1,
+          "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+        },
+        "health": "HEALTHY",
+        "imu_age_s": 0.0007826900109648705,
+        "imu_sample_id": "imu_000000814",
+        "interface_profile": "g3a-1.0",
+        "odom_frame_id": "odom",
+        "pose_covariance": [
+          0.0004,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0004,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0025
+        ],
+        "profile_id": "g3a-nav-50hz-laser10-v1",
+        "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+        "profile_version": "1.0",
+        "sequence": 403,
+        "source": "wheel_gyro_planar_fusion",
+        "twist_covariance": [
+          0.0004,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0004,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0025
+        ],
+        "vx_body_m_s": 1.900187780900139e-09,
+        "vy_body_m_s": -1.1538741825663625e-10,
+        "wheel_age_s": 0.0007826900109648705,
+        "wheel_sample_id": "wheel_000000814",
+        "wz_body_rad_s": 1.1808602859710541e-08,
+        "x_m": 0.008298387999847164,
+        "y_m": 0.0009678311686963187,
+        "yaw_rad": 0.12063479570754768
+      },
+      "latest_health": {
+        "clock": {
+          "backend_generation": 1,
+          "capture_backend_monotonic_s": 439233.660164374,
+          "capture_sim_time_s": 8.060000000000972,
+          "clock_id": "backend_monotonic",
+          "control_tick_id": "tick_000000814",
+          "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+          "navigation_epoch": 1,
+          "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+        },
+        "imu_acceleration_available": true,
+        "imu_age_s": 0.0007826900109648705,
+        "imu_gyro_available": true,
+        "interface_profile": "g3a-1.0",
+        "odom_publish_rate_hz": null,
+        "profile_id": "g3a-nav-50hz-laser10-v1",
+        "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+        "profile_version": "1.0",
+        "rejection_reasons": [],
+        "scan_age_s": 0.061645034002140164,
+        "scan_available": true,
+        "scan_publish_rate_hz": null,
+        "sequence": 403,
+        "status": "HEALTHY",
+        "stop_required": false,
+        "wheel_age_s": 0.0007826900109648705,
+        "wheels_available": true
+      },
+      "latest_scan": {
+        "beam_count": 360,
+        "frame_id": "laser_frame",
+        "scan_id": "scan_000000808",
+        "status_counts": {
+          "HIT": 267,
+          "INVALID": 0,
+          "NO_RETURN": 4,
+          "SELF_OCCLUDED": 89
+        },
+        "valid_count": 267
+      },
+      "observation_count": 407,
+      "observation_rate_hz": 47.99416904041593,
+      "scan_count": 80,
+      "scan_rate_hz": 9.592668593268456,
+      "scan_status_totals": {
+        "HIT": 21358,
+        "INVALID": 0,
+        "NO_RETURN": 322,
+        "SELF_OCCLUDED": 7120
+      }
+    }
+  },
+  "passed": true,
+  "physical_displacement_world_sim_m": [
+    0.01689567145083084,
+    0.0008081105551185961,
+    -7.183174056263342e-08
+  ],
+  "physical_planar_motion_m": 0.01691498614967551,
+  "probe": {
+    "duration_s": 4.0,
+    "gates": {
+      "clock": true,
+      "health": true,
+      "imu": true,
+      "joint_states": true,
+      "nan_and_inf_present": true,
+      "no_map_to_odom": true,
+      "odom": true,
+      "scan": true,
+      "tf": true
+    },
+    "generated_wall_utc": "2026-10-17T19:42:48.157456Z",
+    "health_latest": {
+      "clock_domain": "capture_sim_time_for_headers; steady_monotonic_watchdog",
+      "command": {
+        "active": false,
+        "last_release_reason": "cmd_vel_input_timeout",
+        "release_sent": true
+      },
+      "identity": {
+        "backend_generation": 1,
+        "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+        "navigation_epoch": 1,
+        "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+      },
+      "ipc": {
+        "connected": true,
+        "invalid": 0,
+        "last_error": null,
+        "received": 939,
+        "send_failures": 0,
+        "sent": 40
+      },
+      "reasons": [],
+      "schema_version": 1,
+      "source_health": {
+        "clock": {
+          "backend_generation": 1,
+          "capture_backend_monotonic_s": 439232.651232534,
+          "capture_sim_time_s": 7.040000000000686,
+          "clock_id": "backend_monotonic",
+          "control_tick_id": "tick_000000712",
+          "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+          "navigation_epoch": 1,
+          "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+        },
+        "imu_acceleration_available": true,
+        "imu_age_s": 0.0024453640216961503,
+        "imu_gyro_available": true,
+        "interface_profile": "g3a-1.0",
+        "odom_publish_rate_hz": null,
+        "profile_id": "g3a-nav-50hz-laser10-v1",
+        "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+        "profile_version": "1.0",
+        "rejection_reasons": [],
+        "scan_age_s": 0.04972418997203931,
+        "scan_available": true,
+        "scan_publish_rate_hz": null,
+        "sequence": 352,
+        "status": "HEALTHY",
+        "stop_required": false,
+        "wheel_age_s": 0.0024453640216961503,
+        "wheels_available": true
+      },
+      "status": "HEALTHY",
+      "stop_required": false
+    },
+    "map_to_odom_published": false,
+    "received": {
+      "clock": 659,
+      "health": 220,
+      "imu": 218,
+      "joint_states": 218,
+      "odom": 218,
+      "scan": 44,
+      "tf": 440
+    },
+    "samples": {
+      "clock": {
+        "nanosec": 60000000,
+        "sec": 7
+      },
+      "imu": {
+        "frame_id": "imu_link",
+        "gyro": [
+          -1.6519667385350106e-09,
+          -6.372227889700861e-10,
+          1.3506212517838636e-09
+        ],
+        "orientation_covariance_0": -1.0,
+        "stamp": [
+          7,
+          40000000
+        ]
+      },
+      "joint_states": {
+        "frame_id": "base_link",
+        "names": [
+          "joint1",
+          "joint2",
+          "joint3",
+          "joint4",
+          "joint5"
+        ],
+        "positions": [
+          4.9940533722212734e-14,
+          -4.435905258313384e-11,
+          -2.7169427257485647e-11,
+          -1.570796326799224,
+          -2.9405366707543134e-14
+        ]
+      },
+      "odom": {
+        "child": "base_link",
+        "parent": "odom",
+        "pose_covariance_len": 36,
+        "stamp": [
+          7,
+          40000000
+        ],
+        "twist_covariance_len": 36
+      },
+      "scan": {
+        "angle_increment": 0.01745329238474369,
+        "angle_max": 3.1241393089294434,
+        "angle_min": -3.1415927410125732,
+        "beam_count": 360,
+        "frame_id": "laser_frame",
+        "range_max": 8.0,
+        "range_min": 0.10000000149011612,
+        "stamp": [
+          7,
+          0
+        ],
+        "time_increment": 0.0
+      }
+    },
+    "scan_status_counts": {
+      "finite": 11746,
+      "nan": 3916,
+      "positive_inf": 178
+    },
+    "tf": {
+      "arm_base": [
+        "link1"
+      ],
+      "base_link": [
+        "arm_base",
+        "imu_link",
+        "laser_frame"
+      ],
+      "camera_connect_link": [
+        "depth_cam_link"
+      ],
+      "link1": [
+        "link2"
+      ],
+      "link2": [
+        "link3"
+      ],
+      "link3": [
+        "link4"
+      ],
+      "link4": [
+        "camera_connect_link",
+        "link5"
+      ],
+      "link5": [
+        "gripper_link"
+      ],
+      "odom": [
+        "base_link"
+      ]
+    }
+  },
+  "probe_returncode": 0,
+  "probe_stderr": "",
+  "probe_stdout": "",
+  "report_version": "g3a-ros-acceptance-1.0",
+  "startup_health": {
+    "backend_generation": 1,
+    "episode_id": "episode_7054b974ba434842837648de03ce8f84",
+    "interface_profile": "g3a-1.0",
+    "navigation_profile_id": "g3a-nav-50hz-laser10-v1",
+    "observation_profile_id": "g2a-rgbd-5hz-original",
+    "recording_status": "IDLE",
+    "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863",
+    "status": "ok",
+    "ui": {
+      "adaptive_rendering": true,
+      "max_pixel_ratio": 1.5,
+      "preferred_pixel_ratio": 1.0,
+      "shadow_map_size": 512,
+      "snapshot_hz": 15.0,
+      "static_render_interval_s": 0.1
+    }
+  },
+  "stop_response": {
+    "accepted": true,
+    "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+    "reason": "",
+    "recording_segment_id": "seg_001_fa764c5853",
+    "recording_status": "COMPLETE"
+  }
+}

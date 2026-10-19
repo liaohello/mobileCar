@@ -1,0 +1,10 @@
+{
+  "fixture_version": "g4a2-collection-split-1",
+  "status": "synthetic_fixture",
+  "entries": [
+    {"episode_id": "e1", "parent_episode_id": "p1", "family_id": "f1", "split": "train", "operator_kind": "human_teleop", "task_result": "success", "retained": true},
+    {"episode_id": "e2", "parent_episode_id": "p2", "family_id": "f1", "split": "train", "operator_kind": "human_teleop", "task_result": "success", "retained": true},
+    {"episode_id": "e3", "parent_episode_id": "p3", "family_id": "f2", "split": "validation", "operator_kind": "human_teleop", "task_result": "success", "retained": true},
+    {"episode_id": "e4", "parent_episode_id": "p3", "family_id": "f2", "split": "validation", "operator_kind": "human_teleop", "task_result": "cancelled", "retained": true}
+  ]
+}

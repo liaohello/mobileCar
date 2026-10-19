@@ -1,0 +1,177 @@
+{
+  "generated_wall_utc": "2026-10-17T19:42:48.157456Z",
+  "duration_s": 4.0,
+  "received": {
+    "clock": 659,
+    "scan": 44,
+    "imu": 218,
+    "joint_states": 218,
+    "odom": 218,
+    "tf": 440,
+    "health": 220
+  },
+  "samples": {
+    "joint_states": {
+      "frame_id": "base_link",
+      "names": [
+        "joint1",
+        "joint2",
+        "joint3",
+        "joint4",
+        "joint5"
+      ],
+      "positions": [
+        4.9940533722212734e-14,
+        -4.435905258313384e-11,
+        -2.7169427257485647e-11,
+        -1.570796326799224,
+        -2.9405366707543134e-14
+      ]
+    },
+    "scan": {
+      "frame_id": "laser_frame",
+      "stamp": [
+        7,
+        0
+      ],
+      "angle_min": -3.1415927410125732,
+      "angle_max": 3.1241393089294434,
+      "angle_increment": 0.01745329238474369,
+      "time_increment": 0.0,
+      "range_min": 0.10000000149011612,
+      "range_max": 8.0,
+      "beam_count": 360
+    },
+    "imu": {
+      "frame_id": "imu_link",
+      "stamp": [
+        7,
+        40000000
+      ],
+      "orientation_covariance_0": -1.0,
+      "gyro": [
+        -1.6519667385350106e-09,
+        -6.372227889700861e-10,
+        1.3506212517838636e-09
+      ]
+    },
+    "odom": {
+      "parent": "odom",
+      "child": "base_link",
+      "stamp": [
+        7,
+        40000000
+      ],
+      "pose_covariance_len": 36,
+      "twist_covariance_len": 36
+    },
+    "clock": {
+      "sec": 7,
+      "nanosec": 60000000
+    }
+  },
+  "scan_status_counts": {
+    "finite": 11746,
+    "positive_inf": 178,
+    "nan": 3916
+  },
+  "tf": {
+    "base_link": [
+      "arm_base",
+      "imu_link",
+      "laser_frame"
+    ],
+    "link4": [
+      "camera_connect_link",
+      "link5"
+    ],
+    "camera_connect_link": [
+      "depth_cam_link"
+    ],
+    "odom": [
+      "base_link"
+    ],
+    "arm_base": [
+      "link1"
+    ],
+    "link1": [
+      "link2"
+    ],
+    "link2": [
+      "link3"
+    ],
+    "link3": [
+      "link4"
+    ],
+    "link5": [
+      "gripper_link"
+    ]
+  },
+  "map_to_odom_published": false,
+  "health_latest": {
+    "schema_version": 1,
+    "status": "HEALTHY",
+    "stop_required": false,
+    "reasons": [],
+    "identity": {
+      "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863",
+      "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+      "backend_generation": 1,
+      "navigation_epoch": 1
+    },
+    "command": {
+      "active": false,
+      "release_sent": true,
+      "last_release_reason": "cmd_vel_input_timeout"
+    },
+    "ipc": {
+      "connected": true,
+      "received": 939,
+      "invalid": 0,
+      "sent": 40,
+      "send_failures": 0,
+      "last_error": null
+    },
+    "source_health": {
+      "interface_profile": "g3a-1.0",
+      "profile_id": "g3a-nav-50hz-laser10-v1",
+      "profile_version": "1.0",
+      "profile_sha256": "c9de2351cee65908ed646b434278fa9eee3f0c6b90910146815d46241c6e51e1",
+      "sequence": 352,
+      "clock": {
+        "run_id": "run_7e92d9a79dda4cdabfb9afc90dd9c863",
+        "episode_id": "episode_0dca865ec31647e4994c684892f8d17e",
+        "backend_generation": 1,
+        "navigation_epoch": 1,
+        "control_tick_id": "tick_000000712",
+        "capture_sim_time_s": 7.040000000000686,
+        "capture_backend_monotonic_s": 439232.651232534,
+        "clock_id": "backend_monotonic"
+      },
+      "status": "HEALTHY",
+      "wheels_available": true,
+      "imu_gyro_available": true,
+      "imu_acceleration_available": true,
+      "scan_available": true,
+      "wheel_age_s": 0.0024453640216961503,
+      "imu_age_s": 0.0024453640216961503,
+      "scan_age_s": 0.04972418997203931,
+      "odom_publish_rate_hz": null,
+      "scan_publish_rate_hz": null,
+      "rejection_reasons": [],
+      "stop_required": false
+    },
+    "clock_domain": "capture_sim_time_for_headers; steady_monotonic_watchdog"
+  },
+  "gates": {
+    "clock": true,
+    "scan": true,
+    "imu": true,
+    "joint_states": true,
+    "odom": true,
+    "tf": true,
+    "no_map_to_odom": true,
+    "health": true,
+    "nan_and_inf_present": true
+  }
+}

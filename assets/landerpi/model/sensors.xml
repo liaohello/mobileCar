@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujocoinclude>
+  <sensor>
+    <gyro name="imu_gyro" site="imu_site" />
+    <accelerometer name="imu_accel" site="imu_site" />
+    <framepos name="base_position" objtype="body" objname="base_link" />
+  </sensor>
+</mujocoinclude>

@@ -1,0 +1,267 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujocoinclude>
+  <body name="front_left_wheel" pos="0.06725 0.07375 -0.0211">
+    <joint name="front_left_joint" type="hinge" axis="0 1 0" armature="2e-05" damping="0.00002" />
+    <inertial pos="0 0 0" mass="0.031" diaginertia="3.31324609375e-06 4.9524921875e-06 3.31324609375e-06" />
+    <geom name="front_left_hub_contact" type="cylinder" size="0.017875 0.009" quat="0.707106781187 0.707106781187 0 0" contype="2" conaffinity="1" mass="0" group="3" rgba="0 0 0 0" />
+    <geom name="wheel_left_front_link_visual" type="mesh" mesh="wheel_left_front_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+    <body name="front_left_roller_0" pos="0 0 0.027" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438">
+      <joint name="front_left_roller_0_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_0_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_1" pos="0.0135 0 0.0233826859022" quat="-0.331413574036 0.800103145191 0.191341716183 0.461939766256">
+      <joint name="front_left_roller_1_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_1_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_2" pos="0.0233826859022 0 0.0135" quat="-0.369643810614 0.892399100833 0.0990457605413 0.239117618394">
+      <joint name="front_left_roller_2_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_2_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_3" pos="0.027 0 1.65327317885e-18" quat="-0.382683432365 0.923879532511 1.17163010133e-17 2.82856528072e-17">
+      <joint name="front_left_roller_3_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_3_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_4" pos="0.0233826859022 0 -0.0135" quat="-0.369643810614 0.892399100833 -0.0990457605413 -0.239117618394">
+      <joint name="front_left_roller_4_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_4_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_5" pos="0.0135 0 -0.0233826859022" quat="-0.331413574036 0.800103145191 -0.191341716183 -0.461939766256">
+      <joint name="front_left_roller_5_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_5_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_6" pos="3.3065463577e-18 0 -0.027" quat="-0.270598050073 0.653281482438 -0.270598050073 -0.653281482438">
+      <joint name="front_left_roller_6_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_6_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_7" pos="-0.0135 0 -0.0233826859022" quat="0.191341716183 -0.461939766256 0.331413574036 0.800103145191">
+      <joint name="front_left_roller_7_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_7_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_8" pos="-0.0233826859022 0 -0.0135" quat="0.0990457605413 -0.239117618394 0.369643810614 0.892399100833">
+      <joint name="front_left_roller_8_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_8_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_9" pos="-0.027 0 -4.95981953655e-18" quat="3.51489030399e-17 -8.48569584216e-17 0.382683432365 0.923879532511">
+      <joint name="front_left_roller_9_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_9_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_10" pos="-0.0233826859022 0 0.0135" quat="-0.0990457605413 0.239117618394 0.369643810614 0.892399100833">
+      <joint name="front_left_roller_10_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_10_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_left_roller_11" pos="-0.0135 0 0.0233826859022" quat="-0.191341716183 0.461939766256 0.331413574036 0.800103145191">
+      <joint name="front_left_roller_11_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_left_roller_11_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+  </body>
+  <body name="rear_left_wheel" pos="-0.06725 0.07375 -0.0211">
+    <joint name="rear_left_joint" type="hinge" axis="0 1 0" armature="2e-05" damping="0.00002" />
+    <inertial pos="0 0 0" mass="0.031" diaginertia="3.31324609375e-06 4.9524921875e-06 3.31324609375e-06" />
+    <geom name="rear_left_hub_contact" type="cylinder" size="0.017875 0.009" quat="0.707106781187 0.707106781187 0 0" contype="2" conaffinity="1" mass="0" group="3" rgba="0 0 0 0" />
+    <geom name="wheel_left_back_link_visual" type="mesh" mesh="wheel_left_back_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+    <body name="rear_left_roller_0" pos="0 0 0.027" quat="0.270598050073 0.653281482438 -0.270598050073 0.653281482438">
+      <joint name="rear_left_roller_0_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_0_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_1" pos="0.0135 0 0.0233826859022" quat="0.331413574036 0.800103145191 -0.191341716183 0.461939766256">
+      <joint name="rear_left_roller_1_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_1_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_2" pos="0.0233826859022 0 0.0135" quat="0.369643810614 0.892399100833 -0.0990457605413 0.239117618394">
+      <joint name="rear_left_roller_2_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_2_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_3" pos="0.027 0 1.65327317885e-18" quat="0.382683432365 0.923879532511 -1.17163010133e-17 2.82856528072e-17">
+      <joint name="rear_left_roller_3_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_3_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_4" pos="0.0233826859022 0 -0.0135" quat="0.369643810614 0.892399100833 0.0990457605413 -0.239117618394">
+      <joint name="rear_left_roller_4_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_4_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_5" pos="0.0135 0 -0.0233826859022" quat="0.331413574036 0.800103145191 0.191341716183 -0.461939766256">
+      <joint name="rear_left_roller_5_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_5_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_6" pos="3.3065463577e-18 0 -0.027" quat="0.270598050073 0.653281482438 0.270598050073 -0.653281482438">
+      <joint name="rear_left_roller_6_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_6_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_7" pos="-0.0135 0 -0.0233826859022" quat="-0.191341716183 -0.461939766256 -0.331413574036 0.800103145191">
+      <joint name="rear_left_roller_7_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_7_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_8" pos="-0.0233826859022 0 -0.0135" quat="-0.0990457605413 -0.239117618394 -0.369643810614 0.892399100833">
+      <joint name="rear_left_roller_8_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_8_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_9" pos="-0.027 0 -4.95981953655e-18" quat="-3.51489030399e-17 -8.48569584216e-17 -0.382683432365 0.923879532511">
+      <joint name="rear_left_roller_9_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_9_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_10" pos="-0.0233826859022 0 0.0135" quat="0.0990457605413 0.239117618394 -0.369643810614 0.892399100833">
+      <joint name="rear_left_roller_10_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_10_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_left_roller_11" pos="-0.0135 0 0.0233826859022" quat="0.191341716183 0.461939766256 -0.331413574036 0.800103145191">
+      <joint name="rear_left_roller_11_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_left_roller_11_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+  </body>
+  <body name="front_right_wheel" pos="0.06725 -0.07375 -0.0211">
+    <joint name="front_right_joint" type="hinge" axis="0 1 0" armature="2e-05" damping="0.00002" />
+    <inertial pos="0 0 0" mass="0.031" diaginertia="3.31324609375e-06 4.9524921875e-06 3.31324609375e-06" />
+    <geom name="front_right_hub_contact" type="cylinder" size="0.017875 0.009" quat="0.707106781187 0.707106781187 0 0" contype="2" conaffinity="1" mass="0" group="3" rgba="0 0 0 0" />
+    <geom name="wheel_right_front_link_visual" type="mesh" mesh="wheel_right_front_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+    <body name="front_right_roller_0" pos="0 0 0.027" quat="0.270598050073 0.653281482438 -0.270598050073 0.653281482438">
+      <joint name="front_right_roller_0_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_0_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_1" pos="0.0135 0 0.0233826859022" quat="0.331413574036 0.800103145191 -0.191341716183 0.461939766256">
+      <joint name="front_right_roller_1_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_1_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_2" pos="0.0233826859022 0 0.0135" quat="0.369643810614 0.892399100833 -0.0990457605413 0.239117618394">
+      <joint name="front_right_roller_2_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_2_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_3" pos="0.027 0 1.65327317885e-18" quat="0.382683432365 0.923879532511 -1.17163010133e-17 2.82856528072e-17">
+      <joint name="front_right_roller_3_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_3_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_4" pos="0.0233826859022 0 -0.0135" quat="0.369643810614 0.892399100833 0.0990457605413 -0.239117618394">
+      <joint name="front_right_roller_4_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_4_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_5" pos="0.0135 0 -0.0233826859022" quat="0.331413574036 0.800103145191 0.191341716183 -0.461939766256">
+      <joint name="front_right_roller_5_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_5_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_6" pos="3.3065463577e-18 0 -0.027" quat="0.270598050073 0.653281482438 0.270598050073 -0.653281482438">
+      <joint name="front_right_roller_6_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_6_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_7" pos="-0.0135 0 -0.0233826859022" quat="-0.191341716183 -0.461939766256 -0.331413574036 0.800103145191">
+      <joint name="front_right_roller_7_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_7_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_8" pos="-0.0233826859022 0 -0.0135" quat="-0.0990457605413 -0.239117618394 -0.369643810614 0.892399100833">
+      <joint name="front_right_roller_8_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_8_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_9" pos="-0.027 0 -4.95981953655e-18" quat="-3.51489030399e-17 -8.48569584216e-17 -0.382683432365 0.923879532511">
+      <joint name="front_right_roller_9_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_9_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_10" pos="-0.0233826859022 0 0.0135" quat="0.0990457605413 0.239117618394 -0.369643810614 0.892399100833">
+      <joint name="front_right_roller_10_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_10_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="front_right_roller_11" pos="-0.0135 0 0.0233826859022" quat="0.191341716183 0.461939766256 -0.331413574036 0.800103145191">
+      <joint name="front_right_roller_11_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="front_right_roller_11_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+  </body>
+  <body name="rear_right_wheel" pos="-0.06725 -0.07375 -0.0211">
+    <joint name="rear_right_joint" type="hinge" axis="0 1 0" armature="2e-05" damping="0.00002" />
+    <inertial pos="0 0 0" mass="0.031" diaginertia="3.31324609375e-06 4.9524921875e-06 3.31324609375e-06" />
+    <geom name="rear_right_hub_contact" type="cylinder" size="0.017875 0.009" quat="0.707106781187 0.707106781187 0 0" contype="2" conaffinity="1" mass="0" group="3" rgba="0 0 0 0" />
+    <geom name="wheel_right_back_link_visual" type="mesh" mesh="wheel_right_back_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+    <body name="rear_right_roller_0" pos="0 0 0.027" quat="-0.270598050073 0.653281482438 0.270598050073 0.653281482438">
+      <joint name="rear_right_roller_0_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_0_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_1" pos="0.0135 0 0.0233826859022" quat="-0.331413574036 0.800103145191 0.191341716183 0.461939766256">
+      <joint name="rear_right_roller_1_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_1_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_2" pos="0.0233826859022 0 0.0135" quat="-0.369643810614 0.892399100833 0.0990457605413 0.239117618394">
+      <joint name="rear_right_roller_2_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_2_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_3" pos="0.027 0 1.65327317885e-18" quat="-0.382683432365 0.923879532511 1.17163010133e-17 2.82856528072e-17">
+      <joint name="rear_right_roller_3_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_3_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_4" pos="0.0233826859022 0 -0.0135" quat="-0.369643810614 0.892399100833 -0.0990457605413 -0.239117618394">
+      <joint name="rear_right_roller_4_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_4_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_5" pos="0.0135 0 -0.0233826859022" quat="-0.331413574036 0.800103145191 -0.191341716183 -0.461939766256">
+      <joint name="rear_right_roller_5_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_5_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_6" pos="3.3065463577e-18 0 -0.027" quat="-0.270598050073 0.653281482438 -0.270598050073 -0.653281482438">
+      <joint name="rear_right_roller_6_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_6_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_7" pos="-0.0135 0 -0.0233826859022" quat="0.191341716183 -0.461939766256 0.331413574036 0.800103145191">
+      <joint name="rear_right_roller_7_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_7_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_8" pos="-0.0233826859022 0 -0.0135" quat="0.0990457605413 -0.239117618394 0.369643810614 0.892399100833">
+      <joint name="rear_right_roller_8_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_8_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_9" pos="-0.027 0 -4.95981953655e-18" quat="3.51489030399e-17 -8.48569584216e-17 0.382683432365 0.923879532511">
+      <joint name="rear_right_roller_9_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_9_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_10" pos="-0.0233826859022 0 0.0135" quat="-0.0990457605413 0.239117618394 0.369643810614 0.892399100833">
+      <joint name="rear_right_roller_10_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_10_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+    <body name="rear_right_roller_11" pos="-0.0135 0 0.0233826859022" quat="-0.191341716183 0.461939766256 0.331413574036 0.800103145191">
+      <joint name="rear_right_roller_11_joint" axis="0 0 1" type="hinge" damping="1e-05" frictionloss="1e-05" />
+      <inertial mass="0.002" pos="0 0 0" diaginertia="1.021e-07 1.021e-07 2.42e-08" />
+      <geom name="rear_right_roller_11_contact" type="ellipsoid" size="0.0055 0.0055 0.015" contype="2" conaffinity="1" condim="3" priority="1" friction="0.7 0.001 0.0001" solref="0.004 1" solimp="0.9 0.95 0.001" mass="0" group="2" rgba="0.2 0.2 0.2 0" />
+    </body>
+  </body>
+</mujocoinclude>

@@ -1,0 +1,30 @@
+schema_version: 1
+interface_profile: g4a1-1.0
+profile_id: g4a1-native-dev-readiness-v1
+profile_version: "1.0"
+contract_version: mobilecar-1.0
+observation_profile_id: g4a1-link4-rgbd-proprio-v1
+action_profile_id: g4a1-sixdim-absolute-goal-v1
+purpose: dev
+training_qualified: false
+export_valid: NOT_EVALUATED
+physical_success:
+  lift_threshold_m: 0.05
+  bilateral_hold_s: 2.0
+  base_drift_m: 0.01
+  base_yaw_drift_deg: 2.0
+  max_unexpected_environment_contacts: 0
+timing:
+  operation_stop_linear_m_s: 0.01
+  operation_stop_yaw_rad_s: 0.03
+  operation_stop_hold_s: 0.6
+  image_max_age_s: 0.4
+  proprio_max_age_s: 0.2
+  capture_skew_s: 0.2
+  detection_to_safe_target_s: 0.15
+  detection_to_arm_stop_s: 1.0
+source_rules:
+  human_teleop_requires_human: true
+  agent_ui_is_human: false
+  scripted_is_human: false
+  test_injection_is_human: false

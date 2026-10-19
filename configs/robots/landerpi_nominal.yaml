@@ -1,0 +1,139 @@
+# 第一版仿真参数；没有测量依据的值必须保留 provisional 标记。
+# 单位：m, kg, s, V, N*m, rad。固件 rps 特指输出轴转/秒。
+schema_version: 3          # v3 区分用户照片零位、模型角度和初始姿态
+profile: landerpi_mecanum_provisional  # 参数档位名称：麦克纳姆轮底盘 + 第一版未辨识参数
+
+hardware:                  # 整车物理硬件参数（铭牌/图纸可得，含电池与机械臂）
+  # user_confirmed：整车含电池和机械臂；各 body 质量之和应等于此值。
+  total_mass_kg: 1.9       # 整车总质量：build_model 用它减去 4 轮和固定臂质量得到底盘质量
+  wheel_radius_m: 0.0325   # 名义外接触半径；滚子中心布置在 radius-roller_radius
+  wheelbase_m: 0.1345      # 轴距：前后轮中心距（X 方向），麦轮运动学常数 k 的组成项
+  track_width_m: 0.1475    # 轮距：左右轮中心距（Y 方向），k = (wheelbase+track)/2
+  gripper_max_opening_m: 0.050  # 用户实测：两指有效接触面最大净开口 50 mm
+  battery:                 # 电池参数（信息性记录，仿真暂不消费）
+    connection: direct     # 供电方式：直连，无调压/限流环节，母线电压随电池状态波动
+    nominal_voltage_v: 7.4 # 2S 锂电标称电压，也是 simulation.supply_voltage_v 的默认来源
+    full_voltage_v: 8.4    # 满电电压：满电时空载转速会比标称电压下高约 13%
+    capacity_ah: 5.0       # 电池容量：决定续航，仿真不建模放电
+  motor_label:             # 电机铭牌数据（厂家标注，非实测）
+    reference_voltage_v: 12.0     # 铭牌空载转速对应的参考电压
+    output_no_load_rpm: 450.0     # 12V 下输出轴（经减速箱后）空载转速，无实测时的回退值
+    reduction_ratio: 20.0         # 减速比 20:1：电机轴转 20 圈输出轴转 1 圈
+  # null = 未知，不是零；不得把这些空值作为实际物理参数传给 MuJoCo。
+  measured_output_continuous_torque_nm: null  # 实测连续（额定）转矩：长期输出不过热的上限，占位待测
+  measured_output_peak_torque_nm: null        # 实测峰值转矩：短时/堵转最大转矩，占位待测
+  measured_total_com_base_m: null             # 实测整车质心位置(3维,相对base_link)：重分配路径未实现，会被拒绝
+  measured_total_inertia_at_com_kg_m2: null   # 实测整车绕质心转动惯量张量：同上被拒绝，改用 mass_distribution
+  measured_output_no_load_rpm: null           # 实测输出轴空载转速：与下面电压成对出现，优先于铭牌值
+  measured_no_load_voltage_v: null            # 测上述转速时的母线电压：与 rpm 配合外推任意电压下的转速
+
+firmware_reference:        # 实车固件源码对照参考；仿真基本不消费，仅轮序与 SDK 符号被使用
+  # 源码参数，不代表已经验证实物或已烧录固件。
+  source_revision: RosRobotControllerLite_ros_250811  # 参数抄录来源的固件版本，保证可追溯
+  motor_type_id: 2         # 固件驱动代码中的电机类型枚举值
+  encoder_counts_per_output_rev: 1040  # 输出轴每转编码器计数：1040/减速比20=52/电机转=13PPR×4倍频
+  encoder_counts_status: source_only_verify_on_hardware  # 可信度标记：数值仅来自源码，未上硬件验证
+  control_period_s: 0.01   # 固件速度环 PID 周期(100Hz)；仿真 controller_period_s 与之对齐
+  encoder_filter_new_weight: 0.9  # 固件测速 IIR 滤波系数：新采样占 0.9 权重，滤波轻、响应快、噪声大
+  pwm_full_scale: 1000     # PWM 指令满量程：占空比范围 0~1000
+  pwm_zero_threshold: 250  # PWM 零区阈值：指令低于 250 直接置零，避免低速抖动（仿真未建模此死区）
+  # 该 limit 在串口直接赋 set_point 的路径中被绕过，不能当作可靠限速。
+  declared_rps_limit: 6.0  # 固件声明的输出轴限速(转/秒)：实际被串口路径绕过，仿真不得当作硬限幅
+  serial_speed_limit_enforced: false  # 明确标记上述限速未被强制执行
+  pid_gains: [-36.0, -1.0, -1.0]  # 固件速度环 PID 增益（负号为固件误差方向约定）；仿真用 kv 等效伺服，不套用此值
+  # SDK 使用 1..4；线上的电机 ID 使用 0..3。
+  wheel_order: [front_left, rear_left, front_right, rear_right]  # 固件轮序；所有四元数组（力矩缩放/轮半径缩放/符号表）的下标都按此解释
+  sdk_motor_ids: [1, 2, 3, 4]  # 轮序到 SDK 电机 ID 的映射：wheel_order[i] 对应 sdk_motor_ids[i]
+  sdk_sign_from_forward_wheel_rotation: [-1, -1, 1, 1]  # 符号换算表：仿真"向前滚为正"→SDK 指令符号；左侧电机镜像安装故为 -1
+  wheel_feedback_in_stock_protocol: false  # 原厂串口协议不回传轮速反馈；实车闭环需自定义协议
+
+simulation:                # 仿真侧参数：MJCF 生成与轮伺服控制全部从这里取值
+  status: provisional_not_identified  # 整体可信度标记：动力学参数尚未经系统辨识
+  supply_voltage_v: 7.4    # 仿真母线电压：配合铭牌/实测空载转速外推当前空载角速度
+  fixed_arm: false         # G1 唯一有效模型：五轴动态臂
+  base_fixed_for_debug: false  # 仅供隔离调试；整机运行必须使用自由底盘
+  initial_arm_user_rad: [0.0, 0.0, 0.0, 0.0, 0.0]  # 相对用户照片零位；固定/动态模式共用
+  initial_gripper_width_m: 0.025  # 启动净开口；25 mm 是用户定义的夹爪零位
+  manual_drive:
+    speed_m_s: 0.05       # 抓取调试低速；WASD 按住移动、松开减速停止
+    yaw_rate_rad_s: 0.25  # QE 旋转；合成速度仍受 command_limits 限制
+  arm_servo:
+    kp_nm_per_rad: [8.0, 20.0, 16.0, 12.0, 2.0]
+    kd_nm_s_per_rad: [0.12, 0.15, 0.12, 0.08, 0.04]
+    torque_limits_nm: [0.35, 0.60, 0.45, 0.30, 0.15]
+    velocity_limits_rad_s: [0.6, 0.6, 0.6, 0.6, 0.6]
+    acceleration_limits_rad_s2: [2.0, 2.0, 2.0, 2.0, 2.0]
+    joint_damping_nm_s: 0.002
+    armature_kg_m2: 0.00002
+    status: provisional_not_servo_datasheet  # 有限力 PD 初值，待 HX-06L 实物标定
+  gripper_servo:
+    kp_nm_per_rad: 1.5
+    kd_nm_s_per_rad: 0.020
+    torque_limit_nm: 0.16
+    speed_m_s: 0.015
+    finger_pad_size_m: [0.012, 0.003, 0.020]  # 指腹接触盒全尺寸，非半尺寸
+    sliding_friction: 1.0
+    status: provisional_g1_grasp_stability_adjustment_after_slip_probe
+  mass_distribution:       # 质量分配：整车质量减去轮与臂后全归底盘
+    # 初值：剩余质量集中到 chassis，机械臂按官方惯量形状同比缩放。
+    wheel_mass_kg: 0.055   # 单轮总质量（含轮毂+全部滚子）：×4 从总质量中扣除
+    fixed_arm_mass_kg: 0.35  # 固定臂总质量：官方 URDF 各臂 link 质量按此值同比缩放
+    chassis_com_base_m: [0.0, 0.0, 0.015]  # 底盘质心相对 base_link 的位置(3维)：Z 微抬升近似电池/臂偏置
+    chassis_equivalent_box_size_m: [0.19, 0.10, 0.07]  # 底盘等效长方体尺寸(3维)：用于计算底盘转动惯量
+    status: provisional_geometry_approximation  # 标记：几何为近似值，非 CAD 实测
+  wheels:                  # 麦克纳姆轮与被动滚子的建模参数
+    rollers_per_wheel: 12  # 每轮滚子数量：build_model 沿轮缘均匀生成 12 个可自转的滚子 body
+    roller_radius_m: 0.0055  # 滚子半径：必须小于轮半径，决定滚子突出轮缘的量
+    roller_half_length_m: 0.015  # 滚子半长：椭球接触几何的轴向半尺寸
+    roller_mass_kg: 0.002  # 单个滚子质量：×12 必须小于 wheel_mass_kg，剩余为轮毂质量
+    roller_bearing_damping_nm_s: 0.00001  # 滚子轴承粘性阻矩系数：模拟轴承润滑阻力
+    roller_bearing_friction_nm: 0.00001  # 滚子轴承库仑摩擦力矩：模拟静摩擦损耗
+    wheel_armature_kg_m2: 0.00002  # 轮关节等效转动惯量(ar)：并入电机转子惯量，稳定积分
+    status: simplified_passive_rollers_not_cad  # 标记：滚子为简化建模，非 CAD 实际几何
+  camera:                  # RGB-D 相机模型参数（传感器仿真）
+    width: 640             # 图像宽度(像素)：同时决定离屏渲染分辨率
+    height: 480            # 图像高度(像素)
+    fps: 15.0              # 相机帧率：runner 按此节流捕获 RGB-D 帧
+    vertical_fov_deg: 58.0  # 垂直视场角(度)：渲染 fovy 与内参 fy 的来源
+    depth_min_m: 0.15      # 深度有效下限(m)：近于此值置 NaN
+    depth_max_m: 4.0       # 深度有效上限(m)：远于此值置 NaN
+    # 相机固定在官方 depth_cam_link；孔径位置位于外壳前方，避免自遮挡。
+    aperture_pos_depth_cam_m: [0.002, 0.02, 0.0]  # +X 面外侧，朝夹爪前方；光心精确位置待标定
+    xyaxes_depth_cam: [0.0, -1.0, 0.0, 0.0, 0.0, 1.0]  # 相机右/上方向；视线沿 depth_cam_link 的 +X
+    status: provisional_intrinsics_need_aurora_camera_info  # 标记：内参为占位，待实测相机标定
+  camera_outputs: [rgb, depth]  # 启用的传感器输出通道列表
+  # 轮轴侧等效速度伺服；不能直接套用固件 PWM PID 数值。
+  wheel_servo:             # 仿真轮速度 PI + 力矩限幅；Ki=0 可回退为 P 环
+    kv_nm_per_rad_s: 0.01  # 比例力矩 = kv × (目标轮速 − 实测轮速)，总力矩还含受限积分
+    ki_nm_per_rad: 0.02    # 暂定等效轮速积分增益；0 可复现原 P 控制；不等同固件 PWM PID
+    integral_torque_limit_nm: 0.03  # 积分力矩界限；最终仍受转速相关电机力矩包络限制
+    torque_limit_nm: 0.06  # 单轮力矩限幅(N·m)：占位值，非厂家额定/堵转转矩
+    # 0.06 是低速流程验证的占位值，不是厂家额定/堵转转矩。
+    torque_limit_status: provisional_simulation_only  # 标记：该限幅仅用于仿真流程验证
+    per_wheel_torque_scale: [1.0, 1.0, 1.0, 1.0]  # 每轮力矩缩放系数(按固件轮序)：标定左右轮出力差异用
+    command_delay_s: 0.0   # 指令延迟(s)：模拟通信链路延迟，0 = 无延迟
+  contact:                 # 接触参数
+    # 这是滚子材料接触的初值；不能用一个整轮刚性网格代替自由滚子。
+    sliding_friction: 0.7  # 滚子-地面滑动摩擦系数：决定打滑程度，随地面材质变化
+    status: provisional_surface_dependent  # 标记：摩擦值依赖实际地面，未实测
+  # 物理步长与固件/模拟控制更新周期分开。
+  physics_timestep_s: 0.001  # MuJoCo 物理积分步长(1kHz)：必须整除控制周期
+  controller_period_s: 0.01   # 控制器更新周期(100Hz)：与固件 PID 周期对齐，每个周期执行 substeps 次物理步
+
+command_limits:            # 指令限幅：开发安全范围，不是实车性能上限
+  # 开发指令范围，不是实车性能上限。平移限制作用于 hypot(vx, vy)。
+  translation_norm_m_s: 0.2        # 平移速度上限(m/s)：作用于 vx/vy 合成矢量模长
+  yaw_rate_rad_s: 0.5              # 偏航角速度上限(rad/s)
+  translation_acceleration_m_s2: 0.3  # 平移加速度限幅(m/s²)：控制器内部斜坡，模拟加减速平滑
+  yaw_acceleration_rad_s2: 1.0     # 偏航角加速度限幅(rad/s²)
+
+calibration:               # 标定修正量：叠加在标称值之上，改这里不改模型几何
+  session_id: uncalibrated  # 标定会话标识：未标定
+  arm_zero_model_rad: [0.0, 0.0, 0.0, -1.5707963267948966, 0.0]
+  arm_user_direction: [1, 1, 1, 1, 1]  # q_model = zero + direction * q_user
+  arm_zero_status: user_defined_photo_pose_not_hardware_500
+  gripper_zero_width_m: 0.025  # 用户确认：50 mm 最大净开口的一半；不是行程中点
+  # 有效轮半径修正与 CAD 几何分开；不直接修改 visual mesh。
+  effective_wheel_radius_scale: [1.0, 1.0, 1.0, 1.0]  # 每轮有效半径缩放(按固件轮序)：修正胎面磨损/压缩，1.0=无修正
+  imu_gyro_bias_rad_s: [0.0, 0.0, 0.0]  # 陀螺仪零偏(rad/s，3轴)：实测后叠加到传感器读数
+  imu_gyro_bias_status: unmeasured  # 标记：零偏未经实测

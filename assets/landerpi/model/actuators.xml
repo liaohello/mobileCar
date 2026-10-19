@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujocoinclude>
+  <actuator>
+    <motor name="front_left_motor" joint="front_left_joint" gear="1" ctrllimited="true" ctrlrange="-0.06 0.06" />
+    <motor name="rear_left_motor" joint="rear_left_joint" gear="1" ctrllimited="true" ctrlrange="-0.06 0.06" />
+    <motor name="front_right_motor" joint="front_right_joint" gear="1" ctrllimited="true" ctrlrange="-0.06 0.06" />
+    <motor name="rear_right_motor" joint="rear_right_joint" gear="1" ctrllimited="true" ctrlrange="-0.06 0.06" />
+    <position name="joint1_motor" joint="joint1" gear="1" kp="8.0" kv="0.12" ctrllimited="true" ctrlrange="-2.09 2.09" forcelimited="true" forcerange="-0.35 0.35" />
+    <position name="joint2_motor" joint="joint2" gear="1" kp="20.0" kv="0.15" ctrllimited="true" ctrlrange="-2.09 2.09" forcelimited="true" forcerange="-0.6 0.6" />
+    <position name="joint3_motor" joint="joint3" gear="1" kp="16.0" kv="0.12" ctrllimited="true" ctrlrange="-2.09 2.09" forcelimited="true" forcerange="-0.45 0.45" />
+    <position name="joint4_motor" joint="joint4" gear="1" kp="12.0" kv="0.08" ctrllimited="true" ctrlrange="-2.09 2.09" forcelimited="true" forcerange="-0.3 0.3" />
+    <position name="joint5_motor" joint="joint5" gear="1" kp="2.0" kv="0.04" ctrllimited="true" ctrlrange="-2.09 2.09" forcelimited="true" forcerange="-0.15 0.15" />
+    <position name="gripper_motor" joint="gripper_base_joint" gear="1" kp="1.5" kv="0.02" ctrllimited="true" ctrlrange="-1.638 0" forcelimited="true" forcerange="-0.16 0.16" />
+  </actuator>
+</mujocoinclude>

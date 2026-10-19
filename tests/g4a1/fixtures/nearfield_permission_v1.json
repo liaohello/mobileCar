@@ -1,0 +1,66 @@
+{
+  "fixture_version": "g4a1-nearfield-permission-1",
+  "status": "synthetic_fixture",
+  "evidence_scope": "NOT_SERVER_EVIDENCE",
+  "contains_world_truth": false,
+  "contains_credentials": false,
+  "accepted": [
+    {
+      "permission_id": "permission_center_fixture",
+      "run_id": "run_fixture_g4a1",
+      "episode_id": "episode_center_fixture",
+      "backend_generation": 1,
+      "nearfield_epoch": 7,
+      "session_id": "session_center_fixture",
+      "operator_kind": "synthetic_fixture",
+      "observation_sample_id": "rgbd_center_fixture",
+      "observation_capture_control_tick_id": "tick_center_fixture",
+      "action_frame_id": "action_center_fixture",
+      "action_seq": 1,
+      "observation_profile_id": "g4a1-link4-rgbd-proprio-v1",
+      "observation_profile_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "action_profile_id": "g4a1-sixdim-absolute-goal-v1",
+      "action_profile_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "expected": "accept"
+    },
+    {
+      "permission_id": "permission_offset_fixture",
+      "run_id": "run_fixture_g4a1",
+      "episode_id": "episode_offset_fixture",
+      "backend_generation": 1,
+      "nearfield_epoch": 8,
+      "session_id": "session_offset_fixture",
+      "operator_kind": "synthetic_fixture",
+      "observation_sample_id": "rgbd_offset_fixture",
+      "observation_capture_control_tick_id": "tick_offset_fixture",
+      "action_frame_id": "action_offset_fixture",
+      "action_seq": 2,
+      "observation_profile_id": "g4a1-link4-rgbd-proprio-v1",
+      "observation_profile_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "action_profile_id": "g4a1-sixdim-absolute-goal-v1",
+      "action_profile_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "expected": "accept"
+    }
+  ],
+  "rejected": [
+    {
+      "permission_id": "permission_stale_fixture",
+      "run_id": "run_fixture_g4a1",
+      "episode_id": "episode_center_fixture",
+      "backend_generation": 1,
+      "nearfield_epoch": 6,
+      "session_id": "session_stale_fixture",
+      "operator_kind": "synthetic_fixture",
+      "observation_sample_id": "rgbd_stale_fixture",
+      "observation_capture_control_tick_id": "tick_stale_fixture",
+      "action_frame_id": "action_stale_fixture",
+      "action_seq": 1,
+      "observation_profile_id": "g4a1-link4-rgbd-proprio-v1",
+      "observation_profile_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "action_profile_id": "g4a1-sixdim-absolute-goal-v1",
+      "action_profile_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "expected": "reject",
+      "reason": "stale nearfield_epoch"
+    }
+  ]
+}

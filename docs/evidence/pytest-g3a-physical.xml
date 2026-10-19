@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuite name="g3a-server-acceptance" tests="6" failures="0">
+  <testcase classname="g3a.server" name="stationary_30s" time="34.053">
+  </testcase>
+  <testcase classname="g3a.server" name="motion_independent_arm_manual_takeover" time="6.153">
+  </testcase>
+  <testcase classname="g3a.server" name="rotation_scan_geometry" time="3.846">
+  </testcase>
+  <testcase classname="g3a.server" name="arm_activity_occlusion" time="3.897">
+  </testcase>
+  <testcase classname="g3a.server" name="stale_invalid_manual_safety" time="9.991">
+  </testcase>
+  <testcase classname="g3a.server" name="reset_epoch" time="3.642">
+  </testcase>
+</testsuite>

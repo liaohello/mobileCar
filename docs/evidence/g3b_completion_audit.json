@@ -1,0 +1,297 @@
+{
+  "report_version": "g3b-completion-audit-1.0",
+  "generated_wall_utc": "2026-10-18T10:57:47.691395+00:00",
+  "execution_location": "server_only",
+  "release": "g3b-20261018T103442Z-a4081b0147bd",
+  "aggregate": "a4081b0147bd871a5161aa2b574f534dec44fa66cf6a47969f94aab63a51d9a5",
+  "success": true,
+  "formal": {
+    "case_count": 10,
+    "expected_case_count": 10,
+    "action_success_count": 7,
+    "case_success_count": 10,
+    "action_statuses": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      5,
+      6,
+      6,
+      4
+    ],
+    "format_valid": true,
+    "data_complete": true,
+    "training_qualified": false,
+    "cases": [
+      {
+        "case_id": "A01_hold_room_a",
+        "nav2_action_status": 4,
+        "first_action_status": 4,
+        "second_action_status": null,
+        "position_error_m": 0.01868202034790051,
+        "yaw_error_deg": 1.7643992796415526,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "action_succeeded": true,
+          "backend_rejection_receipt": true,
+          "first_action_succeeded": true,
+          "no_unexpected_contacts": true,
+          "physical_position": true,
+          "physical_yaw": true,
+          "settled": true
+        },
+        "report_sha256": "c857721ff77efc8335524d643a2451f25f8ad4e4555ec1bcea64dcb844f352fe"
+      },
+      {
+        "case_id": "A02_limited_room_a",
+        "nav2_action_status": 4,
+        "first_action_status": 4,
+        "second_action_status": null,
+        "position_error_m": 0.0023004475553979873,
+        "yaw_error_deg": 4.209715091247192,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "action_succeeded": true,
+          "arm_activity": true,
+          "backend_rejection_receipt": true,
+          "first_action_succeeded": true,
+          "no_unexpected_contacts": true,
+          "physical_position": true,
+          "physical_yaw": true,
+          "settled": true
+        },
+        "report_sha256": "d775c4d238be1d94a31299b6b8777690e2f860776eb02548540a395ee0c4dd19"
+      },
+      {
+        "case_id": "B01_hold_room_b",
+        "nav2_action_status": 4,
+        "first_action_status": 4,
+        "second_action_status": null,
+        "position_error_m": 0.041886641790777925,
+        "yaw_error_deg": 2.306583680827911,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "action_succeeded": true,
+          "backend_rejection_receipt": true,
+          "first_action_succeeded": true,
+          "no_unexpected_contacts": true,
+          "physical_position": true,
+          "physical_yaw": true,
+          "settled": true
+        },
+        "report_sha256": "e718adc20222dcf5c8285de80933a5205a7e8ccbef426ee99e35ee546aabe84d"
+      },
+      {
+        "case_id": "B02_limited_room_b",
+        "nav2_action_status": 4,
+        "first_action_status": 4,
+        "second_action_status": null,
+        "position_error_m": 0.042541453297116706,
+        "yaw_error_deg": 2.1509120810109756,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "action_succeeded": true,
+          "arm_activity": true,
+          "backend_rejection_receipt": true,
+          "first_action_succeeded": true,
+          "no_unexpected_contacts": true,
+          "physical_position": true,
+          "physical_yaw": true,
+          "settled": true
+        },
+        "report_sha256": "34231dbbfdb94c0f5cf629d73b63373d90b834552c9d5110d612053786fd5a08"
+      },
+      {
+        "case_id": "A03_restart_localization",
+        "nav2_action_status": 4,
+        "first_action_status": 4,
+        "second_action_status": null,
+        "position_error_m": 0.015558450684555162,
+        "yaw_error_deg": 3.550647023916026,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "action_succeeded": true,
+          "backend_rejection_receipt": true,
+          "first_action_succeeded": true,
+          "no_unexpected_contacts": true,
+          "physical_position": true,
+          "physical_yaw": true,
+          "settled": true
+        },
+        "report_sha256": "f233934f46d7e7684108866e8f7ff1c359f7f93c122d95fdb855437a8ade5d21"
+      },
+      {
+        "case_id": "B03_restart_localization",
+        "nav2_action_status": 4,
+        "first_action_status": 4,
+        "second_action_status": null,
+        "position_error_m": 0.03096662093874437,
+        "yaw_error_deg": 3.561265493971353,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "action_succeeded": true,
+          "backend_rejection_receipt": true,
+          "first_action_succeeded": true,
+          "no_unexpected_contacts": true,
+          "physical_position": true,
+          "physical_yaw": true,
+          "settled": true
+        },
+        "report_sha256": "66da3b5233eb8ab18c440ba0d220261d7182139be7ed2afff790d04c00bfcdba"
+      },
+      {
+        "case_id": "A04_cancel_manual_takeover",
+        "nav2_action_status": 5,
+        "first_action_status": 5,
+        "second_action_status": 5,
+        "position_error_m": 0.13844651635688934,
+        "yaw_error_deg": 9.96734347337539,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "arm_activity": true,
+          "arm_preserved": true,
+          "backend_rejection_receipt": true,
+          "explicit_new_goal_output_observed": true,
+          "explicit_new_goal_started": true,
+          "final_gate_blocks_late_nonzero": true,
+          "first_goal_canceled": true,
+          "manual_nonzero_takeover_accepted": true,
+          "no_resume_after_release": true,
+          "no_unexpected_contacts": true,
+          "second_goal_terminal": true,
+          "settled": true
+        },
+        "report_sha256": "3d83021e5337be44b78459f2493ac9a6b04cfbf3f0a3c655b0f97d6e807215dc"
+      },
+      {
+        "case_id": "A05_scan_loss",
+        "nav2_action_status": 6,
+        "first_action_status": 6,
+        "second_action_status": null,
+        "position_error_m": 0.3143191050955387,
+        "yaw_error_deg": 11.974881959170013,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "action_stopped_or_canceled": true,
+          "detection_to_physical_stop": true,
+          "detection_to_zero": true,
+          "fault_detected": true,
+          "final_gate_blocks_late_nonzero": true,
+          "no_automatic_resume_after_recovery": true,
+          "no_unexpected_contacts": true,
+          "scan_fault_observed": true,
+          "stopped_health_observed": true
+        },
+        "report_sha256": "f02f2a942f21f27a49d7450c83530a8eabeb1e98e273f2d69eae03ab55b26586"
+      },
+      {
+        "case_id": "B04_localization_failure",
+        "nav2_action_status": 6,
+        "first_action_status": 6,
+        "second_action_status": null,
+        "position_error_m": 0.9237930292533965,
+        "yaw_error_deg": 0.025667596438857763,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "action_stopped_or_canceled": true,
+          "detection_to_physical_stop": true,
+          "detection_to_zero": true,
+          "fault_detected": true,
+          "final_gate_blocks_late_nonzero": true,
+          "no_automatic_resume_after_recovery": true,
+          "no_unexpected_contacts": true,
+          "scan_and_odom_remain_fresh": true
+        },
+        "report_sha256": "f03524272791167089f59776ec9dd0fef308130fe45b10e9d5c8e068102a5c85"
+      },
+      {
+        "case_id": "A06_reset_epoch",
+        "nav2_action_status": 4,
+        "first_action_status": 5,
+        "second_action_status": 4,
+        "position_error_m": 0.022028125560101367,
+        "yaw_error_deg": 2.3933690719160547,
+        "settled_duration_s": 0.6000000000000001,
+        "unexpected_contacts": [],
+        "case_success": true,
+        "gates": {
+          "backend_rejection_receipt": true,
+          "explicit_new_goal_succeeded": true,
+          "navigation_epoch_advanced": true,
+          "new_episode": true,
+          "no_unexpected_contacts": true,
+          "old_ros_stack_exited": true,
+          "physical_position": true,
+          "physical_yaw": true,
+          "settled": true,
+          "stale_goal_rejected": true
+        },
+        "report_sha256": "641d9e500d3fd9fd346ffec2a8541e86df8fe2cb6d0bba1087a4da57677e8a3c"
+      }
+    ]
+  },
+  "subchecks": {
+    "invalid_goal_checks_passed": 4,
+    "invalid_goal_checks_total": 4,
+    "footprint_passed": true,
+    "nan_inf_policy_passed": true,
+    "rviz_gui_success": true,
+    "raw_duplicate_tf_strict_passed": false,
+    "duplicate_tf_supplemental_classification": "single_localization_source_with_same_stamp_corrections",
+    "duplicate_tf_supplemental_passed": true
+  },
+  "regression": {
+    "result": "123 passed",
+    "tests": 123,
+    "failures": 0,
+    "errors": 0,
+    "junit_path": "var/reports/g3b-final-pytest-a408/junit.xml",
+    "junit_sha256": "322fa1eb608e98f2f69cdd824efe7689812e76bf23aeaca0a3f6fc4bc277d628"
+  },
+  "maps": [
+    {
+      "map_id": "map_room_a_g3b_release_v1",
+      "scene_id": "navigation_diagnostic",
+      "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+      "serialized_pose_graph": true,
+      "free_thresh": 0.196
+    },
+    {
+      "map_id": "map_room_b_g3b_release_v1",
+      "scene_id": "g3b_l_shape_wide_door",
+      "manifest_sha256": "a6e641a570c85e21523863f75e1346469c668993c1af0d75fe92ff4d1ea0382c",
+      "serialized_pose_graph": true,
+      "free_thresh": 0.196
+    }
+  ],
+  "process_audit": {
+    "leftover_release_physics_or_ros_process_count": 0,
+    "ros2_cli_daemons_stopped": true
+  },
+  "artifact_sha256": {
+    "formal_report": "867d5b4f932db864421e26b7df18c12363c04b0fc94a20388667fd0382666da2",
+    "subchecks_report": "185c1ba4bb4103b80d3cfaffb02fdf625db8308ff9244f1a82a1f969a541c89b",
+    "duplicate_tf_decision": "33a79cdd43714d72caac953f9e0b22a4172daf15545429388719ad8186b474be"
+  }
+}

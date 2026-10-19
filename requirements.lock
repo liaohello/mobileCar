@@ -1,0 +1,9 @@
+fastapi==0.136.3
+httpx==0.28.1
+mujoco==3.1.6
+numpy==2.2.4
+pillow==11.3.0
+pydantic==2.13.5
+PyYAML==6.0.3
+uvicorn==0.37.0
+

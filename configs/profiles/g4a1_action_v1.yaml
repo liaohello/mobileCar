@@ -1,0 +1,32 @@
+schema_version: 1
+interface_profile: g4a1-1.0
+profile_id: g4a1-sixdim-absolute-goal-v1
+profile_version: "1.0"
+contract_version: mobilecar-1.0
+joint_order: [joint1, joint2, joint3, joint4, joint5]
+units: [rad, rad, rad, rad, rad, m]
+target_layer: absolute_goal
+decision_rate_hz: 5.0
+action_ttl_s: 0.4
+lease_timeout_s: 0.5
+permission_ttl_s: 120.0
+arm_and_gripper_atomic: true
+termination_policy:
+  stop_new_trajectory: true
+  hold_last_safe_joint_targets: true
+  hold_last_safe_gripper_width: true
+  automatic_gripper_open: false
+required_identity:
+  - run_id
+  - episode_id
+  - backend_generation
+  - nearfield_epoch
+  - permission_id
+  - session_id
+  - observation_sample_id
+  - action_frame_id
+  - action_seq
+arms_and_gripper_sources:
+  ui: shared_adapter
+  policy: shared_adapter
+  teacher_tcp_candidate: candidate_only

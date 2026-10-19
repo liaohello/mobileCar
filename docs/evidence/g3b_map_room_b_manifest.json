@@ -1,0 +1,115 @@
+{
+  "assets": [
+    {
+      "bytes": 124,
+      "relative_path": "map.yaml",
+      "role": "occupancy_yaml",
+      "sha256": "6b1814bee97daada04a700a87fcad3e0be59ac49b030f373bf8012ada95c57d0"
+    },
+    {
+      "bytes": 4231,
+      "relative_path": "map.pgm",
+      "role": "occupancy_image",
+      "sha256": "f3242226c9d6492a24d5f63f25d191a3c8daff7be9a6639cc5f03cb8361cdd5a"
+    },
+    {
+      "bytes": 6650471,
+      "relative_path": "posegraph.posegraph",
+      "role": "pose_graph",
+      "sha256": "ea6d7ccdaebc2238423b58935c5b51299c8a26fec12d15c28b93ae4280c433b8"
+    },
+    {
+      "bytes": 3179577,
+      "relative_path": "posegraph.data",
+      "role": "pose_graph_data",
+      "sha256": "e8d139129d7b30c8ae8098acced74adaf470931d97c4d60f7326c5b8111952e8"
+    },
+    {
+      "bytes": 80,
+      "relative_path": "manifest.sha256",
+      "role": "map_manifest",
+      "sha256": "a63fd614cd194893dd85b684a2c090f4224019f3fd49c41067e42dcf26e9d761"
+    }
+  ],
+  "base_frame": "base_link",
+  "compatibility_fields": [
+    "scene_id",
+    "model_sha256",
+    "navigation_profile_sha256",
+    "sensor_profile_sha256",
+    "scan_config_sha256",
+    "resolution_m",
+    "map_frame",
+    "odom_frame",
+    "base_frame"
+  ],
+  "created_episode_id": "episode_872b88032a1642729ac818686525bd42",
+  "created_navigation_epoch": 1,
+  "created_run_id": "run_7e6f6bba3b22474b9478dc9759fee03a",
+  "created_wall_utc": "2026-10-18T10:36:36.208040Z",
+  "free_thresh": 0.196,
+  "initial_prior": {
+    "covariance": [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "x_m": 0.0,
+    "y_m": 0.0,
+    "yaw_rad": 0.0
+  },
+  "interface_profile": "g3b-1.0",
+  "map_frame": "map",
+  "map_id": "map_room_b_g3b_release_v1",
+  "model_sha256": "53e0bd0f64f2db19a1cfd5d0a8653dba645786f840332028e5ea1881354d6180",
+  "navigation_profile_sha256": "178b46511aa6d92d6c6446f3b127f1115e9e08aab0465be151c16627b207e3ef",
+  "occupied_thresh": 0.65,
+  "odom_frame": "odom",
+  "origin_xy_yaw": [
+    -1.5,
+    -1.45,
+    0.0
+  ],
+  "profile_id": "g3b-nav2-omni-map-v1",
+  "profile_sha256": "6ba7e6e409b368e913f46ed2cdd705d27aa6acfadbb5eb29b233453c204b6f50",
+  "profile_version": "1.0",
+  "resolution_m": 0.05,
+  "scan_config_sha256": "ad789e8e5e54e931251b034b2733711f9b0f2dcbc2dc3031282165fe3c7eafe1",
+  "scene_id": "g3b_l_shape_wide_door",
+  "schema_version": 1,
+  "sensor_profile_sha256": "26d1675f96ea83de41607f647b7b34e27a05e56663a7be71a62da9b190053716",
+  "serialized_pose_graph": true
+}

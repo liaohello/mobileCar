@@ -1,0 +1,44 @@
+schema_version: 1
+interface_profile: g4a2-1.0
+profile_id: g4a2-human-rgbd-proprio-5hz-sixdim-v1
+profile_version: "1.0"
+contract_version: mobilecar-1.0
+source: human_teleop
+view_source: link4_rgbd_proprio
+purpose: dev_pilot
+decision_rate_hz: 5.0
+joint_order: [joint1, joint2, joint3, joint4, joint5]
+units: [rad, rad, rad, rad, rad, m]
+action_layer: absolute_goal
+teacher_plan_id_allowed: false
+assist_modes:
+  - manual
+  - planner_assist
+timing:
+  image_max_age_s: 0.4
+  proprio_max_age_s: 0.2
+  image_proprio_skew_s: 0.2
+  action_ttl_s: 0.4
+  sender_hz: 5.0
+  cross_clock_policy: preserve_unknown_no_subtraction
+recording:
+  operator_required: true
+  explicit_human_confirmation: true
+  display_sample_binding_required: true
+  human_intent_binding_required: true
+  stop_on_blur_or_disconnect: true
+policy_input_allowlist:
+  - link4_rgb
+  - metric_depth
+  - valid_mask
+  - arm_user_joint_positions_rad
+  - gripper_width_m
+  - local_fk
+  - safety_recording_permission_state
+forbidden:
+  - world_sim
+  - object_truth
+  - oracle_contact
+  - third_person_image
+  - full_diagnostics
+  - teacher_plan_id

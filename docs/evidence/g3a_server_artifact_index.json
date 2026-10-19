@@ -1,0 +1,115 @@
+{
+  "artifacts": {
+    "bridge_regression_junit": {
+      "bytes": 555,
+      "remote_path": "var/reports/g3a-frozen-regression-1/bridge.xml",
+      "reproduce_or_inspect": "cat var/reports/g3a-frozen-regression-1/bridge.xml",
+      "result": "3_passed",
+      "sha256": "2526479cbe34f15dd0e831f147fd605ed75e86bb25f86fba7fcf815c82cb7005"
+    },
+    "core_regression_junit": {
+      "bytes": 11673,
+      "remote_path": "var/reports/g3a-frozen-regression-1/core.xml",
+      "reproduce_or_inspect": "cat var/reports/g3a-frozen-regression-1/core.xml",
+      "result": "88_passed",
+      "sha256": "15f15222999693765b9ee00644cfead88cf6a40cabf6dc4e0aca78aeb456206a"
+    },
+    "physical_acceptance_report": {
+      "bytes": 51003,
+      "remote_path": "var/reports/g3a-frozen-physical-1/g3a_acceptance_report.json",
+      "reproduce_or_inspect": "cat var/reports/g3a-frozen-physical-1/g3a_acceptance_report.json",
+      "result": "passed",
+      "sha256": "db0691bc393d81e1c562d62614d5cea3e712c30ab2ab6326e519a809d0e94cf4"
+    },
+    "physical_ipc_trace": {
+      "bytes": 20629106,
+      "remote_path": "var/reports/g3a-frozen-physical-1/ipc_stream.ndjson",
+      "reproduce_or_inspect": "wc -l var/reports/g3a-frozen-physical-1/ipc_stream.ndjson",
+      "result": "raw_server_trace",
+      "sha256": "7cabfc44a94c911bc7106cf94d885b9d4ca96c36637495123427ab7ea30f8bb6"
+    },
+    "physical_junit": {
+      "bytes": 677,
+      "remote_path": "var/reports/g3a-frozen-physical-1/g3a_acceptance_junit.xml",
+      "reproduce_or_inspect": "cat var/reports/g3a-frozen-physical-1/g3a_acceptance_junit.xml",
+      "result": "passed",
+      "sha256": "10f0f4a10b0d69bddbb5225b37ac0011f14b84918ca5cb01a6239896f5d4d7d3"
+    },
+    "physical_server_log": {
+      "bytes": 14220,
+      "remote_path": "var/reports/g3a-frozen-physical-1/mobilecar_server.log",
+      "reproduce_or_inspect": "tail -200 var/reports/g3a-frozen-physical-1/mobilecar_server.log",
+      "result": "raw_server_log",
+      "sha256": "59116caef53a60f6cd6507ae55c288a9df1b776ac9b98629dae6b28455aea009"
+    },
+    "release_source_manifest": {
+      "bytes": 39885,
+      "remote_path": "releases/g3a-20261017T194117Z-aa6a6e987115/SOURCE_MANIFEST.json",
+      "reproduce_or_inspect": "cat releases/g3a-20261017T194117Z-aa6a6e987115/SOURCE_MANIFEST.json",
+      "result": "frozen",
+      "sha256": "832cb5e1adc0d96624d0ef22bfb0b49b809418855dd862f58c34c65a8bba5aac"
+    },
+    "ros_acceptance_report": {
+      "bytes": 18913,
+      "remote_path": "var/reports/g3a-frozen-ros-1/g3a_ros_acceptance_report.json",
+      "reproduce_or_inspect": "cat var/reports/g3a-frozen-ros-1/g3a_ros_acceptance_report.json",
+      "result": "passed",
+      "sha256": "9443d6542f39c1b6cb963eb2a0897b288c87bc60439c3a2a3e6f2bddf5f064b0"
+    },
+    "ros_bridge_log": {
+      "bytes": 625,
+      "remote_path": "var/reports/g3a-frozen-ros-1/ros_bridge.log",
+      "reproduce_or_inspect": "tail -200 var/reports/g3a-frozen-ros-1/ros_bridge.log",
+      "result": "raw_ros_log",
+      "sha256": "1952dd872246f45863f7df8af20447abac6ad9f3426e7f6697fa57d80d288c0f"
+    },
+    "ros_build_log": {
+      "bytes": 3565,
+      "remote_path": "var/reports/g3a-frozen-ros-1/build.log",
+      "reproduce_or_inspect": "tail -100 var/reports/g3a-frozen-ros-1/build.log",
+      "result": "colcon_build",
+      "sha256": "1c66deef89bfd8e61135fb7cecf98a66792015632767139b5205171f03681094"
+    },
+    "ros_probe": {
+      "bytes": 4038,
+      "remote_path": "var/reports/g3a-frozen-ros-1/ros_probe.json",
+      "reproduce_or_inspect": "cat var/reports/g3a-frozen-ros-1/ros_probe.json",
+      "result": "passed",
+      "sha256": "72d70ec460dfa5247631a7d7083e400e1c0bacc4cf5c9f03022919133e4a8352"
+    }
+  },
+  "episode_ids": [
+    "episode_0dca865ec31647e4994c684892f8d17e",
+    "episode_318cfb1214bb4f23b868e234be60d9cd",
+    "episode_657b29434dc947f3b04795f9d9383e08",
+    "episode_78d914f0c2194cfba25398e4a4fa32fa",
+    "episode_a2aca848c45d46a4805e0ba729854417",
+    "episode_b270196c349d417dbcbfa0c3d847683d",
+    "episode_baaefa45cf7a44aba10bfc7375ed8745"
+  ],
+  "execution_location": "server_only",
+  "generated_wall_utc": "2026-10-17T19:44:37.238988Z",
+  "goal": "G3A_navigation_foundation",
+  "jobs": {
+    "index": "g3a-frozen-index-4",
+    "physical": "g3a-frozen-physical-1",
+    "regression": "g3a-frozen-regression-1",
+    "ros": "g3a-frozen-ros-1"
+  },
+  "known_exclusions": [
+    "G1 source_manifest.json remains historical and intentionally does not match changed G3A source",
+    "Frontend app.js was not rebuilt because G3A did not alter UI source",
+    "No G2A browser or G2B export/loader matrix was repeated"
+  ],
+  "raw_run_root": "var/runs",
+  "raw_runs": [
+    "run_3abe7c1ea1794407aa7b8707af030c4b",
+    "run_7e92d9a79dda4cdabfb9afc90dd9c863"
+  ],
+  "release_id": "g3a-20261017T194117Z-aa6a6e987115",
+  "release_root": "releases/g3a-20261017T194117Z-aa6a6e987115",
+  "schema_version": 1,
+  "source_aggregate_sha256": "aa6a6e9871159310cf3d2499847e181a7e962f7a8c552c9d5304461806848859",
+  "source_file_count": 227,
+  "truth_policy": "GT_DEBUG_ONLY; isolated scoring; one initial trajectory alignment"
+}

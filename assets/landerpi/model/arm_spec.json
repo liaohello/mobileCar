@@ -1,0 +1,162 @@
+{
+  "dynamic": true,
+  "initial_positions": {
+    "joint1": 0.0,
+    "joint2": 0.0,
+    "joint3": 0.0,
+    "joint4": -1.5707963267948966,
+    "joint5": 0.0,
+    "gripper_base_joint": -1.077632656580025,
+    "gripper_left_join": 1.6164489848700374,
+    "gripper_right_joint": 1.6164489848700374,
+    "left_jaw_joint": 0.012499999999999999,
+    "right_jaw_joint": -0.012499999999999999
+  },
+  "mimic": {
+    "gripper_left_join": {
+      "joint": "gripper_base_joint",
+      "multiplier": -1.5,
+      "offset": 0.0
+    },
+    "gripper_right_joint": {
+      "joint": "gripper_base_joint",
+      "multiplier": -1.5,
+      "offset": 0.0
+    },
+    "left_jaw_joint": {
+      "joint": "gripper_base_joint",
+      "multiplier": -0.0115995,
+      "offset": 0.0
+    },
+    "right_jaw_joint": {
+      "joint": "gripper_base_joint",
+      "multiplier": 0.0115995,
+      "offset": 0.0
+    }
+  },
+  "limits": {
+    "joint1": [
+      -2.09,
+      2.09
+    ],
+    "joint2": [
+      -2.09,
+      2.09
+    ],
+    "joint3": [
+      -2.09,
+      2.09
+    ],
+    "joint4": [
+      -2.09,
+      2.09
+    ],
+    "joint5": [
+      -2.09,
+      2.09
+    ],
+    "gripper_base_joint": [
+      -1.638,
+      0.0
+    ],
+    "gripper_left_join": [
+      -2.4569,
+      2.4569
+    ],
+    "gripper_right_joint": [
+      -2.4569,
+      2.4569
+    ],
+    "left_jaw_joint": [
+      0.0,
+      0.019
+    ],
+    "right_jaw_joint": [
+      -0.019,
+      0.0
+    ]
+  },
+  "source_limits": {
+    "joint1": [
+      -2.09,
+      2.09
+    ],
+    "joint2": [
+      -2.09,
+      2.09
+    ],
+    "joint3": [
+      -2.09,
+      2.09
+    ],
+    "joint4": [
+      -2.09,
+      2.09
+    ],
+    "joint5": [
+      -2.09,
+      2.09
+    ],
+    "gripper_base_joint": [
+      -1.638,
+      0.0
+    ],
+    "gripper_left_join": [
+      -2.4569,
+      2.4569
+    ],
+    "gripper_right_joint": [
+      -2.4569,
+      2.4569
+    ],
+    "left_jaw_joint": [
+      0.0,
+      0.019
+    ],
+    "right_jaw_joint": [
+      -0.019,
+      0.0
+    ]
+  },
+  "gripper": {
+    "max_width_m": 0.05,
+    "min_width_m": 0.012000038000000005,
+    "width_per_drive_rad_m": 0.023199,
+    "source_gap_m": 0.04895122724163532,
+    "jaw_origin_correction_m": 0.00052438637918234,
+    "zero_width_m": 0.025,
+    "zero_model_rad": -1.077632656580025
+  },
+  "user_coordinates": {
+    "zero_model_rad": [
+      0.0,
+      0.0,
+      0.0,
+      -1.5707963267948966,
+      0.0
+    ],
+    "direction": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "status": "user_defined_photo_pose_not_hardware_500"
+  },
+  "tcp": {
+    "site": "grasp_tcp",
+    "body": "guide_rod_link",
+    "position": [
+      -0.0030427614580541846,
+      -0.0007270026737451543,
+      0.01995871637761593
+    ]
+  },
+  "camera_mount": {
+    "parent": "link4",
+    "status": "source_topology_not_rigid_to_tcp"
+  },
+  "q1_bundle_deg": null,
+  "effective_limit_status": "source_limits"
+}

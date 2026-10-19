@@ -1,0 +1,22 @@
+{
+  "contract_version": "mobilecar-1.0",
+  "backend_kind": "synthetic_fixture",
+  "arm_joint_names": ["joint1", "joint2", "joint3", "joint4", "joint5"],
+  "arm_user_limits_rad": [[-2.0, 2.0], [-1.5, 1.5], [-2.0, 2.0], [-2.5, 2.5], [-2.5, 2.5]],
+  "arm_velocity_limits_rad_s": [0.6, 0.6, 0.6, 0.6, 0.6],
+  "gripper_min_width_m": 0.005,
+  "gripper_max_width_m": 0.05,
+  "base_linear_limit_m_s": 0.05,
+  "base_yaw_limit_rad_s": 0.3,
+  "tcp_position_tolerance_m": 0.005,
+  "tcp_orientation_is_soft": true,
+  "supported_commands": ["set_base_twist", "set_arm_joint_goal", "set_gripper_width_goal", "preview_tcp_target", "execute_tcp_target", "cancel", "stop", "reset", "heartbeat"],
+  "sensor_streams": ["rgb", "depth", "lidar", "imu", "encoders", "joint_feedback", "image_transforms"],
+  "model_id": "synthetic_fixture_model",
+  "model_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "scene_id": "synthetic_fixture_scene",
+  "camera_parent_body": "link4",
+  "tcp_parent_body": "guide_rod_link",
+  "ground_truth_policy_visible": false
+}
+

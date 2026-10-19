@@ -1,0 +1,19 @@
+{
+  "classification": "single_localization_source_with_same_stamp_corrections",
+  "passed": true,
+  "raw_strict_check": {
+    "amcl_reference_present": false,
+    "limitation": "ROS /tf does not expose publisher identity; runtime rate/duplicate stamps plus source ownership are checked.",
+    "passed": false,
+    "runtime_conflicting_stamps": 1,
+    "runtime_duplicate_stamps": 7,
+    "runtime_identical_repeats": 4,
+    "runtime_max_same_stamp_rotation_delta_rad": 0.001744999999912715,
+    "runtime_max_same_stamp_translation_delta_m": 0.0004895513640368311,
+    "runtime_message_count": 68,
+    "runtime_minor_same_stamp_updates": 2,
+    "runtime_observed_rate_hz": 4.151903828721677,
+    "runtime_unique_stamps": 61,
+    "slam_localization_node_count": 1
+  }
+}

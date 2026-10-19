@@ -1,0 +1,193 @@
+schema_version: 1
+profile_id: g2b-dev-export-1.0
+profile_version: "1.0"
+description: >-
+  Read-only G2A development export at 5 Hz. D0 and D2 are separate LeRobot
+  datasets. Task success, human provenance, coverage and training qualification
+  are evaluated independently from file-format validity.
+
+grid:
+  rate_hz: 5
+  clock_id: backend_monotonic
+  origin_event: recording_start
+  origin_field: sim_time_s
+  phase_offset_s: 0.13
+  terminal_event: recording_stop
+  include_init_and_final: true
+  sim_to_backend_mapping: latest_prior_explicit_pair
+  explicit_anchor_sources:
+    - recording_start
+    - actuator_reference
+  max_clock_anchor_age_s: 0.05
+
+causality:
+  image_max_age_s: 0.4
+  feedback_max_age_s: 0.2
+  max_image_feedback_capture_skew_s: 0.2
+  arrival_boundary: arrival_backend_monotonic_s_lte_decision
+  persist_semantics: durability_only_not_online_consumer_time
+  image_selection: latest_arrived_unused_sample
+  fast_observation_selection: latest_arrived_per_stream_at_or_before_decision
+  action_reference_selection: latest_arrived_at_or_before_decision
+  max_gap_slots: 1
+  gap_policy: reject_slot_split_contiguous_segments
+  allow_future_interpolation: false
+  allow_old_image_reuse: false
+  allow_cross_episode_or_reset_stitch: false
+  fill_missing_values: false
+
+features:
+  image:
+    key: observation.images.link4_rgb
+    sensor_parent: link4
+    color: RGB8
+    storage: video
+    width: 640
+    height: 480
+    normalized: false
+    policy_input: true
+  d0:
+    observation_keys:
+      - wheel_velocity_rad_s
+      - imu_acceleration_m_s2
+      - imu_gyro_rad_s
+    state_names:
+      - wheel_front_left_velocity_rad_s
+      - wheel_rear_left_velocity_rad_s
+      - wheel_front_right_velocity_rad_s
+      - wheel_rear_right_velocity_rad_s
+      - imu_acceleration_x_m_s2
+      - imu_acceleration_y_m_s2
+      - imu_acceleration_z_m_s2
+      - imu_gyro_x_rad_s
+      - imu_gyro_y_rad_s
+      - imu_gyro_z_rad_s
+    action_names: [vx_m_s, vy_m_s, wz_rad_s]
+    forbidden_observation_keys:
+      - base_twist_body_m_s
+      - lidar
+      - world_sim
+      - oracle
+  d2:
+    observation_keys:
+      - link4_rgb
+      - arm_user_joint_positions_rad
+      - gripper_width_m
+    state_names:
+      - joint1_user_rad
+      - joint2_user_rad
+      - joint3_user_rad
+      - joint4_user_rad
+      - joint5_user_rad
+      - gripper_width_m
+    action_names:
+      - joint1_target_user_rad
+      - joint2_target_user_rad
+      - joint3_target_user_rad
+      - joint4_target_user_rad
+      - joint5_target_user_rad
+      - gripper_width_target_m
+    depth_policy: metric_depth_and_mask_sidecar_only
+    pseudo_color_depth_as_rgb: false
+
+actions:
+  d0:
+    layer: actuator_reference
+    key: base_twist
+    frame_id: base_link
+    units: [m/s, m/s, rad/s]
+    accepted_dispatch_types: [set_base_twist, zero_base]
+    terminating_dispatch_types: [stop, reset, cancel]
+    reference_derivation: >-
+      WheelController.command after the explicitly recorded body-twist request,
+      command delay, finite acceleration and command-limit enforcement.
+    derived_from_wheel_target: false
+    measurement_or_feedback_as_action: false
+  d2:
+    layer: actuator_reference
+    key: arm_model_reference_rad
+    gripper_key: gripper_width_target_m
+    frame_id: arm_base
+    units: [rad, rad, rad, rad, rad, m]
+    accepted_dispatch_types: [set_arm_joint_goal, set_gripper_width_goal]
+    terminating_dispatch_types: [stop, reset, cancel]
+    joint_order: [joint1, joint2, joint3, joint4, joint5]
+    user_zero_model_rad: [0.0, 0.0, 0.0, -1.5707963267948966, 0.0]
+    user_direction: [1.0, 1.0, 1.0, 1.0, 1.0]
+    model_to_user_rule: (model - zero_model_rad) * user_direction
+    first_five_model_values_only: true
+    preview_or_rejected_as_action: false
+    tcp_macro_target_as_action: false
+    feedback_as_action: false
+
+action_windows:
+  d0_post_zero_hold_s: 0.1
+
+coordinates:
+  model_sha256: 3ca3d6d0a92a48bbfbce5ac7a04e37a0f7cf7a73297045ae327bf461ad50e280
+  robot_config_sha256: 2a290f7ebd278941901bcf2a6f3ae88a74a60be7bdc5719da47fd49ff9c487a8
+  arm_spec_sha256: 8d1dc917c7c76c58dcd96ab07525e247479d6295f427dd75c8ba3a13c0ecdfa9
+  source_observation_profile: g2a-rgbd-5hz-original
+  source_observation_profile_sha256: 9473171d7460ba968813b40ad1cae2f392bbc168e85ef4524eced6f38b5e3042
+  source_action_profile: g2a-teleop-action-1.0
+  source_action_profile_sha256: 4b037ff671fb766452630b234d5680383381a2e6597b5855a5d92131a5c9f7dc
+
+policy_input_allowlist:
+  - observation.images.link4_rgb
+  - observation.state
+  - action
+  - timestamp
+  - frame_index
+  - episode_index
+  - task_index
+  - task
+forbidden_policy_inputs:
+  - world_sim
+  - object_truth
+  - oracle
+  - diagnostics_full_object
+  - third_person_controller_handle_state
+  - gt_debug
+
+lerobot:
+  package: lerobot
+  version: 0.4.4
+  tag_commit: 8fff0fde7c79f23a93d845d1a50e985de01f8b8a
+  wheel_sha256: e53800ead8216861540ad3aebaf12e3cf87a399b3c1f234eeead33716c9c24fd
+  dataset_codebase_version: v3.0
+  python_requires: ">=3.10"
+  writer: official_LeRobotDataset_create_add_frame_save_episode_finalize
+  loader: official_LeRobotDataset
+  fps: 5
+  use_videos: true
+  video_codec: h264
+  video_backend: pyav
+  publish_to_hub: false
+  train_or_inference: false
+
+outputs:
+  d0_repo_id: mobilecar/g2b-g2a-motion-d0-dev
+  d2_repo_id: mobilecar/g2b-g2a-motion-d2-dev
+  split: dev
+  train: []
+  validation: []
+
+source_rules:
+  preserve_operator_kind: true
+  preserve_view_source: true
+  preserve_task_result: true
+  preserve_task_language: true
+  require_audit_complete_for_export: true
+  stationary_without_dispatch: reject
+  incomplete_write_fault: reject
+  synthetic_fixture_never_promoted_to_real_episode: true
+
+train_qualification:
+  training_profile_id: g2b-dev-training-v1
+  required_operator_kind: human_teleop
+  required_task_result: success
+  minimum_parent_episodes: 20
+  required_camera_parent: link4
+  required_task_coverage: true
+  prohibited_parent_split_leak: true
+  current_source_expected_qualified: false

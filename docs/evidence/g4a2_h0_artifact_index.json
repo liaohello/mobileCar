@@ -1,0 +1,59 @@
+{
+  "release": "g4a2-20261018T171942Z-030bf47cef6f",
+  "aggregate": "030bf47cef6f6084720227f26e2874fecd0671e28191c6bd11d9866a4e33ddd6",
+  "collection_runtime_release": "g4a2-20261018T171942Z-030bf47cef6f",
+  "collection_runtime_aggregate": "030bf47cef6f6084720227f26e2874fecd0671e28191c6bd11d9866a4e33ddd6",
+  "server_only": true,
+  "page": "127.0.0.1:8792/g4a2",
+  "artifacts": [
+    {
+      "path": "../../var/reports/g4a2-h0-tests-5c-2/junit.xml",
+      "sha256": "2ec44ca5983e9bcc091c02d9d192a7d9c1c31b8781af20be719fb09358984c23"
+    },
+    {
+      "path": "../../var/reports/g4a2-offline-gates-4/junit.xml",
+      "sha256": "2ccfee2e6c4c02d245d4b0e3cec038d4c141e48812bed319e0e5deced0b26d4a"
+    },
+    {
+      "path": "../../var/reports/g4a2-h0-export-smoke/junit.xml",
+      "sha256": "986a93ad2cb90d9995cebf2ba692b897b03a2c84f89cd17d20a33c845da8aadd"
+    },
+    {
+      "path": "../../var/reports/g4a2-page-smoke-5c/g4a2_page.png",
+      "sha256": "5ad954c249f4825c305e0d5b5c8cfc6dee9e4a2f320c427f61f231c3d593393e"
+    },
+    {
+      "path": "../../var/datasets/g4a2_rgbd_writer_smoke_3/g4a2_rgbd_writer_smoke.json",
+      "sha256": "709f574d10c1b3bd33d55f2f2f7b374c2aaf97532db39b97fe5737352ea4a065"
+    },
+    {
+      "path": "../../var/jobs/g4a2-page-smoke-5c/console.log",
+      "sha256": "51cd03fad5d78c64c735a0bf988db29b38123ab492319a0a279112c349384871"
+    },
+    {
+      "path": "../../var/jobs/g4a2-human-page/server.log",
+      "result": "pending_human_operation"
+    },
+    {
+      "path": "../../var/reports/g4a2-discover-h1/human_pilot_manifest.json",
+      "sha256": "ef8f0bac7af6fde1e763ff671eb86d0adc924e1499e98f9adbf1ad00730f8640",
+      "result": "waiting_for_3_human_episodes"
+    },
+    {
+      "path": "../../var/reports/g4a2-final-ui-gates/junit.xml",
+      "sha256": "f271f713d981d403b34d79fb2ca8d3aff1b81d8889a5a3c7a8ff6ad435c34549"
+    },
+    {
+      "path": "../../releases/g4a2-20261018T171942Z-030bf47cef6f/var/reports/g4a2-ui-state-smoke/g4a2_state_smoke.json",
+      "sha256": "260aa2363b7f5bb53be1b18520de97f7bcae5d95363b3ef509b781aa2c045ddd"
+    },
+    {
+      "path": "../../releases/g4a2-20261018T171942Z-030bf47cef6f/var/reports/g4a2-ui-state-smoke/g4a2_state_failure.png",
+      "sha256": "ab4a2deeaa400ebf45599be639cb4c5cba3545a5993368db31388902c6d0fcc5"
+    },
+    {
+      "path": "../../var/reports/g4a2-real-page-smoke-after-fix-2/g4a2_page.png",
+      "sha256": "b78b208f0c3a0e7c673b8156881ef6a57730263d8fd9d1075396503a44d84f7b"
+    }
+  ]
+}

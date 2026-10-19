@@ -1,0 +1,25 @@
+schema_version: 1
+interface_profile: g4a2-1.0
+plan_id: g4a2-human-first-cohort-v1
+status: pilot_pending
+human_pilot:
+  successful_episodes: 2
+  cancelled_or_failed_episodes: 1
+  purpose: dev_pilot
+  counts_toward_main: false
+main_collection:
+  successful_target: 24
+  failed_cancelled_retained: true
+  max_total_attempts: 36
+  families: 12
+  episodes_per_family: 2
+  split:
+    train: {families: 8, episodes: 16}
+    validation: {families: 2, episodes: 4}
+    test: {families: 2, episodes: 4}
+  family_assignment_frozen: true
+safety:
+  max_attempts_per_family: 3
+  episode_sim_timeout_s: 300
+  episode_wall_timeout_s: 420
+  one_physical_instance: true

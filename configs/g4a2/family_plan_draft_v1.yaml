@@ -1,0 +1,30 @@
+schema_version: 1
+interface_profile: g4a2-1.0
+plan_id: g4a2-first-cohort-family-draft-v1
+status: draft_pending_h1
+frozen: false
+workspace: mobile_pick_g4a1_verified
+families:
+  - {id: F01, description: "central/neutral", train: true}
+  - {id: F02, description: "central/slightly_low", train: true}
+  - {id: F03, description: "central/slightly_high", train: true}
+  - {id: F04, description: "lateral_left_small", train: true}
+  - {id: F05, description: "lateral_right_small", train: true}
+  - {id: F06, description: "longitudinal_near_small", train: true}
+  - {id: F07, description: "longitudinal_far_small", train: true}
+  - {id: F08, description: "observation_pose_a", train: true}
+  - {id: F09, description: "observation_pose_b", train: false, split: validation}
+  - {id: F10, description: "observation_pose_c", train: false, split: validation}
+  - {id: F11, description: "offset_pose_a", train: false, split: test}
+  - {id: F12, description: "offset_pose_b", train: false, split: test}
+assignment:
+  train: [F01, F02, F03, F04, F05, F06, F07, F08]
+  validation: [F09, F10]
+  test: [F11, F12]
+  success_per_family: 2
+  max_attempts_per_family: 3
+  failed_cancelled_retained: true
+freeze_gate:
+  requires_h1_passed: true
+  requires_operator_confirmation: true
+  does_not_use_test_results_for_selection: true

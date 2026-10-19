@@ -1,0 +1,600 @@
+{
+  "cases_manifest_sha256": "5360e73fcbf497ffc4af8352b39a3a3c4c1e215e9ebd215ed5dcd3a09de74b22",
+  "execution_location": "server_only",
+  "generated_wall_utc": "2026-10-18T10:49:24.972669Z",
+  "gui_rviz": {
+    "command": [
+      "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+      "tools/g3b/run_rviz_gui.py",
+      "--config",
+      "configs/g3b_server_room_a.yaml",
+      "--map-root",
+      "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+      "--map-id",
+      "map_room_a_g3b_release_v1",
+      "--report-root",
+      "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/rviz_gui",
+      "--domain-id",
+      "144",
+      "--display-number",
+      "96"
+    ],
+    "exit_code": 0,
+    "gates": {
+      "action_succeeded": true,
+      "no_unexpected_contacts": true,
+      "outer_action_accepted": true,
+      "outer_goal_received_from_rviz": true,
+      "physical_position": true,
+      "physical_yaw": true,
+      "screenshot_captured": true,
+      "settled": true
+    },
+    "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/rviz_gui/g3b_rviz_gui_report.json",
+    "screenshot_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/rviz_gui/rviz_goal_interaction.png",
+    "stderr": "",
+    "stdout": "{\n  \"success\": true,\n  \"report\": \"/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/rviz_gui/g3b_rviz_gui_report.json\"\n}\n",
+    "success": true
+  },
+  "invalid_goal_checks": [
+    {
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "invalid_frame_odom",
+        "--goal-frame",
+        "odom",
+        "--goal-x",
+        "0.0",
+        "--goal-y",
+        "0.0",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "normal",
+        "--expect-goal-rejection",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/invalid_frame_odom",
+        "--domain-id",
+        "140"
+      ],
+      "duration_wall_s": 15.78522450197488,
+      "exit_code": 0,
+      "gates": {
+        "no_backend_authorization": true,
+        "no_physical_motion": true,
+        "no_unexpected_contacts": true,
+        "outer_goal_rejected": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 0,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493634.793821948,
+            "reasons": [
+              "localization_initializing",
+              "navigation_odom_not_fresh",
+              "navigation_scan_not_fresh"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493634.845295611,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": false,
+          "frame_id": "odom",
+          "reason": "goal_frame_must_be_map"
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": null,
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 0,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 0,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "name": "invalid_frame_odom",
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/invalid_frame_odom/g3b_single_goal_report.json",
+      "report_sha256": "35562bf55d3ad793987acf24d2c1cefe125cc37c47cd5a194c0ca2d5bfcea2c4",
+      "stderr": "",
+      "stdout": "{\n  \"success\": true,\n  \"report\": \"/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/invalid_frame_odom/g3b_single_goal_report.json\",\n  \"case_id\": \"invalid_frame_odom\"\n}\n",
+      "success": true
+    },
+    {
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "outside_saved_map",
+        "--goal-frame",
+        "map",
+        "--goal-x",
+        "99.0",
+        "--goal-y",
+        "99.0",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "normal",
+        "--expect-goal-rejection",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/outside_saved_map",
+        "--domain-id",
+        "141"
+      ],
+      "duration_wall_s": 18.039249247987755,
+      "exit_code": 0,
+      "gates": {
+        "no_backend_authorization": true,
+        "no_physical_motion": true,
+        "no_unexpected_contacts": true,
+        "outer_goal_rejected": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 0,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493649.380647269,
+            "reasons": [
+              "localization_stale",
+              "map_to_odom_stale_or_missing"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493650.303576535,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": false,
+          "classification": "outside_map",
+          "column": 2004,
+          "frame_id": "map",
+          "reason": "outside_map",
+          "row": -1957,
+          "x_m": 99.0,
+          "y_m": 99.0
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": null,
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 0,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 0,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "name": "outside_saved_map",
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/outside_saved_map/g3b_single_goal_report.json",
+      "report_sha256": "73430bd184cb946bc85feb5c2d05bccab25b1399c200544f5268d1e678a1e267",
+      "stderr": "",
+      "stdout": "{\n  \"success\": true,\n  \"report\": \"/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/outside_saved_map/g3b_single_goal_report.json\",\n  \"case_id\": \"outside_saved_map\"\n}\n",
+      "success": true
+    },
+    {
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "unknown_map_cell",
+        "--goal-frame",
+        "map",
+        "--goal-x",
+        "-1.175",
+        "--goal-y",
+        "1.1750000000000003",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "normal",
+        "--expect-goal-rejection",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/unknown_map_cell",
+        "--domain-id",
+        "142"
+      ],
+      "duration_wall_s": 17.63965702103451,
+      "exit_code": 0,
+      "gates": {
+        "no_backend_authorization": true,
+        "no_physical_motion": true,
+        "no_unexpected_contacts": true,
+        "outer_goal_rejected": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 0,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493668.459712937,
+            "reasons": [
+              "localization_stale",
+              "map_to_odom_stale_or_missing"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493668.762829688,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": false,
+          "classification": "unknown",
+          "column": 0,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 205,
+          "occupied_probability": 0.196078431372549,
+          "occupied_thresh": 0.65,
+          "reason": "unknown",
+          "row": 0,
+          "x_m": -1.175,
+          "y_m": 1.1750000000000003
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": null,
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 0,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 0,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "name": "unknown_map_cell",
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/unknown_map_cell/g3b_single_goal_report.json",
+      "report_sha256": "f8f093639642b945f1a2b3ccfa6694a445e2953954a184dbe4093fc1f92adf56",
+      "stderr": "",
+      "stdout": "{\n  \"success\": true,\n  \"report\": \"/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/unknown_map_cell/g3b_single_goal_report.json\",\n  \"case_id\": \"unknown_map_cell\"\n}\n",
+      "success": true
+    },
+    {
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/incompatible_map_package",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "incompatible_map_runtime_rejection",
+        "--goal-frame",
+        "map",
+        "--goal-x",
+        "0.0",
+        "--goal-y",
+        "0.0",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "normal",
+        "--expect-goal-rejection",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/incompatible_map_runtime_rejection",
+        "--domain-id",
+        "143"
+      ],
+      "duration_wall_s": 14.930871351971291,
+      "exit_code": 0,
+      "gates": {
+        "no_backend_authorization": true,
+        "no_physical_motion": true,
+        "no_unexpected_contacts": true,
+        "outer_goal_rejected": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 0,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493685.284857373,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": false,
+          "map_validation": {
+            "compatible": false,
+            "map_id": "map_room_a_g3b_release_v1",
+            "reason": "ValueError: occupancy image escapes map package"
+          },
+          "reason": "map_package_not_compatible"
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": null,
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatible": false,
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "ValueError: occupancy image escapes map package"
+        },
+        "nonzero_raw_command_count": 0,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 0,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "name": "incompatible_map_runtime_rejection",
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/incompatible_map_runtime_rejection/g3b_single_goal_report.json",
+      "report_sha256": "400d0b06b89c753e5c5f8148805072e3a7288480b2cbec59d779c626e62eb8c0",
+      "stderr": "",
+      "stdout": "{\n  \"success\": true,\n  \"report\": \"/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-subchecks-v8/cases/incompatible_map_runtime_rejection/g3b_single_goal_report.json\",\n  \"case_id\": \"incompatible_map_runtime_rejection\"\n}\n",
+      "success": true
+    }
+  ],
+  "report_version": "g3b-subchecks-1",
+  "schema_version": 1,
+  "static_checks": {
+    "duplicate_map_to_odom": {
+      "amcl_reference_present": false,
+      "limitation": "ROS /tf does not expose publisher identity; runtime rate/duplicate stamps plus source ownership are checked.",
+      "passed": false,
+      "runtime_conflicting_stamps": 1,
+      "runtime_duplicate_stamps": 7,
+      "runtime_identical_repeats": 4,
+      "runtime_max_same_stamp_rotation_delta_rad": 0.001744999999912715,
+      "runtime_max_same_stamp_translation_delta_m": 0.0004895513640368311,
+      "runtime_message_count": 68,
+      "runtime_minor_same_stamp_updates": 2,
+      "runtime_observed_rate_hz": 4.151903828721677,
+      "runtime_unique_stamps": 61,
+      "slam_localization_node_count": 1
+    },
+    "footprint": {
+      "global_footprint": "[[-0.16,-0.18],[0.46,-0.18],[0.46,0.18],[-0.16,0.18]]",
+      "local_footprint": "[[-0.16,-0.18],[0.46,-0.18],[0.46,0.18],[-0.16,0.18]]",
+      "local_obstacle_footprint_critic": true,
+      "passed": true,
+      "profile_polygon": [
+        [
+          -0.16,
+          -0.18
+        ],
+        [
+          0.46,
+          -0.18
+        ],
+        [
+          0.46,
+          0.18
+        ],
+        [
+          -0.16,
+          0.18
+        ]
+      ]
+    },
+    "nan_inf_policy": {
+      "actual_scan": {
+        "beam_count": 360,
+        "finite_count": 266,
+        "frame_id": "laser_frame",
+        "nan_count": 89,
+        "positive_inf_count": 5,
+        "range_max_m": 8.0,
+        "range_min_m": 0.10000000149011612
+      },
+      "invalid_or_self_occluded_is_free": false,
+      "nav2_inf_is_valid": false,
+      "passed": true,
+      "positive_inf_policy": "conservative_no_clear"
+    }
+  },
+  "success": false
+}

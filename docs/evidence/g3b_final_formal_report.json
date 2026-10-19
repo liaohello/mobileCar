@@ -1,0 +1,3731 @@
+{
+  "action_success_count": 7,
+  "case_success_count": 10,
+  "cases": [
+    {
+      "action_status": 4,
+      "arm_mode": "hold",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 492887.389674894,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000694",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_b1de4754488542f8adfb9bcf0090e49e",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_a_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_cc121363013f4ea9809cd029a648216b",
+        "run_id": "run_da2604fccffd42948f212e8bee8c1a76",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 6.598000000000538
+      },
+      "category": "arrival_arm_hold",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "A01_hold_room_a",
+        "--goal-x",
+        "0.0",
+        "--goal-y",
+        "-0.25",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "normal",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A01_hold_room_a",
+        "--domain-id",
+        "40",
+        "--goal-timeout-wall",
+        "180"
+      ],
+      "duration_wall_s": 30.303846769034863,
+      "episode_id": "episode_b1de4754488542f8adfb9bcf0090e49e",
+      "exit_code": 0,
+      "first_action_status": 4,
+      "gates": {
+        "action_succeeded": true,
+        "backend_rejection_receipt": true,
+        "first_action_succeeded": true,
+        "no_unexpected_contacts": true,
+        "physical_position": true,
+        "physical_yaw": true,
+        "settled": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 128,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 125,
+            "monotonic_s": 492899.691379779,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 492899.691508339
+          },
+          {
+            "accepted_velocity_receipt_count": 127,
+            "monotonic_s": 492900.867634921,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 492900.867862754
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 492882.427584288,
+            "reasons": [
+              "localization_initializing",
+              "navigation_odom_not_fresh",
+              "navigation_scan_not_fresh"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 492882.481070448,
+            "reasons": [
+              "localization_stale",
+              "map_to_odom_stale_or_missing"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 492883.193672144,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492887.546955012,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492898.509245753,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492899.030675983,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492899.91352427,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492900.605976529,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492901.122159861,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 29,
+          "x_m": 0.0,
+          "y_m": -0.25
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": {
+          "action_accepted": true,
+          "action_result_status": 4,
+          "gate_opened_s": 492900.560022382,
+          "goal_generation": 2,
+          "goal_id": "goal_000002_8cc0daf1c988",
+          "identity": {
+            "backend_generation": 1,
+            "episode_id": "episode_b1de4754488542f8adfb9bcf0090e49e",
+            "navigation_epoch": 1,
+            "run_id": "run_da2604fccffd42948f212e8bee8c1a76"
+          },
+          "map_id": "map_room_a_g3b_release_v1",
+          "reasons": [
+            "goal_terminal"
+          ],
+          "requested_pose": {
+            "frame_id": "map",
+            "x_m": 0.0,
+            "y_m": -0.25,
+            "yaw_rad": 0.0
+          },
+          "session_id": "nav2_goal_2_b9d0f3d4",
+          "state": "SUCCEEDED"
+        },
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 124,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 126,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "A01_hold_room_a",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 1,
+        "duplicate_stamp_count": 7,
+        "identical_repeat_count": 4,
+        "max_same_stamp_rotation_delta_rad": 0.001744999999912715,
+        "max_same_stamp_translation_delta_m": 0.0004895513640368311,
+        "message_count": 68,
+        "minor_same_stamp_update_count": 2,
+        "observed_rate_hz": 4.151903828721677,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 61
+      },
+      "position_error_m": 0.01868202034790051,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A01_hold_room_a/g3b_single_goal_report.json",
+      "report_sha256": "c857721ff77efc8335524d643a2451f25f8ad4e4555ec1bcea64dcb844f352fe",
+      "run_id": "run_da2604fccffd42948f212e8bee8c1a76",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 266,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 5,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_a",
+      "second_action_status": null,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "normal",
+      "special_case_evidence": null,
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 1.7643992796415526
+    },
+    {
+      "action_status": 4,
+      "arm_mode": "limited",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 492918.986662233,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000720",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_f0b6e9b3862249408150c0544fceab9e",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_a_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_5b34395356284b6b9a432a09ac7ad0fc",
+        "run_id": "run_2313e695aac745268de4979d8eafc2ac",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 6.953000000000657
+      },
+      "category": "arrival_arm_limited",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "A02_limited_room_a",
+        "--goal-x",
+        "0.0",
+        "--goal-y",
+        "-0.25",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "limited",
+        "--special-case",
+        "normal",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A02_limited_room_a",
+        "--domain-id",
+        "41",
+        "--goal-timeout-wall",
+        "180"
+      ],
+      "duration_wall_s": 39.33760748797795,
+      "episode_id": "episode_f0b6e9b3862249408150c0544fceab9e",
+      "exit_code": 0,
+      "first_action_status": 4,
+      "gates": {
+        "action_succeeded": true,
+        "arm_activity": true,
+        "backend_rejection_receipt": true,
+        "first_action_succeeded": true,
+        "no_unexpected_contacts": true,
+        "physical_position": true,
+        "physical_yaw": true,
+        "settled": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 152,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 135,
+            "monotonic_s": 492932.322267116,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 492932.322522781
+          },
+          {
+            "accepted_velocity_receipt_count": 152,
+            "monotonic_s": 492936.45759178,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 492936.457880124
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 492913.27390802,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492913.37801778,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492919.139014181,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492926.314928488,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492926.433532991,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492931.537167581,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492931.848660659,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492932.260344365,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492932.376327272,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492932.590910874,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492935.877600261,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492936.401741285,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492936.921044569,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492937.439882554,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 29,
+          "x_m": 0.0,
+          "y_m": -0.25
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": {
+          "action_accepted": true,
+          "action_result_status": 4,
+          "gate_opened_s": 492934.662021026,
+          "goal_generation": 2,
+          "goal_id": "goal_000002_596116440fd7",
+          "identity": {
+            "backend_generation": 1,
+            "episode_id": "episode_f0b6e9b3862249408150c0544fceab9e",
+            "navigation_epoch": 1,
+            "run_id": "run_2313e695aac745268de4979d8eafc2ac"
+          },
+          "map_id": "map_room_a_g3b_release_v1",
+          "reasons": [
+            "goal_terminal"
+          ],
+          "requested_pose": {
+            "frame_id": "map",
+            "x_m": 0.0,
+            "y_m": -0.25,
+            "yaw_rad": 0.0
+          },
+          "session_id": "nav2_goal_2_beeef260",
+          "state": "SUCCEEDED"
+        },
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 149,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 151,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "A02_limited_room_a",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 1,
+        "duplicate_stamp_count": 3,
+        "identical_repeat_count": 1,
+        "max_same_stamp_rotation_delta_rad": 0.0034900000000653584,
+        "max_same_stamp_translation_delta_m": 0.0008298158872716611,
+        "message_count": 82,
+        "minor_same_stamp_update_count": 1,
+        "observed_rate_hz": 3.540488861353742,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 79
+      },
+      "position_error_m": 0.0023004475553979873,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A02_limited_room_a/g3b_single_goal_report.json",
+      "report_sha256": "d775c4d238be1d94a31299b6b8777690e2f860776eb02548540a395ee0c4dd19",
+      "run_id": "run_2313e695aac745268de4979d8eafc2ac",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 266,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 5,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_a",
+      "second_action_status": null,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "normal",
+      "special_case_evidence": null,
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 4.209715091247192
+    },
+    {
+      "action_status": 4,
+      "arm_mode": "hold",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 492958.15661249,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000602",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_cfa63df1c49a4b199c3329f5384f87b9",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_b_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_bb69597c3c3545dbbf02554a30f0f002",
+        "run_id": "run_35eba2c3fa964dce90b61b2714044446",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 5.927000000000314
+      },
+      "category": "arrival_arm_hold",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_b.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1",
+        "--map-id",
+        "map_room_b_g3b_release_v1",
+        "--goal-id",
+        "B01_hold_room_b",
+        "--goal-x",
+        "1.0",
+        "--goal-y",
+        "0.0",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "normal",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/B01_hold_room_b",
+        "--domain-id",
+        "42",
+        "--goal-timeout-wall",
+        "180"
+      ],
+      "duration_wall_s": 197.29917531600222,
+      "episode_id": "episode_cfa63df1c49a4b199c3329f5384f87b9",
+      "exit_code": 0,
+      "first_action_status": 4,
+      "gates": {
+        "action_succeeded": true,
+        "backend_rejection_receipt": true,
+        "first_action_succeeded": true,
+        "no_unexpected_contacts": true,
+        "physical_position": true,
+        "physical_yaw": true,
+        "settled": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 1517,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 1513,
+            "monotonic_s": 493111.01847803,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493111.018728942
+          },
+          {
+            "accepted_velocity_receipt_count": 1517,
+            "monotonic_s": 493112.073490139,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493112.073616482
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 492953.38155199,
+            "reasons": [
+              "localization_initializing",
+              "navigation_odom_not_fresh",
+              "navigation_scan_not_fresh"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 492953.432883113,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492953.536452043,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492958.289392486,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492963.72260012,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492963.831970369,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492964.154319434,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492971.2955492,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492984.328245919,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492984.604439551,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492986.098279944,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492986.209356875,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492986.828546691,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492986.940156833,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492987.106531231,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492987.524587398,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492988.047071101,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492988.252748053,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492990.468765476,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492990.523255752,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492990.642934657,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 492990.849136377,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 492992.454005589,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493100.794137036,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493101.625833826,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493101.733498293,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493102.201437463,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493103.964539616,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493106.142523111,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493106.247643223,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493106.5564674,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493107.289384649,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493109.615623438,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493109.879894014,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493111.114383158,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 50,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 28,
+          "x_m": 1.0,
+          "y_m": 0.0
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": {
+          "action_accepted": true,
+          "action_result_status": 4,
+          "gate_opened_s": 493111.766745737,
+          "goal_generation": 2,
+          "goal_id": "goal_000002_313cf5b125e2",
+          "identity": {
+            "backend_generation": 1,
+            "episode_id": "episode_cfa63df1c49a4b199c3329f5384f87b9",
+            "navigation_epoch": 1,
+            "run_id": "run_35eba2c3fa964dce90b61b2714044446"
+          },
+          "map_id": "map_room_b_g3b_release_v1",
+          "reasons": [
+            "goal_terminal"
+          ],
+          "requested_pose": {
+            "frame_id": "map",
+            "x_m": 1.0,
+            "y_m": 0.0,
+            "yaw_rad": 0.0
+          },
+          "session_id": "nav2_goal_2_f54ba750",
+          "state": "SUCCEEDED"
+        },
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 30,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 28,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_b_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1/manifest.json",
+          "manifest_sha256": "a6e641a570c85e21523863f75e1346469c668993c1af0d75fe92ff4d1ea0382c",
+          "map_id": "map_room_b_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 322,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 1496,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "B01_hold_room_b",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 8,
+        "duplicate_stamp_count": 10,
+        "identical_repeat_count": 0,
+        "max_same_stamp_rotation_delta_rad": 0.0034900000000653584,
+        "max_same_stamp_translation_delta_m": 0.005680415273711035,
+        "message_count": 491,
+        "minor_same_stamp_update_count": 2,
+        "observed_rate_hz": 3.153753406856006,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 481
+      },
+      "position_error_m": 0.041886641790777925,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/B01_hold_room_b/g3b_single_goal_report.json",
+      "report_sha256": "e718adc20222dcf5c8285de80933a5205a7e8ccbef426ee99e35ee546aabe84d",
+      "run_id": "run_35eba2c3fa964dce90b61b2714044446",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 263,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 8,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_b",
+      "second_action_status": null,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "normal",
+      "special_case_evidence": null,
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 2.306583680827911
+    },
+    {
+      "action_status": 4,
+      "arm_mode": "limited",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 493156.2951039,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000594",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_73d436db5c234532802bb30378304fce",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_b_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_b46ad1ed0cd645d3aa1cbae0a7c8c518",
+        "run_id": "run_a674cfef99b042e39293701386a1a28a",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 5.700000000000238
+      },
+      "category": "arrival_arm_limited",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_b.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1",
+        "--map-id",
+        "map_room_b_g3b_release_v1",
+        "--goal-id",
+        "B02_limited_room_b",
+        "--goal-x",
+        "1.0",
+        "--goal-y",
+        "0.0",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "limited",
+        "--special-case",
+        "normal",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/B02_limited_room_b",
+        "--domain-id",
+        "43",
+        "--goal-timeout-wall",
+        "180"
+      ],
+      "duration_wall_s": 54.752069026988465,
+      "episode_id": "episode_73d436db5c234532802bb30378304fce",
+      "exit_code": 0,
+      "first_action_status": 4,
+      "gates": {
+        "action_succeeded": true,
+        "arm_activity": true,
+        "backend_rejection_receipt": true,
+        "first_action_succeeded": true,
+        "no_unexpected_contacts": true,
+        "physical_position": true,
+        "physical_yaw": true,
+        "settled": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 299,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 294,
+            "monotonic_s": 493185.636658479,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493185.636907455
+          },
+          {
+            "accepted_velocity_receipt_count": 299,
+            "monotonic_s": 493188.432145822,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493188.432277171
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493151.831121705,
+            "reasons": [
+              "localization_initializing",
+              "navigation_odom_not_fresh",
+              "navigation_scan_not_fresh"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493151.887011344,
+            "reasons": [
+              "localization_stale",
+              "map_to_odom_stale_or_missing"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493152.806487704,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493156.530569438,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493181.090607394,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493181.40453467,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493182.483280955,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493182.791606712,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493183.100315094,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493183.204891733,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493183.306714107,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493183.41278823,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493183.62785251,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493183.732416516,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493184.823792213,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493185.240670674,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493185.810211561,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493185.919437536,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493186.33149132,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 50,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 28,
+          "x_m": 1.0,
+          "y_m": 0.0
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": {
+          "action_accepted": true,
+          "action_result_status": 4,
+          "gate_opened_s": 493188.124955568,
+          "goal_generation": 2,
+          "goal_id": "goal_000002_1fce4529d0f0",
+          "identity": {
+            "backend_generation": 1,
+            "episode_id": "episode_73d436db5c234532802bb30378304fce",
+            "navigation_epoch": 1,
+            "run_id": "run_a674cfef99b042e39293701386a1a28a"
+          },
+          "map_id": "map_room_b_g3b_release_v1",
+          "reasons": [
+            "goal_terminal"
+          ],
+          "requested_pose": {
+            "frame_id": "map",
+            "x_m": 1.0,
+            "y_m": 0.0,
+            "yaw_rad": 0.0
+          },
+          "session_id": "nav2_goal_2_bb3a7f80",
+          "state": "SUCCEEDED"
+        },
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 30,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 28,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_b_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1/manifest.json",
+          "manifest_sha256": "a6e641a570c85e21523863f75e1346469c668993c1af0d75fe92ff4d1ea0382c",
+          "map_id": "map_room_b_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 276,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 295,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "B02_limited_room_b",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 3,
+        "duplicate_stamp_count": 4,
+        "identical_repeat_count": 0,
+        "max_same_stamp_rotation_delta_rad": 0.0034900000000653584,
+        "max_same_stamp_translation_delta_m": 0.002616329124757687,
+        "message_count": 136,
+        "minor_same_stamp_update_count": 1,
+        "observed_rate_hz": 3.642919692420377,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 132
+      },
+      "position_error_m": 0.042541453297116706,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/B02_limited_room_b/g3b_single_goal_report.json",
+      "report_sha256": "34231dbbfdb94c0f5cf629d73b63373d90b834552c9d5110d612053786fd5a08",
+      "run_id": "run_a674cfef99b042e39293701386a1a28a",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 265,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 6,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_b",
+      "second_action_status": null,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "normal",
+      "special_case_evidence": null,
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 2.1509120810109756
+    },
+    {
+      "action_status": 4,
+      "arm_mode": "hold",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 493212.377776837,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000623",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_bb1a4b066fe44ee3bd8b2e6c0f473d6a",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_a_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_98446321dee8414287398fc1cabfa927",
+        "run_id": "run_d4cb2f085f0441fbacd82673bd696ae2",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 5.990000000000335
+      },
+      "category": "restart_localization_arrival",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "A03_restart_localization",
+        "--goal-x",
+        "0.0",
+        "--goal-y",
+        "-0.25",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "normal",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A03_restart_localization",
+        "--domain-id",
+        "44",
+        "--goal-timeout-wall",
+        "180"
+      ],
+      "duration_wall_s": 32.75429263396654,
+      "episode_id": "episode_bb1a4b066fe44ee3bd8b2e6c0f473d6a",
+      "exit_code": 0,
+      "first_action_status": 4,
+      "gates": {
+        "action_succeeded": true,
+        "backend_rejection_receipt": true,
+        "first_action_succeeded": true,
+        "no_unexpected_contacts": true,
+        "physical_position": true,
+        "physical_yaw": true,
+        "settled": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 157,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 140,
+            "monotonic_s": 493226.09910205,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493226.09927446
+          },
+          {
+            "accepted_velocity_receipt_count": 157,
+            "monotonic_s": 493228.592476948,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493228.592579669
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493207.696888111,
+            "reasons": [
+              "localization_initializing",
+              "navigation_odom_not_fresh",
+              "navigation_scan_not_fresh"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493207.749235193,
+            "reasons": [
+              "localization_stale",
+              "map_to_odom_stale_or_missing"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493207.958819629,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493212.516182538,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493221.878284145,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493222.705639409,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493224.608188231,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493225.124937226,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493226.111267519,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493228.040915348,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493228.862642623,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 29,
+          "x_m": 0.0,
+          "y_m": -0.25
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": {
+          "action_accepted": true,
+          "action_result_status": 4,
+          "gate_opened_s": 493226.944501048,
+          "goal_generation": 2,
+          "goal_id": "goal_000002_63fc26101f7a",
+          "identity": {
+            "backend_generation": 1,
+            "episode_id": "episode_bb1a4b066fe44ee3bd8b2e6c0f473d6a",
+            "navigation_epoch": 1,
+            "run_id": "run_d4cb2f085f0441fbacd82673bd696ae2"
+          },
+          "map_id": "map_room_a_g3b_release_v1",
+          "reasons": [
+            "goal_terminal"
+          ],
+          "requested_pose": {
+            "frame_id": "map",
+            "x_m": 0.0,
+            "y_m": -0.25,
+            "yaw_rad": 0.0
+          },
+          "session_id": "nav2_goal_2_38cef307",
+          "state": "SUCCEEDED"
+        },
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 151,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 153,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "A03_restart_localization",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 3,
+        "duplicate_stamp_count": 3,
+        "identical_repeat_count": 0,
+        "max_same_stamp_rotation_delta_rad": 0.006054066726993548,
+        "max_same_stamp_translation_delta_m": 0.008389953050905207,
+        "message_count": 59,
+        "minor_same_stamp_update_count": 0,
+        "observed_rate_hz": 3.3614693867425496,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 56
+      },
+      "position_error_m": 0.015558450684555162,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A03_restart_localization/g3b_single_goal_report.json",
+      "report_sha256": "f233934f46d7e7684108866e8f7ff1c359f7f93c122d95fdb855437a8ade5d21",
+      "run_id": "run_d4cb2f085f0441fbacd82673bd696ae2",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 266,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 5,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_a",
+      "second_action_status": null,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "normal",
+      "special_case_evidence": null,
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 3.550647023916026
+    },
+    {
+      "action_status": 4,
+      "arm_mode": "hold",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 493246.167102746,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000614",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_0a81262a67154e829f08ad25a3e8ba11",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_b_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_85f2cccfee1943c0821d31789afe49a3",
+        "run_id": "run_7b184d485de34a198ff261e0d8a2ad7d",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 5.872000000000296
+      },
+      "category": "restart_localization_arrival",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_b.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1",
+        "--map-id",
+        "map_room_b_g3b_release_v1",
+        "--goal-id",
+        "B03_restart_localization",
+        "--goal-x",
+        "1.0",
+        "--goal-y",
+        "0.0",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "normal",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/B03_restart_localization",
+        "--domain-id",
+        "45",
+        "--goal-timeout-wall",
+        "180"
+      ],
+      "duration_wall_s": 214.92156705097295,
+      "episode_id": "episode_0a81262a67154e829f08ad25a3e8ba11",
+      "exit_code": 0,
+      "first_action_status": 4,
+      "gates": {
+        "action_succeeded": true,
+        "backend_rejection_receipt": true,
+        "first_action_succeeded": true,
+        "no_unexpected_contacts": true,
+        "physical_position": true,
+        "physical_yaw": true,
+        "settled": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 1644,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 1641,
+            "monotonic_s": 493411.752480105,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493411.752588968
+          },
+          {
+            "accepted_velocity_receipt_count": 1644,
+            "monotonic_s": 493412.841218432,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493412.84151402
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493241.493799046,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493241.698941007,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493246.514073821,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493252.289633031,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493259.73504683,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493259.941281402,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493269.766407515,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493271.873326613,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493271.978088661,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493285.29403821,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493285.397379905,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493289.610324362,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493402.272566149,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493403.503764674,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493405.708459762,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493411.779544288,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493411.884430408,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493412.395346062,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 50,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 28,
+          "x_m": 1.0,
+          "y_m": 0.0
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": {
+          "action_accepted": true,
+          "action_result_status": 4,
+          "gate_opened_s": 493412.534454574,
+          "goal_generation": 2,
+          "goal_id": "goal_000002_03ccf85e47e6",
+          "identity": {
+            "backend_generation": 1,
+            "episode_id": "episode_0a81262a67154e829f08ad25a3e8ba11",
+            "navigation_epoch": 1,
+            "run_id": "run_7b184d485de34a198ff261e0d8a2ad7d"
+          },
+          "map_id": "map_room_b_g3b_release_v1",
+          "reasons": [
+            "goal_terminal"
+          ],
+          "requested_pose": {
+            "frame_id": "map",
+            "x_m": 1.0,
+            "y_m": 0.0,
+            "yaw_rad": 0.0
+          },
+          "session_id": "nav2_goal_2_7f851b75",
+          "state": "SUCCEEDED"
+        },
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 30,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 28,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_b_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1/manifest.json",
+          "manifest_sha256": "a6e641a570c85e21523863f75e1346469c668993c1af0d75fe92ff4d1ea0382c",
+          "map_id": "map_room_b_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 320,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 1627,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "B03_restart_localization",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 21,
+        "duplicate_stamp_count": 25,
+        "identical_repeat_count": 0,
+        "max_same_stamp_rotation_delta_rad": 0.0069800000000131935,
+        "max_same_stamp_translation_delta_m": 0.008639844356758521,
+        "message_count": 582,
+        "minor_same_stamp_update_count": 4,
+        "observed_rate_hz": 3.4751851126749695,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 557
+      },
+      "position_error_m": 0.03096662093874437,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/B03_restart_localization/g3b_single_goal_report.json",
+      "report_sha256": "66da3b5233eb8ab18c440ba0d220261d7182139be7ed2afff790d04c00bfcdba",
+      "run_id": "run_7b184d485de34a198ff261e0d8a2ad7d",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 266,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 5,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_b",
+      "second_action_status": null,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "normal",
+      "special_case_evidence": null,
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 3.561265493971353
+    },
+    {
+      "action_status": 5,
+      "arm_mode": "limited",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 493463.10225859,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000718",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_38ca59c474ca4dabb4d5d5776c34f656",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_a_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_8904129630b840b39a56451ae520c448",
+        "run_id": "run_d36c5a3321674aa5aa609f8e9c33dde3",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 6.953000000000657
+      },
+      "category": "cancel_takeover_reauthorize",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "A04_cancel_manual_takeover",
+        "--goal-x",
+        "0.0",
+        "--goal-y",
+        "-0.2",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "limited",
+        "--special-case",
+        "cancel_takeover",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A04_cancel_manual_takeover",
+        "--domain-id",
+        "46",
+        "--goal-timeout-wall",
+        "180",
+        "--post-goal-x",
+        "0.0",
+        "--post-goal-y",
+        "-0.05",
+        "--post-goal-yaw",
+        "0.0",
+        "--fault-trigger-progress-m",
+        "0.04"
+      ],
+      "duration_wall_s": 33.92923581600189,
+      "episode_id": "episode_38ca59c474ca4dabb4d5d5776c34f656",
+      "exit_code": 0,
+      "first_action_status": 5,
+      "gates": {
+        "arm_activity": true,
+        "arm_preserved": true,
+        "backend_rejection_receipt": true,
+        "explicit_new_goal_output_observed": true,
+        "explicit_new_goal_started": true,
+        "final_gate_blocks_late_nonzero": true,
+        "first_goal_canceled": true,
+        "manual_nonzero_takeover_accepted": true,
+        "no_resume_after_release": true,
+        "no_unexpected_contacts": true,
+        "second_goal_terminal": true,
+        "settled": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 32,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 20,
+            "monotonic_s": 493464.92054129,
+            "reason": "cancel_requested",
+            "zero_publish_monotonic_s": 493464.920641021
+          },
+          {
+            "accepted_velocity_receipt_count": 21,
+            "monotonic_s": 493464.964572907,
+            "reason": "cancel_requested"
+          },
+          {
+            "accepted_velocity_receipt_count": 32,
+            "monotonic_s": 493478.419130372,
+            "reason": "cancel_requested",
+            "zero_publish_monotonic_s": 493478.419349275
+          },
+          {
+            "accepted_velocity_receipt_count": 32,
+            "monotonic_s": 493478.442862656,
+            "reason": "cancel_requested"
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493457.495747259,
+            "reasons": [
+              "localization_initializing",
+              "navigation_odom_not_fresh",
+              "navigation_scan_not_fresh"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493457.553618934,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493463.289860149,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493465.501535822,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493466.737417809,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493467.255359198,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493469.263962546,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493469.366100603,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493469.943675431,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493470.047229996,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493470.760905744,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493470.862506824,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493471.685546292,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493472.094814432,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493472.558593752,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493474.105068621,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493477.838493098,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493478.517386486,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493478.622338699,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493478.831203329,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 25,
+          "x_m": 0.0,
+          "y_m": -0.05
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": null,
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 31,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 33,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "A04_cancel_manual_takeover",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 2,
+        "duplicate_stamp_count": 10,
+        "identical_repeat_count": 1,
+        "max_same_stamp_rotation_delta_rad": 0.0017450000001672074,
+        "max_same_stamp_translation_delta_m": 0.00016851499663935644,
+        "message_count": 97,
+        "minor_same_stamp_update_count": 7,
+        "observed_rate_hz": 5.0903594996038874,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 87
+      },
+      "position_error_m": 0.13844651635688934,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A04_cancel_manual_takeover/g3b_single_goal_report.json",
+      "report_sha256": "3d83021e5337be44b78459f2493ac9a6b04cfbf3f0a3c655b0f97d6e807215dc",
+      "run_id": "run_d36c5a3321674aa5aa609f8e9c33dde3",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 266,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 5,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_a",
+      "second_action_status": 5,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "cancel_takeover",
+      "special_case_evidence": {
+        "cancel_requested_monotonic_s": 493464.918721132,
+        "detection_latency_s": 0.002169131999835372,
+        "detection_monotonic_s": 493464.92054129,
+        "detection_to_physical_stop_s": 0.5783428959548473,
+        "detection_to_zero_s": 0.32450237800367177,
+        "fault_cleared_monotonic_s": null,
+        "gate_closed_monotonic_s": 493464.92054129,
+        "governed_nonzero_after_gate_close": 2,
+        "governed_zero_after_gate_close": 1,
+        "governed_zero_latency_s": 0.32667151000350714,
+        "governed_zero_monotonic_s": 493465.245043668,
+        "injection_monotonic_s": 493464.918372158,
+        "injection_position_m": [
+          -0.02748428848243028,
+          -0.049888276701357356
+        ],
+        "late_accepted_after_gate_close_count": 0,
+        "manual_takeover": {
+          "after_release_displacement_m": 0.0034829048189492723,
+          "arm_owner_after": null,
+          "arm_owner_before": null,
+          "arm_preserved": true,
+          "arm_target_preserved": true,
+          "backend_authorized_after_cancel": null,
+          "command": {
+            "backend_monotonic_s": 493473.244169723,
+            "command_id": "g3b_special_6469714d215440d490f4dfaa602e3441",
+            "command_seq": 12,
+            "contract_version": "mobilecar-1.0",
+            "control_tick_id": "tick_000001685",
+            "decision": {
+              "allowed_contacts": [
+                "wheel-ground",
+                "finger-target-during-grasp"
+              ],
+              "approved": true,
+              "clipped": {},
+              "effective_payload": {
+                "frame_id": "base_link",
+                "vx_m_s": 0.02,
+                "vy_m_s": 0.0,
+                "wz_rad_s": 0.0
+              },
+              "reason": "approved",
+              "safety_revision": "g1-safety-1"
+            },
+            "plan": null,
+            "reason": "",
+            "sim_time_s": 16.62999999999734,
+            "status": "DISPATCHED"
+          },
+          "displacement_m": 0.020502210373337548,
+          "zero_command": {
+            "backend_monotonic_s": 493473.578497202,
+            "command_id": "g3b_special_127b00a4b8914e1cb1724ea393cc933b",
+            "command_seq": 13,
+            "contract_version": "mobilecar-1.0",
+            "control_tick_id": "tick_000001716",
+            "decision": {
+              "allowed_contacts": [
+                "wheel-ground",
+                "finger-target-during-grasp"
+              ],
+              "approved": true,
+              "clipped": {},
+              "effective_payload": {
+                "vx_m_s": 0.0,
+                "vy_m_s": 0.0,
+                "wz_rad_s": 0.0
+              },
+              "reason": "approved",
+              "safety_revision": "g1-safety-1"
+            },
+            "plan": null,
+            "reason": "",
+            "sim_time_s": 16.93999999999772,
+            "status": "DISPATCHED"
+          }
+        },
+        "maximum_braking_displacement_m": 0.006520017282636214,
+        "physical_stop_latency_s": 0.5805120279546827,
+        "physical_stop_monotonic_s": 493465.498884186,
+        "post_recovery_position_m": null,
+        "raw_commands_after_gate_close": 3,
+        "second_goal_run": {
+          "action_status_after_probe": 5,
+          "motion_or_terminal_observed": true,
+          "requested_pose": {
+            "x_m": 0.0,
+            "y_m": -0.05,
+            "yaw_rad": 0.0
+          },
+          "started": true
+        },
+        "triggered": true
+      },
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 9.96734347337539
+    },
+    {
+      "action_status": 6,
+      "arm_mode": "hold",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 493497.196649773,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000637",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_885ef3c66af24480ad3434886bad4f9e",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_a_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_9bc1e36e7c5a404db115741f433ce647",
+        "run_id": "run_9f1a665ba0e14443b38502f1615fedfd",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 6.253000000000423
+      },
+      "category": "scan_failure_stop",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "A05_scan_loss",
+        "--goal-x",
+        "0.0",
+        "--goal-y",
+        "-0.4",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "scan_failure",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A05_scan_loss",
+        "--domain-id",
+        "47",
+        "--goal-timeout-wall",
+        "180",
+        "--fault-trigger-progress-m",
+        "0.08"
+      ],
+      "duration_wall_s": 22.429735595011152,
+      "episode_id": "episode_885ef3c66af24480ad3434886bad4f9e",
+      "exit_code": 0,
+      "first_action_status": 6,
+      "gates": {
+        "action_stopped_or_canceled": true,
+        "detection_to_physical_stop": true,
+        "detection_to_zero": true,
+        "fault_detected": true,
+        "final_gate_blocks_late_nonzero": true,
+        "no_automatic_resume_after_recovery": true,
+        "no_unexpected_contacts": true,
+        "scan_fault_observed": true,
+        "stopped_health_observed": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 25,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493499.760951928,
+            "reason": "backend_control_rejected",
+            "zero_publish_monotonic_s": 493499.761148347
+          },
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493499.776751075,
+            "reason": "health_or_control_failure"
+          },
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493499.784061304,
+            "reason": "backend_control_rejected"
+          },
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493499.828526112,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493499.893786607,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493499.944388782,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493499.996446453,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493500.047100996,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 25,
+            "monotonic_s": 493500.099433,
+            "reason": "navigation_system_health"
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493492.121630128,
+            "reasons": [
+              "localization_initializing",
+              "navigation_odom_not_fresh",
+              "navigation_scan_not_fresh"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493492.173912945,
+            "reasons": [
+              "localization_stale",
+              "map_to_odom_stale_or_missing"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493493.08909721,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493497.51349342,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493499.828635576,
+            "reasons": [
+              "g3a_navigation_stale",
+              "g3a_navigation_stop_required",
+              "g3a_scan_unavailable"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493500.460231674,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 32,
+          "x_m": 0.0,
+          "y_m": -0.4
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": {
+          "accepted": false,
+          "authorized": false,
+          "backend_generation": 1,
+          "backend_monotonic_s": 493499.781024136,
+          "backend_status": "REJECTED",
+          "control_tick_id": "tick_000000867",
+          "dispatch_state": "REJECTED",
+          "episode_id": "episode_885ef3c66af24480ad3434886bad4f9e",
+          "goal_generation": 1,
+          "goal_id": "goal_000001_d6560484456a",
+          "interface_profile": "g3b-1.0",
+          "map_id": "map_room_a_g3b_release_v1",
+          "message_type": "control_receipt",
+          "navigation_epoch": 1,
+          "reason": "stale or mismatched goal revocation",
+          "received": true,
+          "request_id": "revoke_59103730dbb34c94ba4378835ccbfc37",
+          "run_id": "run_9f1a665ba0e14443b38502f1615fedfd",
+          "schema_version": 2,
+          "session_id": "nav2_goal_1_edae2e59",
+          "sim_time_s": 8.560000000000695
+        },
+        "last_terminal_goal": null,
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 26,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 27,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "A05_scan_loss",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 3,
+        "duplicate_stamp_count": 7,
+        "identical_repeat_count": 3,
+        "max_same_stamp_rotation_delta_rad": 0.008725000000032233,
+        "max_same_stamp_translation_delta_m": 0.0015929992356090341,
+        "message_count": 64,
+        "minor_same_stamp_update_count": 1,
+        "observed_rate_hz": 6.282220981052961,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 57
+      },
+      "position_error_m": 0.3143191050955387,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A05_scan_loss/g3b_single_goal_report.json",
+      "report_sha256": "f02f2a942f21f27a49d7450c83530a8eabeb1e98e273f2d69eae03ab55b26586",
+      "run_id": "run_9f1a665ba0e14443b38502f1615fedfd",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 267,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 4,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_a",
+      "second_action_status": null,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "scan_failure",
+      "special_case_evidence": {
+        "cancel_requested_monotonic_s": null,
+        "detection_latency_s": 0.4527868560398929,
+        "detection_monotonic_s": 493500.062097683,
+        "detection_to_physical_stop_s": 0.2784565599868074,
+        "detection_to_zero_s": 0.01421433495124802,
+        "fault_cleared_monotonic_s": 493500.377628837,
+        "fault_response": {
+          "active": true,
+          "active_faults": [
+            "scan"
+          ],
+          "fault": "scan",
+          "navigation_epoch": 1
+        },
+        "gate_closed_monotonic_s": 493499.760951928,
+        "governed_nonzero_after_gate_close": 2,
+        "governed_zero_after_gate_close": 1,
+        "governed_zero_latency_s": 0.4670011909911409,
+        "governed_zero_monotonic_s": 493500.076312018,
+        "injection_monotonic_s": 493499.609310827,
+        "injection_position_m": [
+          -0.029491647748766125,
+          -0.07901320480639266
+        ],
+        "late_accepted_after_gate_close_count": 0,
+        "maximum_braking_displacement_m": 0.009369174896448727,
+        "physical_stop_latency_s": 0.7312434160267003,
+        "physical_stop_monotonic_s": 493500.340554243,
+        "post_recovery_displacement_m": 0.0005242038237926718,
+        "post_recovery_position_m": [
+          -0.0316021970994788,
+          -0.08696366993846376
+        ],
+        "post_recovery_requested_zero": true,
+        "raw_commands_after_gate_close": 3,
+        "triggered": true
+      },
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 11.974881959170013
+    },
+    {
+      "action_status": 6,
+      "arm_mode": "hold",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 493520.559086694,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000619",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_e60f65f3e8ef456aa9036326bb151d1a",
+        "goal_generation": 1,
+        "goal_id": "stale_goal",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_b_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_02e0edac8ec545fc9860fdc51830351b",
+        "run_id": "run_5edd1336c6d44572a606367dd1611470",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 5.922000000000312
+      },
+      "category": "localization_failure_stop",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_b.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1",
+        "--map-id",
+        "map_room_b_g3b_release_v1",
+        "--goal-id",
+        "B04_localization_failure",
+        "--goal-x",
+        "1.0",
+        "--goal-y",
+        "0.0",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "localization_failure",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/B04_localization_failure",
+        "--domain-id",
+        "48",
+        "--goal-timeout-wall",
+        "180",
+        "--fault-trigger-progress-m",
+        "0.08",
+        "--enable-localization-test-faults"
+      ],
+      "duration_wall_s": 19.112838561995886,
+      "episode_id": "episode_e60f65f3e8ef456aa9036326bb151d1a",
+      "exit_code": 0,
+      "first_action_status": 6,
+      "gates": {
+        "action_stopped_or_canceled": true,
+        "detection_to_physical_stop": true,
+        "detection_to_zero": true,
+        "fault_detected": true,
+        "final_gate_blocks_late_nonzero": true,
+        "no_automatic_resume_after_recovery": true,
+        "no_unexpected_contacts": true,
+        "scan_and_odom_remain_fresh": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 24,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493522.884030273,
+            "reason": "navigation_system_health",
+            "zero_publish_monotonic_s": 493522.884273182
+          },
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493522.914855814,
+            "reason": "health_or_control_failure"
+          },
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493522.956303837,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493523.007117196,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493523.05756271,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493523.109014549,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493523.15979397,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493523.210381736,
+            "reason": "navigation_system_health"
+          },
+          {
+            "accepted_velocity_receipt_count": 24,
+            "monotonic_s": 493523.260820745,
+            "reason": "navigation_system_health"
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493515.86820449,
+            "reasons": [
+              "localization_stale",
+              "map_to_odom_stale_or_missing",
+              "navigation_scan_not_fresh",
+              "scan_stale"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493515.92091289,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493520.763688373,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493522.884318362,
+            "reasons": [
+              "localization_match_fault_injected",
+              "localization_stale"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493523.31166605,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 50,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 28,
+          "x_m": 1.0,
+          "y_m": 0.0
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": null,
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 30,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 28,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_b_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1/manifest.json",
+          "manifest_sha256": "a6e641a570c85e21523863f75e1346469c668993c1af0d75fe92ff4d1ea0382c",
+          "map_id": "map_room_b_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 25,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 26,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "B04_localization_failure",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 0,
+        "duplicate_stamp_count": 1,
+        "identical_repeat_count": 0,
+        "max_same_stamp_rotation_delta_rad": 0.0,
+        "max_same_stamp_translation_delta_m": 1.8297015907360072e-17,
+        "message_count": 30,
+        "minor_same_stamp_update_count": 1,
+        "observed_rate_hz": 5.3042000969871825,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 29
+      },
+      "position_error_m": 0.9237930292533965,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/B04_localization_failure/g3b_single_goal_report.json",
+      "report_sha256": "f03524272791167089f59776ec9dd0fef308130fe45b10e9d5c8e068102a5c85",
+      "run_id": "run_5edd1336c6d44572a606367dd1611470",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 251,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 20,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_b",
+      "second_action_status": null,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "localization_failure",
+      "special_case_evidence": {
+        "cancel_requested_monotonic_s": null,
+        "detection_latency_s": 0.39844403794268146,
+        "detection_monotonic_s": 493523.233428526,
+        "detection_to_physical_stop_s": 4.0905026253312826e-05,
+        "detection_to_zero_s": 0.0,
+        "fault_cleared_monotonic_s": 493523.233651773,
+        "gate_closed_monotonic_s": 493522.884030273,
+        "governed_nonzero_after_gate_close": 2,
+        "governed_zero_after_gate_close": 1,
+        "governed_zero_latency_s": 0.3104044949868694,
+        "governed_zero_monotonic_s": 493523.145388983,
+        "injection_monotonic_s": 493522.834984488,
+        "injection_position_m": [
+          0.07365420232812811,
+          0.001516489896320483
+        ],
+        "late_accepted_after_gate_close_count": 0,
+        "maximum_braking_displacement_m": 0.0026937415846083786,
+        "physical_stop_latency_s": 0.3984849429689348,
+        "physical_stop_monotonic_s": 493523.233469431,
+        "post_recovery_displacement_m": 6.301322219477458e-05,
+        "post_recovery_position_m": [
+          0.07620796620092636,
+          0.0014004721329436652
+        ],
+        "post_recovery_requested_zero": true,
+        "raw_commands_after_gate_close": 4,
+        "triggered": true
+      },
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 0.025667596438857763
+    },
+    {
+      "action_status": 4,
+      "arm_mode": "hold",
+      "backend_rejection_receipt": {
+        "accepted": false,
+        "authorized": false,
+        "backend_generation": 1,
+        "backend_monotonic_s": 493541.967461361,
+        "backend_status": "REJECTED",
+        "control_tick_id": "tick_000000728",
+        "dispatch_state": "REJECTED",
+        "episode_id": "episode_8aedf713c63d4ae88ce4fcb2bd544189",
+        "goal_generation": 1,
+        "goal_id": "goal_000001_ae69bf9dd7ab",
+        "interface_profile": "g3b-1.0",
+        "map_id": "map_room_a_g3b_release_v1",
+        "message_type": "control_receipt",
+        "navigation_epoch": 1,
+        "reason": "goal/session/map authorization mismatch",
+        "received": true,
+        "request_id": "receipt_rejection_ce221b9a3dcf40e89af8dd32d1263fd7",
+        "run_id": "run_0ff4564978ee46519d9138a384e81f51",
+        "schema_version": 2,
+        "session_id": "stale_receipt_probe_session",
+        "sim_time_s": 7.040000000000686
+      },
+      "category": "reset_full_stack",
+      "command": [
+        "/home/liaozhengyan/Desktop/mobileCar/envs/g2a-py310-mujoco316/bin/python",
+        "tools/g3b/run_single_goal.py",
+        "--config",
+        "configs/g3b_server_room_a.yaml",
+        "--map-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1",
+        "--map-id",
+        "map_room_a_g3b_release_v1",
+        "--goal-id",
+        "A06_reset_epoch",
+        "--goal-x",
+        "0.0",
+        "--goal-y",
+        "-0.4",
+        "--goal-yaw",
+        "0.0",
+        "--arm-mode",
+        "hold",
+        "--special-case",
+        "reset_epoch",
+        "--report-root",
+        "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A06_reset_epoch",
+        "--domain-id",
+        "49",
+        "--goal-timeout-wall",
+        "180",
+        "--post-goal-x",
+        "0.0",
+        "--post-goal-y",
+        "-0.25",
+        "--post-goal-yaw",
+        "0.0",
+        "--fault-trigger-progress-m",
+        "0.08"
+      ],
+      "duration_wall_s": 43.39355204103049,
+      "episode_id": "episode_f133d990e21b41d683fc5b2d6063c720",
+      "exit_code": 0,
+      "first_action_status": 5,
+      "gates": {
+        "backend_rejection_receipt": true,
+        "explicit_new_goal_succeeded": true,
+        "navigation_epoch_advanced": true,
+        "new_episode": true,
+        "no_unexpected_contacts": true,
+        "old_ros_stack_exited": true,
+        "physical_position": true,
+        "physical_yaw": true,
+        "settled": true,
+        "stale_goal_rejected": true
+      },
+      "goal_supervisor_status": {
+        "accepted_velocity_receipt_count": 124,
+        "action_accepted": false,
+        "active_action_name": "/nav2/navigate_to_pose",
+        "backend_authorized": false,
+        "command_gate_open": false,
+        "gate_transitions": [
+          {
+            "accepted_velocity_receipt_count": 124,
+            "monotonic_s": 493567.225062289,
+            "reason": "goal_terminal",
+            "zero_publish_monotonic_s": 493567.225323893
+          }
+        ],
+        "goal_generation": 0,
+        "goal_id": null,
+        "health_transitions": [
+          {
+            "monotonic_s": 493552.463799031,
+            "reasons": [
+              "localization_initializing",
+              "navigation_odom_not_fresh",
+              "navigation_scan_not_fresh"
+            ],
+            "status": "STOPPED"
+          },
+          {
+            "monotonic_s": 493552.519218619,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493555.308034914,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493564.70376474,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493564.81692096,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493566.103459781,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          },
+          {
+            "monotonic_s": 493566.62862878,
+            "reasons": [],
+            "status": "HEALTHY"
+          },
+          {
+            "monotonic_s": 493567.455145433,
+            "reasons": [],
+            "status": "STATIONARY_HOLD"
+          }
+        ],
+        "identity": null,
+        "interface_profile": "g3b-1.0",
+        "last_goal_validation": {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "frame_id": "map",
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "reason": "goal_cell_free",
+          "row": 29,
+          "x_m": 0.0,
+          "y_m": -0.25
+        },
+        "last_raw_command_values": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "last_rejected_receipt": null,
+        "last_terminal_goal": {
+          "action_accepted": true,
+          "action_result_status": 4,
+          "gate_opened_s": 493554.918400041,
+          "goal_generation": 1,
+          "goal_id": "goal_000001_2398e9ead859",
+          "identity": {
+            "backend_generation": 1,
+            "episode_id": "episode_f133d990e21b41d683fc5b2d6063c720",
+            "navigation_epoch": 3,
+            "run_id": "run_0ff4564978ee46519d9138a384e81f51"
+          },
+          "map_id": "map_room_a_g3b_release_v1",
+          "reasons": [
+            "goal_terminal"
+          ],
+          "requested_pose": {
+            "frame_id": "map",
+            "x_m": 0.0,
+            "y_m": -0.25,
+            "yaw_rad": 0.0
+          },
+          "session_id": "nav2_goal_1_31f2e37c",
+          "state": "SUCCEEDED"
+        },
+        "late_accepted_after_gate_close_count": 0,
+        "map_id": null,
+        "map_validation": {
+          "compatibility": {
+            "checked_fields": [
+              "scene_id",
+              "model_sha256",
+              "navigation_profile_sha256",
+              "sensor_profile_sha256",
+              "scan_config_sha256",
+              "resolution_m",
+              "map_frame",
+              "odom_frame",
+              "base_frame"
+            ],
+            "compatible": true,
+            "mismatches": {},
+            "whole_source_aggregate_used": false
+          },
+          "compatible": true,
+          "initial_cell": {
+            "accepted": true,
+            "classification": "free",
+            "column": 23,
+            "free_thresh": 0.196,
+            "gray_value": 254,
+            "occupied_probability": 0.0039215686274509665,
+            "occupied_thresh": 0.65,
+            "row": 24,
+            "x_m": 0.0,
+            "y_m": 0.0
+          },
+          "manifest_map_id": "map_room_a_g3b_release_v1",
+          "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+          "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+          "map_id": "map_room_a_g3b_release_v1",
+          "reason": "compatible"
+        },
+        "nonzero_raw_command_count": 121,
+        "pending_velocity_request_id": null,
+        "raw_command_count": 122,
+        "reasons": [],
+        "requested_pose": null,
+        "schema_version": 1,
+        "session_id": null,
+        "state": "IDLE"
+      },
+      "id": "A06_reset_epoch",
+      "map_to_odom_runtime": {
+        "conflicting_stamp_count": 16,
+        "duplicate_stamp_count": 43,
+        "identical_repeat_count": 21,
+        "max_same_stamp_rotation_delta_rad": 0.06814802630131744,
+        "max_same_stamp_translation_delta_m": 0.03814283708642582,
+        "message_count": 136,
+        "minor_same_stamp_update_count": 2,
+        "observed_rate_hz": 4.656096303713811,
+        "publisher_identity_scope": "runtime frame traffic plus static source ownership; ROS /tf does not carry publisher identity",
+        "unique_stamp_count": 93
+      },
+      "position_error_m": 0.022028125560101367,
+      "report_path": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases/A06_reset_epoch/g3b_single_goal_report.json",
+      "report_sha256": "641d9e500d3fd9fd346ffec2a8541e86df8fe2cb6d0bba1087a4da57677e8a3c",
+      "run_id": "run_0ff4564978ee46519d9138a384e81f51",
+      "scan_policy_evidence": {
+        "actual_scan": {
+          "beam_count": 360,
+          "finite_count": 267,
+          "frame_id": "laser_frame",
+          "nan_count": 89,
+          "positive_inf_count": 4,
+          "range_max_m": 8.0,
+          "range_min_m": 0.10000000149011612
+        },
+        "invalid_or_self_occluded_is_free": false,
+        "nav2_inf_is_valid": false,
+        "positive_inf_policy": "conservative_no_clear"
+      },
+      "scenario": "room_a",
+      "second_action_status": 4,
+      "settled_duration_s": 0.6000000000000001,
+      "special_case": "reset_epoch",
+      "special_case_evidence": {
+        "cancel_requested_monotonic_s": 493544.670716419,
+        "detection_latency_s": 0.007243018946610391,
+        "detection_monotonic_s": 493544.677509414,
+        "detection_to_physical_stop_s": 0.2605342310271226,
+        "detection_to_zero_s": 0.32911309303017333,
+        "fault_cleared_monotonic_s": null,
+        "gate_closed_monotonic_s": 493544.677509414,
+        "governed_nonzero_after_gate_close": 2,
+        "governed_zero_after_gate_close": 1,
+        "governed_zero_latency_s": 0.3363561119767837,
+        "governed_zero_monotonic_s": 493545.006622507,
+        "injection_monotonic_s": 493544.670266395,
+        "injection_position_m": [
+          -0.03373438355872757,
+          -0.11280013409970835
+        ],
+        "late_accepted_after_gate_close_count": 0,
+        "maximum_braking_displacement_m": 0.003326809845093834,
+        "new_episode_id": "episode_f133d990e21b41d683fc5b2d6063c720",
+        "new_episode_response": {
+          "accepted": true,
+          "episode_id": "episode_f133d990e21b41d683fc5b2d6063c720",
+          "reason": "",
+          "recording_segment_id": "seg_001_853d1b10dd",
+          "recording_status": "RECORDING"
+        },
+        "new_navigation_epoch": 3,
+        "old_episode_id": "episode_8aedf713c63d4ae88ce4fcb2bd544189",
+        "old_navigation_epoch": 1,
+        "old_process_exit_codes": {
+          "nav2": 0,
+          "slam": 0,
+          "supervisor": 0
+        },
+        "physical_stop_latency_s": 0.267777249973733,
+        "physical_stop_monotonic_s": 493544.938043645,
+        "post_recovery_position_m": null,
+        "post_reset_actions": [
+          "/nav2/backup",
+          "/nav2/compute_path_through_poses",
+          "/nav2/compute_path_to_pose",
+          "/nav2/drive_on_heading",
+          "/nav2/follow_path",
+          "/nav2/navigate_through_poses",
+          "/nav2/navigate_to_pose",
+          "/nav2/spin",
+          "/nav2/wait",
+          "/navigate_to_pose"
+        ],
+        "post_reset_topics": [
+          "/clock",
+          "/diagnostics",
+          "/goal_pose",
+          "/imu/data_raw",
+          "/initialpose",
+          "/joint_states",
+          "/map",
+          "/map_metadata",
+          "/map_updates",
+          "/mobilecar/goal_pose_relay_status",
+          "/mobilecar/goal_supervisor_status",
+          "/mobilecar/localization/fault_match_failure",
+          "/mobilecar/localization_health",
+          "/mobilecar/nav2/cancel_goal",
+          "/mobilecar/nav2/cmd_vel_governed",
+          "/mobilecar/nav2/cmd_vel_raw",
+          "/mobilecar/navigation_health",
+          "/mobilecar/navigation_system_health",
+          "/nav2/behavior_server/transition_event",
+          "/nav2/bt_navigator/transition_event",
+          "/nav2/controller_server/transition_event",
+          "/nav2/cost_cloud",
+          "/nav2/evaluation",
+          "/nav2/global_costmap/costmap",
+          "/nav2/global_costmap/costmap_raw",
+          "/nav2/global_costmap/costmap_updates",
+          "/nav2/global_costmap/footprint",
+          "/nav2/global_costmap/global_costmap/transition_event",
+          "/nav2/global_costmap/published_footprint",
+          "/nav2/goal_pose",
+          "/nav2/local_costmap/costmap",
+          "/nav2/local_costmap/costmap_raw",
+          "/nav2/local_costmap/costmap_updates",
+          "/nav2/local_costmap/footprint",
+          "/nav2/local_costmap/local_costmap/transition_event",
+          "/nav2/local_costmap/published_footprint",
+          "/nav2/local_plan",
+          "/nav2/marker",
+          "/nav2/plan",
+          "/nav2/planner_server/transition_event",
+          "/nav2/received_global_plan",
+          "/nav2/speed_limit",
+          "/nav2/transformed_global_plan",
+          "/odom",
+          "/parameter_events",
+          "/pose",
+          "/rosout",
+          "/scan",
+          "/slam_toolbox/feedback",
+          "/slam_toolbox/graph_visualization",
+          "/slam_toolbox/scan_visualization",
+          "/slam_toolbox/update",
+          "/tf",
+          "/tf_static"
+        ],
+        "raw_commands_after_gate_close": 4,
+        "reset_response": {
+          "backend_monotonic_s": 493549.679419066,
+          "command_id": "g3b_special_370c51d7a53f40d1abcff9a89fbac0b3",
+          "command_seq": 1,
+          "contract_version": "mobilecar-1.0",
+          "control_tick_id": "tick_000001327",
+          "decision": {
+            "allowed_contacts": [
+              "wheel-ground",
+              "finger-target-during-grasp"
+            ],
+            "approved": true,
+            "clipped": {},
+            "effective_payload": {
+              "confirm": true,
+              "episode_id": "episode_35ae793bf34b408290cd3d5fcf5038a7"
+            },
+            "reason": "approved",
+            "safety_revision": "g1-safety-1"
+          },
+          "plan": null,
+          "reason": "reset to new Episode",
+          "sim_time_s": 0.0,
+          "status": "APPLIED"
+        },
+        "stale_control_receipt": {
+          "accepted": false,
+          "authorized": false,
+          "backend_generation": 1,
+          "backend_monotonic_s": 493554.777078155,
+          "backend_status": "REJECTED",
+          "control_tick_id": "tick_000001828",
+          "dispatch_state": "REJECTED",
+          "episode_id": "episode_8aedf713c63d4ae88ce4fcb2bd544189",
+          "goal_generation": 1,
+          "goal_id": "old_goal",
+          "interface_profile": "g3b-1.0",
+          "map_id": "map_room_a_g3b_release_v1",
+          "message_type": "control_receipt",
+          "navigation_epoch": 1,
+          "reason": "goal belongs to another Episode",
+          "received": true,
+          "request_id": "stale_reset_1a4a4a611c934842a74978e9a9cf9a47",
+          "run_id": "run_0ff4564978ee46519d9138a384e81f51",
+          "schema_version": 2,
+          "session_id": "old_session",
+          "sim_time_s": 4.761999999999925
+        },
+        "stop_recording": {
+          "accepted": true,
+          "episode_id": "episode_8aedf713c63d4ae88ce4fcb2bd544189",
+          "reason": "",
+          "recording_segment_id": "seg_001_eca17cbc2c",
+          "recording_status": "COMPLETE"
+        },
+        "triggered": true
+      },
+      "success": true,
+      "unexpected_contacts": [],
+      "yaw_error_deg": 2.3933690719160547
+    }
+  ],
+  "cases_manifest_path": "/home/liaozhengyan/Desktop/mobileCar/releases/g3b-20261018T103442Z-a4081b0147bd/configs/g3b/cases_v1.yaml",
+  "cases_manifest_sha256": "5360e73fcbf497ffc4af8352b39a3a3c4c1e215e9ebd215ed5dcd3a09de74b22",
+  "data": {
+    "data_complete": true,
+    "episodes": [
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "A01_hold_room_a",
+        "episode_id": "episode_b1de4754488542f8adfb9bcf0090e49e",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_da2604fccffd42948f212e8bee8c1a76",
+        "warnings": [
+          "command recording_reset_c690e006689a466f8e9441fe97f9cbd1 has lifecycle output but no requested event"
+        ]
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "A02_limited_room_a",
+        "episode_id": "episode_f0b6e9b3862249408150c0544fceab9e",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_2313e695aac745268de4979d8eafc2ac",
+        "warnings": []
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "B01_hold_room_b",
+        "episode_id": "episode_cfa63df1c49a4b199c3329f5384f87b9",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_35eba2c3fa964dce90b61b2714044446",
+        "warnings": [
+          "command recording_reset_a781b4c61e1045479e1b720340fa4c91 has lifecycle output but no requested event"
+        ]
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "B02_limited_room_b",
+        "episode_id": "episode_73d436db5c234532802bb30378304fce",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_a674cfef99b042e39293701386a1a28a",
+        "warnings": [
+          "command recording_reset_743cd38c8dc24068acbd0246db061666 has lifecycle output but no requested event"
+        ]
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "A03_restart_localization",
+        "episode_id": "episode_bb1a4b066fe44ee3bd8b2e6c0f473d6a",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_d4cb2f085f0441fbacd82673bd696ae2",
+        "warnings": [
+          "command recording_reset_55d11e319415406caba0fc23eaf5da41 has lifecycle output but no requested event"
+        ]
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "B03_restart_localization",
+        "episode_id": "episode_0a81262a67154e829f08ad25a3e8ba11",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_7b184d485de34a198ff261e0d8a2ad7d",
+        "warnings": [
+          "command recording_reset_16dfc848b58b418c86baf720871f796d has lifecycle output but no requested event"
+        ]
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "A04_cancel_manual_takeover",
+        "episode_id": "episode_38ca59c474ca4dabb4d5d5776c34f656",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_d36c5a3321674aa5aa609f8e9c33dde3",
+        "warnings": []
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "A05_scan_loss",
+        "episode_id": "episode_885ef3c66af24480ad3434886bad4f9e",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_9f1a665ba0e14443b38502f1615fedfd",
+        "warnings": []
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "B04_localization_failure",
+        "episode_id": "episode_e60f65f3e8ef456aa9036326bb151d1a",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_5edd1336c6d44572a606367dd1611470",
+        "warnings": [
+          "command recording_reset_59add0058aa345eab1f974100ba331c8 has lifecycle output but no requested event"
+        ]
+      },
+      {
+        "audit_status": "COMPLETE",
+        "case_id": "A06_reset_epoch",
+        "episode_id": "episode_f133d990e21b41d683fc5b2d6063c720",
+        "errors": [],
+        "format_valid": true,
+        "run_id": "run_0ff4564978ee46519d9138a384e81f51",
+        "warnings": [
+          "command recording_reset_76e301a47ac448ddb4e005cc6a02b532 has lifecycle output but no requested event"
+        ]
+      }
+    ],
+    "format_valid": true,
+    "training_qualification_basis": "G3B navigation Episodes are not human manipulation demonstrations and are outside the training-qualified scope.",
+    "training_qualified": false
+  },
+  "execution_location": "server_only",
+  "expected_case_count": 10,
+  "formal_gates": {
+    "case_wall_timeout_s": 360,
+    "goal_position_tolerance_m": 0.1,
+    "goal_wall_timeout_s": 180,
+    "goal_yaw_tolerance_deg": 10.0,
+    "health_detection_to_physical_stop_s": 1.0,
+    "health_detection_to_zero_s": 0.15,
+    "max_inflight_backend_accepts_after_gate_close": 2,
+    "maximum_unexpected_environment_contacts": 0,
+    "settled_duration_s": 0.6,
+    "settled_linear_speed_m_s": 0.01,
+    "settled_yaw_rate_rad_s": 0.03,
+    "training_qualified": false
+  },
+  "frozen_cases_copy": "/home/liaozhengyan/Desktop/mobileCar/var/reports/g3b-final-formal-10-v8/cases_frozen.yaml",
+  "generated_wall_utc": "2026-10-18T10:36:53.164716Z",
+  "interface_profile": "g3b-1.0",
+  "prechecks": {
+    "room_a": {
+      "compatibility": {
+        "checked_fields": [
+          "scene_id",
+          "model_sha256",
+          "navigation_profile_sha256",
+          "sensor_profile_sha256",
+          "scan_config_sha256",
+          "resolution_m",
+          "map_frame",
+          "odom_frame",
+          "base_frame"
+        ],
+        "compatible": true,
+        "mismatches": {},
+        "whole_source_aggregate_used": false
+      },
+      "goal_checks": [
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 29,
+          "x_m": 0.0,
+          "y_m": -0.25
+        },
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 29,
+          "x_m": 0.0,
+          "y_m": -0.25
+        },
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 29,
+          "x_m": 0.0,
+          "y_m": -0.25
+        },
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 28,
+          "x_m": 0.0,
+          "y_m": -0.2
+        },
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 32,
+          "x_m": 0.0,
+          "y_m": -0.4
+        },
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 23,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 32,
+          "x_m": 0.0,
+          "y_m": -0.4
+        }
+      ],
+      "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_a_g3b_release_v1/manifest.json",
+      "manifest_sha256": "aaee75864a1a1edc7bdf73734640078640b0b40b69020574e80eef81c1b6fd34",
+      "map_free_thresh": 0.196,
+      "map_id": "map_room_a_g3b_release_v1"
+    },
+    "room_b": {
+      "compatibility": {
+        "checked_fields": [
+          "scene_id",
+          "model_sha256",
+          "navigation_profile_sha256",
+          "sensor_profile_sha256",
+          "scan_config_sha256",
+          "resolution_m",
+          "map_frame",
+          "odom_frame",
+          "base_frame"
+        ],
+        "compatible": true,
+        "mismatches": {},
+        "whole_source_aggregate_used": false
+      },
+      "goal_checks": [
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 50,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 28,
+          "x_m": 1.0,
+          "y_m": 0.0
+        },
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 50,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 28,
+          "x_m": 1.0,
+          "y_m": 0.0
+        },
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 50,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 28,
+          "x_m": 1.0,
+          "y_m": 0.0
+        },
+        {
+          "accepted": true,
+          "classification": "free",
+          "column": 50,
+          "free_thresh": 0.196,
+          "gray_value": 254,
+          "occupied_probability": 0.0039215686274509665,
+          "occupied_thresh": 0.65,
+          "row": 28,
+          "x_m": 1.0,
+          "y_m": 0.0
+        }
+      ],
+      "manifest_path": "/home/liaozhengyan/Desktop/mobileCar/var/maps/map_room_b_g3b_release_v1/manifest.json",
+      "manifest_sha256": "a6e641a570c85e21523863f75e1346469c668993c1af0d75fe92ff4d1ea0382c",
+      "map_free_thresh": 0.196,
+      "map_id": "map_room_b_g3b_release_v1"
+    }
+  },
+  "report_version": "g3b-formal-1",
+  "schema_version": 1,
+  "success": true,
+  "training_qualified": false
+}

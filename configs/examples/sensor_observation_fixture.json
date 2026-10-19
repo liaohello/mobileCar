@@ -1,0 +1,23 @@
+{
+  "contract_version": "mobilecar-1.0",
+  "run_id": "fixture_run",
+  "episode_id": "fixture_episode",
+  "stream_id": "imu",
+  "sample_id": "fixture_run:fixture_episode:imu:1",
+  "sensor_kind": "imu",
+  "measurement_time_s": 1.2,
+  "arrival_time_s": 1.21,
+  "clock_id": "backend_monotonic",
+  "frame_id": "imu_link",
+  "source": "synthetic_fixture",
+  "quality": "synthetic_fixture",
+  "value": {
+    "angular_velocity_rad_s": [0.0, 0.0, 0.0],
+    "linear_acceleration_m_s2": [0.0, 0.0, 9.81]
+  },
+  "asset_uri": null,
+  "valid_mask_uri": null,
+  "metadata": {
+    "fixture_only": true
+  }
+}

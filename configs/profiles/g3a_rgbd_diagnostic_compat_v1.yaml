@@ -1,0 +1,49 @@
+schema_version: 1
+interface_profile: g2a-1.0
+profile_id: g3a-rgbd-diagnostic-compat-1.0
+profile_version: "1.0"
+contract_version: mobilecar-1.0
+scene_id: navigation_diagnostic
+model_sha256: 62bea46ce1468baf227a44e2ff71d509010e173337f1c875d2bd3c0399ab4241
+runtime:
+  realtime: true
+  physics_timestep_s: 0.001
+  control_period_s: 0.010
+image:
+  width: 640
+  height: 480
+  vertical_fov_deg: 58.0
+  nominal_capture_hz: 5.0
+  deadline_schedule: true
+  color: RGB8
+  depth: metric_optical_axis_z_invalid_nan
+fast_streams:
+  target_publish_hz: 10.0
+  streams: [imu, encoders, joint_feedback, lidar]
+acceptance:
+  episode_duration_s: 60.0
+  init_window_s: [0.0, 5.0]
+  analysis_window_s: [5.0, 55.0]
+  final_window_s: [55.0, 60.0]
+  planned_samples_in_window: 250
+  min_average_wall_hz: 4.5
+  min_persisted_unique_samples: 225
+  max_p99_interval_s: 0.4
+  uniqueness_required: true
+  rgb_depth_mask_pairs_required: true
+required_streams: [rgb, depth, imu, encoders, joint_feedback, lidar, transforms]
+policy_input_allowlist:
+  - run_id
+  - episode_id
+  - stream_id
+  - sample_id
+  - measurement_time_s
+  - clock_id
+  - frame_id
+  - rgb_uri
+  - depth_uri
+  - valid_mask_uri
+  - base_twist_body_m_s
+  - arm_user_joint_positions_rad
+  - gripper_width_m
+  - available_sensors

@@ -1,0 +1,77 @@
+{
+  "fixture_version": "g4a2-human-intent-1",
+  "status": "synthetic_fixture",
+  "evidence_scope": "NOT_SERVER_EVIDENCE",
+  "contains_world_truth": false,
+  "contains_credentials": false,
+  "accepted": [
+    {
+      "operator_kind": "human_teleop",
+      "operator_id": "fixture_human",
+      "session_id": "session_human_fixture_1",
+      "run_id": "run_g4a2_fixture",
+      "episode_id": "episode_fixture_1",
+      "backend_generation": 1,
+      "nearfield_epoch": 1,
+      "display_sample_id": "rgbd_fixture_1",
+      "human_intent_id": "intent_fixture_1",
+      "control_generator": "human_sixdim_sender",
+      "assist_mode": "manual",
+      "source": "human_teleop",
+      "teacher_plan_id": null,
+      "expected": "accept"
+    },
+    {
+      "operator_kind": "human_teleop",
+      "operator_id": "fixture_human",
+      "session_id": "session_human_fixture_1",
+      "run_id": "run_g4a2_fixture",
+      "episode_id": "episode_fixture_1",
+      "backend_generation": 1,
+      "nearfield_epoch": 1,
+      "display_sample_id": "rgbd_fixture_2",
+      "human_intent_id": "intent_fixture_2",
+      "control_generator": "human_sixdim_sender",
+      "assist_mode": "planner_assist",
+      "source": "human_teleop",
+      "teacher_plan_id": null,
+      "expected": "accept"
+    }
+  ],
+  "rejected": [
+    {
+      "operator_kind": "agent_ui",
+      "operator_id": "agent_fixture",
+      "session_id": "session_agent_fixture",
+      "run_id": "run_g4a2_fixture",
+      "episode_id": "episode_fixture_1",
+      "backend_generation": 1,
+      "nearfield_epoch": 1,
+      "display_sample_id": "rgbd_fixture_3",
+      "human_intent_id": "intent_fixture_3",
+      "control_generator": "human_sixdim_sender",
+      "assist_mode": "manual",
+      "source": "agent_ui",
+      "teacher_plan_id": null,
+      "expected": "reject",
+      "reason": "automation source cannot enter human collection"
+    },
+    {
+      "operator_kind": "human_teleop",
+      "operator_id": "fixture_human",
+      "session_id": "session_human_fixture_1",
+      "run_id": "run_g4a2_fixture",
+      "episode_id": "episode_fixture_1",
+      "backend_generation": 1,
+      "nearfield_epoch": 1,
+      "display_sample_id": "rgbd_fixture_4",
+      "human_intent_id": "intent_fixture_4",
+      "control_generator": "planner_assist_sender",
+      "assist_mode": "planner_assist",
+      "source": "human_teleop",
+      "teacher_plan_id": "hidden_plan_fixture",
+      "expected": "reject",
+      "reason": "hidden teacher plan is forbidden in normal sixdim path"
+    }
+  ]
+}

@@ -1,0 +1,162 @@
+schema_version: 1
+interface_profile: g3b-1.0
+profile_id: g3b-nav2-omni-map-v1
+profile_version: "1.0"
+wire_contract_version: mobilecar-1.0
+inherits_navigation_profile: g3a-nav-50hz-laser10-v1
+navigation_profile_path: configs/profiles/g3a_navigation_v1.yaml
+model_sha256: 62bea46ce1468baf227a44e2ff71d509010e173337f1c875d2bd3c0399ab4241
+mode:
+  allowed: [MAPPING, LOCALIZATION]
+  mapping_map_to_odom_publisher: slam_toolbox_mapping
+  localization_map_to_odom_publisher: slam_toolbox_localization
+  duplicate_map_to_odom: forbidden
+  unknown_start_global_relocalization: out_of_scope
+  truth_map: forbidden
+clock:
+  source: capture_sim_time
+  allow_backward_same_epoch: false
+  fallback_to_backend_monotonic: forbidden
+  old_identity_switch: forbidden
+  steady_clock_watchdog: true
+map_package:
+  root: var/maps
+  required_assets:
+    - occupancy_yaml
+    - occupancy_image
+    - pose_graph
+    - pose_graph_data
+    - map_manifest
+  resolution_m: 0.05
+  mode: trinary
+  occupied_thresh: 0.65
+  free_thresh: 0.196
+  unknown_is_traversable: false
+  map_frame: map
+  odom_frame: odom
+  base_frame: base_link
+  compatibility_required_fields:
+    - scene_id
+    - model_sha256
+    - navigation_profile_sha256
+    - sensor_profile_sha256
+    - scan_config_sha256
+    - resolution_m
+    - map_frame
+    - odom_frame
+    - base_frame
+  whole_source_aggregate_is_not_compatibility_field: true
+localization:
+  pose_match_topic: /pose
+  map_to_odom_tf: required
+  target_update_period_s: 0.20
+  moving_pose_max_age_s: 0.50
+  stationary_pose_max_age_s: 2.00
+  restore_motion_pose_max_age_s: 0.50
+  node_heartbeat_max_age_s: 0.50
+  map_to_odom_max_age_s: 0.50
+  diagnostic_source: slam_toolbox_pose_and_tf_plus_ros_graph
+  tf_alone_is_sufficient: false
+  initial_prior: explicit_once
+  geometric_degeneracy_general_claim: false
+control:
+  source: nav2_goal
+  raw_nav2_cmd_topic: /mobilecar/nav2/cmd_vel_raw
+  final_governed_cmd_topic: /mobilecar/nav2/cmd_vel_governed
+  backend_ipc_socket: ../../var/ipc/g3b_navigation.sock
+  goal_action: /navigate_to_pose
+  internal_nav2_action: /nav2/navigate_to_pose
+  maximum_translation_m_s: 0.05
+  maximum_yaw_rad_s: 0.30
+  maximum_translation_acceleration_m_s2: 0.30
+  maximum_yaw_acceleration_rad_s2: 1.00
+  command_timeout_s: 0.25
+  lease_ttl_s: 0.35
+  goal_barrier_s: 0.30
+  health_detection_to_zero_s: 0.15
+  physical_stop_deadline_s: 1.00
+  behavior_and_recovery_must_use_final_gate: true
+  stale_twist_tokens_allowed: false
+  backend_receipt_required: true
+  accepted_statuses: [DISPATCHED, APPLIED, RECEIVED]
+  arm_independent_during_navigation: true
+  non_navigation_human_base_takeover_preserves_arm: true
+nav2:
+  distribution: ros2_humble
+  global_planner: nav2_navfn_planner/NavfnPlanner
+  local_controller: dwb_core::DWBLocalPlanner
+  behavior_server: nav2_behaviors/BehaviorServer
+  bt_navigator: nav2_bt_navigator/BtNavigator
+  velocity_smoother: nav2_velocity_smoother/VelocitySmoother
+  odom_topic: /odom
+  scan_topic: /scan
+  global_frame: map
+  robot_base_frame: base_link
+  odom_frame: odom
+  use_sim_time: true
+  allow_unknown: false
+  min_vel_x: -0.05
+  max_vel_x: 0.05
+  min_vel_y: -0.05
+  max_vel_y: 0.05
+  min_vel_theta: -0.30
+  max_vel_theta: 0.30
+  min_speed_xy: 0.0
+  max_speed_xy: 0.05
+  min_speed_theta: 0.0
+  acc_lim_x: 0.30
+  acc_lim_y: 0.30
+  acc_lim_theta: 1.00
+  decel_lim_x: -0.30
+  decel_lim_y: -0.30
+  decel_lim_theta: -1.00
+  vx_samples: [0.0, 0.025, 0.05, -0.025, -0.05]
+  vy_samples: [0.0, 0.025, 0.05, -0.025, -0.05]
+  vtheta_samples: [0.0, 0.1, 0.2, 0.3, -0.1, -0.2, -0.3]
+  footprint_padding_m: 0.03
+  footprint_mode: fixed_conservative_full_arm_envelope
+  footprint_polygon_m:
+    - [-0.16, -0.18]
+    - [0.46, -0.18]
+    - [0.46, 0.18]
+    - [-0.16, 0.18]
+  global_footprint_cost_scaling_factor: 3.0
+  local_obstacle_footprint_critic_required: true
+  tf_tolerance_s: 0.20
+  transform_tolerance_s: 0.20
+acceptance:
+  scenarios: [room_a, l_shape_wide_door]
+  seed_policy: [ideal, 1]
+  formal_cases: 10
+  arm_modes: [hold, limited_activity]
+  goal_position_tolerance_m: 0.10
+  goal_yaw_tolerance_deg: 10.0
+  settled_linear_speed_m_s: 0.01
+  settled_yaw_rate_rad_s: 0.03
+  settled_duration_s: 0.60
+  goal_sim_timeout_s: 120.0
+  goal_wall_timeout_s: 180.0
+  mapping_sim_timeout_s: 300.0
+  mapping_wall_timeout_s: 420.0
+  health_detection_to_zero_s: 0.15
+  physical_stop_deadline_s: 1.00
+  unexpected_environment_contacts_allowed: 0
+  action_and_physics_reported_separately: true
+  initial_alignment_once_per_continuous_trajectory: true
+  data_eligibility_scope: g3b_navigation_only
+  training_qualified: false
+required_subchecks:
+  - lateral_motion_measured
+  - nan_inf_slam_consumer_policy
+  - footprint_full_arm_envelope
+  - invalid_goal_rejection
+  - incompatible_map_rejection
+  - backend_acceptance_receipt
+  - gui_rviz_goal_interaction
+  - duplicate_map_to_odom
+  - map_restart_localization
+  - command_gate_rejection
+  - recovery_output_final_gate
+  - localization_failure_with_fresh_inputs
+  - scan_failure_recovery_no_resume
+  - reset_full_stack

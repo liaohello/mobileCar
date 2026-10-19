@@ -1,0 +1,74 @@
+contract_version: mobilecar-1.0
+profile: g1_development
+backend:
+  kind: mock
+  model_path: assets/landerpi/model/robot.xml
+  scene_path: assets/landerpi/scenes/mobile_pick.xml
+  generation: 1
+  physics_timestep_s: 0.001
+  control_period_s: 0.010
+  realtime: true
+  render_rgbd: true
+  rgbd_interval_s: 0.200
+  lrf_interval_s: 0.100
+  observation_profile_path: configs/profiles/g2a_rgbd_5hz.yaml
+  capture_scheduler: deadline
+  fast_stream_publish_interval_ticks: 10
+safety:
+  translation_norm_m_s: 0.05
+  yaw_rate_rad_s: 0.30
+  translation_acceleration_m_s2: 0.30
+  yaw_acceleration_rad_s2: 1.00
+  feedback_max_age_s: 0.050
+  stop_start_deadline_s: 0.050
+  stop_settle_linear_m_s: 0.005
+  stop_settle_yaw_rad_s: 0.020
+  stop_settle_duration_s: 0.500
+  command_ttl_s: 0.500
+  lease_timeout_s: 0.500
+  heartbeat_interval_s: 0.150
+  single_action_timeout_s: 30.0
+  episode_timeout_s: 300.0
+  parking_confirm_timeout_s: 5.0
+  tcp_position_tolerance_m: 0.005
+  tcp_hold_duration_s: 0.500
+  tcp_speed_scale: 0.500
+  q1_software_limit_rad: null
+recording:
+  required_for_motion: false
+  root: runs
+  queue_capacity: 4096
+  flush_interval_s: 0.050
+  close_drain_timeout_s: 10.0
+ui:
+  host: 127.0.0.1
+  port: 8787
+  snapshot_hz: 15
+  keyboard_translation_m_s: 0.05
+  keyboard_yaw_rad_s: 0.30
+  keyboard_refresh_s: 0.150
+  adaptive_rendering: true
+  preferred_pixel_ratio: 1.0
+  max_pixel_ratio: 1.5
+  static_render_interval_s: 0.100
+  shadow_map_size: 512
+quality:
+  profile_path: configs/profiles/g2a_rgbd_5hz.yaml
+  action_profile_path: configs/profiles/g2a_action_teleop_v1.yaml
+  report_root: runs
+  report_version: g2a-quality-1.0
+navigation:
+  enabled: false
+  profile_path: configs/profiles/g3a_navigation_v1.yaml
+  socket_path: var/ipc/g3a_navigation.sock
+  queue_capacity: 16
+g3b:
+  enabled: false
+  profile_path: configs/profiles/g3b_navigation_v1.yaml
+  map_root: var/maps
+acceptance:
+  lift_height_m: 0.050
+  lift_hold_s: 2.000
+  settle_duration_s: 0.500
+  max_move_seconds: 30.0
+  max_episode_seconds: 300.0

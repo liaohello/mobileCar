@@ -1,0 +1,38 @@
+extends: default.yaml
+contract_version: mobilecar-1.0
+profile: g3a_navigation_foundation_server
+backend:
+  kind: mujoco
+  model_path: assets/landerpi/model/robot_navigation_diagnostic.xml
+  scene_path: assets/landerpi/scenes/navigation_diagnostic.xml
+  generation: 1
+  physics_timestep_s: 0.001
+  control_period_s: 0.010
+  realtime: true
+  render_rgbd: false
+  rgbd_interval_s: 0.200
+  lrf_interval_s: 0.100
+  observation_profile_path: configs/profiles/g3a_rgbd_diagnostic_compat_v1.yaml
+  navigation_profile_path: configs/profiles/g3a_navigation_v1.yaml
+  capture_scheduler: deadline
+  fast_stream_publish_interval_ticks: 10
+safety:
+  require_recording: false
+recording:
+  root: ../../var/runs
+quality:
+  report_root: ../../var/reports
+  profile_path: configs/profiles/g3a_rgbd_diagnostic_compat_v1.yaml
+  g2a_quality_enabled: false
+navigation:
+  enabled: true
+  profile_path: configs/profiles/g3a_navigation_v1.yaml
+  socket_path: ../../var/ipc/g3a_navigation.sock
+  queue_capacity: 16
+  test_control_enabled: true
+  ros_domain_id: 73
+  ros_rmw_implementation: rmw_fastrtps_cpp
+  bridge_log_root: ../../var/reports
+ui:
+  host: 127.0.0.1
+  port: 8793

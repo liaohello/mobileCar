@@ -1,0 +1,37 @@
+schema_version: 1
+contract_version: mobilecar-1.0
+profile_id: g2a-teleop-action-1.0
+profile_version: "1.0"
+description: Versioned action provenance for G2A teleoperation and quality-gated eligibility.
+required_lifecycle:
+  requested: requested
+  approved: [approved, dispatch]
+  effective_reference: [dispatched, actuator_reference]
+groups:
+  base:
+    command_types: [set_base_twist, zero_base, stop, cancel]
+    action_reference_keys: [base_twist, wheel_target_rad_s]
+    frame_id: base_link
+    units: [m_s, rad_s]
+  arm:
+    command_types:
+      - set_arm_joint_goal
+      - set_gripper_width_goal
+      - preview_tcp_target
+      - execute_tcp_target
+      - cancel
+      - stop
+    action_reference_keys:
+      - arm_model_reference_rad
+      - gripper_width_target_m
+    joint_order: [joint1, joint2, joint3, joint4, joint5]
+    units: [rad, m]
+observation_requirements:
+  d0: [base_twist_body_m_s, measurement_time_s, clock_id, frame_id]
+  d2: [rgb_uri, arm_user_joint_positions_rad, gripper_width_m, measurement_time_s]
+  wrist_rgb_only: [rgb_uri, arm_user_joint_positions_rad, gripper_width_m]
+requirements:
+  approved_or_dispatched_required: true
+  actuator_reference_required: true
+  unknown_action_labels_forbidden: true
+  raw_observation_presence_does_not_define_action_profile: true

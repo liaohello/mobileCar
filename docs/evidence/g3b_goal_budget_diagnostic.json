@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "diagnosis_date_local": "2026-10-17",
+  "timezone": "America/Los_Angeles",
+  "scope": "Read-only Codex execution metadata and rollout inspection; no project simulation or tests",
+  "execution_thread_id": "01a149a9-5221-7cd2-96ba-8aa8061ff621",
+  "goal_id": "e976abd6-5e5a-4807-b9d0-cfe1d6f131b2",
+  "observed_goal": {
+    "status": "budget_limited",
+    "token_budget": 1000000,
+    "tokens_used": 1261120,
+    "time_used_seconds": 3020,
+    "created_at_ms": 1792292189041,
+    "updated_at_ms": 1792294934487
+  },
+  "rollout_source": {
+    "environment": "existing local WSL Ubuntu-22.04 Codex client",
+    "path": "/home/liaozhengyan/.codex/sessions/2026/10/17/rollout-2026-10-17T04-39-55-01a149a9-5221-7cd2-96ba-8aa8061ff621.jsonl",
+    "events": [
+      {
+        "line": 10827,
+        "timestamp_utc": "2026-10-18T02:56:27.159Z",
+        "tool": "create_goal",
+        "provided_token_budget": 0
+      },
+      {
+        "line": 10829,
+        "timestamp_utc": "2026-10-18T02:56:27.189Z",
+        "result": "goal budgets must be positive when provided"
+      },
+      {
+        "line": 10833,
+        "timestamp_utc": "2026-10-18T02:56:29.033Z",
+        "tool": "create_goal",
+        "provided_token_budget": 1000000
+      },
+      {
+        "line": 10835,
+        "timestamp_utc": "2026-10-18T02:56:29.087Z",
+        "returned_status": "active",
+        "returned_tokenBudget": 1000000,
+        "returned_remainingTokens": 1000000
+      }
+    ]
+  },
+  "conclusion": "The execution agent first supplied invalid zero, then explicitly supplied a finite one-million-token Goal budget despite the task requiring no self-imposed budget.",
+  "correction": "Omit token_budget entirely when creating the replacement/continued Goal; verify tokenBudget is null. Existing budget-limited Goal needs supported user-controlled adjustment or clearing before recreation.",
+  "existing_goal_modified": false,
+  "internal_database_modified": false,
+  "server_connected": false,
+  "project_tests_or_simulation_run": false,
+  "account_usage_snapshot": {
+    "ordinary_usage_allowed": true,
+    "five_hour_used_percent": 41,
+    "weekly_used_percent": 6,
+    "note": "Snapshot at diagnosis time only; not a reconstruction of account usage at the original stopping time."
+  }
+}

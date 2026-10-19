@@ -1,0 +1,11 @@
+{
+  "synthetic_fixture": true,
+  "human_evidence": false,
+  "initial_live": true,
+  "action_uses_displayed_sample": true,
+  "finalizing_immediate": true,
+  "normal_stop_saved": true,
+  "broken_image_stale": true,
+  "stop_failure_visible": true,
+  "passed": true
+}

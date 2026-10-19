@@ -1,0 +1,97 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujocoinclude>
+  <body name="link1" pos="0.0798305157766 0.00796999989407 -0.008811059262" quat="1 0 0 0">
+    <joint name="joint1" type="hinge" axis="0 -0.00872653549837 0.999961923064" limited="true" range="-2.09 2.09" damping="0.002" armature="2e-05" />
+    <inertial pos="-5.67434079306178E-05 -0.00183922864739318 0.0128899047255676" mass="0.03602475826756437" fullinertia="4.5516210709e-06 5.5858712841e-06 5.79714198766e-06 -1.47527946543e-08 -2.15508540165e-08 8.87917177789e-08" />
+    <geom name="link1_collision" mass="0" group="3" rgba="0 0 0 0" contype="4" conaffinity="31" type="box" pos="-1.86264514923e-09 3.89106571674e-05 0.0195513833314" size="0.0239805355668 0.0239610876888 0.0215513836592" />
+    <geom name="link1_visual" type="mesh" mesh="link1_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+    <body name="link2" pos="0 -0.0182247260842 0.0314158515121" quat="0.999906477687 5.65531454e-05 0.0129614374581 -0.00436277662887">
+      <joint name="joint2" type="hinge" axis="0.00859171009913 -0.999923369532 0.00891277624995" limited="true" range="-2.09 2.09" damping="0.002" armature="2e-05" />
+      <inertial pos="-0.000621685157940421 0.0200819085860195 0.0420892184436345" mass="0.04613072938216173" fullinertia="9.2730143734e-06 7.60870996695e-06 7.37504719455e-06 1.22276794551e-09 4.46279045879e-08 -9.0736299053e-08" />
+      <geom name="link2_collision" mass="0" group="3" rgba="0 0 0 0" contype="4" conaffinity="31" type="capsule" fromto="-0.000245260074735 0.0184963103384 0.00499999988824 -0.000245260074735 0.0184963103384 0.0710000023246" size="0.008" />
+      <geom name="link2_visual" type="mesh" mesh="link2_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.12 0.13 0.15 1" contype="0" conaffinity="0" mass="0" group="1" />
+      <body name="link3" pos="-0.000861228256677 0.000635863697295 0.074117298162" quat="0.999999988122 5.08689256953e-05 0.000136312396919 5.0865005279e-05">
+        <joint name="joint3" type="hinge" axis="0.00859391749792 -0.999923336386 0.00891436659751" limited="true" range="-2.09 2.09" damping="0.002" armature="2e-05" />
+        <inertial pos="-0.000122582226100065 0.0200862842798109 0.0420915428735039" mass="0.04613072831434954" fullinertia="9.27380345301e-06 7.60869094688e-06 7.37427675045e-06 -1.70310603228e-11 2.21958620857e-08 -9.07709746976e-08" />
+        <geom name="link3_collision" mass="0" group="3" rgba="0 0 0 0" contype="4" conaffinity="31" type="capsule" fromto="-0.000243548303843 0.018496312201 0.00499999988824 -0.000243548303843 0.018496312201 0.0710000023246" size="0.008" />
+        <geom name="link3_visual" type="mesh" mesh="link3_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.12 0.13 0.15 1" contype="0" conaffinity="0" mass="0" group="1" />
+        <body name="link4" pos="0 0.00464364220586 0.0741383282674" quat="0.999955260225 0 -0.00945925729011 0">
+          <joint name="joint4" type="hinge" axis="0.00859391749792 -0.999923336386 0.00891436659751" limited="true" range="-2.09 2.09" damping="0.002" armature="2e-05" />
+          <inertial pos="0.003946281881652 0.0185528009082651 0.0267145357803036" mass="0.04268634470414881" fullinertia="1.07579080868e-05 8.63443535186e-06 1.0975309132e-05 -6.32350403607e-09 -3.91465483432e-07 3.17949775932e-08" />
+          <geom name="link4_collision" mass="0" group="3" rgba="0 0 0 0" contype="4" conaffinity="31" type="box" pos="0.0020421911031 0.0151477288455 0.0192649867386" size="0.0240461025387 0.0202148314565 0.0292455088347" />
+          <geom name="link4_visual" type="mesh" mesh="link4_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.12 0.13 0.15 1" contype="0" conaffinity="0" mass="0" group="1" />
+          <body name="link5" pos="-0.000167622119569 0.0159322086602 0.0497506513724" quat="0.999980961247 -0.00436280558595 -4.88052580014e-05 0.00436356375386">
+            <joint name="joint5" type="hinge" axis="-0.000182847987243 0 -0.999999983283" limited="true" range="-2.09 2.09" damping="0.002" armature="2e-05" />
+            <inertial pos="-6.49350701820151E-08 7.72217831346289E-09 0.00121554056499218" mass="0.0030992014177478647" fullinertia="7.18215415434e-08 7.18204912075e-08 1.3409538411e-07 1.70974718938e-14 -1.45591323191e-12 -7.77015995555e-14" />
+            <geom name="link5_collision" mass="0" group="3" rgba="0 0 0 0" contype="4" conaffinity="31" type="box" pos="1.26343220472e-05 -4.65661287308e-10 0.000471293227747" size="0.00951227359474 0.00950000062585 0.00280862138607" />
+            <geom name="link5_visual" type="mesh" mesh="link5_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+            <body name="gripper_link" pos="-0.00905353309436 0 0.0217251857672" quat="0.999999993868 0 -0.000110747320076 0">
+              <inertial pos="0.0124307211399164 4.71014061047895E-05 0.00469786337312794" mass="0.04892237490253153" fullinertia="2.09873429698e-05 6.68111829997e-06 2.27987186715e-05 -2.39738239646e-08 2.48033671365e-09 1.5519008184e-08" />
+              <geom name="gripper_link_collision" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="0.01 0 0.006" size="0.015 0.025 0.012" />
+              <geom name="gripper_link_visual" type="mesh" mesh="gripper_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+              <body name="gripper_base_link" pos="0.00905019740196 0 0.0215396893641" quat="0.999999985677 0 0.000169252185205 0">
+                <joint name="gripper_base_joint" type="hinge" axis="0.000263600641267 0 -0.999999965257" limited="true" range="-1.638 0" damping="0.00002" armature="0.000002" />
+                <inertial pos="-6.00387841184769E-06 3.66640463149437E-07 -0.00259069623352681" mass="0.0026582558014195345" fullinertia="2.14358634075e-07 2.29021053246e-08 2.18324952623e-07 -3.55505920699e-12 1.33659616002e-11 -1.00226494293e-12" />
+                <geom name="gripper_base_link_collision" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-3.0267983675e-09 4.20026481152e-07 -0.00396984489635" size="0.00450000166893 0.0169981494546 0.00396984769031" />
+                <geom name="gripper_base_link_visual" type="mesh" mesh="gripper_base_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+                <body name="gripper_left_link" pos="0 0.0134985698294 0.00300000000438" quat="1 0 0 0">
+                  <joint name="gripper_left_join" type="hinge" axis="0 0 -1" limited="true" range="-2.4569 2.4569" damping="0.00002" armature="0.000002" />
+                  <inertial pos="-0.00564577758949344 0.00921461972443496 -0.00149999696741121" mass="0.0020664833454007887" fullinertia="1.16572482665e-07 3.81955443378e-08 1.51668301984e-07 3.07031119445e-09 1.88514646742e-14 -1.64919428789e-15" />
+                  <geom name="gripper_left_link_collision" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.00444590859115 0.009979236871 -0.00149999768473" size="0.0086653418839 0.0134792625904 0.00150001724251" />
+                  <geom name="gripper_left_link_visual" type="mesh" mesh="gripper_left_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+                </body>
+                <body name="gripper_right_link" pos="0 -0.0134985698294 0.00300000000438" quat="1 0 0 0">
+                  <joint name="gripper_right_joint" type="hinge" axis="0.00125488987056 0 -0.999999212625" limited="true" range="-2.4569 2.4569" damping="0.00002" armature="0.000002" />
+                  <inertial pos="0.00564577597805638 -0.00921461972443462 -0.00150000303258813" mass="0.0020664833454014948" fullinertia="1.16572482665e-07 3.81955443378e-08 1.51668301985e-07 3.07031119444e-09 1.8851465445e-14 -1.64919500913e-15" />
+                  <geom name="gripper_right_link_collision" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="0.00444580381736 -0.0099792573601 -0.00150000164285" size="0.0086653418839 0.0134792625904 0.00150001817383" />
+                  <geom name="gripper_right_link_visual" type="mesh" mesh="gripper_right_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+                </body>
+              </body>
+              <body name="guide_rod_link" pos="0.012101474006 0.000728801919481 0.0388709294658" quat="0.999999985677 0 0.000169252185205 0">
+                <inertial pos="-0.00305703157645135 -0.000727418064979786 -0.00459974184488737" mass="0.02762211383268541" fullinertia="1.3213611925e-05 1.3746802654e-06 1.40591263989e-05 -4.07953673473e-18 -3.00635530148e-20 -9.5669548749e-19" />
+                <geom name="guide_rod_link_collision" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.00305703119375 -0.000727418810129 -0.00499999988824" size="0.0100000007078 0.0375016853213 0.00499999988824" />
+                <geom name="guide_rod_link_visual" type="mesh" mesh="guide_rod_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+                <body name="left_jaw_link" pos="0.003943 0.0372983863792 -0.003" quat="1 0 0 0">
+                  <joint name="left_jaw_joint" type="slide" axis="0 -1 0" limited="true" range="0 0.019" damping="0.2" armature="0.000002" />
+                  <inertial pos="-0.00692720878121303 -0.00636196224714537 0.00893419676758717" mass="0.02125744636525401" fullinertia="1.25194422808e-06 2.50044397298e-06 1.69352948742e-06 4.36293439524e-11 1.23351515376e-09 4.50369988333e-08" />
+                  <geom name="left_jaw_link_pad" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.00698579661548 -0.0115253888071 0.0229587126523" size="0.006 0.0015 0.01" condim="4" priority="2" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <geom name="left_jaw_link_shell_0" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.0164866149426 -0.00651432434097 0.0102632194757" size="0.00350081780925 0.00651106471196 0.0226954929531" condim="4" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <geom name="left_jaw_link_shell_1" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="0.00251502124593 -0.00651432434097 0.0102632194757" size="0.00350081780925 0.00651106471196 0.0226954929531" condim="4" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <geom name="left_jaw_link_shell_2" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.00698579661548 -0.0050143240951 0.0102632194757" size="0.00600000005215 0.00501106446609 0.0226954929531" condim="4" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <geom name="left_jaw_link_shell_3" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.00698579661548 -0.0115253888071 0.000263219699264" size="0.00600000005215 0.00150000024587 0.0126954931766" condim="4" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <site name="left_finger_contact" pos="-0.00698579661548 -0.0130253890529 0.0229587126523" size="0.002" rgba="1 0.7 0 1" group="4" />
+                  <geom name="left_jaw_link_visual" type="mesh" mesh="left_jaw_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.12 0.13 0.15 1" contype="0" conaffinity="0" mass="0" group="1" />
+                </body>
+                <body name="right_jaw_link" pos="0.003943 -0.0387533863792 -0.003" quat="1 0 0 0">
+                  <joint name="right_jaw_joint" type="slide" axis="0 -1 0" limited="true" range="-0.019 0" damping="0.2" armature="0.000002" />
+                  <inertial pos="-0.00692720838825259 0.00636256719791402 0.00893419699109832" mass="0.021257448188305113" fullinertia="1.25194429512e-06 2.50044396679e-06 1.69352944276e-06 -4.36349589557e-11 1.23327899769e-09 -4.5037020264e-08" />
+                  <geom name="right_jaw_link_pad" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.00698572630063 0.0115263834596 0.0229587201029" size="0.006 0.0015 0.01" condim="4" priority="2" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <geom name="right_jaw_link_shell_0" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.0164867434651 0.00651493389159 0.0102632157505" size="0.00350101804361 0.00651144981384 0.0226955041289" condim="4" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <geom name="right_jaw_link_shell_1" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="0.00251529179513 0.00651493389159 0.0102632157505" size="0.00350101804361 0.00651144981384 0.0226955041289" condim="4" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <geom name="right_jaw_link_shell_2" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.00698572583497 0.00501493364573 0.0102632157505" size="0.00600000005215 0.00501144956797 0.0226955041289" condim="4" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <geom name="right_jaw_link_shell_3" mass="0" group="3" rgba="0 0 0 0" contype="8" conaffinity="23" type="box" pos="-0.00698572583497 0.0115263834596 0.000263215508312" size="0.00600000005215 0.00150000024587 0.0126955043525" condim="4" friction="1 0.001 0.0001" solref="0.006 1" />
+                  <site name="right_finger_contact" pos="-0.00698572630063 0.0130263837054 0.0229587201029" size="0.002" rgba="1 0.7 0 1" group="4" />
+                  <geom name="right_jaw_link_visual" type="mesh" mesh="right_jaw_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.12 0.13 0.15 1" contype="0" conaffinity="0" mass="0" group="1" />
+                </body>
+                <site name="grasp_tcp" pos="-0.00304276145805 -0.000727002673745 0.0199587163776" size="0.003" rgba="0 1 0 1" group="4" />
+              </body>
+            </body>
+            <body name="end_effector_link" pos="0 0 0.076" quat="1 0 0 0" />
+          </body>
+          <body name="camera_connect_link" pos="-0.035657 0.015573 0.044852" quat="0.710136898404 -2.54728808161e-05 -0.704036586265 0.00617009533991">
+            <inertial pos="0.00100066009666211 -2.36637843348264E-09 1.08322535814498E-05" mass="0.006592724686422355" fullinertia="2.06691343733e-06 5.67817622094e-07 1.50358482076e-06 4.57980217122e-12 4.9985558657e-09 -4.81307262081e-10" />
+            <geom name="camera_connect_link_collision" mass="0" group="3" rgba="0 0 0 0" contype="4" conaffinity="31" type="box" pos="0.0010640922701 -1.45751982927e-06 -0.00359981413931" size="0.00129753130022 0.027754701674 0.0169092342257" />
+            <geom name="camera_connect_link_visual" type="mesh" mesh="camera_connect_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.12 0.13 0.15 1" contype="0" conaffinity="0" mass="0" group="1" />
+            <body name="depth_cam_link" pos="0.022543 -0.0010708 0.0052065" quat="0.999981255264 0.00436324590085 -0.0042954459009 1.87424380415e-05">
+              <inertial pos="-0.00991822551942606 0.000611648579058599 -5.85293607591186E-05" mass="0.04348490744660739" fullinertia="2.32420430457e-05 2.57997668916e-06 2.18638472414e-05 2.55895459504e-08 3.09093226649e-09 1.72968958415e-07" />
+              <geom name="depth_cam_link_collision" mass="0" group="3" rgba="0 0 0 0" contype="4" conaffinity="31" type="box" pos="-0.0102499173954 0.000781882554293 -0.000332549680024" size="0.0105154635385 0.0382792726159 0.0109116286039" />
+              <geom name="depth_cam_link_visual" type="mesh" mesh="depth_cam_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.12 0.13 0.15 1" contype="0" conaffinity="0" mass="0" group="1" />
+              <camera name="rgbd" pos="0.002 0.02 0" xyaxes="0 -1 0 0 0 1" fovy="58.0" />
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </body>
+  <site name="arm_base" pos="0.0798305157765817 0.00796999989406598 -0.00881105926199899" quat="1 0 0 0" size="0.003" rgba="1 0 0 1" group="4" />
+</mujocoinclude>

@@ -1,0 +1,23 @@
+{
+  "contract_version": "mobilecar-1.0",
+  "run_id": "fixture_run",
+  "episode_id": "fixture_episode",
+  "event_seq": 1,
+  "event_type": "requested",
+  "wall_utc": "2026-10-17T12:00:00Z",
+  "backend_monotonic_s": 100.1,
+  "sim_time_s": 0.1,
+  "command_id": "fixture_command_1",
+  "control_tick_id": "fixture_run:1:fixture_episode:1",
+  "plan_id": null,
+  "task_phase": "APPROACH",
+  "payload": {
+    "command_type": "set_base_twist",
+    "operator_kind": "synthetic_fixture",
+    "requested": {
+      "vx_m_s": 0.03,
+      "vy_m_s": 0.0,
+      "wz_rad_s": 0.0
+    }
+  }
+}

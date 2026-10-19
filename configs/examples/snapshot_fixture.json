@@ -1,0 +1,76 @@
+{
+  "contract_version": "mobilecar-1.0",
+  "run_id": "fixture_run",
+  "backend_generation": 1,
+  "episode_id": "fixture_episode",
+  "episode_started_backend_monotonic_s": 10.0,
+  "backend_monotonic_s": 11.0,
+  "sim_time_s": 0.2,
+  "feedback_time_s": 11.0,
+  "wall_utc": "2026-10-17T00:00:00Z",
+  "clock_id": "backend_monotonic",
+  "control_tick_id": "fixture_tick_1",
+  "task_phase": "OBSERVE",
+  "base": {
+    "frame_id": "base_link",
+    "position_world_sim_m": [0.0, 0.0, 0.05],
+    "orientation_world_sim_xyzw": [0.0, 0.0, 0.0, 1.0],
+    "vx_m_s": 0.0,
+    "vy_m_s": 0.0,
+    "wz_rad_s": 0.0
+  },
+  "arm": {
+    "user_joint_positions_rad": [0.0, 0.0, 0.0, 0.0, 0.0],
+    "user_joint_targets_rad": [0.0, 0.0, 0.0, 0.0, 0.0],
+    "model_joint_positions_rad": [0.0, 0.0, 0.0, -1.5707963268, 0.0],
+    "model_joint_targets_rad": [0.0, 0.0, 0.0, -1.5707963268, 0.0],
+    "joint_velocities_rad_s": [0.0, 0.0, 0.0, 0.0, 0.0],
+    "joint_torques_nm": [0.0, 0.0, 0.0, 0.0, 0.0],
+    "joint_margin_rad": [2.09, 2.09, 2.09, 0.5, 2.09],
+    "model_limits_rad": [
+      [-2.09, 2.09],
+      [-2.09, 2.09],
+      [-2.09, 2.09],
+      [-2.09, 2.09],
+      [-2.09, 2.09]
+    ],
+    "coordinates_status": "user_defined_photo_pose_not_hardware_500"
+  },
+  "gripper": {
+    "width_m": 0.025,
+    "target_width_m": 0.025,
+    "model_drive_position_rad": -0.8181818182,
+    "model_drive_target_rad": -0.8181818182,
+    "left_contact_force_n": 0.0,
+    "right_contact_force_n": 0.0,
+    "bilateral_contact": false
+  },
+  "tcp": {
+    "frame_id": "world_sim",
+    "position_m": [0.17, 0.0, 0.30],
+    "orientation_xyzw": [0.0, 0.0, 0.0, 1.0],
+    "position_error_m": null,
+    "orientation_error_rad": null,
+    "held": false
+  },
+  "sensors": [],
+  "plan": null,
+  "active_session_id": null,
+  "active_operator_id": null,
+  "active_operator_kind": null,
+  "base_owner_session_id": null,
+  "arm_owner_session_id": null,
+  "safety_latched": false,
+  "recording": {
+    "status": "IDLE",
+    "episode_id": null,
+    "recording_segment_id": null,
+    "command_capture_ready": false,
+    "queued_events": 0,
+    "dropped_events": 0,
+    "error": null
+  },
+  "contact_summary": {},
+  "diagnostics": {}
+}
+

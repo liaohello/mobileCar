@@ -1,0 +1,26 @@
+{
+  "mujoco": {
+    "version": "3.1.6",
+    "shape": [
+      128,
+      128,
+      3
+    ],
+    "dtype": "uint8",
+    "min": 3,
+    "max": 198,
+    "mujoco_gl": "egl",
+    "vendor": "NVIDIA Corporation",
+    "renderer": "NVIDIA GeForce RTX 4090/PCIe/SSE2"
+  },
+  "chromium": {
+    "browser_version": "153.0.8010.12",
+    "channel": "chromium",
+    "webgl": {
+      "available": true,
+      "vendor": "Google Inc. (NVIDIA)",
+      "renderer": "ANGLE (NVIDIA, Vulkan 1.4.303 (NVIDIA NVIDIA GeForce RTX 4090 (0x00002684)), NVIDIA)",
+      "version": "WebGL 2.0 (OpenGL ES 3.0 Chromium)"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='utf-8'?>
+<mujocoinclude>
+  <body name="base_link" pos="0 0 0.0556">
+    <freejoint name="base_free" />
+    <inertial pos="0 0 0.015" mass="1.33" diaginertia="0.00165141666667 0.00454416666667 0.00510941666667" />
+    <geom name="chassis_collision" type="box" pos="0 0 -0.016" size="0.096 0.048 0.017" group="3" rgba="0.2 0.2 0.2 0" contype="2" conaffinity="1" mass="0" />
+    <site name="imu_site" pos="0 0 0.035" size="0.002" rgba="0 0 0 0" />
+    <site name="base_frame" pos="0 0 0" size="0.003" rgba="0 0 1 1" group="4" />
+    <include file="wheels.xml" />
+    <geom name="base_link_visual" type="mesh" mesh="base_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+    <body name="back_shell_middle_link" pos="-0.00442651562530816 0 0.018000006985512" quat="1 0 0 0">
+      <geom name="back_shell_middle_link_visual" type="mesh" mesh="back_shell_middle_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+      <body name="back_shell_black_link" pos="-0.0308199337666247 -0.00800013814077391 0.0599417668336678" quat="1 0 0 0">
+        <geom name="back_shell_black_link_visual" type="mesh" mesh="back_shell_black_link_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.12 0.13 0.15 1" contype="0" conaffinity="0" mass="0" group="1" />
+        <include file="arm.xml" />
+      </body>
+      <body name="lidar_frame" pos="0.077447689677331 0 0.0206999999999998" quat="1 0 0 0">
+        <geom name="lidar_frame_visual" type="mesh" mesh="lidar_frame_mesh" pos="0 0 0" quat="1 0 0 0" rgba="0.65 0.68 0.72 1" contype="0" conaffinity="0" mass="0" group="1" />
+      </body>
+    </body>
+  </body>
+</mujocoinclude>

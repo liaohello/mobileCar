@@ -1,0 +1,142 @@
+schema_version: 1
+interface_profile: g3b-1.0
+profile_id: g3b-nav2-omni-map-v1
+revision: g3b-release-v1
+frozen_for_release: true
+frozen_date_utc: "2026-10-18"
+seed: [ideal, 1]
+scenarios:
+  room_a:
+    config: configs/g3b_server_room_a.yaml
+    map_id: map_room_a_g3b_release_v1
+    map_root: var/maps/map_room_a_g3b_release_v1
+    scene_id: navigation_diagnostic
+  room_b:
+    config: configs/g3b_server_room_b.yaml
+    map_id: map_room_b_g3b_release_v1
+    map_root: var/maps/map_room_b_g3b_release_v1
+    scene_id: g3b_l_shape_wide_door
+formal_cases:
+  - id: A01_hold_room_a
+    scenario: room_a
+    arm_mode: hold
+    goal: {x_m: 0.0, y_m: -0.25, yaw_rad: 0.0}
+    category: arrival_arm_hold
+  - id: A02_limited_room_a
+    scenario: room_a
+    arm_mode: limited
+    goal: {x_m: 0.0, y_m: -0.25, yaw_rad: 0.0}
+    category: arrival_arm_limited
+  - id: B01_hold_room_b
+    scenario: room_b
+    arm_mode: hold
+    special_case: normal
+    goal: {x_m: 1.00, y_m: 0.00, yaw_rad: 0.0}
+    category: arrival_arm_hold
+  - id: B02_limited_room_b
+    scenario: room_b
+    arm_mode: limited
+    special_case: normal
+    goal: {x_m: 1.00, y_m: 0.00, yaw_rad: 0.0}
+    category: arrival_arm_limited
+  - id: A03_restart_localization
+    scenario: room_a
+    arm_mode: hold
+    goal: {x_m: 0.0, y_m: -0.25, yaw_rad: 0.0}
+    category: restart_localization_arrival
+  - id: B03_restart_localization
+    scenario: room_b
+    arm_mode: hold
+    special_case: normal
+    goal: {x_m: 1.00, y_m: 0.00, yaw_rad: 0.0}
+    category: restart_localization_arrival
+  - id: A04_cancel_manual_takeover
+    scenario: room_a
+    arm_mode: limited
+    special_case: cancel_takeover
+    fault_trigger_progress_m: 0.04
+    goal: {x_m: 0.0, y_m: -0.20, yaw_rad: 0.0}
+    post_goal: {x_m: 0.0, y_m: -0.05, yaw_rad: 0.0}
+    category: cancel_takeover_reauthorize
+  - id: A05_scan_loss
+    scenario: room_a
+    arm_mode: hold
+    special_case: scan_failure
+    fault_trigger_progress_m: 0.08
+    goal: {x_m: 0.0, y_m: -0.40, yaw_rad: 0.0}
+    category: scan_failure_stop
+  - id: B04_localization_failure
+    scenario: room_b
+    arm_mode: hold
+    special_case: localization_failure
+    fault_trigger_progress_m: 0.08
+    goal: {x_m: 1.00, y_m: 0.00, yaw_rad: 0.0}
+    category: localization_failure_stop
+  - id: A06_reset_epoch
+    scenario: room_a
+    arm_mode: hold
+    special_case: reset_epoch
+    fault_trigger_progress_m: 0.08
+    goal: {x_m: 0.0, y_m: -0.40, yaw_rad: 0.0}
+    post_goal: {x_m: 0.0, y_m: -0.25, yaw_rad: 0.0}
+    category: reset_full_stack
+formal_gates:
+  goal_position_tolerance_m: 0.10
+  goal_yaw_tolerance_deg: 10.0
+  settled_linear_speed_m_s: 0.01
+  settled_yaw_rate_rad_s: 0.03
+  settled_duration_s: 0.60
+  health_detection_to_zero_s: 0.15
+  health_detection_to_physical_stop_s: 1.00
+  max_inflight_backend_accepts_after_gate_close: 2
+  goal_wall_timeout_s: 180
+  case_wall_timeout_s: 360
+  maximum_unexpected_environment_contacts: 0
+  training_qualified: false
+subchecks:
+  lateral_motion_measured:
+    source_case: A01_hold_room_a
+    require_nonzero_vy_commands: true
+    require_physical_y_displacement_m: 0.20
+  nan_inf_consumer:
+    scenario: room_a
+    invalid_is_free: false
+    self_occluded_is_free: false
+    positive_inf_policy: conservative_no_clear
+  footprint_full_arm:
+    polygon: [[-0.16, -0.18], [0.46, -0.18], [0.46, 0.18], [-0.16, 0.18]]
+    padding_m: 0.03
+  invalid_goal_rejection:
+    goals:
+      - {frame_id: odom, x_m: 0.0, y_m: 0.0}
+      - {frame_id: map, x_m: 99.0, y_m: 99.0}
+      - {frame_id: map, x_m: 0.0, y_m: 0.0, force_unknown: true}
+  incompatible_map_rejection:
+    fields: [scene_id, model_sha256, scan_config_sha256, resolution_m]
+  backend_acceptance_receipt:
+    source_case: A01_hold_room_a
+    require_rejection_probe: true
+  gui_rviz_goal:
+    scenario: room_a
+    goal: {x_m: 0.0, y_m: -0.35, yaw_rad: 0.15}
+  duplicate_map_to_odom:
+    max_publishers: 1
+  map_restart_localization:
+    cases: [A03_restart_localization, B03_restart_localization]
+  command_gate_rejection:
+    stale_goal_generation: true
+    stale_navigation_epoch: true
+  recovery_output_final_gate:
+    raw_topic: /mobilecar/nav2/cmd_vel_raw
+    governed_topic: /mobilecar/nav2/cmd_vel_governed
+  localization_failure_with_fresh_inputs:
+    case: B04_localization_failure
+    scan_odom_must_remain_fresh: true
+  scan_failure_recovery_no_resume:
+    case: A05_scan_loss
+  reset_full_stack:
+    case: A06_reset_epoch
+development_probes:
+  - first_successful_lateral_goal
+  - invalid_nav2_configuration
+  - costmap_inflation_root_cause

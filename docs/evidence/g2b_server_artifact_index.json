@@ -1,0 +1,241 @@
+{
+  "schema_version": 1,
+  "goal": "G2B",
+  "status": "PASS_DEVELOPMENT_EXPORT",
+  "generated_wall_utc": "2026-10-17T18:24:00Z",
+  "execution_location": "server",
+  "release": {
+    "snapshot_id": "g2a-20261017T181443Z-ab5d023c98d3",
+    "aggregate_sha256": "ab5d023c98d3d45d6c0c9b530ce91423cdcb4453d7a0fd0a9a750850e76566bc",
+    "file_count": 181,
+    "local_manifest": "provenance/releases/g2a-20261017T181443Z-ab5d023c98d3.json",
+    "local_manifest_sha256": "3e69ab9894f1a765836f81718fe2efddb76a14dd5fc2a50d1586cf1fb2a48e5d",
+    "remote_path": "releases/g2a-20261017T181443Z-ab5d023c98d3"
+  },
+  "profile": {
+    "local_path": "configs/export/g2b_export_v1.yaml",
+    "sha256": "f885a7b8909bb5c669d88631a422ecb8321357cb60b448fbb8a01dbf6a95ce6f",
+    "grid_rate_hz": 5,
+    "phase_offset_s": 0.13,
+    "image_max_age_s": 0.4,
+    "proprio_max_age_s": 0.2,
+    "image_proprio_skew_s": 0.2
+  },
+  "results": {
+    "format_valid": true,
+    "export_valid": true,
+    "train_qualified": false,
+    "overall_development_export_passed": true,
+    "train_qualification_reasons": [
+      "operator_kind=agent_ui requires human_teleop",
+      "task_result=failure requires success",
+      "parent_episode_count=1 requires >=20"
+    ]
+  },
+  "jobs": [
+    {
+      "job_id": "g2b-lerobot-install-3",
+      "result": "lerobot 0.4.4 installed in Python3.12; pip check passed"
+    },
+    {
+      "job_id": "g2b-final-unit-3",
+      "result": "45 passed",
+      "remote_junit": "var/reports/g2b-final-unit-3/junit.xml"
+    },
+    {
+      "job_id": "g2b-final-export-3",
+      "result": "D0/D2 official writer and loader PASS",
+      "remote_report": "var/reports/g2b-final-export-3/g2b_report.json"
+    }
+  ],
+  "inputs": {
+    "motion": {
+      "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+      "episode_id": "episode_c20c70aa2ada4e4fbd4c1a9ec5672090",
+      "source_file_count": 931,
+      "source_tree_sha256": "761f70e969ec2bdcad105bc2b670e33aa389ac13e94045a8178fb6c8eb9ea568",
+      "source_files_unchanged": true,
+      "operator_kind": "agent_ui",
+      "view_source": "third_person_3d",
+      "task_result": "failure"
+    },
+    "stationary": {
+      "run_id": "run_81ccba839bec4e1991278b913fa2f1b3",
+      "episode_id": "episode_32975d5ce7eb4b10a58588858de103d7",
+      "source_tree_sha256": "89838063b8984f9852e5258350d36faeb943275197977fc183718884d73b6143",
+      "source_files_unchanged": true,
+      "accepted_demo_rows": 0,
+      "reason": "no dispatched demonstration action"
+    },
+    "fault": {
+      "run_id": "run_d669e1a5aa2149cfac566d9990c75703",
+      "episode_id": "episode_b08d13faa97341088a8c21c4136b4d2e",
+      "source_tree_sha256": "0c29ea26ac28834e98b468d2f8de96eb6b5782938753d06c6f868a160d8ae6fa",
+      "source_files_unchanged": true,
+      "accepted_demo_rows": 0,
+      "reason": "source_audit_incomplete"
+    }
+  },
+  "outputs": {
+    "d0": {
+      "remote_root": "var/datasets/g2b_final_3/d0_dev",
+      "repo_id": "mobilecar/g2b-g2a-motion-d0-dev",
+      "rows": 14,
+      "episodes": 1,
+      "fps": 5,
+      "split": "dev",
+      "state_shape": [
+        10
+      ],
+      "action_shape": [
+        3
+      ],
+      "image_shape": [
+        3,
+        480,
+        640
+      ],
+      "official_loader_passed": true,
+      "loader_samples_checked": 14,
+      "batch_shapes": {
+        "observation.state": [
+          4,
+          10
+        ],
+        "action": [
+          4,
+          3
+        ],
+        "observation.images.link4_rgb": [
+          4,
+          3,
+          480,
+          640
+        ]
+      },
+      "dataset_manifest": {
+        "remote": "var/datasets/g2b_final_3/d0_dev/manifest.json",
+        "sha256": "978fa8d965c3fba491940c28322e308731bd249f00dc3b158e6b844e93c4e6be",
+        "bytes": 2508,
+        "file_count": 15,
+        "total_bytes": 482453
+      },
+      "sidecar": {
+        "remote": "var/datasets/g2b_final_3/d0_dev/g2b/sidecar.jsonl",
+        "sha256": "06b83475939b5f6e02c46351de8a5ff67692511b81f5942081662e42466cbb74",
+        "rows": 14
+      }
+    },
+    "d2": {
+      "remote_root": "var/datasets/g2b_final_3/d2_dev",
+      "repo_id": "mobilecar/g2b-g2a-motion-d2-dev",
+      "rows": 272,
+      "episodes": 1,
+      "fps": 5,
+      "split": "dev",
+      "state_shape": [
+        6
+      ],
+      "action_shape": [
+        6
+      ],
+      "image_shape": [
+        3,
+        480,
+        640
+      ],
+      "official_loader_passed": true,
+      "loader_samples_checked": 272,
+      "batch_shapes": {
+        "observation.state": [
+          4,
+          6
+        ],
+        "action": [
+          4,
+          6
+        ],
+        "observation.images.link4_rgb": [
+          4,
+          3,
+          480,
+          640
+        ]
+      },
+      "dataset_manifest": {
+        "remote": "var/datasets/g2b_final_3/d2_dev/manifest.json",
+        "sha256": "5243872cc12a43bcb83e8678ee96ddadce2e041c49571e615168b456a4746351",
+        "bytes": 2514,
+        "file_count": 15,
+        "total_bytes": 2667926
+      },
+      "sidecar": {
+        "remote": "var/datasets/g2b_final_3/d2_dev/g2b/sidecar.jsonl",
+        "sha256": "26ce19fee6aaf2afd1d743aa9a8b4eb24fe09e69465d8272f1f2a40f0485eaa7",
+        "rows": 272
+      }
+    }
+  },
+  "exclusion_counts": {
+    "d0_no_effective_dispatch": 9,
+    "d0_post_zero_hold_ended": 6,
+    "d2_no_effective_dispatch": 13,
+    "duplicate_image_for_new_grid": 3,
+    "feedback_age_exceeded": 2,
+    "image_not_arrived_by_decision": 1
+  },
+  "local_evidence": [
+    {
+      "path": "docs/evidence/g2b_export_report.json",
+      "sha256": "5686e3d64b34951062d64f4bb116c8e3fcd4c09384acccf98d6abcd86af17fef",
+      "bytes": 191770
+    },
+    {
+      "path": "docs/evidence/pytest-g2b.xml",
+      "sha256": "2d97c42e54fede1c278b33c687ee636af3b03b0f08d58a54e1748ec97a1f67fa",
+      "bytes": 6088
+    },
+    {
+      "path": "docs/evidence/g2b_pip_check.txt",
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09",
+      "bytes": 30
+    },
+    {
+      "path": "docs/evidence/g2b_environment.json",
+      "sha256": "d4591a3737523418b89a7b80406da8458f8ae1889d5f07eddd2087359a732999",
+      "bytes": 937
+    },
+    {
+      "path": "docs/evidence/g2b_d0_info.json",
+      "sha256": "7a0fed31222bd7154d2ca42f2245c0a2bb1395639c6af3c808f96598b61f5e10",
+      "bytes": 2709
+    },
+    {
+      "path": "docs/evidence/g2b_d2_info.json",
+      "sha256": "1bcb0931113eafcb7e4cc324cbb8d053e4b87fd3ba23bea10e8364acae2c5e19",
+      "bytes": 2650
+    },
+    {
+      "path": "docs/evidence/g2b_d0_dataset_manifest.json",
+      "sha256": "978fa8d965c3fba491940c28322e308731bd249f00dc3b158e6b844e93c4e6be",
+      "bytes": 2508
+    },
+    {
+      "path": "docs/evidence/g2b_d2_dataset_manifest.json",
+      "sha256": "5243872cc12a43bcb83e8678ee96ddadce2e041c49571e615168b456a4746351",
+      "bytes": 2514
+    }
+  ],
+  "local_evidence_total_bytes": 209206,
+  "raw_datasets_retained_on_server": true,
+  "reproduction": {
+    "unit": "PYTHONPATH=src ../../envs/g2a-py310-mujoco316/bin/python -m pytest tests/export tests/data tests/contracts/test_g2a_contracts.py tests/contracts/test_contracts.py -q",
+    "export": "PYTHONPATH=src ../../envs/g2b-lerobot-0.4.4/bin/python tools/export/run_g2b.py --run-root ../../var/runs --dataset-root ../../var/datasets/g2b_final_3 --report-root ../../var/reports/g2b-final-export-3 --profile configs/export/g2b_export_v1.yaml --run-id run_81ccba839bec4e1991278b913fa2f1b3 --motion-episode-id episode_c20c70aa2ada4e4fbd4c1a9ec5672090 --stationary-episode-id episode_32975d5ce7eb4b10a58588858de103d7 --fault-run-id run_d669e1a5aa2149cfac566d9990c75703 --fault-episode-id episode_b08d13faa97341088a8c21c4136b4d2e"
+  },
+  "known_limitations": [
+    "Only one parent motion Episode and 14 D0 development rows are available.",
+    "Source provenance is agent_ui/third_person_3d and task_result=failure.",
+    "H.264 is lossy; raw PNG/Depth/Mask remain on the server.",
+    "No D1/D3, navigation, training, Hub upload, or physical robot validation."
+  ]
+}

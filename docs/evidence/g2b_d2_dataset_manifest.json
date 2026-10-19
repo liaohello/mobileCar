@@ -1,0 +1,83 @@
+{
+  "dataset_root_name": "d2_dev",
+  "file_count": 15,
+  "files": [
+    {
+      "bytes": 8481,
+      "path": "data/chunk-000/file-000.parquet",
+      "sha256": "609756d25af0a63f2cd285b4cd0d40e865076183b336a402ab009352eede2273"
+    },
+    {
+      "bytes": 50494,
+      "path": "g2b/alignment.json",
+      "sha256": "29f1cb7a26a35f284a5af2478e671c4434c6c15999d6dc6d9ceeb8b0cc6f0dc6"
+    },
+    {
+      "bytes": 136816,
+      "path": "g2b/depth_artifacts.jsonl",
+      "sha256": "afc2e2063d014c62b4bd19985f91ad660c68331f86173be2ccc7ae21b0b5f545"
+    },
+    {
+      "bytes": 731,
+      "path": "g2b/environment.json",
+      "sha256": "f237c0d56833543946b9eaa58bc43b1d8f5a5a19398395fe372032a7500ef1f8"
+    },
+    {
+      "bytes": 4891,
+      "path": "g2b/loader_verification.json",
+      "sha256": "01ab2c54f7fafb166afd643d134be0a169ccaab56a725412606d47416a3f88da"
+    },
+    {
+      "bytes": 8090,
+      "path": "g2b/profile.json",
+      "sha256": "8f5321624cb1e7cfbb6a09beaa92839594e15938ad101c1741567e0c8255e838"
+    },
+    {
+      "bytes": 4289,
+      "path": "g2b/rejections.jsonl",
+      "sha256": "91af063cccbc68aacc7977f5006387d285005bfb99effc483dcc23df4b9d5181"
+    },
+    {
+      "bytes": 1711209,
+      "path": "g2b/sidecar.jsonl",
+      "sha256": "26ce19fee6aaf2afd1d743aa9a8b4eb24fe09e69465d8272f1f2a40f0485eaa7"
+    },
+    {
+      "bytes": 251882,
+      "path": "g2b/source_episode.json",
+      "sha256": "c4d112f6cd651ee4db2f3565d91d8f85fbb645036368c89480c1ceb4e7724e5f"
+    },
+    {
+      "bytes": 294,
+      "path": "g2b/split.json",
+      "sha256": "2057fee8cfe9992620c0fc57847186b0b0202e2a193afda4c04944ec03556aac"
+    },
+    {
+      "bytes": 44362,
+      "path": "meta/episodes/chunk-000/file-000.parquet",
+      "sha256": "b97f394ff45258ecbf0a8e7ac0ddd7558731420edb7e37c53f81a136b79bdedb"
+    },
+    {
+      "bytes": 2650,
+      "path": "meta/info.json",
+      "sha256": "1bcb0931113eafcb7e4cc324cbb8d053e4b87fd3ba23bea10e8364acae2c5e19"
+    },
+    {
+      "bytes": 10209,
+      "path": "meta/stats.json",
+      "sha256": "85b701b2af366529545dfe2abca6213209000b4a56261c8ecbd74fb13ac726e1"
+    },
+    {
+      "bytes": 2421,
+      "path": "meta/tasks.parquet",
+      "sha256": "a432272e05e6f99ea64093f1932038d831918c14e3ebac1f9d376aa2e59cc4bc"
+    },
+    {
+      "bytes": 431107,
+      "path": "videos/observation.images.link4_rgb/chunk-000/file-000.mp4",
+      "sha256": "549789c91499b66360591b153ca79590b0b076a4d8ba2816d71dbb8140799176"
+    }
+  ],
+  "schema_version": 1,
+  "total_bytes": 2667926
+}

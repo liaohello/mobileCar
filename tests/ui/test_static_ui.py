@@ -15,6 +15,26 @@ def test_ui_build_contains_interactive_controls():
     assert (STATIC / "style.css").is_file()
 
 
+def test_drive_area_exposes_gate_target_and_measured_velocity():
+    index = (STATIC / "index.html").read_text(encoding="utf-8")
+    main = (ROOT / "src/mobilecar/ui/web/main.js").read_text(encoding="utf-8")
+    assert 'data-testid="drive-gate"' in index
+    assert 'id="drive-gate-title"' in index
+    assert 'id="drive-gate-detail"' in index
+    assert 'data-testid="drive-reject"' in index
+    assert 'data-testid="recording-policy"' in index
+    for axis in ("vx", "vy", "wz"):
+        assert f'id="drive-intent-{axis}"' in index
+        assert f'id="drive-accepted-{axis}"' in index
+        assert f'id="base-{axis}"' in index
+    assert "resolveDriveGate" in main
+    assert "SOFTWARE_STOP_LATCHED" in main
+    assert "RECORDING_REQUIRED" in main
+    assert "NEARFIELD_PERMISSION_ACTIVE" in main
+    assert "noteDriveReject" in main
+    assert "recording_required_for_motion" in main
+
+
 def test_ui_does_not_import_mujoco_control_paths():
     sources = "\n".join(
         path.read_text(encoding="utf-8")

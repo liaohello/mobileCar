@@ -41,11 +41,14 @@ def _command(snapshot, command_type, sequence, payload):
 def test_app_records_mock_episode_and_replay_api_is_read_only(tmp_path):
     app = create_app(_profile(tmp_path))
     with TestClient(app) as client:
-        assert client.get("/api/v1/health").status_code == 200
+        health = client.get("/api/v1/health").json()
+        assert health["status"] == "ok"
+        assert health["recording_required_for_motion"] is True
         capabilities = client.get("/api/v1/capabilities").json()
         scene = client.get("/api/v1/scene").json()
         assert capabilities["model_sha256"] == scene["model_sha256"]
         initial = client.get("/api/v1/snapshot").json()
+        assert initial["diagnostics"]["base_drive_gate"]["code"] == "RECORDING_REQUIRED"
 
         before_start = client.post(
             "/api/v1/commands",
@@ -72,6 +75,7 @@ def test_app_records_mock_episode_and_replay_api_is_read_only(tmp_path):
         assert started["accepted"] is True
         snapshot = client.get("/api/v1/snapshot").json()
         assert snapshot["recording"]["command_capture_ready"] is True
+        assert snapshot["diagnostics"]["base_drive_gate"]["code"] == "READY"
 
         response = client.post(
             "/api/v1/commands",
@@ -95,6 +99,9 @@ def test_app_records_mock_episode_and_replay_api_is_read_only(tmp_path):
         ).json()
         assert stopped["accepted"] is True
         assert stopped["recording_status"] == "COMPLETE"
+        after_stop = client.get("/api/v1/snapshot").json()
+        assert after_stop["safety_latched"] is True
+        assert after_stop["diagnostics"]["base_drive_gate"]["code"] == "SOFTWARE_STOP_LATCHED"
 
         episode_id = stopped["episode_id"]
         detail = client.get(f"/api/v1/episodes/{episode_id}")

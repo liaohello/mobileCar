@@ -13,6 +13,7 @@
 - G1、G2A、G2B、G3A、G3B已经完成；docs/acceptance_report.md、docs/g2a_server_report.md、docs/g2b_report.md、docs/g3a_report.md、docs/g3b_report.md及对应原始记录是历史证据，不覆盖或重新标注。
 - G3B最终服务器release为g3b-20261018T103442Z-a4081b0147bd，aggregate为a4081b0147bd871a5161aa2b574f534dec44fa66cf6a47969f94aab63a51d9a5。正式10例按各自预期通过，最终受影响回归123 passed；导航Episode training_qualified=false。TF严格检查/补充单源判定及contacts.py历史provenance例外按原报告保留，不外推任意L转弯、任意移动臂姿或可抓取性。
 - G4A-1已完成：release为g4a1-20261018T125226Z-134032d390f8，aggregate为134032d390f83a4875e8bd936b9dead4fec9fbcd55e6c251cfde3ff5c7da4747；六例符合预期、受影响回归130 passed。其parent split/正式出口未评估、training_qualified=false；docs/g4a1_report.md及原始证据只读保留。
+- 8792驾驶链排查与最小修复已完成（2026-10-19）：release为drvfix-20261019T044549Z-0a80415b2577，aggregate为0a80415b25778927158b53a48d4af8e4ea1530934554b71ae3db763003d76369。根因为软件停止锁存与强制录制两道既有门控在浏览器内静默拦截、驾驶区无持久说明；已增加门控状态/一键处置/目标-受理-实际读数与后端拒绝留痕，未放宽停止、录制、近场互斥和租约保护。回归129 passed（另有contacts.py历史provenance例外），57项驾驶链路检查通过；自动化不算真人示教。报告见docs/drive_path_diagnosis.md，真人H1仍待用户操作。
 - 当前规划见docs/post_g4a1_execution_plan.md；下一阶段为待用户启动的G4A-2，正文见docs/goals/G4A2_human_demonstrations_export.md。用户已选真人遥操作：用户本人观察并控制，agent准备界面、记录、检查、划分和导出；自动化/脚本不得冒充human。先完成采集工具与三条真人试点，再按冻结方案小批量采集。不自动训练、联合移动抓取、Hub上传或实车。
 - G3B已complete，不恢复其旧Goal做新阶段；旧tokenBudget=1000000保留为历史元数据。新Goal必须省略token_budget并立即核对null；预算诊断记录不再是当前执行指令。
 - 相机保持link4挂载；joint5旋转夹爪，独立驱动控制两指开合。不得误迁移“相机改挂TCP”的旧提案。

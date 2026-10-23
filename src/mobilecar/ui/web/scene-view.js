@@ -380,14 +380,38 @@ export class SceneView {
     return fallback;
   }
 
-  _applyJoint(group, jointName, modelRad) {
-    if (!group) return;
-    const link = group.userData.sceneLink;
-    if (!link || link.joint_type !== "hinge") return;
-    if (!JOINT_NAMES.includes(jointName) && jointName !== "gripper_base_joint") return;
+  _applyJoint(group, link, value) {
+    if (!group || !link || !Number.isFinite(value)) return;
     const base = quaternionFromXyzw(link.local_transform?.orientation_xyzw);
     const axis = new THREE.Vector3(...(link.joint_axis || [0, 0, 1])).normalize();
-    group.quaternion.copy(base).multiply(new THREE.Quaternion().setFromAxisAngle(axis, modelRad));
+    if (link.joint_type === "hinge") {
+      // MuJoCo hinge: child orientation = reference orientation * axis-angle.
+      group.quaternion.copy(base).multiply(new THREE.Quaternion().setFromAxisAngle(axis, value));
+    } else if (link.joint_type === "slide") {
+      // MuJoCo slide: displacement q*axis lives in the child body frame and is
+      // rotated by the link reference orientation before composition.
+      const basePosition = new THREE.Vector3(
+        ...(link.local_transform?.position_m || [0, 0, 0])
+      );
+      group.position
+        .copy(basePosition)
+        .add(axis.clone().applyQuaternion(base).multiplyScalar(value));
+    }
+  }
+
+  _jointMap(snapshot) {
+    const map = { ...(snapshot.model_joint_positions_rad || {}) };
+    if (Object.keys(map).length === 0) {
+      // Legacy snapshots without the full joint map: rebuild the arm and
+      // gripper drive entries so older replays still animate correctly.
+      (snapshot.arm?.model_joint_positions_rad || []).forEach((value, index) => {
+        map[`joint${index + 1}`] = value;
+      });
+      if (Number.isFinite(snapshot.gripper?.model_drive_position_rad)) {
+        map.gripper_base_joint = snapshot.gripper.model_drive_position_rad;
+      }
+    }
+    return map;
   }
 
   updateSnapshot(snapshot) {
@@ -398,7 +422,7 @@ export class SceneView {
       baseGroup.position.fromArray(snapshot.base.position_world_sim_m);
       baseGroup.quaternion.copy(quaternionFromXyzw(snapshot.base.orientation_world_sim_xyzw));
     }
-    this._applyJointValues(snapshot.arm?.model_joint_positions_rad || [], snapshot.gripper?.model_drive_position_rad);
+    this._applyJointValues(this._jointMap(snapshot));
     if (snapshot.tcp?.position_m) {
       this.actualTcp.position.fromArray(snapshot.tcp.position_m);
       this.actualTcp.visible = true;
@@ -414,15 +438,12 @@ export class SceneView {
     this._requestRender();
   }
 
-  _applyJointValues(values, gripperRad, ghost = false) {
+  _applyJointValues(jointMap, ghost = false) {
     const map = ghost ? this.ghostGroups : this.linkGroups;
-    for (const [name, entry] of map) {
-      const jointIndex = JOINT_NAMES.indexOf(entry.link.joint_name);
-      if (jointIndex >= 0) {
-        this._applyJoint(entry.group, entry.link.joint_name, values[jointIndex] ?? 0);
-      } else if (entry.link.joint_name === "gripper_base_joint" && Number.isFinite(gripperRad)) {
-        this._applyJoint(entry.group, entry.link.joint_name, gripperRad);
-      }
+    for (const [, entry] of map) {
+      const link = entry.link;
+      if (!link || !link.joint_name) continue;
+      this._applyJoint(entry.group, link, jointMap[link.joint_name]);
     }
   }
 
@@ -441,7 +462,13 @@ export class SceneView {
         baseGroup.position.copy(actualBase.position);
         baseGroup.quaternion.copy(actualBase.quaternion);
       }
-      this._applyJointValues(endpoint, this.snapshot?.gripper?.model_drive_position_rad, true);
+      // Ghost shows the planned arm endpoint on top of the current full joint
+      // state, so non-arm links keep their live pose instead of resetting.
+      const jointMap = this._jointMap(this.snapshot || {});
+      endpoint.forEach((value, index) => {
+        jointMap[`joint${index + 1}`] = value;
+      });
+      this._applyJointValues(jointMap, true);
     }
     if (plan.position_m) {
       const geometry = new THREE.BufferGeometry().setFromPoints([

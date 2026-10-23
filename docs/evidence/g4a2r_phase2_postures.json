@@ -1,0 +1,90 @@
+{
+  "record": "g4a2r_phase2_unified_postures",
+  "date_utc": "2026-10-19",
+  "phase": "G4A-2R Phase 2: unified posture configuration with server-validated angles",
+  "execution_location": "server_only",
+  "release": "g4a2r-20261019T021851Z-2fc433847b52",
+  "validation_release": "g4a2r-20261019T021658Z-d2c923377e1a",
+  "unified_entry_point": "configs/g4a2/postures_v1.yaml",
+  "notes": {
+    "entry_point": "All named postures (including the episode initial posture) now come from the unified profile; arm_spec.initial_positions is only a compatibility fallback when the profile is absent.",
+    "camera": "unchanged: link4 branch mount, no TCP migration.",
+    "angle_source": "Frozen by tools/g4a2r/validate_postures.py from a measured grid + j1 aiming search; never hand-guessed."
+  },
+  "frozen_postures": {
+    "initial": {
+      "arm_user_joint_positions_rad": [0.0, 0.0, 0.0, 0.0, 0.0],
+      "gripper_width_m": 0.025,
+      "note": "identical to the G4A-1 baseline (model joint4=-1.5708 rad); historical behaviour preserved and verified bit-exact against arm_spec."
+    },
+    "surround_view": {
+      "arm_user_joint_positions_rad": [0.41, -0.8, 0.0, 0.0, 0.0],
+      "gripper_width_m": 0.03,
+      "validation": {
+        "camera_height_m": 0.2369,
+        "reference_initial_camera_height_m": 0.3443,
+        "height_reduction_pct": 31.2,
+        "optical_axis_pitch_deg": -46.06,
+        "depth_valid_fraction": 0.874,
+        "cube_in_frame": true,
+        "stable": true,
+        "sweep_clean": true,
+        "sweep_angles_checked": 36,
+        "sweep_collisions": 0,
+        "settle_base_height_drift_m": -0.0024,
+        "settle_base_tilt_deg": 0.0,
+        "settle_arm_reach_error_rad": 0.0206
+      }
+    },
+    "nearfield_observe": {
+      "arm_user_joint_positions_rad": [0.41, -0.8, 0.0, 0.0, 0.4],
+      "gripper_width_m": 0.03,
+      "validation": {
+        "camera_height_m": 0.2369,
+        "optical_axis_pitch_deg": -46.06,
+        "depth_valid_fraction": 0.887,
+        "cube_in_frame": true,
+        "gripper_finger_in_frame": true,
+        "stable": true,
+        "sweep_clean": true
+      }
+    }
+  },
+  "key_measurements": {
+    "reference_initial_posture": {
+      "camera_height_m": 0.3443,
+      "optical_axis_pitch_deg": -0.42,
+      "depth_valid_fraction": 0.356,
+      "cube_in_frame": false,
+      "finding": "The G4A-1 baseline camera looks essentially horizontally with a low valid-depth fraction and the target cube out of frame - matches the operator complaint of sky/ground views."
+    },
+    "search_space": {
+      "fold_grid": "j2/j3 in {-0.8,-0.4,0,0.4,0.8}, j4 in {0,-0.4,-0.8,-1.2}, j5 in {0,0.4} (200 folds)",
+      "aiming": "fine j1 sweep 0.1 rad over the full joint1 range per fold, minimising cube distance from frame centre",
+      "stage1_passed": 32,
+      "cube_in_frame_candidates": 12,
+      "criteria": "joint limits, no self-collision, no arm-cube contact, depth valid fraction >= 0.5, pitch in [-50, +5] deg; stage 2 adds 3 s servo settle (base drift < 10 mm, tilt < 3 deg, reach error < 0.05 rad) and a 36-angle 360 deg sweep with zero collisions"
+    }
+  },
+  "code_changes": [
+    "configs/g4a2/postures_v1.yaml (new, frozen)",
+    "configs/g4a2_server.yaml: backend.posture_profile_path",
+    "src/mobilecar/backends/mujoco/backend.py: posture profile loading, _apply_initial_posture, posture(), g4a2_postures in capabilities",
+    "src/mobilecar/contracts/models.py: Capabilities.g4a2_postures (optional)",
+    "tools/g4a2r/validate_postures.py (new)"
+  ],
+  "regression": {
+    "suites": "tests/contracts tests/ui tests/g4a1 tests/g4a2 tests/integration tests/backend",
+    "result": "75 passed, 1 failed",
+    "failure": "tests/integration/test_provenance.py (documented contacts.py historical exception, untouched by this change)",
+    "note": "tests/ui require npm run build:ui in the release first (known build-order dependency); 6/6 pass after the build."
+  },
+  "backend_probe": {
+    "postures_loaded": ["initial", "nearfield_observe", "surround_view"],
+    "initial_qpos_matches_arm_spec": true,
+    "gripper_drive_matches": true,
+    "capabilities_g4a2_postures_count": 3
+  },
+  "live_service_updated": false,
+  "ui_buttons_deferred": "Posture apply buttons and their send/accept/apply/reach feedback ship with Phase 3 (six-dimensional action chain); capabilities already expose the posture list."
+}

@@ -35,3 +35,35 @@
    不可变检查。
 
 真人未操作、数量不足、出口或资格未通过时不得标记 Goal complete。
+
+## 2026-10-19（UTC）部署核查与线上验收
+
+用户在修复前 bundle 上截图反馈问题（停止后 NO RGB-D 覆盖录制状态、旧图残留、停止反馈只在日志）。
+本轮服务器只读核查确认：
+
+- 线上 8792 服务（PID 3824559）cwd 为 `releases/g4a2-20261018T171942Z-030bf47cef6f`，
+  由作业 `var/jobs/g4a2-ui-page-restart` 于 2026-10-18T17:20Z 启动；用户截图早于该重启，
+  截图中的旧行为来自修复前 bundle。
+- 线上所服务 5 个静态资源（g4a2.js/g4a2.html/app.js/style.css/index.html）哈希与该 release
+  逐一匹配；本地工作树与该 release SOURCE_MANIFEST 370 个文件中 367 一致，3 个差异均为
+  同步后更新的文档，源码零差异。故本轮不重启同一 release（避免物理实例无意义 churn）。
+- 证据索引：`docs/evidence/g4a2_live_deploy_acceptance_20261019.json`。
+
+线上验收（全部在服务器执行，automation 来源，不计真人示教）：
+
+1. 慢网/破图（对真实部署 bundle，API 全拦截）：`check_preview_ui.py` 4/4 通过
+   （慢图单飞且布局稳定、破图保留上一帧、无隐式真人确认、显示样本与加载时间先于 intent）。
+2. 正常停止/停止失败/重新开始录制（真实服务+真实 API+真实浏览器）：
+   `live_acceptance.py` 9/9 通过（新 Episode 启动、立即"正在结束"、"已结束+记录已保存+Episode ID"
+   与 health 一致、拦截一次 stop 失败后"结束失败+原因"可见且重试后保存、可重新开始录制、
+   无真人会话、无页面错误）。
+3. 数据完整性：验收前后 `discover_h1` 发现集逐字节一致（count=2），自动验收 6 条
+   automation Episode 均不含 human_session_confirmed，不计入 H1。
+
+H1 现状更正：`var/runs` 下现有 2 条满足 human_teleop + link4_rgbd_proprio +
+human_session_confirmed 的 Episode，均为 task_result=failure（用户修复前试用留下）：
+`episode_ff3423e1578b4aa58e8ea50d5393dcc2`（run_8302fbd17a6b4d9b86e7297fcde441f5）、
+`episode_f2f3b92cc6624146b2e2338adaa1b19e`（run_eca082ac6da7412eb78b5ef3ab890aff）。
+是否计入"取消/失败"试点由 H1 审计时按因果链判定，本轮不下结论。
+
+下一动作不变：用户本人完成三条试点（两条成功抓取 + 一条取消/失败）后告知，再做只读审计。

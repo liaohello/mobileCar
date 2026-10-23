@@ -92,6 +92,8 @@ from ..common import (
 
 REPO_ROOT = Path(__file__).resolve().parents[4]
 ARM_JOINTS = [f"joint{i}" for i in range(1, 6)]
+GRIPPER_DRIVE = "gripper_base_joint"
+POSTURE_PROFILE_INTERFACE = "g4a2-postures-1.0"
 
 
 @dataclass
@@ -248,6 +250,7 @@ class MujocoBackend:
         self._g4a1_pending_reference: dict[str, Any] | None = None
         self._g4a1_faults: list[str] = []
         self._g4a1_observation_cache: dict[str, G4A1Observation] = {}
+        self._g4a1_asset_paths: OrderedDict[str, dict[str, str]] = OrderedDict()
         self._g4a2_human_sessions: dict[str, dict[str, Any]] = {}
         self._g4a2_intents: dict[str, dict[str, Any]] = {}
         self._g4a2_intent_seq = 0
@@ -298,6 +301,7 @@ class MujocoBackend:
         self._sensor_commit_lock = threading.Lock()
         self._sensor_capture_enabled = threading.Event()
         self._sensor_capture_enabled.set()
+        self._preview_last_write = 0.0
 
         model_path = Path(self.backend_config["model_path"])
         self.model_path = model_path if model_path.is_absolute() else REPO_ROOT / model_path
@@ -314,6 +318,24 @@ class MujocoBackend:
         self.arm_spec = json.loads((self.model_path.parent / "arm_spec.json").read_text(encoding="utf-8"))
         if not self.arm_spec.get("dynamic"):
             raise ValueError("G1 arm_spec must be dynamic")
+        # G4A-2R unified posture registry: the single entry point for named
+        # postures (including the episode initial posture). arm_spec
+        # initial_positions stays only as a compatibility fallback.
+        self.posture_profile: dict[str, Any] | None = None
+        self.postures: dict[str, dict[str, Any]] = {}
+        self.posture_profile_sha256: str | None = None
+        posture_value = backend_config.get("posture_profile_path")
+        if posture_value:
+            posture_path = Path(str(posture_value))
+            posture_path = posture_path if posture_path.is_absolute() else REPO_ROOT / posture_path
+            posture_path = posture_path.resolve()
+            if posture_path.is_file():
+                profile = yaml.safe_load(posture_path.read_text(encoding="utf-8"))
+                if profile.get("interface_profile") != POSTURE_PROFILE_INTERFACE:
+                    raise ValueError("posture profile interface_profile mismatch")
+                self.posture_profile = profile
+                self.postures = dict(profile.get("postures", {}))
+                self.posture_profile_sha256 = file_sha256(posture_path)
         self.wheel = WheelController(self.model, self.params)
         self.arm = ArmController(self.model, self.params, self.arm_spec)
         self.arm_controller = self.arm
@@ -835,7 +857,12 @@ class MujocoBackend:
                 T_base_tcp=metadata["T_base_tcp"],
                 observation_profile_sha256=self.observation_profile_sha256,
                 action_profile_sha256=str(self.action_profile_sha256),
-                quality="simulated_nominal" if not self._g4a1_faults else "FAULT_INJECTED",
+                quality=(
+                    "simulated_nominal"
+                    if not self._g4a1_faults
+                    else "FAULT_INJECTED"
+                )
+                + ("_preview" if metadata.get("preview") else ""),
             )
             self._g4a1_observation_cache[sample_id] = observation
             if len(self._g4a1_observation_cache) > 16:
@@ -854,10 +881,15 @@ class MujocoBackend:
         }
         if kind not in mapping:
             raise KeyError(kind)
-        metadata = self._latest_rgbd_metadata
-        if self._sensor_states[SensorKind.RGB].sample_id != sample_id:
-            raise KeyError(sample_id)
-        relative = metadata.get(mapping[kind][0])
+        # Recent per-sample asset paths keep the observation -> image fetch race
+        # free (the sensor advances at ~10 Hz while the page fetches the frame).
+        registry = self._g4a1_asset_paths.get(sample_id)
+        relative = registry.get(kind) if registry else None
+        if not relative:
+            metadata = self._latest_rgbd_metadata
+            if self._sensor_states[SensorKind.RGB].sample_id != sample_id:
+                raise KeyError(sample_id)
+            relative = metadata.get(mapping[kind][0])
         if not relative:
             raise KeyError(kind)
         path = (self.run_root / str(relative)).resolve()
@@ -2025,6 +2057,16 @@ class MujocoBackend:
             camera_parent_body="link4",
             tcp_parent_body="guide_rod_link",
             ground_truth_policy_visible=False,
+            g4a2_postures=[
+                {
+                    "name": name,
+                    "purpose": posture.get("purpose"),
+                    "frozen": bool(posture.get("frozen")),
+                    "arm_user_joint_positions_rad": posture.get("arm_user_joint_positions_rad"),
+                    "gripper_width_m": posture.get("gripper_width_m"),
+                }
+                for name, posture in (self.postures or {}).items()
+            ],
         )
 
     def _load_scene_assets(self) -> dict[str, Path]:
@@ -2890,6 +2932,58 @@ class MujocoBackend:
         required = bool(self.safety_config.get("require_recording", False))
         return required and not self.publisher.recording_gate(self.episode_id)
 
+    def _base_drive_gate(self) -> dict[str, Any]:
+        """Name the single condition that currently blocks manual base motion.
+
+        This mirrors the checks in ``_set_base_twist`` in the same order, so the
+        operator sees the same reason the command would be rejected with. It is
+        advisory only: dispatch still re-checks every gate.
+        """
+
+        owner = self._owners["base"]
+        lease_remaining = max(0.0, self._lease_deadline["base"] - time.monotonic())
+        common = {
+            "owner_session_id": owner,
+            "lease_remaining_s": lease_remaining,
+        }
+        if self._stop_latched:
+            return {
+                "blocked": True,
+                "code": "SOFTWARE_STOP_LATCHED",
+                "reason": "软件停止已锁存：需先解除停止，或开始新的录制后再驾驶。",
+                "action": "unlock_stop",
+                "recording_required": bool(
+                    self.safety_config.get("require_recording", False)
+                ),
+                **common,
+            }
+        if self._recording_required():
+            return {
+                "blocked": True,
+                "code": "RECORDING_REQUIRED",
+                "reason": "正式录制未就绪：当前 Episode 不在 RECORDING，或命令捕获尚未确认。",
+                "action": "start_recording",
+                "recording_required": True,
+                **common,
+            }
+        if self._g4a1_permission is not None:
+            return {
+                "blocked": True,
+                "code": "NEARFIELD_PERMISSION_ACTIVE",
+                "reason": "近场权限仍有效：底盘运动与近场动作互斥，需先撤销近场。",
+                "action": "revoke_nearfield",
+                "recording_required": False,
+                **common,
+            }
+        return {
+            "blocked": False,
+            "code": "READY",
+            "reason": "",
+            "action": None,
+            "recording_required": False,
+            **common,
+        }
+
     def _base_pose_world(self) -> tuple[np.ndarray, np.ndarray]:
         return self.data.xpos[self.base_id].copy(), self.data.xmat[self.base_id].reshape(3, 3).copy()
 
@@ -3003,11 +3097,43 @@ class MujocoBackend:
         )
         return self._response(request, CommandStatus.APPLIED, decision=decision)
 
+    def posture(self, name: str) -> dict[str, Any] | None:
+        """Return a named posture from the unified registry (or None)."""
+        posture = self.postures.get(name)
+        return dict(posture) if posture else None
+
+    def _apply_initial_posture(self) -> None:
+        """Apply the unified 'initial' posture; fall back to arm_spec."""
+        posture = self.posture("initial")
+        if posture is None:
+            for name, value in self.arm_spec["initial_positions"].items():
+                self.data.qpos[self.model.jnt_qposadr[self.model.joint(name).id]] = value
+            return
+        model_angles = self.arm.coordinates.to_model(
+            np.asarray(posture["arm_user_joint_positions_rad"], dtype=float)
+        )
+        for index, name in enumerate(ARM_JOINTS):
+            self.data.qpos[self.model.jnt_qposadr[self.model.joint(name).id]] = float(
+                model_angles[index]
+            )
+        gripper_cfg = self.arm_spec["gripper"]
+        drive = float(
+            np.clip(
+                (float(posture["gripper_width_m"]) - gripper_cfg["max_width_m"])
+                / gripper_cfg["width_per_drive_rad_m"],
+                -1.638,
+                0.0,
+            )
+        )
+        self.data.qpos[self.model.jnt_qposadr[self.model.joint(GRIPPER_DRIVE).id]] = drive
+        for joint, mimic in self.arm_spec["mimic"].items():
+            self.data.qpos[self.model.jnt_qposadr[self.model.joint(joint).id]] = (
+                float(mimic["multiplier"]) * drive + float(mimic.get("offset", 0.0))
+            )
+
     def _reset_physics(self, *, new_episode: bool) -> None:
         mujoco.mj_resetData(self.model, self.data)
-        for name, value in self.arm_spec["initial_positions"].items():
-            joint_id = self.model.joint(name).id
-            self.data.qpos[self.model.jnt_qposadr[joint_id]] = value
+        self._apply_initial_posture()
         if self.g4a1_enabled:
             prepared = self.g4a1_config.get("prepared_base_qpos")
             if isinstance(prepared, list) and len(prepared) == 7:
@@ -3975,6 +4101,37 @@ class MujocoBackend:
                         "valid_mask_path": relative_mask,
                     }
                 )
+            else:
+                # G4A-2R preview decoupling: without an active Episode the
+                # operator can still watch the link4 view. A single overwritten
+                # latest preview (rate limited) keeps disk churn negligible.
+                # Motion gates (recording + nearfield permission) are untouched;
+                # preview frames are marked and never become action evidence.
+                folder = self.run_root / "_preview"
+                rgb_path = folder / "latest_rgb.png"
+                depth_path = folder / "latest_depth_m.npy"
+                mask_path = folder / "latest_valid.png"
+                preview_now = time.monotonic()
+                if preview_now - self._preview_last_write >= 0.5:
+                    self._preview_last_write = preview_now
+                    folder.mkdir(parents=True, exist_ok=True)
+                    Image.fromarray(rgb).save(rgb_path)
+                    np.save(depth_path, depth)
+                    Image.fromarray((valid.astype(np.uint8) * 255)).save(mask_path)
+                    encode_complete = time.monotonic()
+                # Every capture points at the current preview assets, even when
+                # this particular capture skipped the disk write.
+                if rgb_path.is_file():
+                    metadata.update(
+                        {
+                            "rgb_path": rgb_path.relative_to(self.run_root).as_posix(),
+                            "depth_path": depth_path.relative_to(self.run_root).as_posix(),
+                            "valid_mask_path": mask_path.relative_to(
+                                self.run_root
+                            ).as_posix(),
+                            "preview": True,
+                        }
+                    )
             publish_started = time.monotonic()
             arrival = publish_started
             timing = {
@@ -4037,6 +4194,17 @@ class MujocoBackend:
                     "timing": timing,
                 }
             )
+            rgb_rel = metadata.get("rgb_path")
+            depth_rel = metadata.get("depth_path")
+            mask_rel = metadata.get("valid_mask_path")
+            if rgb_rel and depth_rel and mask_rel:
+                self._g4a1_asset_paths[sample_id] = {
+                    "rgb": str(rgb_rel),
+                    "depth": str(depth_rel),
+                    "mask": str(mask_rel),
+                }
+                while len(self._g4a1_asset_paths) > 64:
+                    self._g4a1_asset_paths.popitem(last=False)
             self._latest_rgbd_metadata = metadata
             self._last_capture_metric = timing
             for kind in (SensorKind.RGB, SensorKind.DEPTH, SensorKind.IMAGE_TRANSFORMS):
@@ -4053,7 +4221,7 @@ class MujocoBackend:
                     asset_uri=relative_rgb
                     if kind == SensorKind.RGB
                     else (relative_depth if kind == SensorKind.DEPTH else None),
-                    quality="simulated_nominal",
+                    quality="simulated_nominal" if recording else "simulated_nominal_preview",
                     capture_sim_time_s=capture_sim_time,
                     capture_backend_monotonic_s=capture_backend_monotonic,
                     capture_control_tick_id=capture_control_tick,
@@ -4382,6 +4550,18 @@ class MujocoBackend:
                     self.data.xquat[self.target_body_id]
                 ),
             }
+        # All non-free model joints by name, so the browser scene can animate
+        # every jointed link (arm, gripper drive, mimic fingers, jaws, wheels)
+        # exactly like MuJoCo kinematics instead of a hard-coded subset.
+        model_joint_positions: dict[str, float] = {}
+        for joint_id in range(self.model.njnt):
+            if int(self.model.jnt_type[joint_id]) == int(mujoco.mjtJoint.mjJNT_FREE):
+                continue
+            joint_name = self.model.joint(joint_id).name
+            if joint_name:
+                model_joint_positions[joint_name] = float(
+                    self.data.qpos[self.model.jnt_qposadr[joint_id]]
+                )
         return RobotSnapshot(
             run_id=self.run_id,
             backend_generation=self.backend_generation,
@@ -4452,6 +4632,7 @@ class MujocoBackend:
                 "left_force_n": float(contacts["left_force_n"]),
                 "right_force_n": float(contacts["right_force_n"]),
             },
+            model_joint_positions_rad=model_joint_positions,
             diagnostics={
                 "mode": "GT_DEBUG",
                 "interface_profile": "g2a-1.0",
@@ -4472,6 +4653,7 @@ class MujocoBackend:
                 "scene_id": self.scene_id,
                 "sensor_error": self._sensor_error,
                 "object_pose_world_sim": object_diagnostic,
+                "base_drive_gate": self._base_drive_gate(),
                 "navigation": self.navigation_status(),
                 "camera_body": "depth_cam_link",
                 "camera_branch_root": "link4",

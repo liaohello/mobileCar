@@ -29,6 +29,15 @@
       @media (max-width: 850px) { .g4a2-grid { grid-template-columns: minmax(0, 1fr); } }
       #g4a2-log { white-space: pre-wrap; font-family: monospace; font-size: 12px; max-height: 180px; overflow: auto; }
       .muted { color: #91a3b6; } .ok { color: #69d18b; } .warn { color: #e4b860; }
+      .g4a2-chain { margin: 6px 0 2px; padding: 8px 10px; border-radius: 6px; background: #16202a; border: 1px solid #304154; font-weight: 600; }
+      .g4a2-chain[data-state="reached"] { color: #69d18b; border-color: #2f6b46; }
+      .g4a2-chain[data-state="rejected"] { color: #e58a8f; border-color: #7a333a; }
+      .g4a2-chain[data-state="blocked"], .g4a2-chain[data-state="unchanged"] { color: #e4b860; }
+      .g4a2-chain[data-state="sending"], .g4a2-chain[data-state="accepted"], .g4a2-chain[data-state="applying"] { color: #8ed9ff; }
+      .g4a2-table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 13px; }
+      .g4a2-table th, .g4a2-table td { border-bottom: 1px solid #304154; padding: 5px 6px; text-align: right; }
+      .g4a2-table th:first-child, .g4a2-table td:first-child { text-align: left; }
+      .g4a2-table th { color: #91a3b6; font-weight: 600; }
     </style>
   </head>
   <body>
@@ -38,6 +47,7 @@
         <div class="g4a2-status-strip" role="status" aria-live="polite">
           <div class="g4a2-status-chip"><span>录制</span><strong id="recording-lifecycle" data-testid="recording-lifecycle">IDLE</strong></div>
           <div class="g4a2-status-chip"><span>画面</span><strong id="frame-lifecycle" data-testid="frame-lifecycle">等待</strong></div>
+          <div class="g4a2-status-chip"><span>动作</span><strong id="chain-lifecycle" data-testid="chain-lifecycle">待命</strong></div>
           <div class="g4a2-status-chip"><span>后端</span><strong id="g4a2-status">初始化</strong></div>
         </div>
       </header>
@@ -60,6 +70,8 @@
             <button id="human-record" class="secondary">开始真人录制</button>
             <button id="human-stop" class="danger">停止并结束</button>
           </div>
+          <p id="human-chain-status" class="g4a2-chain" role="status" aria-live="polite" data-state="idle">待命</p>
+          <p id="human-control-reason" class="muted" role="status"></p>
           <p class="muted">页面只显示 link4 RGB、Depth 有效率和局部本体状态；不显示 world_sim 物体、Oracle 接触或第三人称视图。</p>
         </section>
         <section class="g4a2-card">
@@ -68,6 +80,8 @@
           <div id="human-joints"></div>
           <div class="g4a2-row"><label>夹爪宽度 <input id="human-gripper" type="range" min="0.012" max="0.05" step="0.001" value="0.025" /></label><strong id="human-gripper-value">25.0 mm</strong></div>
           <div class="g4a2-row"><button id="human-authorize" class="secondary">启用近场权限</button><button id="human-send">发送六维目标</button><button id="human-stream" class="secondary">开始 5Hz</button><button id="human-cancel" class="danger">取消/保持</button></div>
+          <div id="human-joint-table" class="g4a2-joint-table" aria-live="polite"></div>
+          <div class="g4a2-row" id="human-postures"></div>
           <p class="muted">assist mode: <span id="human-assist">manual</span> · human session: <span id="human-session">未确认</span></p>
         </section>
       </div>

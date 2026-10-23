@@ -97,6 +97,22 @@ class Fixture:
 
         if request.method == "GET" and path == "/api/v1/health":
             await reply({"backend_generation": 1, "recording_status": "RECORDING"})
+        elif request.method == "GET" and path == "/api/v1/capabilities":
+            # Read-only posture registry lookup from the page boot.
+            await reply(
+                {
+                    "model_sha256": "c" * 64,
+                    "g4a2_postures": [
+                        {
+                            "name": "nearfield_observe",
+                            "purpose": "nearfield_observation",
+                            "frozen": True,
+                            "arm_user_joint_positions_rad": [0.0, 0.0, 0.0, 0.0, 0.0],
+                            "gripper_width_m": 0.03,
+                        }
+                    ],
+                }
+            )
         elif request.method == "GET" and path == "/api/v1/g4a2/observation":
             await reply(self.observation())
         elif request.method == "GET" and path.startswith("/api/v1/g4a2/rgbd/"):
@@ -257,6 +273,7 @@ async def check(args, report: dict) -> None:
             fixture.confirmation_allowed = True
             await page.locator("#human-confirm").click()
             await page.wait_for_function("document.getElementById('human-session').textContent === 'synthetic_human_session'")
+            await page.locator("#human-authorize").click()
             await page.locator("#human-send").click()
             await asyncio.wait_for(fixture.intent_received.wait(), timeout=5.0)
             payload = next(item["payload"] for item in fixture.posts if item["path"] == "/api/v1/g4a2/intent")

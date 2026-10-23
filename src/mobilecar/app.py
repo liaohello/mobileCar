@@ -797,6 +797,9 @@ def create_app(
             "backend_generation": snapshot.backend_generation,
             "episode_id": snapshot.episode_id,
             "recording_status": snapshot.recording.status,
+            "recording_required_for_motion": bool(
+                runtime.config.recording["required_for_motion"]
+            ),
             "interface_profile": (
                 "g4a1-1.0" if g4a1 else ("g3a-1.0" if g3a else "g2a-1.0")
             ),

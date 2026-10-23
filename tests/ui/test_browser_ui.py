@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import json
 import os
 import socket
@@ -38,10 +39,23 @@ class FixtureRuntime:
         self.scene = _load("scene_fixture.json")
         self.recording_status = "IDLE"
         self.preview_delay_s = 0.0
+        self.safety_latched = False
+        self.gate: dict[str, Any] | None = None
+        self.recording_required_for_motion: bool | None = None
+        self.reject_twist_reason: str | None = None
+        self.accepted_twist = (0.0, 0.0, 0.0)
 
     def submit(self, command: dict[str, Any]) -> dict[str, Any]:
         with self.lock:
             self.commands.append(command)
+            reject_reason = self.reject_twist_reason
+            if command["command_type"] == "set_base_twist" and not reject_reason:
+                payload = command["payload"]
+                self.accepted_twist = (
+                    payload["vx_m_s"],
+                    payload["vy_m_s"],
+                    payload["wz_rad_s"],
+                )
         if (
             command["command_type"] == "preview_tcp_target"
             and self.preview_delay_s > 0
@@ -65,6 +79,21 @@ class FixtureRuntime:
             },
             "control_tick_id": self.snapshot["control_tick_id"],
         }
+        if command["command_type"] == "set_base_twist" and reject_reason:
+            response.update(
+                {
+                    "status": "REJECTED",
+                    "reason": reject_reason,
+                    "decision": {
+                        "approved": False,
+                        "safety_revision": "browser-fixture",
+                        "reason": reject_reason,
+                        "clipped": {},
+                        "effective_payload": {},
+                        "allowed_contacts": [],
+                    },
+                }
+            )
         if command["command_type"] == "preview_tcp_target":
             response["plan"] = {
                 "plan_id": "fixture_plan_1",
@@ -94,7 +123,12 @@ def ui_server():
 
     @app.get("/api/v1/health")
     def health():
-        return {"status": "ok", "run_id": "fixture_run", "backend_generation": 1}
+        return {
+            "status": "ok",
+            "run_id": "fixture_run",
+            "backend_generation": 1,
+            "recording_required_for_motion": runtime.recording_required_for_motion,
+        }
 
     @app.get("/api/v1/capabilities")
     def capabilities():
@@ -106,11 +140,25 @@ def ui_server():
 
     @app.get("/api/v1/snapshot")
     def snapshot():
-        body = dict(runtime.snapshot)
+        body = copy.deepcopy(runtime.snapshot)
         body["recording"] = {
-            **runtime.snapshot["recording"],
+            **body["recording"],
             "status": runtime.recording_status,
+            "command_capture_ready": runtime.recording_status == "RECORDING",
         }
+        body["safety_latched"] = runtime.safety_latched
+        body["base"] = {
+            **body["base"],
+            "stop_latched": runtime.safety_latched,
+            "requested_vx_m_s": runtime.accepted_twist[0],
+            "requested_vy_m_s": runtime.accepted_twist[1],
+            "requested_wz_rad_s": runtime.accepted_twist[2],
+        }
+        if runtime.gate is not None:
+            body["diagnostics"] = {
+                **(body.get("diagnostics") or {}),
+                "base_drive_gate": dict(runtime.gate),
+            }
         return body
 
     @app.post("/api/v1/commands")
@@ -458,3 +506,129 @@ def test_delayed_preview_does_not_block_safety_inputs(ui_server):
     finally:
         with runtime.lock:
             runtime.preview_delay_s = 0.0
+
+
+def test_drive_area_reports_gate_reason_and_separates_target_from_actual(ui_server):
+    """A blocked drive input must show the backend reason, never just 0.000."""
+
+    url, runtime = ui_server
+    with runtime.lock:
+        runtime.recording_required_for_motion = True
+        runtime.recording_status = "COMPLETE"
+        runtime.safety_latched = True
+        runtime.gate = {
+            "blocked": True,
+            "code": "SOFTWARE_STOP_LATCHED",
+            "reason": "软件停止已锁存：需先解除停止，或开始新的录制后再驾驶。",
+            "lease_remaining_s": 0.0,
+        }
+    with sync_playwright() as playwright:
+        browser = _launch_hardware_chromium(playwright)
+        page = browser.new_page(viewport={"width": 1440, "height": 900})
+        page.goto(url, wait_until="domcontentloaded")
+        page.wait_for_function(
+            "document.querySelector('#connection-text').textContent === '已连接'",
+            timeout=10_000,
+        )
+        try:
+            policy = page.locator("[data-testid='recording-policy']").inner_text()
+            assert policy.startswith("服务端强制"), policy
+            assert page.locator("#require-recording").is_disabled()
+            assert page.locator("#require-recording").is_checked()
+
+            page.wait_for_function(
+                "document.querySelector('#drive-gate').dataset.code === 'SOFTWARE_STOP_LATCHED'",
+                timeout=5000,
+            )
+            assert page.locator("#drive-gate").get_attribute("data-state") == "blocked"
+            assert "软件停止已锁存" in page.locator("#drive-gate-title").inner_text()
+            assert page.locator("[data-drive-key='w']").get_attribute("aria-disabled") == "true"
+
+            before = len(_commands(runtime, "set_base_twist"))
+            page.keyboard.down("w")
+            page.wait_for_timeout(400)
+            page.keyboard.up("w")
+            assert len(_commands(runtime, "set_base_twist")) == before
+            assert page.evaluate("window.mobileCarApp.keys.size") == 0
+            assert "已拦截 W 键" in page.locator("#drive-gate-detail").inner_text()
+
+            with runtime.lock:
+                runtime.safety_latched = False
+                runtime.gate = {
+                    "blocked": True,
+                    "code": "RECORDING_REQUIRED",
+                    "reason": "正式录制未就绪：当前 Episode 不在 RECORDING，或命令捕获尚未确认。",
+                    "recording_required": True,
+                    "lease_remaining_s": 0.0,
+                }
+            page.wait_for_function(
+                "document.querySelector('#drive-gate').dataset.code === 'RECORDING_REQUIRED'",
+                timeout=5000,
+            )
+            detail = page.locator("#drive-gate-detail").inner_text()
+            assert "COMPLETE" in detail, detail
+            assert page.locator("[data-drive-key='a']").get_attribute("aria-disabled") == "true"
+            before = len(_commands(runtime, "set_base_twist"))
+            page.keyboard.down("a")
+            page.wait_for_timeout(400)
+            page.keyboard.up("a")
+            assert len(_commands(runtime, "set_base_twist")) == before
+
+            with runtime.lock:
+                runtime.recording_status = "RECORDING"
+                runtime.gate = {
+                    "blocked": False,
+                    "code": "READY",
+                    "reason": "",
+                    "recording_required": True,
+                    "lease_remaining_s": 0.0,
+                }
+            page.wait_for_function(
+                "document.querySelector('#drive-gate').dataset.code === 'READY'",
+                timeout=5000,
+            )
+            assert page.locator("#drive-gate").get_attribute("data-state") == "ready"
+            assert page.locator("[data-drive-key='w']").get_attribute("aria-disabled") == "false"
+
+            before = len(_commands(runtime, "set_base_twist"))
+            page.keyboard.down("w")
+            page.wait_for_function(
+                f"{before} < window.mobileCarApp.commandSeq",
+                timeout=4000,
+            )
+            page.wait_for_function(
+                "document.querySelector('#drive-intent-vx').textContent !== '0.000'",
+                timeout=2000,
+            )
+            page.wait_for_function(
+                "document.querySelector('#drive-accepted-vx').textContent !== '0.000'",
+                timeout=3000,
+            )
+            assert page.locator("#base-vx").inner_text() == "0.000"
+            page.keyboard.up("w")
+            page.wait_for_timeout(250)
+            assert _commands(runtime, "zero_base")
+
+            with runtime.lock:
+                runtime.reject_twist_reason = "software stop is latched"
+            page.keyboard.down("w")
+            page.wait_for_function(
+                "!document.querySelector('#drive-reject').hidden",
+                timeout=4000,
+            )
+            page.keyboard.up("w")
+            reject_text = page.locator("[data-testid='drive-reject']").inner_text()
+            assert "software stop is latched" in reject_text, reject_text
+            assert "set_base_twist" in page.locator("#event-list").inner_text()
+
+            screenshot = os.environ.get("MOBILECAR_DRIVE_SCREENSHOT")
+            if screenshot:
+                page.screenshot(path=screenshot, full_page=True)
+        finally:
+            with runtime.lock:
+                runtime.gate = None
+                runtime.safety_latched = False
+                runtime.recording_required_for_motion = None
+                runtime.recording_status = "IDLE"
+                runtime.reject_twist_reason = None
+            browser.close()

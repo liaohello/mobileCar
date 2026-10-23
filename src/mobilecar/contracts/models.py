@@ -242,6 +242,7 @@ class Capabilities(StrictModel):
     camera_parent_body: Literal["link4"] = "link4"
     tcp_parent_body: Literal["guide_rod_link"] = "guide_rod_link"
     ground_truth_policy_visible: bool = False
+    g4a2_postures: list[dict[str, Any]] = Field(default_factory=list)
 
 
 class BaseState(StrictModel):
@@ -347,6 +348,7 @@ class RobotSnapshot(StrictModel):
     recording: RecordingState = Field(default_factory=RecordingState)
     contact_summary: dict[str, Any] = Field(default_factory=dict)
     diagnostics: dict[str, Any] = Field(default_factory=dict)
+    model_joint_positions_rad: dict[str, float] = Field(default_factory=dict)
 
 
 class SensorObservation(StrictModel):

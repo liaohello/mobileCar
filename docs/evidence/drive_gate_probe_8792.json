@@ -1,0 +1,88 @@
+{
+  "base_url": "http://127.0.0.1:8792",
+  "generated_wall_utc": "2026-10-19T04:50:07Z",
+  "software_stop_latched": {
+    "latch_command": {
+      "status": "DISPATCHED",
+      "reason": ""
+    },
+    "snapshot": {
+      "safety_latched": true,
+      "stop_latched": true,
+      "gate": {
+        "blocked": true,
+        "code": "SOFTWARE_STOP_LATCHED",
+        "reason": "软件停止已锁存：需先解除停止，或开始新的录制后再驾驶。",
+        "action": "unlock_stop",
+        "recording_required": true,
+        "owner_session_id": null,
+        "lease_remaining_s": 0.0
+      }
+    },
+    "zero_twist": {
+      "status": "REJECTED",
+      "reason": "software stop is latched"
+    },
+    "displacement_m": [
+      0.0,
+      2.1074179727686992e-18,
+      -6.938893903907228e-18
+    ],
+    "control_tick_id": "tick_000010393"
+  },
+  "recording_required": {
+    "unlock_command": {
+      "status": "DISPATCHED",
+      "reason": ""
+    },
+    "snapshot": {
+      "safety_latched": false,
+      "recording": {
+        "status": "IDLE",
+        "episode_id": null,
+        "recording_segment_id": null,
+        "command_capture_ready": false,
+        "queued_events": 0,
+        "dropped_events": 0,
+        "error": null
+      },
+      "gate": {
+        "blocked": true,
+        "code": "RECORDING_REQUIRED",
+        "reason": "正式录制未就绪：当前 Episode 不在 RECORDING，或命令捕获尚未确认。",
+        "action": "start_recording",
+        "recording_required": true,
+        "owner_session_id": null,
+        "lease_remaining_s": 0.0
+      }
+    },
+    "zero_twist": {
+      "status": "REJECTED",
+      "reason": "formal recording is required and command capture is not ready"
+    },
+    "displacement_m": [
+      0.0,
+      -1.2109183013947478e-17,
+      -6.938893903907228e-18
+    ],
+    "control_tick_id": "tick_000010468"
+  },
+  "final": {
+    "safety_latched": false,
+    "recording_status": "IDLE",
+    "gate": {
+      "blocked": true,
+      "code": "RECORDING_REQUIRED",
+      "reason": "正式录制未就绪：当前 Episode 不在 RECORDING，或命令捕获尚未确认。",
+      "action": "start_recording",
+      "recording_required": true,
+      "owner_session_id": null,
+      "lease_remaining_s": 0.0
+    },
+    "position_m": [
+      0.1386513174901798,
+      -1.929293984661897e-05,
+      0.05321414659290786
+    ]
+  }
+}

@@ -1,0 +1,128 @@
+{
+  "record": "g4a2_live_deployment_verification_and_acceptance",
+  "date_utc": "2026-10-19",
+  "server_only": true,
+  "human_demonstration": false,
+  "summary": {
+    "live_service": {
+      "pid": 3824559,
+      "port": 8792,
+      "bind": "127.0.0.1",
+      "cwd": "releases/g4a2-20261018T171942Z-030bf47cef6f",
+      "started_by_job": "var/jobs/g4a2-ui-page-restart",
+      "started_utc": "2026-10-18T17:20Z",
+      "start_command": "env MUJOCO_GL=egl PYOPENGL_PLATFORM=egl PYTHONPATH=src ../../envs/g2a-py310-mujoco316/bin/python -m mobilecar --config configs/g4a2_server.yaml --host 127.0.0.1 --port 8792",
+      "finding": "线上 8792 服务已运行 UI 修复 release；用户截图中的旧行为（NO RGB-D 覆盖、闪烁、停止无反馈）来自修复前 bundle，截图时间早于 17:20Z 的重启。",
+      "served_asset_hashes": {
+        "static/g4a2.js": "0c82f98582918ee86f1d0b4f22edeba92d14def0760932eaf3b146f9d1c7e34a",
+        "static/g4a2.html": "925249bb1944babc7fe50be7938b6332505912e3baa7f5df3096c498f1983aef",
+        "static/app.js": "12f197fe694052d0e5974177fcdfca194f910aad45161806317336d6ebaab661",
+        "static/style.css": "108f22091477399760411753aaf121f246b399d2c7c22b36bb64550e9272f812",
+        "static/index.html": "4febbefe8d1983d529304f285230ecfa26fcc81af04863d5a9864b0fe75b5d8e"
+      },
+      "source_identity": "本地工作树（commit 3e7820b）与 release g4a2-20261018T171942Z-030bf47cef6f 的 SOURCE_MANIFEST 逐文件比对：370 文件中 367 一致；3 个差异均为同步后更新的文档（README.md、docs/evidence/g4a2_h0_artifact_index.json、docs/g4a2_recovery_point.md），源码零差异。",
+      "restart_performed_this_session": false,
+      "restart_not_needed_reason": "线上已在跑修复版 release 且源码与本地一致；重启同一 release 只是物理实例空转churn，故不做无意义重启。"
+    },
+    "acceptance_releases": [
+      "g4a2-20261019T004041Z-77243593bd40",
+      "g4a2-20261019T004306Z-bf71ab587227"
+    ],
+    "acceptance_results": {
+      "slow_network_and_broken_image_on_live_bundle": {
+        "tool": "tools/g4a2/check_preview_ui.py --base-url http://127.0.0.1:8792",
+        "passed": true,
+        "checks": [
+          "no_automatic_human_confirmation",
+          "slow_image_single_flight_and_stable_layout",
+          "failed_image_retains_last_good_frame",
+          "loaded_display_sample_and_time_precede_intent"
+        ]
+      },
+      "live_lifecycle": {
+        "tool": "tools/g4a2/live_acceptance.py --base-url http://127.0.0.1:8792",
+        "passed": true,
+        "run": 2,
+        "run1_note": "run1（job g4a2-live-accept）7/8 通过；唯一失败项 s1_normal_stop_saved 是验收脚本自身断言错误（要求停止前后 episode_id 变化，实则同一 Episode），服务行为正确；修正断言后 run2 全过。run1 报告保留备查。",
+        "checks": [
+          "page_loaded_with_backend_status",
+          "s1_recording_started_new_episode",
+          "s1_finalizing_immediate",
+          "s1_normal_stop_saved",
+          "s2_stop_failure_visible",
+          "s2_retry_stop_saved",
+          "s3_restart_recording_saved",
+          "no_human_session_created",
+          "no_page_errors"
+        ],
+        "automation_episodes": [
+          "episode_a860cbe601c74a3898ea44c612102696",
+          "episode_d7f39ff7ba114c9dab939117db7ed106",
+          "episode_ee7691364e6c431d9bb5acb6500d0b31",
+          "episode_1712c793712f4901b13b403a3ac7a999",
+          "episode_3b3f8513c1ac4b829de281b677869208",
+          "episode_2ed0bba1ff2844f0800e8804a58aac43"
+        ]
+      },
+      "h1_discovery_unchanged": {
+        "tool": "tools/g4a2/discover_h1.py --runs-root var/runs",
+        "count_before": 2,
+        "count_after": 2,
+        "discover_before_sha256": "dad10cdc23e35e99fc2fab9f220722458cd0ff9bc7a89e4aa166e09ce67011a6",
+        "discover_after_sha256": "dad10cdc23e35e99fc2fab9f220722458cd0ff9bc7a89e4aa166e09ce67011a6",
+        "note": "验收前后发现集逐字节一致；自动验收产生的 6 条 automation Episode 不含 human_session_confirmed 事件，不计入真人示教。"
+      }
+    }
+  },
+  "artifacts": [
+    {
+      "path": "../../var/reports/g4a2-live-accept-2/g4a2_live_acceptance.json",
+      "sha256": "fc3676cc3b6d1d631234d077d9972ef79919ee077a3b510c6f67a890f9cdd5d9",
+      "local_copy": "var/reports/g4a2-live-accept-2/g4a2_live_acceptance.json",
+      "result": "live_lifecycle_passed"
+    },
+    {
+      "path": "../../var/reports/g4a2-live-accept-2/s2_stop_failure.png",
+      "sha256": "829c3cde2d2fd48a1b780d717b02e96b5bdfa9e782e41b9c14edf4e45c692418",
+      "local_copy": "var/reports/g4a2-live-accept-2/s2_stop_failure.png",
+      "result": "stop_failure_visible_screenshot"
+    },
+    {
+      "path": "../../var/reports/g4a2-live-accept-2/s1_saved.png",
+      "sha256": "3b85f1233ab9e2e56b4f96ee99fac8dbd4c928ab6e7a2e550b7c5b3004e6c2f5",
+      "local_copy": "var/reports/g4a2-live-accept-2/s1_saved.png",
+      "result": "normal_stop_saved_screenshot"
+    },
+    {
+      "path": "../../var/reports/g4a2-live-accept/g4a2_live_preview.json",
+      "sha256": "ba9f7586c143380ff9296a7072d4f720ce38b600a9feba8a434862cef87f2a4c",
+      "local_copy": "var/reports/g4a2-live-accept-2/g4a2_live_preview.json",
+      "result": "slow_and_broken_image_passed_on_live_bundle"
+    },
+    {
+      "path": "../../var/reports/g4a2-live-accept/discover_before.json",
+      "sha256": "dad10cdc23e35e99fc2fab9f220722458cd0ff9bc7a89e4aa166e09ce67011a6",
+      "local_copy": "var/reports/g4a2-live-accept/discover_before.json",
+      "result": "h1_discovery_count_2"
+    },
+    {
+      "path": "../../var/reports/g4a2-live-accept-2/discover_after.json",
+      "sha256": "dad10cdc23e35e99fc2fab9f220722458cd0ff9bc7a89e4aa166e09ce67011a6",
+      "local_copy": "var/reports/g4a2-live-accept-2/discover_after.json",
+      "result": "h1_discovery_count_2_unchanged"
+    },
+    {
+      "path": "../../var/reports/inv8792-manifest/SOURCE_MANIFEST_171942Z.json",
+      "sha256": "95fa8b29044e485055707316ad4ae8d9c0f7c015d632b04d1b7c9a22dbec640b",
+      "local_copy": "var/reports/inv8792-manifest/SOURCE_MANIFEST_171942Z.json",
+      "result": "live_release_source_manifest"
+    },
+    {
+      "path": "../../var/jobs/inv8792-004/console.log",
+      "sha256": "pending",
+      "result": "live_service_cwd_and_asset_hash_verification"
+    }
+  ],
+  "existing_records_preserved": true,
+  "automation_not_counted_as_human": true
+}

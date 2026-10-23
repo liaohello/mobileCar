@@ -41,4 +41,5 @@ human session、human intent、显示 sample、普通六维请求、G4A2 link、
 
 部署过程另发现本机Windows打包会把SHA256SUMS写成CRLF，以及把Windows私钥路径误转为WSL路径；修正跨平台路径条件和清单LF写入。首次失败的传输没有启动新物理实例或修改旧release。服务器系统Node过旧无法解析已有可选链；改用现有现代Chromium实际加载验证，不更改全局Node。
 
-最终验证与部署状态以`docs/evidence/g4a2_ui_preview_fix.json`为准；修复前的试用记录保留，未由本次维护补标为H1合格数据。
+最终验证与部署状态以`docs/evidence/g4a2_live_deploy_acceptance_20261019.json`为准；修复前的试用记录保留，未由本次维护补标为H1合格数据。
+（2026-10-19 更正：原稿此处的 `docs/evidence/g4a2_ui_preview_fix.json` 从未生成，服务器与本地均不存在；以上方 2026-10-19 部署核查与线上验收索引为准。）

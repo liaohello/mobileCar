@@ -5,6 +5,20 @@ const $ = (id) => document.getElementById(id);
 const DRIVE_KEYS = new Set(["w", "a", "s", "d", "q", "e"]);
 const PHASE_NAMES = ["SEARCH", "NAVIGATE", "OBSERVE", "APPROACH", "MANIPULATE", "VERIFY"];
 const JOINT_NAMES = ["joint1", "joint2", "joint3", "joint4", "joint5"];
+const DRIVE_GATE_TITLES = {
+  DISCONNECTED: "控制连接中断",
+  SOFTWARE_STOP_LATCHED: "软件停止已锁存",
+  RECORDING_REQUIRED: "需要先开始录制",
+  NEARFIELD_PERMISSION_ACTIVE: "近场权限占用底盘",
+  NAVIGATION_OWNED: "导航会话持有底盘",
+  BASE_LEASE_HELD: "底盘租约被其他会话占用",
+  READY: "驾驶就绪",
+};
+const DRIVE_GATE_ACTIONS = {
+  SOFTWARE_STOP_LATCHED: { label: "解除软件停止", target: "unlock-stop" },
+  RECORDING_REQUIRED: { label: "开始录制", target: "start-recording" },
+  NEARFIELD_PERMISSION_ACTIVE: { label: "撤销近场", target: "g4a1-revoke" },
+};
 
 function isEditable(target) {
   if (!(target instanceof HTMLElement)) return false;
@@ -82,6 +96,12 @@ class MobileCarUi {
     this.g4a1Seq = 0;
     this.lastG4A1PollAt = 0;
     this.pendingG4A1PlanId = null;
+    this.driveGate = null;
+    this.driveGateNotice = "";
+    this.driveGateNoticeUntil = 0;
+    this.lastDriveRejectReason = null;
+    this.lastDriveRejectLoggedAt = 0;
+    this.recordingRequiredForMotion = null;
     this.sceneView = new SceneView($("three-container"), {
       onTargetDrag: (position) => this.onTargetDragged(position),
       onNotice: (message) => this.toast(message),
@@ -129,6 +149,10 @@ class MobileCarUi {
     $("g4a1-authorize").addEventListener("click", () => this.authorizeG4A1());
     $("g4a1-execute").addEventListener("click", () => this.executeG4A1());
     $("g4a1-revoke").addEventListener("click", () => this.revokeG4A1());
+    $("drive-gate-action")?.addEventListener("click", () => {
+      const target = $("drive-gate-action").dataset.target;
+      if (target) $(target)?.click();
+    });
     $("operator-kind").addEventListener("change", () => {
       setText("operator-badge", $("operator-kind").value.toUpperCase());
     });
@@ -166,6 +190,7 @@ class MobileCarUi {
       ]);
       this.capabilities = capabilities;
       this.manifest = manifest;
+      this.applyServerPolicy(health);
       if (health.ui) {
         this.sceneView.configureRendering(health.ui);
         this.pollIntervalMs = Math.max(
@@ -255,9 +280,7 @@ class MobileCarUi {
     }
     setText("snapshot-age", `${Math.max(0, performance.now() - this.lastSnapshotAt).toFixed(0)} ms`);
     setText("episode-short", shortId(snapshot.episode_id));
-    setText("base-vx", fixed(snapshot.base?.vx_m_s, 3));
-    setText("base-vy", fixed(snapshot.base?.vy_m_s, 3));
-    setText("base-wz", fixed(snapshot.base?.wz_rad_s, 3));
+    this.updateDriveReadout(snapshot);
     setText("base-stopped", snapshot.base?.stopped ? "是" : "否");
     setTone("base-stopped", snapshot.base?.stopped ? "ok" : "warn");
     setText("control-tick", shortId(snapshot.control_tick_id, 12));
@@ -284,6 +307,7 @@ class MobileCarUi {
     setText("safety-state", snapshot.safety_latched ? "已锁存" : "正常");
     setTone("safety-state", snapshot.safety_latched ? "error" : "ok");
     this.applyRecording(snapshot.recording);
+    this.renderDriveGate();
     this.renderSensors(snapshot.sensors || []);
     this.syncJointInputs(snapshot);
     this.syncGripperInput(snapshot);
@@ -330,6 +354,24 @@ class MobileCarUi {
     setText("recording-state", status);
     setTone("recording-state", status === "RECORDING" ? "record" : status === "FAILED" ? "error" : "ok");
     if (recording.error) this.addEvent("录制", recording.error, "error");
+  }
+
+  applyServerPolicy(health = {}) {
+    const required = health.recording_required_for_motion;
+    this.recordingRequiredForMotion = typeof required === "boolean" ? required : null;
+    const checkbox = $("require-recording");
+    const note = $("recording-policy");
+    if (!checkbox || !note) return;
+    if (this.recordingRequiredForMotion === true) {
+      checkbox.checked = true;
+      checkbox.disabled = true;
+      note.textContent = "服务端强制：未进入 RECORDING 时底盘与动作指令会被拒绝。";
+    } else if (this.recordingRequiredForMotion === false) {
+      checkbox.disabled = false;
+      note.textContent = "服务端未强制录制；该勾选只作为 Episode 元数据声明。";
+    } else {
+      note.textContent = "服务端未声明录制策略；以驾驶区状态与后端拒绝原因为准。";
+    }
   }
 
   buildJointControls() {
@@ -489,8 +531,7 @@ class MobileCarUi {
     }
   }
 
-  movement() {
-    if (!this.connected || !this.snapshot || this.snapshot.safety_latched) return null;
+  driveIntent() {
     const x = (this.keys.has("w") ? 1 : 0) + (this.keys.has("s") ? -1 : 0);
     const y = (this.keys.has("a") ? 1 : 0) + (this.keys.has("d") ? -1 : 0);
     const yaw = (this.keys.has("q") ? 1 : 0) + (this.keys.has("e") ? -1 : 0);
@@ -501,6 +542,135 @@ class MobileCarUi {
       vy: (y / linear) * (this.capabilities?.base_linear_limit_m_s ?? 0.05),
       wz: yaw * (this.capabilities?.base_yaw_limit_rad_s ?? 0.3),
     };
+  }
+
+  /** Single place that answers "may this browser drive right now, and why not". */
+  resolveDriveGate() {
+    if (!this.connected || !this.snapshot) {
+      return {
+        blocked: true,
+        code: "DISCONNECTED",
+        detail: "快照流未就绪；驾驶输入不会发送，也不会缓存。",
+      };
+    }
+    const snapshot = this.snapshot;
+    const reported = snapshot.diagnostics?.base_drive_gate;
+    let gate = reported && typeof reported === "object" ? reported : null;
+    if (!gate) {
+      // Older backends do not publish the gate; derive it from the same fields
+      // the backend checks so the operator still sees a reason.
+      if (snapshot.safety_latched) {
+        gate = { blocked: true, code: "SOFTWARE_STOP_LATCHED", reason: "后端软件停止仍处于锁存状态。" };
+      } else if (
+        this.recordingRequiredForMotion
+        && (snapshot.recording?.status !== "RECORDING" || !snapshot.recording?.command_capture_ready)
+      ) {
+        gate = { blocked: true, code: "RECORDING_REQUIRED", reason: "该服务要求先进入 RECORDING 且命令捕获就绪。" };
+      } else {
+        gate = { blocked: false, code: "READY", reason: "" };
+      }
+    }
+    if (!gate.blocked) {
+      const owner = snapshot.base_owner_session_id;
+      const lease = Number(gate.lease_remaining_s || 0);
+      if (owner && owner !== this.sessionId && lease > 0) {
+        return {
+          blocked: true,
+          code: "BASE_LEASE_HELD",
+          detail: `另一会话持有底盘租约（剩余 ${lease.toFixed(1)} s）；松开后由租约超时释放。`,
+        };
+      }
+    }
+    return {
+      blocked: Boolean(gate.blocked),
+      code: gate.code || (gate.blocked ? "BLOCKED" : "READY"),
+      detail: gate.reason ? String(gate.reason) : "",
+      recordingRequired: Boolean(gate.recording_required),
+    };
+  }
+
+  renderDriveGate() {
+    const node = $("drive-gate");
+    if (!node) return null;
+    const gate = this.resolveDriveGate();
+    this.driveGate = gate;
+    node.dataset.state = gate.blocked ? "blocked" : "ready";
+    node.dataset.code = gate.code;
+    setText("drive-gate-title", gate.blocked ? DRIVE_GATE_TITLES[gate.code] || "驾驶被拒绝" : "驾驶就绪");
+    let detail = gate.detail || "";
+    if (gate.code === "RECORDING_REQUIRED") {
+      const status = this.snapshot?.recording?.status || "IDLE";
+      detail = `${detail}当前录制状态 ${status}；开始录制后自动解除。`;
+    } else if (gate.code === "READY") {
+      detail = "按住 W/S 前后 · A/D 平移 · Q/E 旋转；松开、失焦或断连即停车。";
+    }
+    if (gate.blocked && this.driveGateNotice && performance.now() < this.driveGateNoticeUntil) {
+      detail = `${this.driveGateNotice} · ${detail}`;
+    }
+    setText("drive-gate-detail", detail);
+    const action = DRIVE_GATE_ACTIONS[gate.code];
+    const button = $("drive-gate-action");
+    if (button) {
+      button.hidden = !action;
+      button.disabled = !action;
+      if (action) {
+        button.textContent = action.label;
+        button.dataset.target = action.target;
+      } else {
+        button.removeAttribute("data-target");
+      }
+    }
+    document.querySelectorAll("[data-drive-key]").forEach((key) => {
+      key.classList.toggle("disabled", gate.blocked);
+      key.setAttribute("aria-disabled", gate.blocked ? "true" : "false");
+    });
+    return gate;
+  }
+
+  updateDriveReadout(snapshot) {
+    const intent = this.driveIntent();
+    setText("drive-intent-vx", fixed(intent.vx, 3));
+    setText("drive-intent-vy", fixed(intent.vy, 3));
+    setText("drive-intent-wz", fixed(intent.wz, 3));
+    setText("drive-accepted-vx", fixed(snapshot.base?.requested_vx_m_s, 3));
+    setText("drive-accepted-vy", fixed(snapshot.base?.requested_vy_m_s, 3));
+    setText("drive-accepted-wz", fixed(snapshot.base?.requested_wz_rad_s, 3));
+    setText("base-vx", fixed(snapshot.base?.vx_m_s, 3));
+    setText("base-vy", fixed(snapshot.base?.vy_m_s, 3));
+    setText("base-wz", fixed(snapshot.base?.wz_rad_s, 3));
+  }
+
+  noteDriveReject(reason, status) {
+    const now = performance.now();
+    const reasonChanged = this.lastDriveRejectReason !== reason;
+    this.lastDriveRejectReason = reason;
+    const node = $("drive-reject");
+    if (node) {
+      node.hidden = false;
+      node.dataset.tone = "error";
+      node.textContent = `后端拒绝底盘指令：${reason}（${status}）`;
+    }
+    if (reasonChanged || now - this.lastDriveRejectLoggedAt > 5000) {
+      this.lastDriveRejectLoggedAt = now;
+      this.addEvent("驾驶", `set_base_twist ${status} · ${reason}`, "error");
+      this.toast(`底盘指令被拒绝：${reason}`);
+    }
+  }
+
+  clearDriveReject() {
+    if (!this.lastDriveRejectReason) return;
+    this.lastDriveRejectReason = null;
+    const node = $("drive-reject");
+    if (node) {
+      node.hidden = true;
+      node.textContent = "";
+    }
+  }
+
+  movement() {
+    if (!this.connected || !this.snapshot) return null;
+    if (this.resolveDriveGate().blocked) return null;
+    return this.driveIntent();
   }
 
   onKeyDown(event) {
@@ -518,8 +688,11 @@ class MobileCarUi {
   }
 
   pressDriveKey(key) {
-    if (!this.connected || this.snapshot?.safety_latched) {
-      this.toast(this.snapshot?.safety_latched ? "软件停止已锁存，请先解除。" : "控制连接未就绪。");
+    const gate = this.renderDriveGate() || this.resolveDriveGate();
+    if (gate.blocked) {
+      this.driveGateNotice = `已拦截 ${key.toUpperCase()} 键`;
+      this.driveGateNoticeUntil = performance.now() + 4000;
+      this.renderDriveGate();
       return;
     }
     this.keys.add(key);
@@ -672,6 +845,15 @@ class MobileCarUi {
     const tone = ["REJECTED", "FAILED", "EXPIRED_BEFORE_DISPATCH", "LEASE_EXPIRED"].includes(status)
       ? "error"
       : "ok";
+    if (request.command_type === "set_base_twist") {
+      // Drive ticks are sent silently every 150 ms; a rejection must still land
+      // in the drive area instead of disappearing with the transient toast.
+      if (["REJECTED", "FAILED", "EXPIRED_BEFORE_DISPATCH", "LEASE_EXPIRED"].includes(status)) {
+        this.noteDriveReject(response.reason || status, status);
+      } else if (status === "DISPATCHED" || status === "APPLIED") {
+        this.clearDriveReject();
+      }
+    }
     if (!quiet) {
       this.addEvent(
         request.command_type,
@@ -699,7 +881,9 @@ class MobileCarUi {
       if (request.command_type === "execute_tcp_target") {
         this.invalidatePlan(response.reason || "执行被拒绝");
       }
-      this.toast(response.reason || status);
+      if (request.command_type !== "set_base_twist") {
+        this.toast(response.reason || status);
+      }
     }
   }
 

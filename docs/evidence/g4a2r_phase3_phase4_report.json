@@ -1,0 +1,76 @@
+{
+  "record": "g4a2r_phase3_phase4_action_chain_and_preview",
+  "date_utc": "2026-10-19",
+  "phases": [
+    "G4A-2R Phase 3: six-dimensional action chain feedback and display-frame binding",
+    "G4A-2R Phase 4: preview decoupled from teaching recording"
+  ],
+  "execution_location": "server_only",
+  "release": "g4a2r-20261019T063300Z-da2f2c59b9de",
+  "root_cause_fixed": {
+    "defect": "The page bound the human intent to the frame at intent-creation time but filled the action's display_sample_id with the CURRENT display frame; a newer frame between intent and action made the backend reject the action with 'display sample does not bind human intent' (repeated sends / 5Hz streams).",
+    "fix": "display_sample_id now always equals the intent's bound frame (intentSampleId); observation_sample_id carries the latest control observation. A changed target creates a new intent from the current frame; an unchanged target reuses the existing binding."
+  },
+  "chain_feedback": {
+    "states": ["待命", "条件不满足", "正在发送", "已接收", "执行中", "已到达", "被拒绝", "目标未改变"],
+    "disabled_reasons": ["尚未开始真人录制", "尚未确认本人操作", "尚未启用近场权限", "没有新鲜成功显示的 RGB-D 画面", "5Hz 连续发送中", "页面不可见"],
+    "readouts": "target vs actual vs error table for joint1-5 and the gripper, refreshed from the observation stream",
+    "postures": "capabilities.g4a2_postures rendered as apply buttons; applying goes through the same gated action chain"
+  },
+  "preview_decoupling": {
+    "behavior": "Without an active Episode the backend keeps a single overwritten preview frame (rate limited to 2 Hz) under var/runs/_preview and serves observations marked quality=*_preview; the page shows a preview badge. Motion gates (recording + nearfield permission) are untouched: the send button stays disabled with '尚未开始真人录制'.",
+    "asset_registry": "Recent per-sample asset paths are kept (64 entries) so the observation -> image fetch cannot lose the race against the 10 Hz sensor; older preview samples keep resolving."
+  },
+  "verification": {
+    "chain_smoke": {
+      "tool": "tools/g4a2r/chain_smoke.py",
+      "synthetic_fixture": true,
+      "human_evidence": false,
+      "checks": {
+        "disabled_reason_before_confirmation": true,
+        "disabled_reason_before_authorize": true,
+        "send_enabled_after_authorize": true,
+        "single_intent_for_unchanged_target": true,
+        "action_display_bound_to_intent": true,
+        "action_uses_newer_control_observation": true,
+        "chain_reached": true,
+        "reached_text": true,
+        "unchanged_no_new_action": true,
+        "unchanged_text": true,
+        "rejection_reason_visible": true,
+        "no_page_errors": true
+      },
+      "passed": true
+    },
+    "state_smoke": {
+      "tool": "tools/g4a2/ui_state_smoke.py",
+      "passed": true,
+      "notes": "updated for the explicit-authorize flow; still covers normal stop, immediate finalizing, stop failure, broken image, displayed-sample binding"
+    },
+    "preview_regression": {
+      "tool": "tools/g4a2/check_preview_ui.py",
+      "passed": true,
+      "base_url": "temporary static server serving the release's real g4a2.html/js",
+      "notes": "capabilities GET allowed by the fixture; slow image, broken image and intent lineage checks unchanged"
+    },
+    "preview_probe": {
+      "method": "real MujocoBackend instance without an Episode",
+      "quality": "simulated_nominal_preview",
+      "assets_ok": "3/3 (rgb/depth/mask)",
+      "older_sample_still_served": true
+    },
+    "regression": {
+      "suites": "tests/contracts tests/ui tests/g4a1 tests/g4a2 tests/integration tests/backend",
+      "result": "74 passed, 1 failed",
+      "failure": "tests/integration/test_provenance.py (documented contacts.py historical exception)"
+    }
+  },
+  "code_changes": [
+    "src/mobilecar/ui/static/g4a2.js: chain state machine, display/control frame separation, disabled reasons, joint table, posture buttons, preview badge",
+    "src/mobilecar/ui/static/g4a2.html: action chip, chain status line, joint table, posture host, table/chain styles",
+    "src/mobilecar/backends/mujoco/backend.py: preview capture branch + quality marker, per-sample asset registry, g4a1_asset lookup",
+    "tools/g4a2/ui_state_smoke.py and tools/g4a2/check_preview_ui.py: explicit authorize step, capabilities fixture",
+    "tools/g4a2r/chain_smoke.py: new chain acceptance"
+  ],
+  "live_service_updated": false
+}

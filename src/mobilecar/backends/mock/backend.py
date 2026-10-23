@@ -437,6 +437,41 @@ class MockBackend:
         required = bool(self.safety_config.get("require_recording", False))
         return required and not self.publisher.recording_gate(self.episode_id)
 
+    def _base_drive_gate(self) -> dict[str, Any]:
+        """Same advisory gate the MuJoCo backend publishes, for fixture parity."""
+
+        owner = self._owners["base"]
+        lease_remaining = max(0.0, self._leases["base"] - time.monotonic())
+        common = {"owner_session_id": owner, "lease_remaining_s": lease_remaining}
+        if self._latched:
+            return {
+                "blocked": True,
+                "code": "SOFTWARE_STOP_LATCHED",
+                "reason": "软件停止已锁存：需先解除停止，或开始新的录制后再驾驶。",
+                "action": "unlock_stop",
+                "recording_required": bool(
+                    self.safety_config.get("require_recording", False)
+                ),
+                **common,
+            }
+        if self._recording_required():
+            return {
+                "blocked": True,
+                "code": "RECORDING_REQUIRED",
+                "reason": "正式录制未就绪：当前 Episode 不在 RECORDING，或命令捕获尚未确认。",
+                "action": "start_recording",
+                "recording_required": True,
+                **common,
+            }
+        return {
+            "blocked": False,
+            "code": "READY",
+            "reason": "",
+            "action": None,
+            "recording_required": False,
+            **common,
+        }
+
     def _acquire(self, channel: str, request: CommandRequest):
         now = time.monotonic()
         owner = self._owners[channel]
@@ -579,7 +614,15 @@ class MockBackend:
             arm_owner_session_id=self._owners["arm"],
             safety_latched=self._latched,
             contact_summary={"unexpected_contact": False},
-            diagnostics={"mode": "MOCK", "synthetic_fixture": True},
+            diagnostics={
+                "mode": "MOCK",
+                "synthetic_fixture": True,
+                "base_drive_gate": self._base_drive_gate(),
+            },
+            model_joint_positions_rad={
+                **{f"joint{index + 1}": float(value) for index, value in enumerate(self._arm_q)},
+                "gripper_base_joint": 0.0,
+            },
         )
 
     @staticmethod

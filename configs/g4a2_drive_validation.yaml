@@ -1,0 +1,9 @@
+extends: g4a2_server.yaml
+profile: g4a2_drive_validation
+# Isolated data roots so drive validation never mixes with collected Episodes.
+recording:
+  root: ../../var/drive_validation/runs
+quality:
+  report_root: ../../var/drive_validation/reports
+ui:
+  port: 8795

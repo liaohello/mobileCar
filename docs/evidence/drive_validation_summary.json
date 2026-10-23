@@ -1,0 +1,254 @@
+{
+  "schema": "mobilecar-drive-validation-summary-1",
+  "release": {
+    "snapshot_id": "drvfix-20261019T044549Z-0a80415b2577",
+    "aggregate_sha256": "0a80415b25778927158b53a48d4af8e4ea1530934554b71ae3db763003d76369",
+    "app_js_sha256": "ada45e4d2c37f8221aa31f7c4d72e14fb3fce47912b8998b0078ea7bb3e16be0",
+    "model_sha256": "3ca3d6d0a92a48bbfbce5ac7a04e37a0f7cf7a73297045ae327bf461ad50e280",
+    "config": "configs/g4a2_drive_validation.yaml (extends g4a2_server.yaml, isolated roots, port 8795)",
+    "environment": "envs/g2a-py310-mujoco316 (Python 3.10, MuJoCo 3.1.6)",
+    "execution": "server cec-sim, one physical instance, headless Chromium 1243"
+  },
+  "provenance": {
+    "source": "automation_scripted",
+    "human_session_confirmed": false,
+    "training_qualified": false,
+    "operator_kind": "scripted",
+    "note": "Real Chromium keyboard/pointer input. Not a human demonstration and not H1 data."
+  },
+  "run": {
+    "run_id": "run_8f7d76b7662d439da3e06dbb67086caf",
+    "episode_drive": "episode_831760e149274915ac700e838c5d2654",
+    "episode_recovery": "episode_1ca0147a90a84796ae1d58472cdb7e52"
+  },
+  "cases": [
+    {
+      "name": "W_forward",
+      "key": "w",
+      "hold_s": 1.0,
+      "dx_m": 0.0508,
+      "dy_m": 0.0,
+      "dyaw_rad": 0.0,
+      "speed_while_held_m_s": 0.0782,
+      "ui": {
+        "target": "0.050",
+        "accepted": "0.050",
+        "actual": "0.078"
+      },
+      "velocity_after_release": [
+        -1e-05,
+        0.0,
+        0.0
+      ],
+      "stopped_flag": true,
+      "wheel_delta_rad": {
+        "front_left_joint": 1.571,
+        "rear_left_joint": 1.571,
+        "front_right_joint": 1.571,
+        "rear_right_joint": 1.571
+      }
+    },
+    {
+      "name": "S_backward",
+      "key": "s",
+      "hold_s": 0.75,
+      "dx_m": -0.0339,
+      "dy_m": 0.0,
+      "dyaw_rad": -0.0,
+      "speed_while_held_m_s": 0.0283,
+      "ui": {
+        "target": "-0.050",
+        "accepted": "-0.050",
+        "actual": "-0.028"
+      },
+      "velocity_after_release": [
+        -3e-05,
+        0.0,
+        1e-05
+      ],
+      "stopped_flag": true,
+      "wheel_delta_rad": {
+        "front_left_joint": -1.047,
+        "rear_left_joint": -1.047,
+        "front_right_joint": -1.047,
+        "rear_right_joint": -1.047
+      }
+    },
+    {
+      "name": "A_strafe_left",
+      "key": "a",
+      "hold_s": 0.75,
+      "dx_m": 0.001,
+      "dy_m": 0.0418,
+      "dyaw_rad": -0.0596,
+      "speed_while_held_m_s": 0.0606,
+      "ui": {
+        "target": "0.000",
+        "accepted": "0.000",
+        "actual": "-0.002"
+      },
+      "velocity_after_release": [
+        -0.0,
+        -0.0,
+        0.0
+      ],
+      "stopped_flag": true,
+      "wheel_delta_rad": {
+        "front_left_joint": -1.05,
+        "rear_left_joint": 1.574,
+        "front_right_joint": 1.044,
+        "rear_right_joint": -1.568
+      }
+    },
+    {
+      "name": "D_strafe_right",
+      "key": "d",
+      "hold_s": 0.75,
+      "dx_m": -0.0012,
+      "dy_m": -0.0334,
+      "dyaw_rad": -0.0002,
+      "speed_while_held_m_s": 0.0587,
+      "ui": {
+        "target": "0.000",
+        "accepted": "0.000",
+        "actual": "-0.001"
+      },
+      "velocity_after_release": [
+        1e-05,
+        -0.0,
+        -0.0
+      ],
+      "stopped_flag": true,
+      "wheel_delta_rad": {
+        "front_left_joint": 1.047,
+        "rear_left_joint": -1.047,
+        "front_right_joint": -1.047,
+        "rear_right_joint": 1.047
+      }
+    },
+    {
+      "name": "Q_yaw_left",
+      "key": "q",
+      "hold_s": 0.75,
+      "dx_m": -0.0003,
+      "dy_m": -0.0,
+      "dyaw_rad": 0.1197,
+      "speed_while_held_m_s": 0.0095,
+      "ui": {
+        "target": "0.000",
+        "accepted": "0.000",
+        "actual": "-0.002"
+      },
+      "velocity_after_release": [
+        -1e-05,
+        0.0,
+        0.0
+      ],
+      "stopped_flag": null,
+      "wheel_delta_rad": {
+        "front_left_joint": -0.522,
+        "rear_left_joint": -0.526,
+        "front_right_joint": 0.526,
+        "rear_right_joint": 0.521
+      }
+    },
+    {
+      "name": "E_yaw_right",
+      "key": "e",
+      "hold_s": 0.75,
+      "dx_m": -0.0007,
+      "dy_m": 0.0001,
+      "dyaw_rad": -0.2392,
+      "speed_while_held_m_s": 0.0059,
+      "ui": {
+        "target": "0.000",
+        "accepted": "0.000",
+        "actual": "0.001"
+      },
+      "velocity_after_release": [
+        0.0,
+        0.0,
+        -0.0
+      ],
+      "stopped_flag": null,
+      "wheel_delta_rad": {
+        "front_left_joint": 1.048,
+        "rear_left_joint": 1.047,
+        "front_right_joint": -1.047,
+        "rear_right_joint": -1.048
+      }
+    }
+  ],
+  "release_and_blur": {
+    "key_release": {
+      "zero_request_latency_s": 0.034,
+      "standstill_latency_s": 0.412,
+      "moving_velocity": [
+        0.065,
+        0.0,
+        0.001
+      ]
+    },
+    "blur": {
+      "zero_request_latency_s": 0.029,
+      "standstill_latency_s": 0.31,
+      "keys_after_blur": 0,
+      "moving_velocity": [
+        0.077,
+        -0.0,
+        0.002
+      ]
+    },
+    "disconnect_while_moving": {
+      "velocity_at_close": [
+        -0.056,
+        0.001,
+        -0.001
+      ],
+      "owner_after": null,
+      "drift_after_stop_m": 2e-06
+    }
+  },
+  "onscreen_W": {
+    "dx_m": 0.05,
+    "speed_while_held_m_s": 0.0789,
+    "ui": {
+      "target": "0.050",
+      "accepted": "0.050",
+      "actual": "0.046"
+    }
+  },
+  "gate_recovery_flow": {
+    "stop_episode": "COMPLETE",
+    "gate_after_stop": "SOFTWARE_STOP_LATCHED",
+    "gate_after_action_unlock": "RECORDING_REQUIRED",
+    "gate_after_action_start_recording": "READY",
+    "drive_after_recovery_dx_m": 0.0256,
+    "recovery_episode_id": "episode_1ca0147a90a84796ae1d58472cdb7e52"
+  },
+  "backend_rejection_surfaced": {
+    "status": "REJECTED",
+    "reason": "software stop is latched",
+    "drive_banner": "后端拒绝底盘指令：software stop is latched（REJECTED）"
+  },
+  "latched_key_interception": {
+    "keys_accepted": 0,
+    "command_seq_before": 90,
+    "command_seq_after": 90,
+    "notice": "已拦截 W 键"
+  },
+  "checks": {
+    "total": 57,
+    "failed": [],
+    "passed": true
+  },
+  "regression": {
+    "command": "python -m pytest -q --ignore=tests/bridge --ignore=tests/navigation",
+    "result": "129 passed, 1 failed",
+    "failed_test": "tests/integration/test_provenance.py::test_provenance_manifest_targets_and_hashes_are_complete",
+    "failure_note": "Pre-existing contacts.py provenance exception; identical hash and failure on the previous g4a2 release, documented in AGENTS.md. Not introduced by this change.",
+    "ros_tests_not_run": "tests/bridge and tests/navigation require the g3b Humble overlay; no ROS code was touched."
+  },
+  "full_report_on_server": "var/reports/drive_fix/drive_validation_final.json",
+  "screenshot_on_server": "var/reports/drive_fix/drive_validation_final.png"
+}

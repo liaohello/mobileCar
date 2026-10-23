@@ -1,0 +1,75 @@
+{
+  "record": "g4a2r_phase1_display_consistency",
+  "date_utc": "2026-10-19",
+  "phase": "G4A-2R Phase 1: collision/visual geometry separation and mesh coordinate convention",
+  "execution_location": "server_only",
+  "release": "g4a2r-20261019T014920Z-51126a59d028",
+  "diagnostic_tool": "tools/g4a2r/render_compare.py",
+  "summary": {
+    "mesh_convention": {
+      "method": "raw STL bounds * mesh_scale vs MuJoCo compiled mesh vertices mapped back to the authored frame via mesh_pos/mesh_quat",
+      "referenced_meshes_checked": 22,
+      "all_ok": true,
+      "unused_mesh_note": "imu_link_mesh (mesh id 8, 2824 vertices) is retained by the compiler but referenced by zero geoms; neither MuJoCo nor the browser renders it. Not a display defect; documented only."
+    },
+    "fk_consistency": {
+      "method": "per-body world position/quaternion, MuJoCo data.xpos/xquat vs Three.js linkGroups matrixWorld mapped through mujocoRoot inverse",
+      "states": ["initial", "reach_forward", "tuck_low", "full_joints"],
+      "worst_position_error_mm": 1.39e-13,
+      "worst_orientation_error_deg": 0.0,
+      "tolerance": {"position_mm": 2.0, "orientation_deg": 1.0},
+      "consistent": true
+    },
+    "projection_consistency": {
+      "method": "base_link / grasp_tcp / target_cube projected through the MuJoCo free camera vs the browser's matched camera",
+      "worst_pixel_error_px": 0.0,
+      "tolerance_px": 3.0,
+      "consistent": true
+    },
+    "defects_found_and_fixed": [
+      {
+        "defect": "Three.js scene animated only joint1-5 and gripper_base_joint",
+        "symptom": "left_jaw_link/right_jaw_link off by 12.5 mm (slide joints not animated); gripper_left_link/gripper_right_link rotated 92.6 deg (mimic swing hinges not animated); wheels and 48 rollers never rotated",
+        "fix": "RobotSnapshot gains model_joint_positions_rad (all non-free model joints by name); both backends populate it; scene-view animates every hinge (axis-angle about the reference pose) and slide (q*axis in the child body frame, rotated by the link reference orientation) link. Slide axis frame convention proven by an on-server MuJoCo probe (child frame)."
+      }
+    ],
+    "regression": {
+      "suite": "tests/contracts tests/ui tests/g4a1 tests/g4a2 tests/integration",
+      "result": "50 passed, 1 failed",
+      "failure": "tests/integration/test_provenance.py::test_provenance_manifest_targets_and_hashes_are_complete",
+      "failure_analysis": "Pre-existing documented exception: src/mobilecar/sensors/contacts.py provenance hash (AGENTS.md: contacts.py historical provenance exception preserved per original report). File untouched by this change."
+    },
+    "code_changes": [
+      "src/mobilecar/contracts/models.py: RobotSnapshot.model_joint_positions_rad (dict, default {})",
+      "src/mobilecar/backends/mujoco/backend.py: populate all non-free joints in _build_snapshot",
+      "src/mobilecar/backends/mock/backend.py: populate arm joints + gripper_base_joint",
+      "src/mobilecar/ui/web/scene-view.js: generic hinge/slide joint animation from the snapshot joint map with legacy fallback",
+      "tools/g4a2r/render_compare.py: new server-only diagnostic"
+    ]
+  },
+  "artifacts": [
+    {
+      "path": "../../var/reports/g4a2r-render-compare/render_compare.json",
+      "sha256": "pending",
+      "result": "passed"
+    },
+    {
+      "path": "../../var/reports/g4a2r-render-compare/mujoco_full_joints.png",
+      "result": "mujoco_native_render"
+    },
+    {
+      "path": "../../var/reports/g4a2r-render-compare/threejs_full_joints.png",
+      "result": "threejs_matched_camera_render"
+    },
+    {
+      "path": "../../var/jobs/g4a2r-regress/console.log",
+      "result": "regression_50_passed_1_documented_exception"
+    },
+    {
+      "path": "../../var/jobs/g4a2r-slide-probe/console.log",
+      "result": "slide_axis_child_frame_probe"
+    }
+  ],
+  "live_service_updated": false,
+  "live_service_note": "Running 8792 service still serves the pre-G4A2R bundle; deployment decision deferred to user review as with the previous UI fix."
+}

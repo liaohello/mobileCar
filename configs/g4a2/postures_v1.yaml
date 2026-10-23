@@ -1,0 +1,27 @@
+interface_profile: g4a2-postures-1.0
+status: frozen_by_server_validation
+frozen_by: tools/g4a2r/validate_postures.py
+frozen_wall_utc: 2026-10-19T02:17:27Z
+model_sha256: 3ca3d6d0a92a48bbfbce5ac7a04e37a0f7cf7a73297045ae327bf461ad50e280
+purpose: >-
+  G4A-2R 统一姿态配置入口。所有命名姿态（含 episode 初始姿态）都以本文件为准；
+  arm_spec.initial_positions 仅作为无本文件时的兼容回退。角度为用户坐标绝对角
+  （rad，与六维动作合同一致），夹爪为米制开口。相机保持 link4 挂载。
+postures:
+  initial:
+    purpose: g4a1_baseline_frozen
+    frozen: true
+    arm_user_joint_positions_rad: [0.000000, 0.000000, 0.000000, 0.000000, 0.000000]
+    gripper_width_m: 0.025
+  surround_view:
+    purpose: low_surround_scan
+    frozen: true
+    arm_user_joint_positions_rad: [0.410000, -0.800000, 0.000000, 0.000000, 0.000000]
+    gripper_width_m: 0.03
+    validation: {"camera_height_m": 0.2369, "optical_axis_pitch_deg": -46.06, "depth_valid_fraction": 0.874, "cube_in_frame": true, "tcp_in_frame": false, "stable": true, "sweep_clean": true}
+  nearfield_observe:
+    purpose: nearfield_observation
+    frozen: true
+    arm_user_joint_positions_rad: [0.410000, -0.800000, 0.000000, 0.000000, 0.400000]
+    gripper_width_m: 0.03
+    validation: {"camera_height_m": 0.2369, "optical_axis_pitch_deg": -46.06, "depth_valid_fraction": 0.887, "cube_in_frame": true, "tcp_in_frame": false, "stable": true, "sweep_clean": true}

@@ -46,16 +46,48 @@
               <h3>底盘驾驶</h3>
               <span class="hint">按住发送 · 松开停止</span>
             </div>
+            <div
+              id="drive-gate"
+              class="drive-gate"
+              data-state="pending"
+              data-testid="drive-gate"
+              role="status"
+              aria-live="polite"
+            >
+              <span class="drive-gate-dot" aria-hidden="true"></span>
+              <div class="drive-gate-copy">
+                <strong id="drive-gate-title">正在核对驾驶条件</strong>
+                <span id="drive-gate-detail">等待后端快照</span>
+              </div>
+              <button id="drive-gate-action" class="text-button" type="button" hidden>处理</button>
+            </div>
+            <p id="drive-reject" class="drive-reject" data-testid="drive-reject" hidden></p>
             <div class="key-layout" aria-label="键盘驾驶映射">
               <span></span><kbd data-drive-key="w">W</kbd><span></span>
               <kbd data-drive-key="a">A</kbd><kbd data-drive-key="s">S</kbd><kbd data-drive-key="d">D</kbd>
               <kbd data-drive-key="q">Q</kbd><span class="key-caption">转向</span><kbd data-drive-key="e">E</kbd>
             </div>
-            <div class="drive-readout">
-              <span>vx <strong id="base-vx">0.000</strong> m/s</span>
-              <span>vy <strong id="base-vy">0.000</strong> m/s</span>
-              <span>wz <strong id="base-wz">0.000</strong> rad/s</span>
+            <div class="drive-readout" role="group" aria-label="底盘速度：目标、后端受理与实际测量">
+              <span class="readout-corner">轴</span>
+              <span class="readout-head">目标</span>
+              <span class="readout-head">受理</span>
+              <span class="readout-head">实际</span>
+              <span>vx</span>
+              <strong id="drive-intent-vx" class="intent">0.000</strong>
+              <strong id="drive-accepted-vx" class="accepted">0.000</strong>
+              <strong id="base-vx">0.000</strong>
+              <span>vy</span>
+              <strong id="drive-intent-vy" class="intent">0.000</strong>
+              <strong id="drive-accepted-vy" class="accepted">0.000</strong>
+              <strong id="base-vy">0.000</strong>
+              <span>wz</span>
+              <strong id="drive-intent-wz" class="intent">0.000</strong>
+              <strong id="drive-accepted-wz" class="accepted">0.000</strong>
+              <strong id="base-wz">0.000</strong>
             </div>
+            <p class="micro-copy">
+              目标=按键意图 · 受理=后端最近接纳 · 实际=轮子反馈。vx/vy 单位 m/s，wz 单位 rad/s。
+            </p>
             <div class="row-actions">
               <button id="unlock-stop" class="secondary small">解除软件停止</button>
               <button id="cancel-arm" class="secondary small">取消自动轨迹</button>
@@ -145,6 +177,7 @@
               </label>
             </div>
             <label class="check-row"><input id="require-recording" type="checkbox" /> 未确认录制不允许运动</label>
+            <p id="recording-policy" data-testid="recording-policy" class="micro-copy">服务端录制策略：未知</p>
             <div class="row-actions">
               <button id="start-recording" class="record" data-testid="start-recording">开始录制</button>
               <button id="stop-recording" class="secondary" data-testid="stop-recording">停车并结束</button>

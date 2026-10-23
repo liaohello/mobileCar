@@ -1,0 +1,95 @@
+{
+  "schema": "mobilecar-server-artifact-index-1",
+  "generated_wall_utc": "2026-10-19T04:55:00Z",
+  "scope": "8792 base-drive chain diagnosis and minimal fix",
+  "release": {
+    "snapshot_id": "drvfix-20261019T044549Z-0a80415b2577",
+    "aggregate_sha256": "0a80415b25778927158b53a48d4af8e4ea1530934554b71ae3db763003d76369",
+    "file_count": 384,
+    "manifest_sha256": "51a54d5acc69044eb2d1e7812ab7d3a0d51a6d03cb4aa77859ce56f60bd82a0f",
+    "ui_bundle_sha256": "ada45e4d2c37f8221aa31f7c4d72e14fb3fce47912b8998b0078ea7bb3e16be0",
+    "ui_bundle_note": "built on the server with esbuild 0.25.10 via node v20.20.2; node_modules reused from g4a2-20261018T171942Z-030bf47cef6f after verifying identical package-lock.json hash b71c62595e751274a2167c8c2755b64878306f6656d10c6a0fbf591c28c14c3c"
+  },
+  "server": {
+    "host": "cec-sim",
+    "project_root": "~/Desktop/mobileCar",
+    "environment": "envs/g2a-py310-mujoco316",
+    "physical_instances": 1,
+    "live_service": {
+      "port": 8792,
+      "pid": 941842,
+      "config": "configs/g4a2_server.yaml",
+      "log": "var/jobs/drive-fix-8792-restart/server.log"
+    },
+    "validation_service": {
+      "port": 8795,
+      "config": "configs/g4a2_drive_validation.yaml",
+      "stopped_after_run": true
+    }
+  },
+  "artifacts": [
+    {
+      "path": "var/reports/drive_fix/drive_validation_final.json",
+      "sha256": "9af1451c8d8bd8ff490e2f7b08042f7c9afa83cf2fe98c92c9d71363bae31af6",
+      "size": 68028,
+      "purpose": "full 57-check drive validation (before/after snapshots, wheel angles, timings)"
+    },
+    {
+      "path": "var/reports/drive_fix/drive_validation_final.png",
+      "sha256": "8f13312c262c16f9a8649daa92d3da54252043b8c9c0e5360280c032a540a263",
+      "size": 202846,
+      "purpose": "validation page screenshot (drive ready + target/accepted/actual + rejection trail)"
+    },
+    {
+      "path": "var/reports/drive_fix/drive_gate_probe_8792.json",
+      "sha256": "82d0f32acd5c84395b0e74f71dea0ecdbc67fb319b9533e332601a658aaaff95",
+      "size": 2382,
+      "purpose": "post-deploy receipts for software-stop and recording gates on the live 8792"
+    },
+    {
+      "path": "var/reports/drive_fix/live_8792_gate.png",
+      "sha256": "fed6ad7adee80fcd0bf80614bcf3eb62a70466dbf7a9ce1c26f70d5e23769719",
+      "size": 206585,
+      "purpose": "live 8792 page showing RECORDING_REQUIRED gate and one-click action"
+    },
+    {
+      "path": "var/reports/drive_fix/pytest_release6.xml",
+      "sha256": "e43a19c05b97b1958f1e2762d5acfe7862283800cec4bb56367ea4b8536e804e",
+      "size": 18391,
+      "purpose": "JUnit for the release-6 regression (129 passed, 1 known provenance exception)"
+    },
+    {
+      "path": "var/reports/drive_diag_20261019/chain_probe_live.json",
+      "sha256": "9c13905d18c02d0fd701874e059abad8e4fc4b21b3cd3f2121d01fdcd9ab8f07",
+      "size": 5733,
+      "purpose": "pre-fix receipts from the replaced service (latched -> unlock -> recording gate)"
+    },
+    {
+      "path": "var/jobs/drive-fix-8792-restart/server.log",
+      "sha256": "4cb5fcb8330855c5d05a7bdaf7f0191fc827f2a1f6dd8f0aac6bd535392028b7",
+      "size": 6105,
+      "purpose": "live 8792 startup and request log"
+    }
+  ],
+  "local_mirrors": {
+    "docs/evidence/drive_validation_summary.json": "819d51c390424c3e7aa55d111f31d8964309212f74484ba272116440fed165ce",
+    "docs/evidence/drive_gate_probe_8792.json": "82d0f32acd5c84395b0e74f71dea0ecdbc67fb319b9533e332601a658aaaff95",
+    "docs/evidence/drive_validation_final.png": "8f13312c262c16f9a8649daa92d3da54252043b8c9c0e5360280c032a540a263",
+    "docs/evidence/drive_gate_live_8792.png": "fed6ad7adee80fcd0bf80614bcf3eb62a70466dbf7a9ce1c26f70d5e23769719",
+    "docs/evidence/pytest-drive-fix.xml": "e43a19c05b97b1958f1e2762d5acfe7862283800cec4bb56367ea4b8536e804e"
+  },
+  "commands": {
+    "release_sync": "python tools/server/remote_job.py sync --prefix drvfix",
+    "ui_build": "PATH=$HOME/.nvm/versions/node/v20.20.2/bin:$PATH ESBUILD_BINARY_PATH=$PWD/node_modules/esbuild/lib/downloaded-@esbuild-linux-x64-esbuild npm run build:ui",
+    "regression": "python -m pytest -q --ignore=tests/bridge --ignore=tests/navigation",
+    "validation": "python tools/drive/validate_drive_chain.py --base http://127.0.0.1:8795 --out var/reports/drive_fix/drive_validation_final.json --screenshot var/reports/drive_fix/drive_validation_final.png",
+    "live_start": "MUJOCO_GL=egl PYOPENGL_PLATFORM=egl PYTHONPATH=src python -m mobilecar --config configs/g4a2_server.yaml --host 127.0.0.1 --port 8792"
+  },
+  "notes": [
+    "All validation ran on the server; the local workspace only edited sources and kept this summary.",
+    "Input was real Chromium keyboard/pointer automation with operator_kind=scripted and no human session; training_qualified=false.",
+    "One physical MuJoCo instance at a time: 8792 was stopped before 8795 was started, and 8795 was stopped before the regression and before the live restart.",
+    "tests/bridge and tests/navigation were not run: they need the g3b Humble overlay and no ROS code changed.",
+    "tests/integration/test_provenance.py fails on the historical contacts.py provenance entry, identically on the previous release; it is not caused by this change."
+  ]
+}

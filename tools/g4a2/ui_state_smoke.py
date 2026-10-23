@@ -164,6 +164,7 @@ def main() -> int:
                 raise
             result["initial_live"] = True
             page.locator("#human-confirm").click()
+            page.locator("#human-authorize").click()
             page.locator("#human-send").click()
             page.wait_for_function("document.querySelector('#g4a2-log')?.textContent.includes('action 1 dispatched')", timeout=5000)
             assert state.last_action_sample == page.locator("#human-sample").inner_text()

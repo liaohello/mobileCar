@@ -3,6 +3,7 @@ profile: g4a2_human_collection
 backend:
   g4a1:
     initial_cube_position_m: [0.4, 0.0, 0.112]
+  posture_profile_path: configs/g4a2/postures_v1.yaml
 recording:
   required_for_motion: true
   root: ../../var/runs
